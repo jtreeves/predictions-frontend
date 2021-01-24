@@ -3,3 +3,5 @@ This repository features:
 - Components common to most apps
 - Routes linking them together
 - Connection to a backend MERN app
+
+![Home Page](/public/images/design1.png)
