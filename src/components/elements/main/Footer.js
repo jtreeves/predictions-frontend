@@ -2,7 +2,7 @@
 function Footer() {
     return (
         <footer className="bg-dark text-center text-muted">
-            © 2020 Jackson Reeves
+            © 2021 Jackson Reeves
         </footer>
     )
 }
