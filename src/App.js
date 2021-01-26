@@ -3,9 +3,6 @@ import { useEffect, useState } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 
-// Import internal utility
-import setAuthToken from './utilities/setAuthToken'
-
 // Import internal components
 import Navigation from './components/elements/Navigation'
 import Footer from './components/elements/Footer'
@@ -14,6 +11,7 @@ import About from './components/pages/About'
 import Signup from './components/pages/Signup'
 import Login from './components/pages/Login'
 import Profile from './components/pages/Profile'
+import Authentication from './components/middleware/Authentication'
 
 // Import internal CSS
 import './App.css'
@@ -39,7 +37,7 @@ function App() {
             setIsAuthenticated(false)
         } else {
             token = jwt_decode(localStorage.getItem('jwtToken'))
-            setAuthToken(localStorage.jwtToken)
+            Authentication(localStorage.jwtToken)
             setCurrentUser(token)
         }
     }, [])
