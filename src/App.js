@@ -9,7 +9,7 @@ import Footer from './components/elements/main/Footer'
 import Welcome from './components/pages/welcome/Home'
 import About from './components/pages/welcome/About'
 import Signup from './components/elements/welcome/Signup'
-import Login from './components/elements/welcome/Signup'
+import Login from './components/elements/welcome/Login'
 import Profile from './components/pages/profile/Home'
 import Authentication from './components/middleware/Authentication'
 
