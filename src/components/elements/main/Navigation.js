@@ -5,7 +5,7 @@ import { NavLink, Link } from 'react-router-dom'
 function Navigation(props) {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <Link className="navbar-brand" to="/">MERN Auth</Link>
+            <Link className="navbar-brand" to="/">Tiresias</Link>
             <button
                 className="navbar-toggler"
                 type="button"
