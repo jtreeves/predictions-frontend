@@ -4,11 +4,9 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
-// Import internal utility
-import setAuthToken from '../../utilities/setAuthToken'
-
-// Import internal component
-import FormGroup from '../elements/FormGroup'
+// Import internal components
+import Authentication from '../../middleware/Authentication'
+import FormGroup from '../../elements/main/FormGroup'
 
 // Create shortcut for environmental variable
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
@@ -40,7 +38,7 @@ function Login(props) {
             // Store token in localStorage
             localStorage.setItem('jwtToken', token)
             // Set token to auth header
-            setAuthToken(token)
+            Authentication(token)
             // Decode token to get user data
             const decoded = jwt_decode(token)
             // Set current user with decoded data

@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 // Import internal component
-import FormGroup from '../elements/FormGroup'
+import FormGroup from '../../elements/main/FormGroup'
 
 // Create shortcut for environmental variable
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL

@@ -4,13 +4,13 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 
 // Import internal components
-import Navigation from './components/elements/Navigation'
-import Footer from './components/elements/Footer'
-import Welcome from './components/pages/Welcome'
-import About from './components/pages/About'
-import Signup from './components/pages/Signup'
-import Login from './components/pages/Login'
-import Profile from './components/pages/Profile'
+import Navigation from './components/elements/main/Navigation'
+import Footer from './components/elements/main/Footer'
+import Welcome from './components/pages/welcome/Home'
+import About from './components/pages/welcome/About'
+import Signup from './components/elements/welcome/Signup'
+import Login from './components/elements/welcome/Signup'
+import Profile from './components/pages/profile/Home'
 import Authentication from './components/middleware/Authentication'
 
 // Import internal CSS
