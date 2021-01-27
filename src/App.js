@@ -6,7 +6,7 @@ import jwt_decode from 'jwt-decode'
 // Import internal components
 import Navigation from './components/elements/main/Navigation'
 import Footer from './components/elements/main/Footer'
-import Welcome from './components/pages/welcome/Home'
+import Welcome from './components/pages/welcome/Start'
 import About from './components/pages/welcome/About'
 import Signup from './components/elements/welcome/Signup'
 import Login from './components/elements/welcome/Login'

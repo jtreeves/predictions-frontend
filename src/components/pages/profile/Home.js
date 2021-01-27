@@ -11,7 +11,7 @@ import View from '../../elements/profile/View'
 const appServer = process.env.REACT_APP_SERVER_URL
 
 // Create function
-function Profile() {
+function Profile(props) {
     // Set initial state values
     const [title, setTitle] = useState()
     const [independent, setIndependent] = useState()
