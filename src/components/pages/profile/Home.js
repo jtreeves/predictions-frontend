@@ -4,8 +4,8 @@ import axios from 'axios'
 import alert from 'alert'
 
 // Import internal components
-import Add from '../../elements/profile/Add'
-import View from '../../elements/profile/View'
+import New from '../../elements/profile/New'
+import Results from '../../elements/profile/Results'
 
 // Create shortcut for environmental variable
 const appServer = process.env.REACT_APP_SERVER_URL
@@ -88,7 +88,7 @@ function Profile(props) {
 
     if (!clicked) {
         return (
-            <Add
+            <New
                 handleSubmit={handleSubmit}
                 title={title}
                 handleTitle={handleTitle}
@@ -102,7 +102,7 @@ function Profile(props) {
         )
     } else {
         return (
-            <View
+            <Results
                 linears={linears}
                 linearError={linearError}
                 quadratics={quadratics}

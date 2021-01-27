@@ -4,14 +4,15 @@ import axios from 'axios'
 import alert from 'alert'
 
 // Import internal components
-import Add from '../../elements/profile/Add'
-import View from '../../elements/profile/View'
+import New from '../../elements/profile/New'
+import Results from '../../elements/profile/Results'
+import Save from '../../elements/profile/Save'
 
 // Create shortcut for environmental variable
 const appServer = process.env.REACT_APP_SERVER_URL
 
 // Create function
-function Analyze() {
+function Analyze(props) {
     // Set initial state values
     const [title, setTitle] = useState()
     const [independent, setIndependent] = useState()
@@ -30,6 +31,7 @@ function Analyze() {
     const [logarithmics, setLogarithmics] = useState()
     const [logarithmicError, setLogarithmicError] = useState()
     const [bestFit, setBestFit] = useState()
+    const [source, setSource] = useState()
     const [clicked, setClicked] = useState(false)
 
     // Set title from form
@@ -80,6 +82,7 @@ function Analyze() {
             setLogarithmics(results.logarithmic_coefficients)
             setLogarithmicError(results.logarithmic_error)
             setBestFit(results.best_fit)
+            setSource(results.source)
             setClicked(true)
         } catch (error) {
             alert(error)
@@ -88,7 +91,7 @@ function Analyze() {
 
     if (!clicked) {
         return (
-            <Add
+            <New
                 handleSubmit={handleSubmit}
                 title={title}
                 handleTitle={handleTitle}
@@ -102,21 +105,27 @@ function Analyze() {
         )
     } else {
         return (
-            <View
-                linears={linears}
-                linearError={linearError}
-                quadratics={quadratics}
-                quadraticError={quadraticError}
-                cubics={cubics}
-                cubicError={cubicError}
-                hyperbolics={hyperbolics}
-                hyperbolicError={hyperbolicError}
-                exponentials={exponentials}
-                exponentialError={exponentialError}
-                logarithmics={logarithmics}
-                logarithmicError={logarithmicError}
-                bestFit={bestFit}
-            />
+            <div>
+                <Results
+                    linears={linears}
+                    linearError={linearError}
+                    quadratics={quadratics}
+                    quadraticError={quadraticError}
+                    cubics={cubics}
+                    cubicError={cubicError}
+                    hyperbolics={hyperbolics}
+                    hyperbolicError={hyperbolicError}
+                    exponentials={exponentials}
+                    exponentialError={exponentialError}
+                    logarithmics={logarithmics}
+                    logarithmicError={logarithmicError}
+                    bestFit={bestFit}
+                />
+                <Save 
+                    user={props.user.id}
+                    source={source}
+                />
+            </div>
         )
     }
 }
