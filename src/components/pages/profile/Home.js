@@ -48,11 +48,11 @@ function Profile(props) {
             dataSet: dataSet
         }
         try {
-            await axios.post(
+            const sentData = await axios.post(
                 appServer + '/api',
                 submission
             )
-            setResults(response.data.regressions)
+            setResults(sentData.response.data.regressions)
         } catch (error) {
             alert(error)
         }
