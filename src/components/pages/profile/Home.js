@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import randomstring from 'randomstring'
 
 import FormGroup from '../../elements/main/FormGroup'
 
@@ -15,27 +16,32 @@ function Profile(props) {
     const [dependent, setDependent] = useState('')
     const [dataSet, setDataSet] = useState([])
     
-    // Set source for form
+    // Generate a random string
+    const generateRandomString = () => {
+        randomstring.generate(10)
+    }
+
+    // Set source from form
     const handleSource = (e) => {
         setSource(e.target.value)
     }
 
-    // Set title for form
+    // Set title from form
     const handleTitle = (e) => {
         setTitle(e.target.value)
     }
 
-    // Set independent for form
+    // Set independent from form
     const handleIndependent = (e) => {
         setIndependent(e.target.value)
     }
 
-    // Set dependent for form
+    // Set dependent from form
     const handleDependent = (e) => {
         setDependent(e.target.value)
     }
 
-    // Set dataSet for form
+    // Set dataSet from form
     const handleDataSet = (e) => {
         setDataSet(e.target.value)
     }
