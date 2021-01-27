@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import axios from 'axios'
-import randomstring from 'randomstring'
 
 import FormGroup from '../../elements/main/FormGroup'
 
@@ -10,21 +9,10 @@ const regressionz = 'https://regressionz.herokuapp.com/api'
 // Create function
 function Profile(props) {
     // Set initial state values
-    const [source, setSource] = useState('')
     const [title, setTitle] = useState('')
     const [independent, setIndependent] = useState('')
     const [dependent, setDependent] = useState('')
     const [dataSet, setDataSet] = useState([])
-    
-    // Generate a random string
-    const generateRandomString = () => {
-        randomstring.generate(10)
-    }
-
-    // Set source from form
-    const handleSource = (e) => {
-        setSource(e.target.value)
-    }
 
     // Set title from form
     const handleTitle = (e) => {
@@ -71,12 +59,6 @@ function Profile(props) {
             <p><strong>Email:</strong> {props.user.email}</p> 
             <p><strong>ID:</strong> {props.user.id}</p>
             <form onSubmit={handleSubmit}>
-                <FormGroup 
-                    type="hidden" 
-                    label="source" 
-                    value={source}
-                    onChange={handleSource} 
-                />
                 <FormGroup
                     type="text"
                     label="title"
