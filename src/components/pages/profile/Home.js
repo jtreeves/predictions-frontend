@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import FormGroup from '../../elements/main/FormGroup'
 
-const REGRESSIONZ_API_KEY = process.env.REGRESSIONZ_API_KEY
+const key = process.env.REGRESSIONZ_API_KEY
 const regressionz = 'https://regressionz.herokuapp.com/api'
 
 // Create function
@@ -38,6 +38,24 @@ function Profile(props) {
     // Set dataSet for form
     const handleDataSet = (e) => {
         setDataSet(e.target.value)
+    }
+
+    // Submit form
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            await axios.post(
+                regressionz + '?key=' + key + '&source=' + source, 
+                {
+                    'title': title,
+                    'independent': independent,
+                    'dependent': dependent,
+                    'data_set': dataSet
+                }
+            )
+        } catch (error) {
+            alert(error)
+        }
     }
 
     return (
