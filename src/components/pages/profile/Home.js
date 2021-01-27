@@ -1,10 +1,13 @@
+// Import external dependencies
 import { useState } from 'react'
 import axios from 'axios'
+import alert from 'alert'
 
+// Import internal component
 import FormGroup from '../../elements/main/FormGroup'
 
-const key = process.env.REGRESSIONZ_API_KEY
-const regressionz = 'https://regressionz.herokuapp.com/api'
+// Create shortcut for environmental variable
+const appServer = process.env.REACT_APP_SERVER_URL
 
 // Create function
 function Profile(props) {
@@ -37,15 +40,16 @@ function Profile(props) {
     // Submit form
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const submission = {
+            title: title,
+            independent: independent,
+            dependent: dependent,
+            dataSet: dataSet
+        }
         try {
             await axios.post(
-                regressionz + '?key=' + key + '&source=' + source, 
-                {
-                    'title': title,
-                    'independent': independent,
-                    'dependent': dependent,
-                    'data_set': dataSet
-                }
+                appServer + '/api',
+                submission
             )
         } catch (error) {
             alert(error)
