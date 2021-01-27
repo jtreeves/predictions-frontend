@@ -59,17 +59,11 @@ function Profile(props) {
             dependent: dependent,
             dataSet: dataSet
         }
-        console.log(`SUBMISSION: ${submission}`)
-        console.log(`SUBMISSION.TITLE: ${submission.title}`)
-        console.log(`SUBMISSION.DATASET: ${submission.dataSet}`)
-        console.log(`SUBMISSION KEYS: ${Object.keys(submission)}`)
         try {
             const sentData = await axios.post(
                 appServer + '/api',
                 submission
             )
-            // console.log(`SENTDATA: ${sentData}`)
-            // console.log(`SENTDATA KEYS: ${Object.keys(sentData)}`)
             const results = sentData.data.regressions
             setLinears(results.linear_coefficients)
             setLinearError(results.linear_error)
@@ -85,13 +79,6 @@ function Profile(props) {
             setLogarithmicError(results.logarithmic_error)
             setBestFit(results.best_fit)
         } catch (error) {
-            console.log(`ERROR: ${error}`)
-            // console.log(`ERROR KEYS: ${Object.keys(error)}`)
-            // console.log(`ERROR.RESPONSE: ${error.response}`)
-            // console.log(`ERROR.RESPONSE KEYS: ${Object.keys(error.response)}`)
-            // console.log(`ERROR.RESPONSE.DATA: ${error.response.data}`)
-            // console.log(`ERROR.RESPONSE.DATA KEYS: ${Object.keys(error.response.data)}`)
-            // console.log(`ERROR.RESPONSE.DATA.MSG: ${error.response.data.msg}`)
             alert(error)
         }
     }
