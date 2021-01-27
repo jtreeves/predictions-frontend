@@ -3,14 +3,15 @@ import { useState } from 'react'
 import axios from 'axios'
 import alert from 'alert'
 
-// Import internal component
-import FormGroup from '../../elements/main/FormGroup'
+// Import internal components
+import Add from '../../elements/profile/Add'
+import View from '../../elements/profile/View'
 
 // Create shortcut for environmental variable
 const appServer = process.env.REACT_APP_SERVER_URL
 
 // Create function
-function Profile(props) {
+function Profile() {
     // Set initial state values
     const [title, setTitle] = useState()
     const [independent, setIndependent] = useState()
@@ -29,6 +30,7 @@ function Profile(props) {
     const [logarithmics, setLogarithmics] = useState()
     const [logarithmicError, setLogarithmicError] = useState()
     const [bestFit, setBestFit] = useState()
+    const [clicked, setClicked] = useState(false)
 
     // Set title from form
     const handleTitle = (e) => {
@@ -78,63 +80,45 @@ function Profile(props) {
             setLogarithmics(results.logarithmic_coefficients)
             setLogarithmicError(results.logarithmic_error)
             setBestFit(results.best_fit)
+            setClicked(true)
         } catch (error) {
             alert(error)
         }
     }
 
-    return (
-        <div>
-            <h1>Profile</h1>
-            <p><strong>Name:</strong> {props.user.name}</p> 
-            <p><strong>Email:</strong> {props.user.email}</p> 
-            <p><strong>ID:</strong> {props.user.id}</p>
-            <form onSubmit={handleSubmit}>
-                <FormGroup
-                    type="text"
-                    label="title"
-                    value={title}
-                    display="Title"
-                    onChange={handleTitle}
-                />
-                <FormGroup
-                    type="text"
-                    label="independent"
-                    value={independent}
-                    display="Independent"
-                    onChange={handleIndependent}
-                />
-                <FormGroup
-                    type="text"
-                    label="dependent"
-                    value={dependent}
-                    display="Dependent"
-                    onChange={handleDependent}
-                />
-                <FormGroup
-                    type="text"
-                    label="dataSet"
-                    value={dataSet}
-                    display="Data Set"
-                    onChange={handleDataSet}
-                />
-                <button type="submit">Submit</button>
-            </form>
-            <p>Linear Coefficients: {linears[0][0]}, {linears[1][0]}</p>
-            <p>Linear Error: {linearError}</p>
-            <p>Quadratic Coefficients: {quadratics[0][0]}, {quadratics[1][0]}, {quadratics[2][0]}</p>
-            <p>Quadratic Error: {quadraticError}</p>
-            <p>Cubic Coefficients: {cubics[0][0]}, {cubics[1][0]}, {cubics[2][0]}, {cubics[3][0]}</p>
-            <p>Cubic Error: {cubicError}</p>
-            <p>Hyperbolic Coefficients: {hyperbolics[0][0]}, {hyperbolics[1][0]}</p>
-            <p>Hyperbolic Error: {hyperbolicError}</p>
-            <p>Exponential Coefficients: {exponentials[0][0]}, {exponentials[1][0]}</p>
-            <p>Exponential Error: {exponentialError}</p>
-            <p>Logarithmic Coefficients: {logarithmics[0][0]}, {logarithmics[1][0]}</p>
-            <p>Logarithmic Error: {logarithmicError}</p>
-            <p>Best Fit: {bestFit}</p>
-        </div>
-    )
+    if (!clicked) {
+        return (
+            <Add
+                handleSubmit={handleSubmit}
+                title={title}
+                handleTitle={handleTitle}
+                independent={independent}
+                handleIndependent={handleIndependent}
+                dependent={dependent}
+                handleDependent={handleDependent}
+                dataSet={dataSet}
+                handleDataSet={handleDataSet}
+            />
+        )
+    } else {
+        return (
+            <View
+                linears={linears}
+                linearError={linearError}
+                quadratics={quadratics}
+                quadraticError={quadraticError}
+                cubics={cubics}
+                cubicError={cubicError}
+                hyperbolics={hyperbolics}
+                hyperbolicError={hyperbolicError}
+                exponentials={exponentials}
+                exponentialError={exponentialError}
+                logarithmics={logarithmics}
+                logarithmicError={logarithmicError}
+                bestFit={bestFit}
+            />
+        )
+    }
 }
 
 // Export function

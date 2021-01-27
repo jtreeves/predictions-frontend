@@ -60,29 +60,29 @@ function App() {
     return (
         <div className="App">
             <Navigation handleLogout={handleLogout} isAuth={isAuthenticated} />
-            <div className="container mt-5">
-                <Switch>
-                    <Route exact path="/" component={Welcome} />
-                    <Route path="/about" component={About} />
-                    <Route path="/signup" component={Signup} />
-                    <Route
-                        path="/login"
-                        render={(props) => {
-                            return <Login
-                                {...props}
-                                nowCurrentUser={nowCurrentUser}
-                                setIsAuthenticated={setIsAuthenticated}
-                                user={currentUser}
-                            />
-                        }}
-                    />
-                    <PrivateRoute
-                        path="/profile"
-                        component={Profile}
-                        user={currentUser}
-                    />
-                </Switch>
-            </div>
+                <div className="container mt-5">
+                    <Switch>
+                        <Route exact path="/" component={Welcome} />
+                        <Route path="/about" component={About} />
+                        <Route path="/signup" component={Signup} />
+                        <Route
+                            path="/login"
+                            render={(props) => {
+                                return <Login
+                                    {...props}
+                                    nowCurrentUser={nowCurrentUser}
+                                    setIsAuthenticated={setIsAuthenticated}
+                                    user={currentUser}
+                                />
+                            }}
+                        />
+                        <PrivateRoute
+                            path="/profile"
+                            component={Profile}
+                            user={currentUser}
+                        />
+                    </Switch>
+                </div>
             <Footer />
         </div>
     )
