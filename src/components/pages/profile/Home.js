@@ -16,6 +16,7 @@ function Profile(props) {
     const [independent, setIndependent] = useState('')
     const [dependent, setDependent] = useState('')
     const [dataSet, setDataSet] = useState([])
+    const [results, setResults] = useState()
 
     // Set title from form
     const handleTitle = (e) => {
@@ -51,6 +52,7 @@ function Profile(props) {
                 appServer + '/api',
                 submission
             )
+            setResults(response.data.regressions)
         } catch (error) {
             alert(error)
         }
@@ -93,6 +95,7 @@ function Profile(props) {
                 />
                 <button type="submit">Submit</button>
             </form>
+            <p>{results}</p>
         </div>
     )
 }
