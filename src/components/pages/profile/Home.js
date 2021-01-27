@@ -47,13 +47,18 @@ function Profile(props) {
             dependent: dependent,
             dataSet: dataSet
         }
+        console.log(`SUBMISSION: ${submission}`)
         try {
             const sentData = await axios.post(
                 appServer + '/api',
                 submission
             )
+            console.log(`SENTDATA: ${sentData}`)
+            console.log(`SENTDATA KEYS: ${Object.keys(sentData)}`)
             setResults(sentData.response.data.regressions)
         } catch (error) {
+            console.log(`ERROR: ${error}`)
+            console.log(`ERROR KEYS: ${Object.keys(error)}`)
             alert(error)
         }
     }
