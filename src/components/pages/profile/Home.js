@@ -12,11 +12,23 @@ const appServer = process.env.REACT_APP_SERVER_URL
 // Create function
 function Profile(props) {
     // Set initial state values
-    const [title, setTitle] = useState('')
-    const [independent, setIndependent] = useState('')
-    const [dependent, setDependent] = useState('')
-    const [dataSet, setDataSet] = useState([])
-    const [results, setResults] = useState()
+    const [title, setTitle] = useState()
+    const [independent, setIndependent] = useState()
+    const [dependent, setDependent] = useState()
+    const [dataSet, setDataSet] = useState()
+    const [linears, setLinears] = useState()
+    const [linearError, setLinearError] = useState()
+    const [quadratics, setQuadratics] = useState()
+    const [quadraticError, setQuadraticError] = useState()
+    const [cubics, setCubics] = useState()
+    const [cubicError, setCubicError] = useState()
+    const [hyperbolics, setHyperbolics] = useState()
+    const [hyperbolicError, setHyperbolicError] = useState()
+    const [exponentials, setExponentials] = useState()
+    const [exponentialError, setExponentialError] = useState()
+    const [logarithmics, setLogarithmics] = useState()
+    const [logarithmicError, setLogarithmicError] = useState()
+    const [bestFit, setBestFit] = useState()
 
     // Set title from form
     const handleTitle = (e) => {
@@ -56,17 +68,30 @@ function Profile(props) {
                 appServer + '/api',
                 submission
             )
-            console.log(`SENTDATA: ${sentData}`)
-            console.log(`SENTDATA KEYS: ${Object.keys(sentData)}`)
-            setResults(sentData.response.data.regressions)
+            // console.log(`SENTDATA: ${sentData}`)
+            // console.log(`SENTDATA KEYS: ${Object.keys(sentData)}`)
+            const results = sentData.data.regressions
+            setLinears(results.linear_coefficients)
+            setLinearError(results.linear_error)
+            setQuadratics(results.quadratic_coefficients)
+            setQuadraticError(results.quadratic_error)
+            setCubics(results.cubic_coefficients)
+            setCubicError(results.cubic_error)
+            setHyperbolics(results.hyperbolic_coefficients)
+            setHyperbolicError(results.hyperbolic_error)
+            setExponentials(results.exponential_coefficients)
+            setExponentialError(results.exponential_error)
+            setLogarithmics(results.logarithmic_coefficients)
+            setLogarithmicError(results.logarithmic_error)
+            setBestFit(results.best_fit)
         } catch (error) {
             console.log(`ERROR: ${error}`)
-            console.log(`ERROR KEYS: ${Object.keys(error)}`)
-            console.log(`ERROR.RESPONSE: ${error.response}`)
-            console.log(`ERROR.RESPONSE KEYS: ${Object.keys(error.response)}`)
-            console.log(`ERROR.RESPONSE.DATA: ${error.response.data}`)
-            console.log(`ERROR.RESPONSE.DATA KEYS: ${Object.keys(error.response.data)}`)
-            console.log(`ERROR.RESPONSE.DATA.MSG: ${error.response.data.msg}`)
+            // console.log(`ERROR KEYS: ${Object.keys(error)}`)
+            // console.log(`ERROR.RESPONSE: ${error.response}`)
+            // console.log(`ERROR.RESPONSE KEYS: ${Object.keys(error.response)}`)
+            // console.log(`ERROR.RESPONSE.DATA: ${error.response.data}`)
+            // console.log(`ERROR.RESPONSE.DATA KEYS: ${Object.keys(error.response.data)}`)
+            // console.log(`ERROR.RESPONSE.DATA.MSG: ${error.response.data.msg}`)
             alert(error)
         }
     }
@@ -108,7 +133,19 @@ function Profile(props) {
                 />
                 <button type="submit">Submit</button>
             </form>
-            <p>{results}</p>
+            <p>Linear Coefficients: {linears[0][0]}, {linears[1][0]}</p>
+            <p>Linear Error: {linearError}</p>
+            <p>Quadratic Coefficients: {quadratics[0][0]}, {quadratics[1][0]}, {quadratics[2][0]}</p>
+            <p>Quadratic Error: {quadraticError}</p>
+            <p>Cubic Coefficients: {cubics[0][0]}, {cubics[1][0]}, {cubics[2][0]}, {cubics[3][0]}</p>
+            <p>Cubic Error: {cubicError}</p>
+            <p>Hyperbolic Coefficients: {hyperbolics[0][0]}, {hyperbolics[1][0]}</p>
+            <p>Hyperbolic Error: {hyperbolicError}</p>
+            <p>Exponential Coefficients: {exponentials[0][0]}, {exponentials[1][0]}</p>
+            <p>Exponential Error: {exponentialError}</p>
+            <p>Logarithmic Coefficients: {logarithmics[0][0]}, {logarithmics[1][0]}</p>
+            <p>Logarithmic Error: {logarithmicError}</p>
+            <p>Best Fit: {bestFit}</p>
         </div>
     )
 }
