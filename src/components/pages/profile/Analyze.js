@@ -17,19 +17,32 @@ function Analyze(props) {
     const [title, setTitle] = useState()
     const [independent, setIndependent] = useState()
     const [dependent, setDependent] = useState()
+    const [precision, setPrecision] = useState()
     const [dataSet, setDataSet] = useState()
-    const [linears, setLinears] = useState()
-    const [linearError, setLinearError] = useState()
-    const [quadratics, setQuadratics] = useState()
-    const [quadraticError, setQuadraticError] = useState()
-    const [cubics, setCubics] = useState()
-    const [cubicError, setCubicError] = useState()
-    const [hyperbolics, setHyperbolics] = useState()
-    const [hyperbolicError, setHyperbolicError] = useState()
-    const [exponentials, setExponentials] = useState()
-    const [exponentialError, setExponentialError] = useState()
-    const [logarithmics, setLogarithmics] = useState()
-    const [logarithmicError, setLogarithmicError] = useState()
+    const [linearConstants, setLinearConstants] = useState()
+    const [linearPoints, setLinearPoints] = useState()
+    const [linearCorrelation, setLinearCorrelation] = useState()
+    const [quadraticConstants, setQuadraticConstants] = useState()
+    const [quadraticPoints, setQuadraticPoints] = useState()
+    const [quadraticCorrelation, setQuadraticCorrelation] = useState()
+    const [cubicConstants, setCubicConstants] = useState()
+    const [cubicPoints, setCubicPoints] = useState()
+    const [cubicCorrelation, setCubicCorrelation] = useState()
+    const [hyperbolicConstants, setHyperbolicConstants] = useState()
+    const [hyperbolicPoints, setHyperbolicPoints] = useState()
+    const [hyperbolicCorrelation, setHyperbolicCorrelation] = useState()
+    const [exponentialConstants, setExponentialConstants] = useState()
+    const [exponentialPoints, setExponentialPoints] = useState()
+    const [exponentialCorrelation, setExponentialCorrelation] = useState()
+    const [logarithmicConstants, setLogarithmicConstants] = useState()
+    const [logarithmicPoints, setLogarithmicPoints] = useState()
+    const [logarithmicCorrelation, setLogarithmicCorrelation] = useState()
+    const [logisticConstants, setLogisticConstants] = useState()
+    const [logisticPoints, setLogisticPoints] = useState()
+    const [logisticCorrelation, setLogisticCorrelation] = useState()
+    const [sinusoidalConstants, setSinusoidalConstants] = useState()
+    const [sinusoidalPoints, setSinusoidalPoints] = useState()
+    const [sinusoidalCorrelation, setSinusoidalCorrelation] = useState()
     const [bestFit, setBestFit] = useState()
     const [source, setSource] = useState()
     const [clicked, setClicked] = useState(false)
@@ -49,6 +62,11 @@ function Analyze(props) {
         setDependent(e.target.value)
     }
 
+    // Set precision from form
+    const handlePrecision = (e) => {
+        setPrecision(e.target.value)
+    }
+    
     // Set dataSet from form
     const handleDataSet = (e) => {
         setDataSet(e.target.value)
@@ -61,6 +79,7 @@ function Analyze(props) {
             title: title,
             independent: independent,
             dependent: dependent,
+            precision: precision,
             dataSet: dataSet
         }
         try {
@@ -69,18 +88,30 @@ function Analyze(props) {
                 submission
             )
             const results = sentData.data.regressions
-            setLinears(results.linear_coefficients)
-            setLinearError(results.linear_error)
-            setQuadratics(results.quadratic_coefficients)
-            setQuadraticError(results.quadratic_error)
-            setCubics(results.cubic_coefficients)
-            setCubicError(results.cubic_error)
-            setHyperbolics(results.hyperbolic_coefficients)
-            setHyperbolicError(results.hyperbolic_error)
-            setExponentials(results.exponential_coefficients)
-            setExponentialError(results.exponential_error)
-            setLogarithmics(results.logarithmic_coefficients)
-            setLogarithmicError(results.logarithmic_error)
+            setLinearConstants(results.linear_coefficients)
+            setLinearPoints(results.linear_points)
+            setLinearCorrelation(results.linear_correlation)
+            setQuadraticConstants(results.quadratic_coefficients)
+            setQuadraticPoints(results.quadratic_points)
+            setQuadraticCorrelation(results.quadratic_correlation)
+            setCubicConstants(results.cubic_coefficients)
+            setCubicPoints(results.cubic_points)
+            setCubicCorrelation(results.cubic_correlation)
+            setHyperbolicConstants(results.hyperbolic_coefficients)
+            setHyperbolicPoints(results.hyperbolic_points)
+            setHyperbolicCorrelation(results.hyperbolic_correlation)
+            setExponentialConstants(results.exponential_coefficients)
+            setExponentialPoints(results.exponential_points)
+            setExponentialCorrelation(results.exponential_correlation)
+            setLogarithmicConstants(results.logarithmic_coefficients)
+            setLogarithmicPoints(results.logarithmic_points)
+            setLogarithmicCorrelation(results.logarithmic_correlation)
+            setLogisticConstants(results.logistic_coefficients)
+            setLogisticPoints(results.logistic_points)
+            setLogisticCorrelation(results.logistic_correlation)
+            setSinusoidalConstants(results.sinusoidal_coefficients)
+            setSinusoidalPoints(results.sinusoidal_points)
+            setSinusoidalCorrelation(results.sinusoidal_correlation)
             setBestFit(results.best_fit)
             setSource(results.source)
             setClicked(true)
@@ -99,6 +130,8 @@ function Analyze(props) {
                 handleIndependent={handleIndependent}
                 dependent={dependent}
                 handleDependent={handleDependent}
+                precision={precision}
+                handlePrecision={handlePrecision}
                 dataSet={dataSet}
                 handleDataSet={handleDataSet}
             />
@@ -107,18 +140,30 @@ function Analyze(props) {
         return (
             <div>
                 <Results
-                    linears={linears}
-                    linearError={linearError}
-                    quadratics={quadratics}
-                    quadraticError={quadraticError}
-                    cubics={cubics}
-                    cubicError={cubicError}
-                    hyperbolics={hyperbolics}
-                    hyperbolicError={hyperbolicError}
-                    exponentials={exponentials}
-                    exponentialError={exponentialError}
-                    logarithmics={logarithmics}
-                    logarithmicError={logarithmicError}
+                    linearConstants={linearConstants}
+                    linearPoints={linearPoints}
+                    linearCorrelation={linearCorrelation}
+                    quadraticConstants={quadraticConstants}
+                    quadraticPoints={quadraticPoints}
+                    quadraticCorrelation={quadraticCorrelation}
+                    cubicConstants={cubicConstants}
+                    cubicPoints={cubicPoints}
+                    cubicCorrelation={cubicCorrelation}
+                    hyperbolicConstants={hyperbolicConstants}
+                    hyperbolicPoints={hyperbolicPoints}
+                    hyperbolicCorrelation={hyperbolicCorrelation}
+                    exponentialConstants={exponentialConstants}
+                    exponentialPoints={exponentialPoints}
+                    exponentialCorrelation={exponentialCorrelation}
+                    logarithmicConstants={logarithmicConstants}
+                    logarithmicPoints={logarithmicPoints}
+                    logarithmicCorrelation={logarithmicCorrelation}
+                    logisticConstants={logisticConstants}
+                    logisticPoints={logisticPoints}
+                    logisticCorrelation={logisticCorrelation}
+                    sinusoidalConstants={sinusoidalConstants}
+                    sinusoidalPoints={sinusoidalPoints}
+                    sinusoidalCorrelation={sinusoidalCorrelation}
                     bestFit={bestFit}
                 />
                 <Save 

@@ -29,6 +29,13 @@ function New(props) {
                     onChange={props.handleDependent}
                 />
                 <FormGroup
+                    type="number"
+                    label="precision"
+                    value={props.precision}
+                    display="Precision"
+                    onChange={props.handlePrecision}
+                />
+                <FormGroup
                     type="text"
                     label="dataSet"
                     value={props.dataSet}
