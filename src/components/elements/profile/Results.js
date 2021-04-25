@@ -1,3 +1,5 @@
+import Latex from 'react-latex'
+
 // Create function
 function Results(props) {
     const linearRoots = props.linearPoints.roots
@@ -296,52 +298,69 @@ function Results(props) {
         sinusoidalInflectionsDisplayed = 'None'
     }
 
+    const linearEquation = `$ y = ${props.linearConstants[0]} x + ${props.linearConstants[1]} $`
+    const quadraticEquation = `$ y = ${props.quadraticConstants[0]} x^2 + ${props.quadraticConstants[1]} x + ${props.quadraticConstants[2]} $`
+    const cubicEquation = `$ y = ${props.cubicConstants[0]} x^3 + ${props.cubicConstants[1]} x^2 + ${props.cubicConstants[2]} x + ${props.cubicConstants[3]} $`
+    const hyperbolicEquation = `$ y = ${props.hyperbolicConstants[0]} \\cdot \\frac{1}{x} + ${props.hyperbolicConstants[1]} $`
+    const exponentialEquation = `$ y = ${props.exponentialConstants[0]} \\cdot ${props.exponentialConstants[1]}^x $`
+    const logarithmicEquation = `$ y = ${props.logarithmicConstants[0]} \\cdot \\ln(x) + ${props.logarithmicConstants[1]} $`
+    const logisticEquation = `$ y = \\frac{${props.logisticConstants[0]}}{1 + \\text{e}^{-${props.logisticConstants[1]} \\cdot (x - ${props.logisticConstants[2]})}} $`
+    const sinusoidalEquation = `$ y = ${props.sinusoidalConstants[0]} \\cdot \\sin(${props.sinusoidalConstants[1]} \\cdot (x - ${props.sinusoidalConstants[2]})) + ${props.sinusoidalConstants[3]} $`
+
     return (
         <div>
             <h1>View the Results of the Data Analysis</h1>
             <p>Linear Coefficients: {props.linearConstants[0]}, {props.linearConstants[1]}</p>
+            <p>Linear Equation: <Latex>{linearEquation}</Latex></p>
             <p>Linear Roots: {linearRootsDisplayed}</p>
             <p>Linear Maxima: {linearMaximaDisplayed}</p>
             <p>Linear Minima: {linearMinimaDisplayed}</p>
             <p>Linear Inflections: {linearInflectionsDisplayed}</p>
             <p>Linear Correlation: {props.linearCorrelation}</p>
             <p>Quadratic Coefficients: {props.quadraticConstants[0]}, {props.quadraticConstants[1]}, {props.quadraticConstants[2]}</p>
+            <p>Quadratic Equation: <Latex>{quadraticEquation}</Latex></p>
             <p>Quadratic Roots: {quadraticRootsDisplayed}</p>
             <p>Quadratic Maxima: {quadraticMaximaDisplayed}</p>
             <p>Quadratic Minima: {quadraticMinimaDisplayed}</p>
             <p>Quadratic Inflections: {quadraticInflectionsDisplayed}</p>
             <p>Quadratic Correlation: {props.quadraticCorrelation}</p>
             <p>Cubic Coefficients: {props.cubicConstants[0]}, {props.cubicConstants[1]}, {props.cubicConstants[2]}, {props.cubicConstants[3]}</p>
+            <p>Cubic Equation: <Latex>{cubicEquation}</Latex></p>
             <p>Cubic Roots: {cubicRootsDisplayed}</p>
             <p>Cubic Maxima: {cubicMaximaDisplayed}</p>
             <p>Cubic Minima: {cubicMinimaDisplayed}</p>
             <p>Cubic Inflections: {cubicInflectionsDisplayed}</p>
             <p>Cubic Correlation: {props.cubicCorrelation}</p>
             <p>Hyperbolic Coefficients: {props.hyperbolicConstants[0]}, {props.hyperbolicConstants[1]}</p>
+            <p>Hyperbolic Equation: <Latex>{hyperbolicEquation}</Latex></p>
             <p>Hyperbolic Roots: {hyperbolicRootsDisplayed}</p>
             <p>Hyperbolic Maxima: {hyperbolicMaximaDisplayed}</p>
             <p>Hyperbolic Minima: {hyperbolicMinimaDisplayed}</p>
             <p>Hyperbolic Inflections: {hyperbolicInflectionsDisplayed}</p>
             <p>Hyperbolic Correlation: {props.hyperbolicCorrelation}</p>
             <p>Exponential Coefficients: {props.exponentialConstants[0]}, {props.exponentialConstants[1]}</p>
+            <p>Exponential Equation: <Latex>{exponentialEquation}</Latex></p>
             <p>Exponential Roots: {exponentialRootsDisplayed}</p>
             <p>Exponential Maxima: {exponentialMaximaDisplayed}</p>
             <p>Exponential Minima: {exponentialMinimaDisplayed}</p>
             <p>Exponential Inflections: {exponentialInflectionsDisplayed}</p>
             <p>Exponential Correlation: {props.exponentialCorrelation}</p>
             <p>Logarithmic Coefficients: {props.logarithmicConstants[0]}, {props.logarithmicConstants[1]}</p>
+            <p>Logarithmic Equation: <Latex>{logarithmicEquation}</Latex></p>
             <p>Logarithmic Roots: {logarithmicRootsDisplayed}</p>
             <p>Logarithmic Maxima: {logarithmicMaximaDisplayed}</p>
             <p>Logarithmic Minima: {logarithmicMinimaDisplayed}</p>
             <p>Logarithmic Inflections: {logarithmicInflectionsDisplayed}</p>
             <p>Logarithmic Correlation: {props.logarithmicCorrelation}</p>
             <p>Logistic Coefficients: {props.logisticConstants[0]}, {props.logisticConstants[1]}, {props.logisticConstants[2]}</p>
+            <p>Logistic Equation: <Latex>{logisticEquation}</Latex></p>
             <p>Logistic Roots: {logisticRootsDisplayed}</p>
             <p>Logistic Maxima: {logisticMaximaDisplayed}</p>
             <p>Logistic Minima: {logisticMinimaDisplayed}</p>
             <p>Logistic Inflections: {logisticInflectionsDisplayed}</p>
             <p>Logistic Correlation: {props.logisticCorrelation}</p>
             <p>Sinusoidal Coefficients: {props.sinusoidalConstants[0]}, {props.sinusoidalConstants[1]}, {props.sinusoidalConstants[2]}, {props.sinusoidalConstants[3]}</p>
+            <p>Sinusoidal Equation: <Latex>{sinusoidalEquation}</Latex></p>
             <p>Sinusoidal Roots: {sinusoidalRootsDisplayed}</p>
             <p>Sinusoidal Maxima: {sinusoidalMaximaDisplayed}</p>
             <p>Sinusoidal Minima: {sinusoidalMinimaDisplayed}</p>
