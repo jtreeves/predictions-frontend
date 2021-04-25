@@ -4,6 +4,11 @@ function Results(props) {
     const cubicMaxima = props.cubicPoints.maxima
     const cubicMinima = props.cubicPoints.minima
     const cubicInflections = props.cubicPoints.inflections
+    console.log('CUBIC ROOTS: ', cubicRoots)
+    console.log('CUBIC ROOTS[0]: ', cubicRoots[0])
+    console.log('CUBIC ROOTS[0][0]: ', cubicRoots[0][0])
+    console.log('EXPONENTIAL ROOTS: ', props.exponentialPoints.roots)
+    console.log('EXPONENTIAL ROOTS[0]: ', props.exponentialPoints.roots[0])
     let cubicRootsDisplayed = ''
     if (cubicRoots[0] !== null) {
         for (const point in cubicRoots) {
