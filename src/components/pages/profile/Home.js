@@ -84,7 +84,7 @@ function Profile(props) {
         }
         try {
             const sentData = await axios.post(
-                appServer + '/api',
+                'https://tiresias-backend.herokuapp.com/api',
                 submission
             )
             const results = sentData.data.regressions
