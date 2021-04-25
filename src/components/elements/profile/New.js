@@ -29,7 +29,7 @@ function New(props) {
                     onChange={props.handleDependent}
                 />
                 <FormGroup
-                    type="number"
+                    type="text"
                     label="precision"
                     value={props.precision}
                     display="Precision"
