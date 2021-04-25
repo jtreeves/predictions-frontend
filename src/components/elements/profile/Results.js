@@ -4,16 +4,9 @@ function Results(props) {
     const cubicMaxima = props.cubicPoints.maxima
     const cubicMinima = props.cubicPoints.minima
     const cubicInflections = props.cubicPoints.inflections
-    console.log('CUBIC ROOTS: ', cubicRoots)
-    console.log('CUBIC ROOTS[0]: ', cubicRoots[0])
-    console.log('CUBIC ROOTS[0][0]: ', cubicRoots[0][0])
-    console.log('EXPONENTIAL ROOTS: ', props.exponentialPoints.roots)
-    console.log('EXPONENTIAL ROOTS[0]: ', props.exponentialPoints.roots[0])
     let cubicRootsDisplayed = ''
     if (cubicRoots[0] !== null) {
         for (const point of cubicRoots) {
-            console.log('POINT OF ROOTS: ', point)
-            console.log('POINT[0] OF ROOTS: ', point[0])
             cubicRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
         }
     } else {
@@ -43,6 +36,44 @@ function Results(props) {
     } else {
         cubicInflectionsDisplayed = 'None'
     }
+
+    const hyperbolicRoots = props.hyperbolicPoints.roots
+    const hyperbolicMaxima = props.hyperbolicPoints.maxima
+    const hyperbolicMinima = props.hyperbolicPoints.minima
+    const hyperbolicInflections = props.hyperbolicPoints.inflections
+    let hyperbolicRootsDisplayed = ''
+    if (hyperbolicRoots[0] !== null) {
+        for (const point of hyperbolicRoots) {
+            hyperbolicRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+        }
+    } else {
+        hyperbolicRootsDisplayed = 'None'
+    }
+    let hyperbolicMaximaDisplayed = ''
+    if (hyperbolicMaxima[0] !== null) {
+        for (const point of hyperbolicMaxima) {
+            hyperbolicMaximaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+        }
+    } else {
+        hyperbolicMaximaDisplayed = 'None'
+    }
+    let hyperbolicMinimaDisplayed = ''
+    if (hyperbolicMinima[0] !== null) {
+        for (const point of hyperbolicMinima) {
+            hyperbolicMinimaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+        }
+    } else {
+        hyperbolicMinimaDisplayed = 'None'
+    }
+    let hyperbolicInflectionsDisplayed = ''
+    if (hyperbolicInflections[0] !== null) {
+        for (const point of hyperbolicInflections) {
+            hyperbolicInflectionsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+        }
+    } else {
+        hyperbolicInflectionsDisplayed = 'None'
+    }
+
     return (
         <div>
             <h1>View the Results of the Data Analysis</h1>
@@ -59,7 +90,10 @@ function Results(props) {
             <p>Cubic Inflections: {cubicInflectionsDisplayed}</p>
             <p>Cubic Correlation: {props.cubicCorrelation}</p>
             <p>Hyperbolic Coefficients: {props.hyperbolicConstants[0]}, {props.hyperbolicConstants[1]}</p>
-            <p>Hyperbolic Points: {props.hyperbolicPoints.roots}</p>
+            <p>Hyperbolic Roots: {hyperbolicRootsDisplayed}</p>
+            <p>Hyperbolic Maxima: {hyperbolicMaximaDisplayed}</p>
+            <p>Hyperbolic Minima: {hyperbolicMinimaDisplayed}</p>
+            <p>Hyperbolic Inflections: {hyperbolicInflectionsDisplayed}</p>
             <p>Hyperbolic Correlation: {props.hyperbolicCorrelation}</p>
             <p>Exponential Coefficients: {props.exponentialConstants[0]}, {props.exponentialConstants[1]}</p>
             <p>Exponential Points: {props.exponentialPoints.roots}</p>
