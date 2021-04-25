@@ -1,5 +1,41 @@
 // Create function
 function Results(props) {
+    const cubicRoots = props.cubicPoints.roots
+    const cubicMaxima = props.cubicPoints.maxima
+    const cubicMinima = props.cubicPoints.minima
+    const cubicInflections = props.cubicPoints.inflections
+    let cubicRootsDisplayed = ''
+    if (cubicRoots[0] !== null) {
+        for (const point in cubicRoots) {
+            cubicRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+        }
+    } else {
+        cubicRootsDisplayed = 'None'
+    }
+    let cubicMaximaDisplayed = ''
+    if (cubicMaxima[0] !== null) {
+        for (const point in cubicMaxima) {
+            cubicMaximaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+        }
+    } else {
+        cubicMaximaDisplayed = 'None'
+    }
+    let cubicMinimaDisplayed = ''
+    if (cubicMinima[0] !== null) {
+        for (const point in cubicMinima) {
+            cubicMinimaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+        }
+    } else {
+        cubicMinimaDisplayed = 'None'
+    }
+    let cubicInflectionsDisplayed = ''
+    if (cubicInflections[0] !== null) {
+        for (const point in cubicInflections) {
+            cubicInflectionsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+        }
+    } else {
+        cubicInflectionsDisplayed = 'None'
+    }
     return (
         <div>
             <h1>View the Results of the Data Analysis</h1>
@@ -10,7 +46,10 @@ function Results(props) {
             <p>Quadratic Points: {props.quadraticPoints.roots}</p>
             <p>Quadratic Correlation: {props.quadraticCorrelation}</p>
             <p>Cubic Coefficients: {props.cubicConstants[0]}, {props.cubicConstants[1]}, {props.cubicConstants[2]}, {props.cubicConstants[3]}</p>
-            <p>Cubic Points: {props.cubicPoints.roots}</p>
+            <p>Cubic Roots: {cubicRootsDisplayed}</p>
+            <p>Cubic Maxima: {cubicMaximaDisplayed}</p>
+            <p>Cubic Minima: {cubicMinimaDisplayed}</p>
+            <p>Cubic Inflections: {cubicInflectionsDisplayed}</p>
             <p>Cubic Correlation: {props.cubicCorrelation}</p>
             <p>Hyperbolic Coefficients: {props.hyperbolicConstants[0]}, {props.hyperbolicConstants[1]}</p>
             <p>Hyperbolic Points: {props.hyperbolicPoints.roots}</p>
