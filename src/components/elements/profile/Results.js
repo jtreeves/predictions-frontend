@@ -11,9 +11,9 @@ function Results(props) {
     console.log('EXPONENTIAL ROOTS[0]: ', props.exponentialPoints.roots[0])
     let cubicRootsDisplayed = ''
     if (cubicRoots[0] !== null) {
-        for (const point in cubicRoots) {
-            console.log('POINT IN ROOTS: ', point)
-            console.log('POINT[0] IN ROOTS: ', point[0])
+        for (const point of cubicRoots) {
+            console.log('POINT OF ROOTS: ', point)
+            console.log('POINT[0] OF ROOTS: ', point[0])
             cubicRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
         }
     } else {
@@ -21,7 +21,7 @@ function Results(props) {
     }
     let cubicMaximaDisplayed = ''
     if (cubicMaxima[0] !== null) {
-        for (const point in cubicMaxima) {
+        for (const point of cubicMaxima) {
             cubicMaximaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
         }
     } else {
@@ -29,7 +29,7 @@ function Results(props) {
     }
     let cubicMinimaDisplayed = ''
     if (cubicMinima[0] !== null) {
-        for (const point in cubicMinima) {
+        for (const point of cubicMinima) {
             cubicMinimaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
         }
     } else {
@@ -37,7 +37,7 @@ function Results(props) {
     }
     let cubicInflectionsDisplayed = ''
     if (cubicInflections[0] !== null) {
-        for (const point in cubicInflections) {
+        for (const point of cubicInflections) {
             cubicInflectionsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
         }
     } else {
