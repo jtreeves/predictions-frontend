@@ -12,6 +12,8 @@ function Results(props) {
     let cubicRootsDisplayed = ''
     if (cubicRoots[0] !== null) {
         for (const point in cubicRoots) {
+            console.log('POINT IN ROOTS: ', point)
+            console.log('POINT[0] IN ROOTS: ', point[0])
             cubicRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
         }
     } else {
