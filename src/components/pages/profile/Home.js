@@ -6,10 +6,10 @@ import alert from 'alert'
 // Import internal components
 import New from '../../elements/profile/New'
 import Results from '../../elements/profile/Results'
-import Save from '../../elements/profile/Save'
+// import Save from '../../elements/profile/Save'
 
 // Create shortcut for environmental variable
-const appServer = process.env.REACT_APP_SERVER_URL
+// const appServer = process.env.REACT_APP_SERVER_URL
 
 // Create function
 function Profile(props) {
@@ -140,6 +140,11 @@ function Profile(props) {
         return (
             <div>
                 <Results
+                    title={title}
+                    independent={independent}
+                    dependent={dependent}
+                    precision={precision}
+                    dataSet={dataSet}
                     linearConstants={linearConstants}
                     linearPoints={linearPoints}
                     linearCorrelation={linearCorrelation}
@@ -166,10 +171,10 @@ function Profile(props) {
                     sinusoidalCorrelation={sinusoidalCorrelation}
                     bestFit={bestFit}
                 />
-                <Save 
+                {/* <Save 
                     user={props.user.id}
                     source={source}
-                />
+                /> */}
             </div>
         )
     }

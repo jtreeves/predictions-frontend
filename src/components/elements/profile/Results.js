@@ -2,6 +2,7 @@ import Latex from 'react-latex'
 
 // Create function
 function Results(props) {
+    const precision = parseInt(props.precision)
     const linearRoots = props.linearPoints.roots
     const linearMaxima = props.linearPoints.maxima
     const linearMinima = props.linearPoints.minima
@@ -9,34 +10,34 @@ function Results(props) {
     let linearRootsDisplayed = ''
     if (linearRoots[0] !== null) {
         for (const point of linearRoots) {
-            linearRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            linearRootsDisplayed += `$ (${point[0]}, 0.0) $`
         }
     } else {
-        linearRootsDisplayed = 'None'
+        linearRootsDisplayed = `$ None $`
     }
     let linearMaximaDisplayed = ''
     if (linearMaxima[0] !== null) {
         for (const point of linearMaxima) {
-            linearMaximaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            linearMaximaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        linearMaximaDisplayed = 'None'
+        linearMaximaDisplayed = `$ None $`
     }
     let linearMinimaDisplayed = ''
     if (linearMinima[0] !== null) {
         for (const point of linearMinima) {
-            linearMinimaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            linearMinimaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        linearMinimaDisplayed = 'None'
+        linearMinimaDisplayed = `$ None $`
     }
     let linearInflectionsDisplayed = ''
     if (linearInflections[0] !== null) {
         for (const point of linearInflections) {
-            linearInflectionsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            linearInflectionsDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        linearInflectionsDisplayed = 'None'
+        linearInflectionsDisplayed = `$ None $`
     }
     
     const quadraticRoots = props.quadraticPoints.roots
@@ -46,34 +47,34 @@ function Results(props) {
     let quadraticRootsDisplayed = ''
     if (quadraticRoots[0] !== null) {
         for (const point of quadraticRoots) {
-            quadraticRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            quadraticRootsDisplayed += `$ (${point[0]}, 0.0) $`
         }
     } else {
-        quadraticRootsDisplayed = 'None'
+        quadraticRootsDisplayed = `$ None $`
     }
     let quadraticMaximaDisplayed = ''
     if (quadraticMaxima[0] !== null) {
         for (const point of quadraticMaxima) {
-            quadraticMaximaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            quadraticMaximaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        quadraticMaximaDisplayed = 'None'
+        quadraticMaximaDisplayed = `$ None $`
     }
     let quadraticMinimaDisplayed = ''
     if (quadraticMinima[0] !== null) {
         for (const point of quadraticMinima) {
-            quadraticMinimaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            quadraticMinimaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        quadraticMinimaDisplayed = 'None'
+        quadraticMinimaDisplayed = `$ None $`
     }
     let quadraticInflectionsDisplayed = ''
     if (quadraticInflections[0] !== null) {
         for (const point of quadraticInflections) {
-            quadraticInflectionsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            quadraticInflectionsDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        quadraticInflectionsDisplayed = 'None'
+        quadraticInflectionsDisplayed = `$ None $`
     }
     
     const cubicRoots = props.cubicPoints.roots
@@ -83,34 +84,34 @@ function Results(props) {
     let cubicRootsDisplayed = ''
     if (cubicRoots[0] !== null) {
         for (const point of cubicRoots) {
-            cubicRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            cubicRootsDisplayed += `$ (${point[0]}, 0.0) $`
         }
     } else {
-        cubicRootsDisplayed = 'None'
+        cubicRootsDisplayed = `$ None $`
     }
     let cubicMaximaDisplayed = ''
     if (cubicMaxima[0] !== null) {
         for (const point of cubicMaxima) {
-            cubicMaximaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            cubicMaximaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        cubicMaximaDisplayed = 'None'
+        cubicMaximaDisplayed = `$ None $`
     }
     let cubicMinimaDisplayed = ''
     if (cubicMinima[0] !== null) {
         for (const point of cubicMinima) {
-            cubicMinimaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            cubicMinimaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        cubicMinimaDisplayed = 'None'
+        cubicMinimaDisplayed = `$ None $`
     }
     let cubicInflectionsDisplayed = ''
     if (cubicInflections[0] !== null) {
         for (const point of cubicInflections) {
-            cubicInflectionsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            cubicInflectionsDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        cubicInflectionsDisplayed = 'None'
+        cubicInflectionsDisplayed = `$ None $`
     }
 
     const hyperbolicRoots = props.hyperbolicPoints.roots
@@ -120,34 +121,34 @@ function Results(props) {
     let hyperbolicRootsDisplayed = ''
     if (hyperbolicRoots[0] !== null) {
         for (const point of hyperbolicRoots) {
-            hyperbolicRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            hyperbolicRootsDisplayed += `$ (${point[0]}, 0.0) $`
         }
     } else {
-        hyperbolicRootsDisplayed = 'None'
+        hyperbolicRootsDisplayed = `$ None $`
     }
     let hyperbolicMaximaDisplayed = ''
     if (hyperbolicMaxima[0] !== null) {
         for (const point of hyperbolicMaxima) {
-            hyperbolicMaximaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            hyperbolicMaximaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        hyperbolicMaximaDisplayed = 'None'
+        hyperbolicMaximaDisplayed = `$ None $`
     }
     let hyperbolicMinimaDisplayed = ''
     if (hyperbolicMinima[0] !== null) {
         for (const point of hyperbolicMinima) {
-            hyperbolicMinimaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            hyperbolicMinimaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        hyperbolicMinimaDisplayed = 'None'
+        hyperbolicMinimaDisplayed = `$ None $`
     }
     let hyperbolicInflectionsDisplayed = ''
     if (hyperbolicInflections[0] !== null) {
         for (const point of hyperbolicInflections) {
-            hyperbolicInflectionsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            hyperbolicInflectionsDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        hyperbolicInflectionsDisplayed = 'None'
+        hyperbolicInflectionsDisplayed = `$ None $`
     }
     
     const exponentialRoots = props.exponentialPoints.roots
@@ -157,34 +158,34 @@ function Results(props) {
     let exponentialRootsDisplayed = ''
     if (exponentialRoots[0] !== null) {
         for (const point of exponentialRoots) {
-            exponentialRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            exponentialRootsDisplayed += `$ (${point[0]}, 0.0) $`
         }
     } else {
-        exponentialRootsDisplayed = 'None'
+        exponentialRootsDisplayed = `$ None $`
     }
     let exponentialMaximaDisplayed = ''
     if (exponentialMaxima[0] !== null) {
         for (const point of exponentialMaxima) {
-            exponentialMaximaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            exponentialMaximaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        exponentialMaximaDisplayed = 'None'
+        exponentialMaximaDisplayed = `$ None $`
     }
     let exponentialMinimaDisplayed = ''
     if (exponentialMinima[0] !== null) {
         for (const point of exponentialMinima) {
-            exponentialMinimaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            exponentialMinimaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        exponentialMinimaDisplayed = 'None'
+        exponentialMinimaDisplayed = `$ None $`
     }
     let exponentialInflectionsDisplayed = ''
     if (exponentialInflections[0] !== null) {
         for (const point of exponentialInflections) {
-            exponentialInflectionsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            exponentialInflectionsDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        exponentialInflectionsDisplayed = 'None'
+        exponentialInflectionsDisplayed = `$ None $`
     }
     
     const logarithmicRoots = props.logarithmicPoints.roots
@@ -194,34 +195,34 @@ function Results(props) {
     let logarithmicRootsDisplayed = ''
     if (logarithmicRoots[0] !== null) {
         for (const point of logarithmicRoots) {
-            logarithmicRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            logarithmicRootsDisplayed += `$ (${point[0]}, 0.0) $`
         }
     } else {
-        logarithmicRootsDisplayed = 'None'
+        logarithmicRootsDisplayed = `$ None $`
     }
     let logarithmicMaximaDisplayed = ''
     if (logarithmicMaxima[0] !== null) {
         for (const point of logarithmicMaxima) {
-            logarithmicMaximaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            logarithmicMaximaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        logarithmicMaximaDisplayed = 'None'
+        logarithmicMaximaDisplayed = `$ None $`
     }
     let logarithmicMinimaDisplayed = ''
     if (logarithmicMinima[0] !== null) {
         for (const point of logarithmicMinima) {
-            logarithmicMinimaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            logarithmicMinimaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        logarithmicMinimaDisplayed = 'None'
+        logarithmicMinimaDisplayed = `$ None $`
     }
     let logarithmicInflectionsDisplayed = ''
     if (logarithmicInflections[0] !== null) {
         for (const point of logarithmicInflections) {
-            logarithmicInflectionsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            logarithmicInflectionsDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        logarithmicInflectionsDisplayed = 'None'
+        logarithmicInflectionsDisplayed = `$ None $`
     }
     
     const logisticRoots = props.logisticPoints.roots
@@ -231,34 +232,34 @@ function Results(props) {
     let logisticRootsDisplayed = ''
     if (logisticRoots[0] !== null) {
         for (const point of logisticRoots) {
-            logisticRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            logisticRootsDisplayed += `$ (${point[0]}, 0.0) $`
         }
     } else {
-        logisticRootsDisplayed = 'None'
+        logisticRootsDisplayed = `$ None $`
     }
     let logisticMaximaDisplayed = ''
     if (logisticMaxima[0] !== null) {
         for (const point of logisticMaxima) {
-            logisticMaximaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            logisticMaximaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        logisticMaximaDisplayed = 'None'
+        logisticMaximaDisplayed = `$ None $`
     }
     let logisticMinimaDisplayed = ''
     if (logisticMinima[0] !== null) {
         for (const point of logisticMinima) {
-            logisticMinimaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            logisticMinimaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        logisticMinimaDisplayed = 'None'
+        logisticMinimaDisplayed = `$ None $`
     }
     let logisticInflectionsDisplayed = ''
     if (logisticInflections[0] !== null) {
         for (const point of logisticInflections) {
-            logisticInflectionsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            logisticInflectionsDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        logisticInflectionsDisplayed = 'None'
+        logisticInflectionsDisplayed = `$ None $`
     }
     
     const sinusoidalRoots = props.sinusoidalPoints.roots
@@ -268,34 +269,34 @@ function Results(props) {
     let sinusoidalRootsDisplayed = ''
     if (sinusoidalRoots[0] !== null) {
         for (const point of sinusoidalRoots) {
-            sinusoidalRootsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            sinusoidalRootsDisplayed += `$ (${point[0]}, 0.0) $`
         }
     } else {
-        sinusoidalRootsDisplayed = 'None'
+        sinusoidalRootsDisplayed = `$ None $`
     }
     let sinusoidalMaximaDisplayed = ''
     if (sinusoidalMaxima[0] !== null) {
         for (const point of sinusoidalMaxima) {
-            sinusoidalMaximaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            sinusoidalMaximaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        sinusoidalMaximaDisplayed = 'None'
+        sinusoidalMaximaDisplayed = `$ None $`
     }
     let sinusoidalMinimaDisplayed = ''
     if (sinusoidalMinima[0] !== null) {
         for (const point of sinusoidalMinima) {
-            sinusoidalMinimaDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            sinusoidalMinimaDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        sinusoidalMinimaDisplayed = 'None'
+        sinusoidalMinimaDisplayed = `$ None $`
     }
     let sinusoidalInflectionsDisplayed = ''
     if (sinusoidalInflections[0] !== null) {
         for (const point of sinusoidalInflections) {
-            sinusoidalInflectionsDisplayed += '(' + point[0] + ', ' + point[1] + ')'
+            sinusoidalInflectionsDisplayed += `$ (${point[0]}, ${point[1]}) $`
         }
     } else {
-        sinusoidalInflectionsDisplayed = 'None'
+        sinusoidalInflectionsDisplayed = `$ None $`
     }
 
     const linearEquation = `$ y = ${props.linearConstants[0]} x + ${props.linearConstants[1]} $`
@@ -309,64 +310,43 @@ function Results(props) {
 
     return (
         <div>
-            <h1>View the Results of the Data Analysis</h1>
-            <p>Linear Coefficients: {props.linearConstants[0]}, {props.linearConstants[1]}</p>
-            <p>Linear Equation: <Latex>{linearEquation}</Latex></p>
-            <p>Linear Roots: {linearRootsDisplayed}</p>
-            <p>Linear Maxima: {linearMaximaDisplayed}</p>
-            <p>Linear Minima: {linearMinimaDisplayed}</p>
-            <p>Linear Inflections: {linearInflectionsDisplayed}</p>
-            <p>Linear Correlation: {props.linearCorrelation}</p>
-            <p>Quadratic Coefficients: {props.quadraticConstants[0]}, {props.quadraticConstants[1]}, {props.quadraticConstants[2]}</p>
-            <p>Quadratic Equation: <Latex>{quadraticEquation}</Latex></p>
-            <p>Quadratic Roots: {quadraticRootsDisplayed}</p>
-            <p>Quadratic Maxima: {quadraticMaximaDisplayed}</p>
-            <p>Quadratic Minima: {quadraticMinimaDisplayed}</p>
-            <p>Quadratic Inflections: {quadraticInflectionsDisplayed}</p>
-            <p>Quadratic Correlation: {props.quadraticCorrelation}</p>
-            <p>Cubic Coefficients: {props.cubicConstants[0]}, {props.cubicConstants[1]}, {props.cubicConstants[2]}, {props.cubicConstants[3]}</p>
-            <p>Cubic Equation: <Latex>{cubicEquation}</Latex></p>
-            <p>Cubic Roots: {cubicRootsDisplayed}</p>
-            <p>Cubic Maxima: {cubicMaximaDisplayed}</p>
-            <p>Cubic Minima: {cubicMinimaDisplayed}</p>
-            <p>Cubic Inflections: {cubicInflectionsDisplayed}</p>
-            <p>Cubic Correlation: {props.cubicCorrelation}</p>
-            <p>Hyperbolic Coefficients: {props.hyperbolicConstants[0]}, {props.hyperbolicConstants[1]}</p>
-            <p>Hyperbolic Equation: <Latex>{hyperbolicEquation}</Latex></p>
-            <p>Hyperbolic Roots: {hyperbolicRootsDisplayed}</p>
-            <p>Hyperbolic Maxima: {hyperbolicMaximaDisplayed}</p>
-            <p>Hyperbolic Minima: {hyperbolicMinimaDisplayed}</p>
-            <p>Hyperbolic Inflections: {hyperbolicInflectionsDisplayed}</p>
-            <p>Hyperbolic Correlation: {props.hyperbolicCorrelation}</p>
-            <p>Exponential Coefficients: {props.exponentialConstants[0]}, {props.exponentialConstants[1]}</p>
-            <p>Exponential Equation: <Latex>{exponentialEquation}</Latex></p>
-            <p>Exponential Roots: {exponentialRootsDisplayed}</p>
-            <p>Exponential Maxima: {exponentialMaximaDisplayed}</p>
-            <p>Exponential Minima: {exponentialMinimaDisplayed}</p>
-            <p>Exponential Inflections: {exponentialInflectionsDisplayed}</p>
-            <p>Exponential Correlation: {props.exponentialCorrelation}</p>
-            <p>Logarithmic Coefficients: {props.logarithmicConstants[0]}, {props.logarithmicConstants[1]}</p>
-            <p>Logarithmic Equation: <Latex>{logarithmicEquation}</Latex></p>
-            <p>Logarithmic Roots: {logarithmicRootsDisplayed}</p>
-            <p>Logarithmic Maxima: {logarithmicMaximaDisplayed}</p>
-            <p>Logarithmic Minima: {logarithmicMinimaDisplayed}</p>
-            <p>Logarithmic Inflections: {logarithmicInflectionsDisplayed}</p>
-            <p>Logarithmic Correlation: {props.logarithmicCorrelation}</p>
-            <p>Logistic Coefficients: {props.logisticConstants[0]}, {props.logisticConstants[1]}, {props.logisticConstants[2]}</p>
-            <p>Logistic Equation: <Latex>{logisticEquation}</Latex></p>
-            <p>Logistic Roots: {logisticRootsDisplayed}</p>
-            <p>Logistic Maxima: {logisticMaximaDisplayed}</p>
-            <p>Logistic Minima: {logisticMinimaDisplayed}</p>
-            <p>Logistic Inflections: {logisticInflectionsDisplayed}</p>
-            <p>Logistic Correlation: {props.logisticCorrelation}</p>
-            <p>Sinusoidal Coefficients: {props.sinusoidalConstants[0]}, {props.sinusoidalConstants[1]}, {props.sinusoidalConstants[2]}, {props.sinusoidalConstants[3]}</p>
-            <p>Sinusoidal Equation: <Latex>{sinusoidalEquation}</Latex></p>
-            <p>Sinusoidal Roots: {sinusoidalRootsDisplayed}</p>
-            <p>Sinusoidal Maxima: {sinusoidalMaximaDisplayed}</p>
-            <p>Sinusoidal Minima: {sinusoidalMinimaDisplayed}</p>
-            <p>Sinusoidal Inflections: {sinusoidalInflectionsDisplayed}</p>
-            <p>Sinusoidal Correlation: {props.sinusoidalCorrelation}</p>
-            <p>Best Fit: {props.bestFit}</p>
+            <h1>{props.title}</h1>
+            <p><em><strong>Independent Variable</strong></em>   {props.independent}</p>
+            <p><em><strong>Dependent Variable</strong></em>   {props.dependent}</p>
+            <p><em><strong>Raw Data</strong></em>   {props.dataSet}</p>
+            <p><em><strong>Best Fit</strong></em>   {props.bestFit}</p>
+            <h2>Linear Model</h2>
+            <p><em><strong>Equation</strong></em>   <Latex>{linearEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em>   {props.linearCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{linearRootsDisplayed}</Latex>   MAXIMA: <Latex>{linearMaximaDisplayed}</Latex>   MINIMA: <Latex>{linearMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{linearInflectionsDisplayed}</Latex></p>
+            <h2>Quadratic Model</h2>
+            <p><em><strong>Equation</strong></em>   <Latex>{quadraticEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em>   {props.quadraticCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{quadraticRootsDisplayed}</Latex>   MAXIMA: <Latex>{quadraticMaximaDisplayed}</Latex>   MINIMA: <Latex>{quadraticMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{quadraticInflectionsDisplayed}</Latex></p>
+            <h2>Cubic Model</h2>
+            <p><em><strong>Equation</strong></em>   <Latex>{cubicEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em>   {props.cubicCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{cubicRootsDisplayed}</Latex>   MAXIMA: <Latex>{cubicMaximaDisplayed}</Latex>   MINIMA: <Latex>{cubicMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{cubicInflectionsDisplayed}</Latex></p>
+            <h2>Hyperbolic Model</h2>
+            <p><em><strong>Equation</strong></em>   <Latex>{hyperbolicEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em>   {props.hyperbolicCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{hyperbolicRootsDisplayed}</Latex>   MAXIMA: <Latex>{hyperbolicMaximaDisplayed}</Latex>   MINIMA: <Latex>{hyperbolicMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{hyperbolicInflectionsDisplayed}</Latex></p>
+            <h2>Exponential Model</h2>
+            <p><em><strong>Equation</strong></em>   <Latex>{exponentialEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em>   {props.exponentialCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{exponentialRootsDisplayed}</Latex>   MAXIMA: <Latex>{exponentialMaximaDisplayed}</Latex>   MINIMA: <Latex>{exponentialMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{exponentialInflectionsDisplayed}</Latex></p>
+            <h2>Logarithmic Model</h2>
+            <p><em><strong>Equation</strong></em>   <Latex>{logarithmicEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em>   {props.logarithmicCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{logarithmicRootsDisplayed}</Latex>   MAXIMA: <Latex>{logarithmicMaximaDisplayed}</Latex>   MINIMA: <Latex>{logarithmicMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{logarithmicInflectionsDisplayed}</Latex></p>
+            <h2>Logistic Model</h2>
+            <p><em><strong>Equation</strong></em>   <Latex>{logisticEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em>   {props.logisticCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{logisticRootsDisplayed}</Latex>   MAXIMA: <Latex>{logisticMaximaDisplayed}</Latex>   MINIMA: <Latex>{logisticMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{logisticInflectionsDisplayed}</Latex></p>
+            <h2>Sinusoidal Model</h2>
+            <p><em><strong>Equation</strong></em>   <Latex>{sinusoidalEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em>   {props.sinusoidalCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{sinusoidalRootsDisplayed}</Latex>   MAXIMA: <Latex>{sinusoidalMaximaDisplayed}</Latex>   MINIMA: <Latex>{sinusoidalMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{sinusoidalInflectionsDisplayed}</Latex></p>
         </div>
     )
 }
