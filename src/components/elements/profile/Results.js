@@ -299,54 +299,157 @@ function Results(props) {
         sinusoidalInflectionsDisplayed = `$ None $`
     }
 
-    const linearEquation = `$ y = ${props.linearConstants[0]} x + ${props.linearConstants[1]} $`
-    const quadraticEquation = `$ y = ${props.quadraticConstants[0]} x^2 + ${props.quadraticConstants[1]} x + ${props.quadraticConstants[2]} $`
-    const cubicEquation = `$ y = ${props.cubicConstants[0]} x^3 + ${props.cubicConstants[1]} x^2 + ${props.cubicConstants[2]} x + ${props.cubicConstants[3]} $`
-    const hyperbolicEquation = `$ y = ${props.hyperbolicConstants[0]} \\cdot \\frac{1}{x} + ${props.hyperbolicConstants[1]} $`
+    let linearSecondConstant = props.linearConstants[1]
+    let linearSecondSlot = ''
+    if (linearSecondConstant > 0) {
+        linearSecondSlot = `+ ${linearSecondConstant}`
+    } else {
+        linearSecondConstant *= -1
+        linearSecondSlot = `- ${linearSecondConstant}`
+    }
+    
+    let quadraticSecondConstant = props.quadraticConstants[1]
+    let quadraticSecondSlot = ''
+    if (quadraticSecondConstant > 0) {
+        quadraticSecondSlot = `+ ${quadraticSecondConstant}`
+    } else {
+        quadraticSecondConstant *= -1
+        quadraticSecondSlot = `- ${quadraticSecondConstant}`
+    }
+    let quadraticThirdConstant = props.quadraticConstants[2]
+    let quadraticThirdSlot = ''
+    if (quadraticThirdConstant > 0) {
+        quadraticThirdSlot = `+ ${quadraticThirdConstant}`
+    } else {
+        quadraticThirdConstant *= -1
+        quadraticThirdSlot = `- ${quadraticThirdConstant}`
+    }
+    
+    let cubicSecondConstant = props.cubicConstants[1]
+    let cubicSecondSlot = ''
+    if (cubicSecondConstant > 0) {
+        cubicSecondSlot = `+ ${cubicSecondConstant}`
+    } else {
+        cubicSecondConstant *= -1
+        cubicSecondSlot = `- ${cubicSecondConstant}`
+    }
+    let cubicThirdConstant = props.cubicConstants[2]
+    let cubicThirdSlot = ''
+    if (cubicThirdConstant > 0) {
+        cubicThirdSlot = `+ ${cubicThirdConstant}`
+    } else {
+        cubicThirdConstant *= -1
+        cubicThirdSlot = `- ${cubicThirdConstant}`
+    }
+    let cubicFourthConstant = props.cubicConstants[3]
+    let cubicFourthSlot = ''
+    if (cubicFourthConstant > 0) {
+        cubicFourthSlot = `+ ${cubicFourthConstant}`
+    } else {
+        cubicFourthConstant *= -1
+        cubicFourthSlot = `- ${cubicFourthConstant}`
+    }
+    
+    let hyperbolicSecondConstant = props.hyperbolicConstants[1]
+    let hyperbolicSecondSlot = ''
+    if (hyperbolicSecondConstant > 0) {
+        hyperbolicSecondSlot = `+ ${hyperbolicSecondConstant}`
+    } else {
+        hyperbolicSecondConstant *= -1
+        hyperbolicSecondSlot = `- ${hyperbolicSecondConstant}`
+    }
+    
+    let logarithmicSecondConstant = props.logarithmicConstants[1]
+    let logarithmicSecondSlot = ''
+    if (logarithmicSecondConstant > 0) {
+        logarithmicSecondSlot = `+ ${logarithmicSecondConstant}`
+    } else {
+        logarithmicSecondConstant *= -1
+        logarithmicSecondSlot = `- ${logarithmicSecondConstant}`
+    }
+    
+    let logisticSecondConstant = props.logisticConstants[1]
+    let logisticSecondSlot = ''
+    if (logisticSecondConstant > 0) {
+        logisticSecondSlot = `-${logisticSecondConstant}`
+    } else {
+        logisticSecondConstant *= -1
+        logisticSecondSlot = `${logisticSecondConstant}`
+    }
+    let logisticThirdConstant = props.logisticConstants[2]
+    let logisticThirdSlot = ''
+    if (logisticThirdConstant > 0) {
+        logisticThirdSlot = `- ${logisticThirdConstant}`
+    } else {
+        logisticThirdConstant *= -1
+        logisticThirdSlot = `+ ${logisticThirdConstant}`
+    }
+    
+    let sinusoidalThirdConstant = props.sinusoidalConstants[2]
+    let sinusoidalThirdSlot = ''
+    if (sinusoidalThirdConstant > 0) {
+        sinusoidalThirdSlot = `- ${sinusoidalThirdConstant}`
+    } else {
+        sinusoidalThirdConstant *= -1
+        sinusoidalThirdSlot = `+ ${sinusoidalThirdConstant}`
+    }
+    let sinusoidalFourthConstant = props.sinusoidalConstants[3]
+    let sinusoidalFourthSlot = ''
+    if (sinusoidalFourthConstant > 0) {
+        sinusoidalFourthSlot = `+ ${sinusoidalFourthConstant}`
+    } else {
+        sinusoidalFourthConstant *= -1
+        sinusoidalFourthSlot = `- ${sinusoidalFourthConstant}`
+    }
+    
+    const linearEquation = `$ y = ${props.linearConstants[0]} x ${linearSecondSlot} $`
+    const quadraticEquation = `$ y = ${props.quadraticConstants[0]} x^2 ${quadraticSecondSlot} x ${quadraticThirdSlot} $`
+    const cubicEquation = `$ y = ${props.cubicConstants[0]} x^3 ${cubicSecondSlot} x^2 ${cubicThirdSlot} x ${cubicFourthSlot} $`
+    const hyperbolicEquation = `$ y = ${props.hyperbolicConstants[0]} \\cdot \\frac{1}{x} ${hyperbolicSecondSlot} $`
     const exponentialEquation = `$ y = ${props.exponentialConstants[0]} \\cdot ${props.exponentialConstants[1]}^x $`
-    const logarithmicEquation = `$ y = ${props.logarithmicConstants[0]} \\cdot \\ln(x) + ${props.logarithmicConstants[1]} $`
-    const logisticEquation = `$ y = \\frac{${props.logisticConstants[0]}}{1 + \\text{e}^{-${props.logisticConstants[1]} \\cdot (x - ${props.logisticConstants[2]})}} $`
-    const sinusoidalEquation = `$ y = ${props.sinusoidalConstants[0]} \\cdot \\sin(${props.sinusoidalConstants[1]} \\cdot (x - ${props.sinusoidalConstants[2]})) + ${props.sinusoidalConstants[3]} $`
+    const logarithmicEquation = `$ y = ${props.logarithmicConstants[0]} \\cdot \\ln(x) ${logarithmicSecondSlot} $`
+    const logisticEquation = `$ y = \\frac{${props.logisticConstants[0]}}{1 + \\text{e}^{${logisticSecondSlot} \\cdot (x ${logisticThirdSlot})}} $`
+    const sinusoidalEquation = `$ y = ${props.sinusoidalConstants[0]} \\cdot \\sin(${props.sinusoidalConstants[1]} \\cdot (x ${sinusoidalThirdSlot})) ${sinusoidalFourthSlot} $`
 
     return (
         <div>
             <h1>{props.title}</h1>
-            <p><em><strong>Independent Variable</strong></em>   {props.independent}</p>
-            <p><em><strong>Dependent Variable</strong></em>   {props.dependent}</p>
-            <p><em><strong>Raw Data</strong></em>   {props.dataSet}</p>
-            <p><em><strong>Best Fit</strong></em>   {props.bestFit}</p>
+            <p><em><strong>Independent Variable</strong></em> {props.independent}</p>
+            <p><em><strong>Dependent Variable</strong></em> {props.dependent}</p>
+            <p><em><strong>Raw Data</strong></em> {props.dataSet}</p>
+            <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
             <h2>Linear Model</h2>
-            <p><em><strong>Equation</strong></em>   <Latex>{linearEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em>   {props.linearCorrelation.toFixed(precision)}</p>
-            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{linearRootsDisplayed}</Latex>   MAXIMA: <Latex>{linearMaximaDisplayed}</Latex>   MINIMA: <Latex>{linearMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{linearInflectionsDisplayed}</Latex></p>
+            <p><em><strong>Equation</strong></em> <Latex>{linearEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> {props.linearCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{linearRootsDisplayed}</Latex><br />MAXIMA: <Latex>{linearMaximaDisplayed}</Latex><br />MINIMA: <Latex>{linearMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{linearInflectionsDisplayed}</Latex></p>
             <h2>Quadratic Model</h2>
-            <p><em><strong>Equation</strong></em>   <Latex>{quadraticEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em>   {props.quadraticCorrelation.toFixed(precision)}</p>
-            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{quadraticRootsDisplayed}</Latex>   MAXIMA: <Latex>{quadraticMaximaDisplayed}</Latex>   MINIMA: <Latex>{quadraticMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{quadraticInflectionsDisplayed}</Latex></p>
+            <p><em><strong>Equation</strong></em> <Latex>{quadraticEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> {props.quadraticCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{quadraticRootsDisplayed}</Latex><br />MAXIMA: <Latex>{quadraticMaximaDisplayed}</Latex><br />MINIMA: <Latex>{quadraticMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{quadraticInflectionsDisplayed}</Latex></p>
             <h2>Cubic Model</h2>
-            <p><em><strong>Equation</strong></em>   <Latex>{cubicEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em>   {props.cubicCorrelation.toFixed(precision)}</p>
-            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{cubicRootsDisplayed}</Latex>   MAXIMA: <Latex>{cubicMaximaDisplayed}</Latex>   MINIMA: <Latex>{cubicMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{cubicInflectionsDisplayed}</Latex></p>
+            <p><em><strong>Equation</strong></em> <Latex>{cubicEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> {props.cubicCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{cubicRootsDisplayed}</Latex><br />MAXIMA: <Latex>{cubicMaximaDisplayed}</Latex><br />MINIMA: <Latex>{cubicMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{cubicInflectionsDisplayed}</Latex></p>
             <h2>Hyperbolic Model</h2>
-            <p><em><strong>Equation</strong></em>   <Latex>{hyperbolicEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em>   {props.hyperbolicCorrelation.toFixed(precision)}</p>
-            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{hyperbolicRootsDisplayed}</Latex>   MAXIMA: <Latex>{hyperbolicMaximaDisplayed}</Latex>   MINIMA: <Latex>{hyperbolicMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{hyperbolicInflectionsDisplayed}</Latex></p>
+            <p><em><strong>Equation</strong></em> <Latex>{hyperbolicEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> {props.hyperbolicCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{hyperbolicRootsDisplayed}</Latex><br />MAXIMA: <Latex>{hyperbolicMaximaDisplayed}</Latex><br />MINIMA: <Latex>{hyperbolicMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{hyperbolicInflectionsDisplayed}</Latex></p>
             <h2>Exponential Model</h2>
-            <p><em><strong>Equation</strong></em>   <Latex>{exponentialEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em>   {props.exponentialCorrelation.toFixed(precision)}</p>
-            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{exponentialRootsDisplayed}</Latex>   MAXIMA: <Latex>{exponentialMaximaDisplayed}</Latex>   MINIMA: <Latex>{exponentialMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{exponentialInflectionsDisplayed}</Latex></p>
+            <p><em><strong>Equation</strong></em> <Latex>{exponentialEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> {props.exponentialCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{exponentialRootsDisplayed}</Latex><br />MAXIMA: <Latex>{exponentialMaximaDisplayed}</Latex><br />MINIMA: <Latex>{exponentialMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{exponentialInflectionsDisplayed}</Latex></p>
             <h2>Logarithmic Model</h2>
-            <p><em><strong>Equation</strong></em>   <Latex>{logarithmicEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em>   {props.logarithmicCorrelation.toFixed(precision)}</p>
-            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{logarithmicRootsDisplayed}</Latex>   MAXIMA: <Latex>{logarithmicMaximaDisplayed}</Latex>   MINIMA: <Latex>{logarithmicMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{logarithmicInflectionsDisplayed}</Latex></p>
+            <p><em><strong>Equation</strong></em> <Latex>{logarithmicEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> {props.logarithmicCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{logarithmicRootsDisplayed}</Latex><br />MAXIMA: <Latex>{logarithmicMaximaDisplayed}</Latex><br />MINIMA: <Latex>{logarithmicMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{logarithmicInflectionsDisplayed}</Latex></p>
             <h2>Logistic Model</h2>
-            <p><em><strong>Equation</strong></em>   <Latex>{logisticEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em>   {props.logisticCorrelation.toFixed(precision)}</p>
-            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{logisticRootsDisplayed}</Latex>   MAXIMA: <Latex>{logisticMaximaDisplayed}</Latex>   MINIMA: <Latex>{logisticMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{logisticInflectionsDisplayed}</Latex></p>
+            <p><em><strong>Equation</strong></em> <Latex>{logisticEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> {props.logisticCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{logisticRootsDisplayed}</Latex><br />MAXIMA: <Latex>{logisticMaximaDisplayed}</Latex><br />MINIMA: <Latex>{logisticMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{logisticInflectionsDisplayed}</Latex></p>
             <h2>Sinusoidal Model</h2>
-            <p><em><strong>Equation</strong></em>   <Latex>{sinusoidalEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em>   {props.sinusoidalCorrelation.toFixed(precision)}</p>
-            <p><em><strong>Key Points</strong></em>   ROOTS: <Latex>{sinusoidalRootsDisplayed}</Latex>   MAXIMA: <Latex>{sinusoidalMaximaDisplayed}</Latex>   MINIMA: <Latex>{sinusoidalMinimaDisplayed}</Latex>   INFLECTIONS: <Latex>{sinusoidalInflectionsDisplayed}</Latex></p>
+            <p><em><strong>Equation</strong></em> <Latex>{sinusoidalEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> {props.sinusoidalCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{sinusoidalRootsDisplayed}</Latex><br />MAXIMA: <Latex>{sinusoidalMaximaDisplayed}</Latex><br />MINIMA: <Latex>{sinusoidalMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{sinusoidalInflectionsDisplayed}</Latex></p>
         </div>
     )
 }
