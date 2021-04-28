@@ -1,29 +1,24 @@
 // Import external dependencies
 import { useEffect, useState } from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 
 // Import internal components
 import Navigation from './components/elements/main/Navigation'
 import Footer from './components/elements/main/Footer'
-import Welcome from './components/pages/welcome/Start'
-import About from './components/pages/welcome/About'
-import Signup from './components/elements/welcome/Signup'
-import Login from './components/elements/welcome/Login'
-import Profile from './components/pages/profile/Home'
+import Welcome from './components/pages/main/Welcome'
+import About from './components/pages/main/About'
+import Signup from './components/pages/users/Signup'
+import Login from './components/pages/users/Login'
+import Profile from './components/pages/users/Profile'
+import ChangeName from './components/pages/users/ChangeName'
+import DeleteAccount from './components/pages/users/DeleteAccount'
 import Authentication from './components/middleware/Authentication'
 import PrivateRoute from './components/middleware/Private'
+import Analyze from './components/pages/predictions/Analyze'
 
 // Import internal CSS
 import './App.css'
-
-// Create private route
-// function PrivateRoute({component: Component, ...rest}) {
-//     const user = localStorage.getItem('jwtToken')
-//     return <Route {...rest} render={(props) => {
-//         return user ? <Component {...rest} {...props} /> : <Redirect to="/login" />
-//     }} />
-// }
 
 // Create function for the main operations of the app
 function App() {
@@ -81,6 +76,22 @@ function App() {
                             path="/profile"
                             component={Profile}
                             user={currentUser}
+                        />
+                        <PrivateRoute
+                            path="/analyze"
+                            component={Analyze}
+                            user={currentUser}
+                        />
+                        <PrivateRoute
+                            path="/change-name"
+                            component={ChangeName}
+                            user={currentUser}
+                        />
+                        <PrivateRoute
+                            path="/delete-account"
+                            component={DeleteAccount}
+                            user={currentUser}
+                            handleLogout={handleLogout}
                         />
                     </Switch>
                 </div>

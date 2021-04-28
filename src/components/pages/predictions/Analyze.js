@@ -4,12 +4,12 @@ import axios from 'axios'
 import alert from 'alert'
 
 // Import internal components
-import New from '../../elements/profile/New'
-import Results from '../../elements/profile/Results'
-import Save from '../../elements/profile/Save'
+import New from '../../elements/predictions/New'
+import Results from '../../elements/predictions/Results'
+import Save from '../../elements/predictions/Save'
 
 // Create shortcut for environmental variable
-const appServer = process.env.REACT_APP_SERVER_URL
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 // Create function
 function Analyze(props) {
@@ -83,8 +83,7 @@ function Analyze(props) {
             dataSet: dataSet
         }
         try {
-            const sentData = await axios.post(
-                appServer + '/api',
+            const sentData = await axios.post(REACT_APP_SERVER_URL + 'api',
                 submission
             )
             const results = sentData.data.regressions
@@ -140,6 +139,11 @@ function Analyze(props) {
         return (
             <div>
                 <Results
+                    title={title}
+                    independent={independent}
+                    dependent={dependent}
+                    precision={precision}
+                    dataSet={dataSet}
                     linearConstants={linearConstants}
                     linearPoints={linearPoints}
                     linearCorrelation={linearCorrelation}
