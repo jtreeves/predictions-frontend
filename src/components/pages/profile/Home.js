@@ -9,7 +9,7 @@ import Results from '../../elements/profile/Results'
 // import Save from '../../elements/profile/Save'
 
 // Create shortcut for environmental variable
-// const appServer = process.env.REACT_APP_SERVER_URL
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 // Create function
 function Profile(props) {
@@ -83,8 +83,7 @@ function Profile(props) {
             dataSet: dataSet
         }
         try {
-            const sentData = await axios.post(
-                'https://tiresias-backend.herokuapp.com/api',
+            const sentData = await axios.post(REACT_APP_SERVER_URL + 'api',
                 submission
             )
             const results = sentData.data.regressions
