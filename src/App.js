@@ -12,17 +12,18 @@ import Signup from './components/elements/welcome/Signup'
 import Login from './components/elements/welcome/Login'
 import Profile from './components/pages/profile/Home'
 import Authentication from './components/middleware/Authentication'
+import PrivateRoute from './components/middleware/Private'
 
 // Import internal CSS
 import './App.css'
 
 // Create private route
-function PrivateRoute({component: Component, ...rest}) {
-    const user = localStorage.getItem('jwtToken')
-    return <Route {...rest} render={(props) => {
-        return user ? <Component {...rest} {...props} /> : <Redirect to="/login" />
-    }} />
-}
+// function PrivateRoute({component: Component, ...rest}) {
+//     const user = localStorage.getItem('jwtToken')
+//     return <Route {...rest} render={(props) => {
+//         return user ? <Component {...rest} {...props} /> : <Redirect to="/login" />
+//     }} />
+// }
 
 // Create function for the main operations of the app
 function App() {
