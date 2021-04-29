@@ -11,8 +11,6 @@ import About from './components/pages/main/About'
 import Signup from './components/pages/users/Signup'
 import Login from './components/pages/users/Login'
 import Profile from './components/pages/users/Profile'
-import ChangeName from './components/pages/users/ChangeName'
-import DeleteAccount from './components/pages/users/DeleteAccount'
 import Authentication from './components/middleware/Authentication'
 import PrivateRoute from './components/middleware/Private'
 import Analyze from './components/pages/predictions/Analyze'
@@ -77,22 +75,12 @@ function App() {
                             path="/profile"
                             component={Profile}
                             user={currentUser}
+                            handleLogout={handleLogout}
                         />
                         <PrivateRoute
                             path="/analyze"
                             component={Analyze}
                             user={currentUser}
-                        />
-                        <PrivateRoute
-                            path="/change-name"
-                            component={ChangeName}
-                            user={currentUser}
-                        />
-                        <PrivateRoute
-                            path="/delete-account"
-                            component={DeleteAccount}
-                            user={currentUser}
-                            handleLogout={handleLogout}
                         />
                         <PrivateRoute
                             path="/analysis"
