@@ -39,7 +39,7 @@ function AllModels(props) {
 
     useEffect(() => {
         getModels()
-    }, [])
+    })
 
     return (
         <div>
