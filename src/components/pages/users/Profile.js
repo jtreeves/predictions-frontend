@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import AllModels from '../../elements/predictions/AllModels'
 
 function Profile(props) {
     return (
@@ -7,6 +8,8 @@ function Profile(props) {
             <p>Want to change your name? <Link to="/change-name">Click here!</Link></p>
             <p>Want to delete your account? <Link to="/delete-account">Click here!</Link></p>
             <p>Want to analyze some data? <Link to="/analyze">Click here!</Link></p>
+            <p>All your models:</p>
+            <AllModels user={props.user} />
         </div>
     )
 }

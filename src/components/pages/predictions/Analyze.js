@@ -171,7 +171,7 @@ function Analyze(props) {
                     bestFit={bestFit}
                 />
                 <Save 
-                    user={props.user.id}
+                    user={props.user}
                     source={source}
                 />
             </div>
