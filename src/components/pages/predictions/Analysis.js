@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom'
+import DeleteModels from '../../elements/predictions/DeleteModels'
 
 // Import internal components
 import Results from '../../elements/predictions/Results'
@@ -7,8 +8,6 @@ import Results from '../../elements/predictions/Results'
 function Analysis() {
     const location = useLocation()
     const models = location.state.model
-    console.log('MODELS: ', models)
-    console.log('MODELS.TITLE: ', models.title)
 
     return (
         <div>
@@ -44,6 +43,8 @@ function Analysis() {
                 sinusoidalCorrelation={models.sinusoidal_correlation}
                 bestFit={models.best_fit}
             />
+
+            <DeleteModels source={models.source} />
         </div>
     )
 }
