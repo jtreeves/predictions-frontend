@@ -13,7 +13,6 @@ function ChangeName(props) {
     const [updateClicked, setUpdateClicked] = useState(false)
     const [saveClicked, setSaveClicked] = useState(false)
     const [name, setName] = useState(props.user.name)
-    console.log('NAME BEFORE: ', name)
 
     const handleName = (e) => {
         setName(e.target.value)
@@ -27,7 +26,6 @@ function ChangeName(props) {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-            console.log('NAME AFTER: ', name)
             await axios.put(REACT_APP_SERVER_URL + 'users/' + props.user.id, {name})
             setSaveClicked(true)
         } catch(error) {
@@ -66,7 +64,7 @@ function ChangeName(props) {
 
     if (saveClicked) {
         return (
-            <Redirect to="/profile" />
+            <Redirect to="/" />
         )
     }
 }

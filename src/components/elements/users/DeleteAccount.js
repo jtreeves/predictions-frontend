@@ -7,29 +7,51 @@ import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function DeleteAccount(props) {
-    const [deleted, setDeleted] = useState(false)
+    const [deleteClicked, setDeleteClicked] = useState(false)
+    const [confirmClicked, setConfirmClicked] = useState(false)
 
-    const handleSubmit = async (e) => {
+    const handleDeleteClicked = (e) => {
+        e.preventDefault()
+        setDeleteClicked(true)
+    }
+
+    const handleConfirmClicked = async (e) => {
         try {
             e.preventDefault()
             await axios.delete(REACT_APP_SERVER_URL + 'users/' + props.user.id)
-            setDeleted(true)
-            props.handleLogout()
+            setConfirmClicked(true)
         } catch(error) {
             alert(error.response.data.msg)
             console.log(`DELETING ERROR: ${error}`)
         }
     }
 
-    if (deleted) props.handleLogout()
+    if (!deleteClicked && !confirmClicked) {
+        return (
+            <div>
+                <form onSubmit={handleDeleteClicked}>
+                    <button type="submit">Delete Account</button>
+                </form>
+            </div>
+        )
+    }
+    
+    if (deleteClicked && !confirmClicked) {
+        return (
+            <div>
+                <form onSubmit={handleConfirmClicked}>
+                    <button type="submit">Yes, Delete My Account</button>
+                </form>
+            </div>
+        )
+    }
 
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <button type="submit">Delete Account</button>
-            </form>
-        </div>
-    )
+    if (confirmClicked) {
+        props.handleLogout()
+        return (
+            <Redirect to="/signup"/>
+        )
+    }
 }
 
 export default DeleteAccount
