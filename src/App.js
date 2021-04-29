@@ -19,6 +19,7 @@ import Analyze from './components/pages/predictions/Analyze'
 
 // Import internal CSS
 import './App.css'
+import Analysis from './components/pages/predictions/Analysis'
 
 // Create function for the main operations of the app
 function App() {
@@ -92,6 +93,11 @@ function App() {
                             component={DeleteAccount}
                             user={currentUser}
                             handleLogout={handleLogout}
+                        />
+                        <PrivateRoute
+                            path="/analysis"
+                            component={Analysis}
+                            user={currentUser}
                         />
                     </Switch>
                 </div>
