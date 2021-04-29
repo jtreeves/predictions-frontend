@@ -5,13 +5,21 @@ import { Redirect } from 'react-router-dom'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function UpdateModels(props) {
+    const originalDataSet = props.dataSet
+    let stringedDataSet = ''
+    for (const point of originalDataSet) {
+        stringedDataSet += '[' + point + ']' + ','
+    }
+    const trimmedStringedData = stringedDataSet.slice(0, -1)
+    const wrappedDataSet = '[' + trimmedStringedData + ']'
     const [updateClicked, setUpdateClicked] = useState(false)
     const [saveClicked, setSaveClicked] = useState(false)
     const [title, setTitle] = useState(props.title)
     const [independent, setIndependent] = useState(props.independent)
     const [dependent, setDependent] = useState(props.dependent)
     const [precision, setPrecision] = useState(props.precision)
-    const [dataSet, setDataSet] = useState(props.dataSet)
+    const [dataSet, setDataSet] = useState(wrappedDataSet)
+    console.log(dataSet)
     const sections = {
         favorite: {},
         note: {}
