@@ -10,6 +10,13 @@ function Analysis() {
     const location = useLocation()
     const models = location.state.model
     const user = location.state.user
+    const originalDataSet = models.data_set
+    let stringedDataSet = ''
+    for (const point of originalDataSet) {
+        stringedDataSet += '[' + point[0] + ', ' + point[1] + ']' + ', '
+    }
+    const trimmedStringedData = stringedDataSet.slice(0, -2)
+    const dataSet = '[' + trimmedStringedData + ']'
 
     return (
         <div>
@@ -18,7 +25,7 @@ function Analysis() {
                 independent={models.independent}
                 dependent={models.dependent}
                 precision={models.precision}
-                dataSet={models.data_set}
+                dataSet={dataSet}
                 linearConstants={models.linear_coefficients}
                 linearPoints={models.linear_points}
                 linearCorrelation={models.linear_correlation}
@@ -56,7 +63,7 @@ function Analysis() {
                 independent={models.independent}
                 dependent={models.dependent}
                 precision={models.precision}
-                dataSet={models.data_set}
+                dataSet={dataSet}
                 user={user}
             />
         </div>

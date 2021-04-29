@@ -3,6 +3,7 @@ import Latex from 'react-latex'
 // Create function
 function Results(props) {
     const precision = parseInt(props.precision)
+
     const linearRoots = props.linearPoints.roots
     const linearMaxima = props.linearPoints.maxima
     const linearMinima = props.linearPoints.minima
@@ -47,8 +48,9 @@ function Results(props) {
     let quadraticRootsDisplayed = ''
     if (quadraticRoots[0] !== null) {
         for (const point of quadraticRoots) {
-            quadraticRootsDisplayed += `$ (${point[0]}, 0.0) $`
+            quadraticRootsDisplayed += `$ (${point[0]}, 0.0),\\: $`
         }
+        quadraticRootsDisplayed = quadraticRootsDisplayed.slice(0, -5) + '$'
     } else {
         quadraticRootsDisplayed = `$ None $`
     }
@@ -84,8 +86,9 @@ function Results(props) {
     let cubicRootsDisplayed = ''
     if (cubicRoots[0] !== null) {
         for (const point of cubicRoots) {
-            cubicRootsDisplayed += `$ (${point[0]}, 0.0) $`
+            cubicRootsDisplayed += `$ (${point[0]}, 0.0),\\: $`
         }
+        cubicRootsDisplayed = cubicRootsDisplayed.slice(0, -5) + '$'
     } else {
         cubicRootsDisplayed = `$ None $`
     }
@@ -269,32 +272,36 @@ function Results(props) {
     let sinusoidalRootsDisplayed = ''
     if (sinusoidalRoots[0] !== null) {
         for (const point of sinusoidalRoots) {
-            sinusoidalRootsDisplayed += `$ (${point[0]}, 0.0) $`
+            sinusoidalRootsDisplayed += `$ (${point[0]}, 0.0),\\: $`
         }
+        sinusoidalRootsDisplayed = sinusoidalRootsDisplayed.slice(0, -5) + '$'
     } else {
         sinusoidalRootsDisplayed = `$ None $`
     }
     let sinusoidalMaximaDisplayed = ''
     if (sinusoidalMaxima[0] !== null) {
         for (const point of sinusoidalMaxima) {
-            sinusoidalMaximaDisplayed += `$ (${point[0]}, ${point[1]}) $`
+            sinusoidalMaximaDisplayed += `$ (${point[0]}, ${point[1]}),\\: $`
         }
+        sinusoidalMaximaDisplayed = sinusoidalMaximaDisplayed.slice(0, -5) + '$'
     } else {
         sinusoidalMaximaDisplayed = `$ None $`
     }
     let sinusoidalMinimaDisplayed = ''
     if (sinusoidalMinima[0] !== null) {
         for (const point of sinusoidalMinima) {
-            sinusoidalMinimaDisplayed += `$ (${point[0]}, ${point[1]}) $`
+            sinusoidalMinimaDisplayed += `$ (${point[0]}, ${point[1]}),\\: $`
         }
+        sinusoidalMinimaDisplayed = sinusoidalMinimaDisplayed.slice(0, -5) + '$'
     } else {
         sinusoidalMinimaDisplayed = `$ None $`
     }
     let sinusoidalInflectionsDisplayed = ''
     if (sinusoidalInflections[0] !== null) {
         for (const point of sinusoidalInflections) {
-            sinusoidalInflectionsDisplayed += `$ (${point[0]}, ${point[1]}) $`
+            sinusoidalInflectionsDisplayed += `$ (${point[0]}, ${point[1]}),\\: $`
         }
+        sinusoidalInflectionsDisplayed = sinusoidalInflectionsDisplayed.slice(0, -5) + '$'
     } else {
         sinusoidalInflectionsDisplayed = `$ None $`
     }
@@ -411,6 +418,15 @@ function Results(props) {
     const logisticEquation = `$ y = \\frac{${props.logisticConstants[0]}}{1 + \\text{e}^{${logisticSecondSlot} \\cdot (x ${logisticThirdSlot})}} $`
     const sinusoidalEquation = `$ y = ${props.sinusoidalConstants[0]} \\cdot \\sin(${props.sinusoidalConstants[1]} \\cdot (x ${sinusoidalThirdSlot})) ${sinusoidalFourthSlot} $`
 
+    const linearCorrelation = '$' + props.linearCorrelation.toFixed(precision) + '$'
+    const quadraticCorrelation = '$' + props.quadraticCorrelation.toFixed(precision) + '$'
+    const cubicCorrelation = '$' + props.cubicCorrelation.toFixed(precision) + '$'
+    const hyperbolicCorrelation = '$' + props.hyperbolicCorrelation.toFixed(precision) + '$'
+    const exponentialCorrelation = '$' + props.exponentialCorrelation.toFixed(precision) + '$'
+    const logarithmicCorrelation = '$' + props.logarithmicCorrelation.toFixed(precision) + '$'
+    const logisticCorrelation = '$' + props.logisticCorrelation.toFixed(precision) + '$'
+    const sinusoidalCorrelation = '$' + props.sinusoidalCorrelation.toFixed(precision) + '$'
+
     return (
         <div>
             <h1>{props.title}</h1>
@@ -420,35 +436,35 @@ function Results(props) {
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
             <h2>Linear Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{linearEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> {props.linearCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Correlation</strong></em> <Latex>{linearCorrelation}</Latex></p>
             <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{linearRootsDisplayed}</Latex><br />MAXIMA: <Latex>{linearMaximaDisplayed}</Latex><br />MINIMA: <Latex>{linearMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{linearInflectionsDisplayed}</Latex></p>
             <h2>Quadratic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{quadraticEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> {props.quadraticCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Correlation</strong></em> <Latex>{quadraticCorrelation}</Latex></p>
             <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{quadraticRootsDisplayed}</Latex><br />MAXIMA: <Latex>{quadraticMaximaDisplayed}</Latex><br />MINIMA: <Latex>{quadraticMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{quadraticInflectionsDisplayed}</Latex></p>
             <h2>Cubic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{cubicEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> {props.cubicCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Correlation</strong></em> <Latex>{cubicCorrelation}</Latex></p>
             <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{cubicRootsDisplayed}</Latex><br />MAXIMA: <Latex>{cubicMaximaDisplayed}</Latex><br />MINIMA: <Latex>{cubicMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{cubicInflectionsDisplayed}</Latex></p>
             <h2>Hyperbolic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{hyperbolicEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> {props.hyperbolicCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Correlation</strong></em> <Latex>{hyperbolicCorrelation}</Latex></p>
             <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{hyperbolicRootsDisplayed}</Latex><br />MAXIMA: <Latex>{hyperbolicMaximaDisplayed}</Latex><br />MINIMA: <Latex>{hyperbolicMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{hyperbolicInflectionsDisplayed}</Latex></p>
             <h2>Exponential Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{exponentialEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> {props.exponentialCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Correlation</strong></em> <Latex>{exponentialCorrelation}</Latex></p>
             <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{exponentialRootsDisplayed}</Latex><br />MAXIMA: <Latex>{exponentialMaximaDisplayed}</Latex><br />MINIMA: <Latex>{exponentialMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{exponentialInflectionsDisplayed}</Latex></p>
             <h2>Logarithmic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{logarithmicEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> {props.logarithmicCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Correlation</strong></em> <Latex>{logarithmicCorrelation}</Latex></p>
             <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{logarithmicRootsDisplayed}</Latex><br />MAXIMA: <Latex>{logarithmicMaximaDisplayed}</Latex><br />MINIMA: <Latex>{logarithmicMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{logarithmicInflectionsDisplayed}</Latex></p>
             <h2>Logistic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{logisticEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> {props.logisticCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Correlation</strong></em> <Latex>{logisticCorrelation}</Latex></p>
             <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{logisticRootsDisplayed}</Latex><br />MAXIMA: <Latex>{logisticMaximaDisplayed}</Latex><br />MINIMA: <Latex>{logisticMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{logisticInflectionsDisplayed}</Latex></p>
             <h2>Sinusoidal Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{sinusoidalEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> {props.sinusoidalCorrelation.toFixed(precision)}</p>
+            <p><em><strong>Correlation</strong></em> <Latex>{sinusoidalCorrelation}</Latex></p>
             <p><em><strong>Key Points</strong></em><br />ROOTS: <Latex>{sinusoidalRootsDisplayed}</Latex><br />MAXIMA: <Latex>{sinusoidalMaximaDisplayed}</Latex><br />MINIMA: <Latex>{sinusoidalMinimaDisplayed}</Latex><br />INFLECTIONS: <Latex>{sinusoidalInflectionsDisplayed}</Latex></p>
         </div>
     )
