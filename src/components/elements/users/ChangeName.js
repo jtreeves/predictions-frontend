@@ -64,7 +64,7 @@ function ChangeName(props) {
 
     if (saveClicked) {
         return (
-            <Redirect to="/" />
+            <Redirect to="/profile" />
         )
     }
 }
