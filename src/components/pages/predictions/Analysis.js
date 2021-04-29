@@ -3,11 +3,13 @@ import DeleteModels from '../../elements/predictions/DeleteModels'
 
 // Import internal components
 import Results from '../../elements/predictions/Results'
+import UpdateModels from '../../elements/predictions/UpdateModels'
 
 // Create function
 function Analysis() {
     const location = useLocation()
     const models = location.state.model
+    const user = location.state.user
 
     return (
         <div>
@@ -44,7 +46,19 @@ function Analysis() {
                 bestFit={models.best_fit}
             />
 
-            <DeleteModels source={models.source} />
+            <DeleteModels 
+                source={models.source} 
+                />
+
+            <UpdateModels
+                source={models.source} 
+                title={models.title}
+                independent={models.independent}
+                dependent={models.dependent}
+                precision={models.precision}
+                dataSet={models.data_set}
+                user={user}
+            />
         </div>
     )
 }

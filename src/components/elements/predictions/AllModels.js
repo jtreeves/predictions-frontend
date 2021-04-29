@@ -23,7 +23,7 @@ function AllModels(props) {
                         <Link
                             to={{
                                 pathname: "/analysis",
-                                state: {model}
+                                state: {model, user: props.user}
                             }}
                         >
                             {model.title}
