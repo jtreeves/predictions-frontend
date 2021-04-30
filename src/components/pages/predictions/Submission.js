@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import CreateSet from '../../elements/predictions/CreateSet'
+import CleanCollection from '../../middleware/CleanCollection'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Submission(props) {
@@ -41,12 +42,13 @@ function Submission(props) {
     // Submit form
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const cleanedDataSet = CleanCollection(dataSet)
         const submission = {
             title: title,
             independent: independent,
             dependent: dependent,
             precision: precision,
-            dataSet: dataSet
+            dataSet: cleanedDataSet
         }
         try {
             const predictions = await axios.post(REACT_APP_SERVER_URL + 'api',
