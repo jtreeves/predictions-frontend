@@ -5,6 +5,7 @@ import GeneratedModels from '../../elements/predictions/GeneratedModels'
 import SaveSet from '../../elements/predictions/SaveSet'
 import UpdateSet from '../../elements/predictions/UpdateSet'
 import DeleteSet from '../../elements/predictions/DeleteSet'
+import Favorite from '../../elements/predictions/Favorite'
 
 // Create function
 function Analysis(props) {
@@ -84,7 +85,10 @@ function Analysis(props) {
         return (
             <div>
                 {generatedModelsSection}
-                Favorite: {opinions.favorite}
+                <Favorite 
+                    graph={opinions.favorite}
+                    source={models.source}
+                />
                 Note: {opinions.note}
                 {updateButton}
                 {deleteButton}
