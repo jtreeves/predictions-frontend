@@ -13,12 +13,13 @@ function GraphOutput() {
         const width = 500 - margin.left - margin.right
         const height = 500 - margin.top - margin.bottom
         
-        const x = d3.scaleLinear().domain([0, 100]).range([0, width])
-        const y = d3.scaleLinear().domain([0, 100]).range([height, 0])
+        const xScale = d3.scaleLinear().domain([0, 100]).range([0, width])
+        const yScale = d3.scaleLinear().domain([0, 100]).range([height, 0])
 
         const path = d3.line()
-            .x((d) => x(d.x))
-            .y((d) => y(d.y))
+            .x(d => xScale(d.x))
+            .y(d => yScale(d.y))
+            .curve(d3.curveCatmullRom.alpha(.5))
 
         const svg = d3
             .select("#graph")
@@ -31,35 +32,17 @@ function GraphOutput() {
         svg
             .append("g")
             .attr("transform", `translate(0, ${height})`)
-            .call(d3.axisBottom(x))
+            .call(d3.axisBottom(xScale))
 
         svg
             .append("g")
-            .call(d3.axisLeft(y))
+            .call(d3.axisLeft(yScale))
         
         svg
             .append("path")
-            .data(points)
+            .datum(points)
             .attr("d", path)
             .style("stroke", "black")
-            .style("stroke-width", 2)
-        
-        svg
-            .append("line")
-            .style("stroke", "black")
-            .attr("x1", 10)
-            .attr("y1", 10)
-            .attr("x2", 90)
-            .attr("y2", 90)
-
-        // svg
-        //     .selectAll("plot")
-        //     .data(points)
-        //     .enter()
-        //     .append("circle")
-        //     .attr("cx", (d) => x(d.x))
-        //     .attr("cy", (d) => y(d.y))
-        //     .attr("r", 5)
     })
 
     return (
