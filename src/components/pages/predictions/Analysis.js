@@ -10,6 +10,7 @@ import DeleteSet from '../../elements/predictions/DeleteSet'
 function Analysis(props) {
     const location = useLocation()
     const models = location.state.models
+    const opinions = location.state.opinions
     const stored = location.state.stored
 
     const originalDataSet = models.data_set
@@ -83,6 +84,8 @@ function Analysis(props) {
         return (
             <div>
                 {generatedModelsSection}
+                Favorite: {opinions.favorite}
+                Note: {opinions.note}
                 {updateButton}
                 {deleteButton}
             </div>

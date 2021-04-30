@@ -4,18 +4,27 @@ import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function AllSets(props) {
-    const [models, setModels] = useState([])
+    const [predictions, setPredictions] = useState([])
     
-    const getModels = async () => {
+    const getPredictions = async () => {
         try {
             const foundPredictions = await axios.get(REACT_APP_SERVER_URL + 'predictions/all/' + props.user.id)
-            const sources = foundPredictions.data.predictions
-            const modelsData = []
-            for (const source of sources) {
-                const fullModels = await axios.get(REACT_APP_SERVER_URL + 'api/' + source.source)
-                modelsData.push(fullModels.data.regressions)
+            const allPredictions = foundPredictions.data.predictions
+            const allRegressions = []
+            for (const prediction of allPredictions) {
+                const rawRegressions = await axios.get(
+                    REACT_APP_SERVER_URL + 'api/' + prediction.source
+                )
+                allRegressions.push(rawRegressions.data.regressions)
             }
-            const modelsArray = modelsData.map((modelsSet, index) => {
+            const collatedData = []
+            for (let i = 0; i < allPredictions.length; i++) {
+                collatedData.push({
+                    models: allRegressions[i],
+                    opinions: allPredictions[i]
+                })
+            }
+            const results = collatedData.map((datum, index) => {
                 return (
                     <div 
                         key={index}
@@ -24,30 +33,31 @@ function AllSets(props) {
                             to={{
                                 pathname: "/analysis",
                                 state: {
-                                    models: modelsSet, 
+                                    models: datum.models, 
+                                    opinions: datum.opinions,
                                     user: props.user,
                                     stored: true
                                 }
                             }}
                         >
-                            {modelsSet.title}
+                            {datum.models.title}
                         </Link>
                     </div>
                 )
             })
-            setModels(modelsArray)
+            setPredictions(results)
         } catch(error) {
-            setModels('')
+            setPredictions('')
         }
     }
 
     useEffect(() => {
-        getModels()
+        getPredictions()
     })
 
     return (
         <div>
-            {models}
+            {predictions}
         </div>
     )
 }

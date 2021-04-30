@@ -83,6 +83,7 @@ function Submission(props) {
                     pathname: "/analysis",
                     state: {
                         models: models, 
+                        opinions: null,
                         user: props.user,
                         stored: false
                     }
