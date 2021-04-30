@@ -7,10 +7,9 @@ import UpdateSet from '../../elements/predictions/UpdateSet'
 import DeleteSet from '../../elements/predictions/DeleteSet'
 
 // Create function
-function Analysis() {
+function Analysis(props) {
     const location = useLocation()
     const models = location.state.models
-    const user = location.state.user
     const stored = location.state.stored
 
     const originalDataSet = models.data_set
@@ -55,7 +54,7 @@ function Analysis() {
     />
 
     const saveButton = <SaveSet 
-        user={user}
+        user={props.user}
         source={models.source}
     />
 
@@ -66,7 +65,7 @@ function Analysis() {
         dependent={models.dependent}
         precision={models.precision}
         dataSet={dataSet}
-        user={user}
+        user={props.user}
     />
 
     const deleteButton = <DeleteSet

@@ -15,17 +15,8 @@ function Profile(props) {
                 user={props.user}
                 handleLogout={props.handleLogout} 
             /></p>
-            <p>Want to analyze some data? <Link
-                to={{
-                    pathname: "/submission",
-                    state: {
-                        user: props.user
-                    }
-                }}
-            >
-                Click here!
-            </Link></p>
-            <p>All Setmodels:</p>
+            <p>Want to analyze some data? <Link to="/submission">Click here!</Link></p>
+            <p>All models:</p>
             <AllSets user={props.user} />
         </div>
     )
