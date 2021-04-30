@@ -1,7 +1,8 @@
 import { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import CreateSet from './CreateSet'
-import { Redirect } from 'react-router-dom'
+import CleanCollection from '../../middleware/CleanCollection'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function UpdateSet(props) {
@@ -45,12 +46,13 @@ function UpdateSet(props) {
     
     const handleSave = async (e) => {
         e.preventDefault()
+        const cleanedDataSet = CleanCollection(dataSet)
         const submission = {
             title: title,
             independent: independent,
             dependent: dependent,
             precision: precision,
-            dataSet: dataSet
+            dataSet: cleanedDataSet
         }
         try {
             await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + props.source)
