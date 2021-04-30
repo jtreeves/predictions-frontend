@@ -6,6 +6,7 @@ import SaveSet from '../../elements/predictions/SaveSet'
 import UpdateSet from '../../elements/predictions/UpdateSet'
 import DeleteSet from '../../elements/predictions/DeleteSet'
 import Favorite from '../../elements/predictions/Favorite'
+import Note from '../../elements/predictions/Note'
 
 // Create function
 function Analysis(props) {
@@ -89,7 +90,10 @@ function Analysis(props) {
                     graph={opinions.favorite}
                     source={models.source}
                 />
-                Note: {opinions.note}
+                <Note 
+                    comment={opinions.note}
+                    source={models.source}
+                />
                 {updateButton}
                 {deleteButton}
             </div>
