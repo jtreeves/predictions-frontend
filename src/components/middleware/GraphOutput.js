@@ -1,24 +1,24 @@
-import { useRef, useEffect } from 'react'
+import { useEffect } from 'react'
 import * as d3 from 'd3'
 
 function GraphOutput() {
     useEffect(() => {
-        d3.select(".target").style("stroke-width", 5);
-      }, []);
-      return (
-        <div className="App">
-          <svg>
+        d3.select("#graph")
+    }, [])
+
+    return (
+        <svg>
             <circle
-              class="target"
-              style={{ fill: "green" }}
-              stroke="black"
-              cx={50}
-              cy={50}
-              r={40}
-            ></circle>
-          </svg>
-        </div>
-      );
+                id="graph"
+                fill="green"
+                stroke="black"
+                strokeWidth={5}
+                cx={100}
+                cy={100}
+                r={25}
+            />
+        </svg>
+    )
 }
 
 export default GraphOutput
