@@ -17,15 +17,17 @@ function DeleteSet(props) {
         }
     }
 
-    if (deleted) return <Redirect to="/profile" />
-
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <button type="submit">Delete</button>
-            </form>
-        </div>
-    )
+    if (!deleted) {
+        return (
+            <div>
+                <form onSubmit={handleSubmit}>
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        )
+    } else {
+        return <Redirect to="/profile" />
+    }
 }
 
 export default DeleteSet

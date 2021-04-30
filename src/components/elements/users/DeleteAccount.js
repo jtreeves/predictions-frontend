@@ -34,9 +34,7 @@ function DeleteAccount(props) {
                 </form>
             </div>
         )
-    }
-    
-    if (deleteClicked && !confirmClicked) {
+    } else if (deleteClicked && !confirmClicked) {
         return (
             <div>
                 <form onSubmit={handleConfirmClicked}>
@@ -44,9 +42,7 @@ function DeleteAccount(props) {
                 </form>
             </div>
         )
-    }
-
-    if (confirmClicked) {
+    } else {
         props.handleLogout()
         return (
             <Redirect to="/signup"/>

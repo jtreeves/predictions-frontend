@@ -73,9 +73,7 @@ function UpdateSet(props) {
                 <button type="submit">Update</button>
             </form>
         )
-    }
-
-    if (updateClicked && !saveClicked) {
+    } else if (updateClicked && !saveClicked) {
         return (
             <CreateSet 
                 heading="Update Data Set"
@@ -92,9 +90,7 @@ function UpdateSet(props) {
                 handleDataSet={handleDataSet}
             />
         )
-    }
-
-    if (saveClicked) {
+    } else {
         return (
             <Redirect to="/profile" />
         )

@@ -6,7 +6,7 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 function AllSets(props) {
     const [models, setModels] = useState([])
     
-    async function getModels() {
+    const getModels = async () => {
         try {
             const foundPredictions = await axios.get(REACT_APP_SERVER_URL + 'predictions/all/' + props.user.id)
             const sources = foundPredictions.data.predictions

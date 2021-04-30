@@ -65,50 +65,51 @@ function Signup() {
         }
     }
 
-    // Redirect to login page
-    if (redirect) return <Redirect to="/login" />
-
-    return (
-        <div className="row mt-4 col-md-7 offset-md-3 card card-body">
-            <h1 className="py-2">Sign Up</h1>
-            <form onSubmit={handleSubmit}>
-                <FormGroup
-                    type="text"
-                    label="name"
-                    value={name}
-                    display="Name"
-                    onChange={handleName}
-                />
-                <FormGroup
-                    type="email"
-                    label="email"
-                    value={email}
-                    display="Email"
-                    onChange={handleEmail}
-                />
-                <FormGroup
-                    type="password"
-                    label="password"
-                    value={password}
-                    display="Password"
-                    onChange={handlePassword}
-                />
-                <FormGroup
-                    type="password"
-                    label="confirmPassword"
-                    value={confirmPassword}
-                    display="Confirm Password"
-                    onChange={handleConfirmPassword}
-                />
-                <button
-                    type="submit"
-                    className="btn btn-primary float-right"
-                >
-                    Submit
-                </button>
-            </form>
-        </div>
-    )
+    if (!redirect) {
+        return (
+            <div className="row mt-4 col-md-7 offset-md-3 card card-body">
+                <h1 className="py-2">Sign Up</h1>
+                <form onSubmit={handleSubmit}>
+                    <FormGroup
+                        type="text"
+                        label="name"
+                        value={name}
+                        display="Name"
+                        onChange={handleName}
+                    />
+                    <FormGroup
+                        type="email"
+                        label="email"
+                        value={email}
+                        display="Email"
+                        onChange={handleEmail}
+                    />
+                    <FormGroup
+                        type="password"
+                        label="password"
+                        value={password}
+                        display="Password"
+                        onChange={handlePassword}
+                    />
+                    <FormGroup
+                        type="password"
+                        label="confirmPassword"
+                        value={confirmPassword}
+                        display="Confirm Password"
+                        onChange={handleConfirmPassword}
+                    />
+                    <button
+                        type="submit"
+                        className="btn btn-primary float-right"
+                    >
+                        Submit
+                    </button>
+                </form>
+            </div>
+        )
+    } else {
+        return <Redirect to="/login" />
+    }
 }
 
 // Export function

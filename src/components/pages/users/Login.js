@@ -50,36 +50,37 @@ function Login(props) {
         }
     }
 
-    // Redirect to profile page
-    if (props.user) return <Redirect to="/profile" />
-
-    return (
-        <div className="row mt-4 col-md-7 offset-md-3 card card-body">
-            <h1 className="py-2">Log In</h1>
-            <form onSubmit={handleSubmit}>
-                <FormGroup
-                    type="email"
-                    label="email"
-                    value={email}
-                    display="Email"
-                    onChange={handleEmail}
-                />
-                <FormGroup
-                    type="password"
-                    label="password"
-                    value={password}
-                    display="Password"
-                    onChange={handlePassword}
-                />
-                <button
-                    type="submit"
-                    className="btn btn-primary float-right"
-                >
-                    Submit
-                </button>
-            </form>
-        </div>
-    )
+    if (!props.user) {
+        return (
+            <div className="row mt-4 col-md-7 offset-md-3 card card-body">
+                <h1 className="py-2">Log In</h1>
+                <form onSubmit={handleSubmit}>
+                    <FormGroup
+                        type="email"
+                        label="email"
+                        value={email}
+                        display="Email"
+                        onChange={handleEmail}
+                    />
+                    <FormGroup
+                        type="password"
+                        label="password"
+                        value={password}
+                        display="Password"
+                        onChange={handlePassword}
+                    />
+                    <button
+                        type="submit"
+                        className="btn btn-primary float-right"
+                    >
+                        Submit
+                    </button>
+                </form>
+            </div>
+        )
+    } else {
+        return <Redirect to="/profile" />
+    }
 }
 
 // Export function

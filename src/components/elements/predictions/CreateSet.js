@@ -6,6 +6,7 @@ function CreateSet(props) {
     return (
         <div>
             <h1>{props.heading}</h1>
+
             <form onSubmit={props.handleSubmit}>
                 <FormGroup
                     type="text"
@@ -14,6 +15,7 @@ function CreateSet(props) {
                     display="Title"
                     onChange={props.handleTitle}
                 />
+
                 <FormGroup
                     type="text"
                     label="independent"
@@ -21,6 +23,7 @@ function CreateSet(props) {
                     display="Independent"
                     onChange={props.handleIndependent}
                 />
+
                 <FormGroup
                     type="text"
                     label="dependent"
@@ -28,6 +31,7 @@ function CreateSet(props) {
                     display="Dependent"
                     onChange={props.handleDependent}
                 />
+
                 <FormGroup
                     type="text"
                     label="precision"
@@ -35,6 +39,7 @@ function CreateSet(props) {
                     display="Precision"
                     onChange={props.handlePrecision}
                 />
+
                 <FormGroup
                     type="text"
                     label="dataSet"
@@ -42,6 +47,7 @@ function CreateSet(props) {
                     display="Data Set"
                     onChange={props.handleDataSet}
                 />
+                
                 <button type="submit">Submit</button>
             </form>
         </div>

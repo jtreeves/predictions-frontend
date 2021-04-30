@@ -23,15 +23,17 @@ function SaveSet(props) {
         }
     }
 
-    if (saved) return <Redirect to="/profile" />
-
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <button type="submit">Save</button>
-            </form>
-        </div>
-    )
+    if (!saved) {
+        return (
+            <div>
+                <form onSubmit={handleSubmit}>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        )
+    } else {
+        return <Redirect to="/profile" />
+    }
 }
 
 export default SaveSet

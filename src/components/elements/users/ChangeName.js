@@ -40,9 +40,7 @@ function ChangeName(props) {
                 <button type="submit">Change Name</button>
             </form>
         )
-    }
-
-    if (updateClicked && !saveClicked) {
+    } else if (updateClicked && !saveClicked) {
         return (
             <form onSubmit={handleSubmit}>
                 <FormGroup
@@ -60,9 +58,7 @@ function ChangeName(props) {
                 </button>
             </form>
         )
-    }
-
-    if (saveClicked) {
+    } else {
         return (
             <Redirect to="/profile" />
         )
