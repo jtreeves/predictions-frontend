@@ -12,10 +12,6 @@ function UpdateSet(props) {
     const [dependent, setDependent] = useState(props.dependent)
     const [precision, setPrecision] = useState(props.precision)
     const [dataSet, setDataSet] = useState(props.dataSet)
-    const sections = {
-        favorite: {},
-        note: {}
-    }
 
     // Set title from form
     const handleTitle = (e) => {
@@ -59,7 +55,7 @@ function UpdateSet(props) {
         try {
             await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + props.source)
             const predictions = await axios.post(REACT_APP_SERVER_URL + 'api', submission)
-            await axios.post(REACT_APP_SERVER_URL + 'predictions/' + props.user.id, { source: predictions.data.regressions.source, sections })
+            await axios.post(REACT_APP_SERVER_URL + 'predictions/' + props.user.id, { source: predictions.data.regressions.source })
             setSaveClicked(true)
         } catch(error) {
             alert(error.response.data.msg)

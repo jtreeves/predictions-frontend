@@ -7,15 +7,11 @@ function SaveSet(props) {
     const [saved, setSaved] = useState(false)
     const userId = props.user.id
     const source = props.source
-    const sections = {
-        favorite: {},
-        note: {}
-    }
 
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-            await axios.post(REACT_APP_SERVER_URL + 'predictions/' + userId, { source, sections })
+            await axios.post(REACT_APP_SERVER_URL + 'predictions/' + userId, { source })
             setSaved(true)
         } catch(error) {
             alert(error.response.data.msg)
