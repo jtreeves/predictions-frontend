@@ -55,7 +55,10 @@ function UpdateSet(props) {
         try {
             await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + props.source)
             const predictions = await axios.post(REACT_APP_SERVER_URL + 'api', submission)
-            await axios.post(REACT_APP_SERVER_URL + 'predictions/' + props.user.id, { source: predictions.data.regressions.source })
+            const source = predictions.data.regressions.source
+            await axios.post(REACT_APP_SERVER_URL + 'predictions/' + props.user.id, { source })
+            await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: props.favorite})
+            await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: props.note})
             setSaveClicked(true)
         } catch(error) {
             alert(error.response.data.msg)

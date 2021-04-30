@@ -89,9 +89,11 @@ function Analysis(props) {
                     dependent={models.dependent}
                     precision={models.precision}
                     dataSet={dataSet}
+                    favorite={opinions.favorite}
+                    note={opinions.note}
                     user={props.user}
                 />
-                
+
                 <DeleteSet
                     source={models.source} 
                 />
