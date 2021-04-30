@@ -12,6 +12,13 @@ function GraphOutput() {
         const margin = { top: 50, right: 50, bottom: 50, left: 50 }
         const width = 500 - margin.left - margin.right
         const height = 500 - margin.top - margin.bottom
+        
+        const x = d3.scaleLinear().domain([0, 100]).range([0, width])
+        const y = d3.scaleLinear().domain([0, 100]).range([height, 0])
+
+        const path = d3.line()
+            .x((d) => x(d.x))
+            .y((d) => y(d.y))
 
         const svg = d3
             .select("#graph")
@@ -20,9 +27,6 @@ function GraphOutput() {
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
-        
-        const x = d3.scaleLinear().domain([0, 100]).range([0, width])
-        const y = d3.scaleLinear().domain([0, 100]).range([height, 0])
 
         svg
             .append("g")
@@ -32,15 +36,30 @@ function GraphOutput() {
         svg
             .append("g")
             .call(d3.axisLeft(y))
-
+        
         svg
-            .selectAll("plot")
+            .append("path")
             .data(points)
-            .enter()
-            .append("circle")
-            .attr("cx", (d) => x(d.x))
-            .attr("cy", (d) => y(d.y))
-            .attr("r", 5)
+            .attr("d", path)
+            .style("stroke", "black")
+            .style("stroke-width", 2)
+        
+        svg
+            .append("line")
+            .style("stroke", "black")
+            .attr("x1", 10)
+            .attr("y1", 10)
+            .attr("x2", 90)
+            .attr("y2", 90)
+
+        // svg
+        //     .selectAll("plot")
+        //     .data(points)
+        //     .enter()
+        //     .append("circle")
+        //     .attr("cx", (d) => x(d.x))
+        //     .attr("cy", (d) => y(d.y))
+        //     .attr("r", 5)
     })
 
     return (
