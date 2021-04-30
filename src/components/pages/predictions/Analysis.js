@@ -56,46 +56,45 @@ function Analysis(props) {
         bestFit={models.best_fit}
     />
 
-    const saveButton = <SaveSet 
-        user={props.user}
-        source={models.source}
-    />
-
-    const updateButton = <UpdateSet
-        source={models.source} 
-        title={models.title}
-        independent={models.independent}
-        dependent={models.dependent}
-        precision={models.precision}
-        dataSet={dataSet}
-        user={props.user}
-    />
-
-    const deleteButton = <DeleteSet
-        source={models.source} 
-    />
-
     if (!stored) {
         return (
             <div>
                 {generatedModelsSection}
-                {saveButton}
+
+                <SaveSet 
+                    user={props.user}
+                    source={models.source}
+                />
             </div>
         )
     } else {
         return (
             <div>
                 {generatedModelsSection}
+
                 <Favorite 
                     graph={opinions.favorite}
                     source={models.source}
                 />
+
                 <Note 
                     comment={opinions.note}
                     source={models.source}
                 />
-                {updateButton}
-                {deleteButton}
+
+                <UpdateSet
+                    source={models.source} 
+                    title={models.title}
+                    independent={models.independent}
+                    dependent={models.dependent}
+                    precision={models.precision}
+                    dataSet={dataSet}
+                    user={props.user}
+                />
+                
+                <DeleteSet
+                    source={models.source} 
+                />
             </div>
         )
     }
