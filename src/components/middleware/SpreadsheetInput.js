@@ -3,13 +3,10 @@ import CreateSet from '../elements/predictions/CreateSet'
 
 function SpreadsheetInput(props) {
     const [dataSet, setDataSet] = useState('')
-    const [uploaded, setUploaded] = useState(false)
 
     const handleSpreadsheet = (e) => {
         e.preventDefault()
-        const input = document.querySelector("#file-input")
-        const output = document.querySelector("#file-output")
-        const file = input.files[0]
+        const file = document.querySelector("#csv").files[0]
 		const reader = new FileReader()
         reader.onload = (e) => {
             const data = e.target.result
@@ -36,19 +33,16 @@ function SpreadsheetInput(props) {
             }
             const trimmedLine = lineOfPoints.slice(0, -1)
             const encapsulatedPoints = '[' + trimmedLine + ']'
-            output.textContent = encapsulatedPoints
             setDataSet(encapsulatedPoints)
-            setUploaded(true)
         }
         reader.readAsText(file)
     }
 
-    if (!uploaded) {
+    if (dataSet === '') {
         return (
             <div>
-                <input type="file" id="file-input" />
-                <button id="upload-button" onClick={handleSpreadsheet}>Upload Data</button>
-                <pre id="file-output" />
+                <input type="file" id="csv" />
+                <button id="upload" onClick={handleSpreadsheet}>Upload Data</button>
             </div>
         )
     } else {
