@@ -1,5 +1,11 @@
-function SpreadsheetInput() {
-    const handleSubmit = (e) => {
+import { useState } from 'react'
+import CreateSet from '../elements/predictions/CreateSet'
+
+function SpreadsheetInput(props) {
+    const [dataSet, setDataSet] = useState('')
+    const [uploaded, setUploaded] = useState(false)
+
+    const handleSpreadsheet = (e) => {
         e.preventDefault()
         const input = document.querySelector("#file-input")
         const output = document.querySelector("#file-output")
@@ -31,17 +37,39 @@ function SpreadsheetInput() {
             const trimmedLine = lineOfPoints.slice(0, -1)
             const encapsulatedPoints = '[' + trimmedLine + ']'
             output.textContent = encapsulatedPoints
+            setDataSet(encapsulatedPoints)
+            setUploaded(true)
         }
         reader.readAsText(file)
     }
+
+    if (!uploaded) {
+        return (
+            <div>
+                <input type="file" id="file-input" />
+                <button id="upload-button" onClick={handleSpreadsheet}>Upload Data</button>
+                <pre id="file-output" />
+            </div>
+        )
+    } else {
+        return (
+            <CreateSet 
+                heading="Create a New Data Set"
+                handleSubmit={props.handleSubmit}
+                title={props.title}
+                handleTitle={props.handleTitle}
+                independent={props.independent}
+                handleIndependent={props.handleIndependent}
+                dependent={props.dependent}
+                handleDependent={props.handleDependent}
+                precision={props.precision}
+                handlePrecision={props.handlePrecision}
+                dataSet={dataSet}
+                handleDataSet={props.handleDataSet}
+            />
+        )
+    }
     
-    return (
-        <div>
-            <input type="file" id="file-input" />
-            <button id="read-button" onClick={handleSubmit}>Read File</button>
-            <pre id="file-output"></pre>
-        </div>
-    )
 }
 
 export default SpreadsheetInput

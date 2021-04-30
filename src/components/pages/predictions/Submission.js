@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import CreateSet from '../../elements/predictions/CreateSet'
+import SpreadsheetInput from '../../middleware/SpreadsheetInput'
 import CleanCollection from '../../middleware/CleanCollection'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
@@ -12,6 +13,8 @@ function Submission(props) {
     const [precision, setPrecision] = useState('')
     const [dataSet, setDataSet] = useState('')
     const [models, setModels] = useState({})
+    const [manual, setManual] = useState(false)
+    const [upload, setUpload] = useState(false)
     const [submitted, setSubmitted] = useState(false)
 
     // Set title from form
@@ -39,6 +42,16 @@ function Submission(props) {
         setDataSet(e.target.value)
     }
 
+    const handleManual = (e) => {
+        e.preventDefault()
+        setManual(true)
+    }
+    
+    const handleUpload = (e) => {
+        e.preventDefault()
+        setUpload(true)
+    }
+
     // Submit form
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -55,30 +68,65 @@ function Submission(props) {
                 submission
             )
             setModels(predictions.data.regressions)
+            setManual(false)
+            setUpload(false)
             setSubmitted(true)
         } catch (error) {
             alert(error)
         }
     }
 
-    if (!submitted) {
+    if (!manual && !upload && !submitted) {
         return (
-            <CreateSet
-                heading="Create a New Data Set"
-                handleSubmit={handleSubmit}
-                title={title}
-                handleTitle={handleTitle}
-                independent={independent}
-                handleIndependent={handleIndependent}
-                dependent={dependent}
-                handleDependent={handleDependent}
-                precision={precision}
-                handlePrecision={handlePrecision}
-                dataSet={dataSet}
-                handleDataSet={handleDataSet}
-            />
+            <div>
+                <p>Did you want to manually type in your data set, or would you rather upload a CSV file of it?</p>
+                <button onClick={handleManual}>Manual</button>
+                <button onClick={handleUpload}>Upload</button>
+            </div>
         )
-    } else {
+    }
+
+    if (manual) {
+        return (
+            <div>
+                <CreateSet
+                    heading="Create a New Data Set"
+                    handleSubmit={handleSubmit}
+                    title={title}
+                    handleTitle={handleTitle}
+                    independent={independent}
+                    handleIndependent={handleIndependent}
+                    dependent={dependent}
+                    handleDependent={handleDependent}
+                    precision={precision}
+                    handlePrecision={handlePrecision}
+                    dataSet={dataSet}
+                    handleDataSet={handleDataSet}
+                />
+            </div>
+        )
+    }
+    
+    if (upload) {
+        return (
+            <div>
+                <SpreadsheetInput 
+                    handleSubmit={handleSubmit}
+                    title={title}
+                    handleTitle={handleTitle}
+                    independent={independent}
+                    handleIndependent={handleIndependent}
+                    dependent={dependent}
+                    handleDependent={handleDependent}
+                    precision={precision}
+                    handlePrecision={handlePrecision}
+                    handleDataSet={handleDataSet}
+                />
+            </div>
+        )
+    }
+    
+    if (submitted) {
         return (
             <Redirect 
                 to={{
