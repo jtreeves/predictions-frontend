@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-function AllModels(props) {
+function AllSets(props) {
     const [models, setModels] = useState([])
     
     async function getModels() {
@@ -15,7 +15,7 @@ function AllModels(props) {
                 const fullModels = await axios.get(REACT_APP_SERVER_URL + 'api/' + source.source)
                 modelsData.push(fullModels.data.regressions)
             }
-            const modelsArray = modelsData.map((model, index) => {
+            const modelsArray = modelsData.map((modelsSet, index) => {
                 return (
                     <div 
                         key={index}
@@ -23,10 +23,14 @@ function AllModels(props) {
                         <Link
                             to={{
                                 pathname: "/analysis",
-                                state: {model, user: props.user}
+                                state: {
+                                    models: modelsSet, 
+                                    user: props.user,
+                                    stored: true
+                                }
                             }}
                         >
-                            {model.title}
+                            {modelsSet.title}
                         </Link>
                     </div>
                 )
@@ -48,4 +52,4 @@ function AllModels(props) {
     )
 }
 
-export default AllModels
+export default AllSets

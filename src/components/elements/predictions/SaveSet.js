@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-function Save(props) {
+function SaveSet(props) {
     const [saved, setSaved] = useState(false)
     const source = props.source
     const sections = {
@@ -33,4 +33,4 @@ function Save(props) {
     )
 }
 
-export default Save
+export default SaveSet

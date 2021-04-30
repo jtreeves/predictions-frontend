@@ -1,7 +1,7 @@
 import Latex from 'react-latex'
 
 // Create function
-function Results(props) {
+function GeneratedModels(props) {
     const precision = parseInt(props.precision)
 
     const linearRoots = props.linearPoints.roots
@@ -471,4 +471,4 @@ function Results(props) {
 }
 
 // Export function
-export default Results
+export default GeneratedModels

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import DisplayName from '../../elements/users/DisplayName'
 import ChangeName from '../../elements/users/ChangeName'
 import DeleteAccount from '../../elements/users/DeleteAccount'
-import AllModels from '../../elements/predictions/AllModels'
+import AllSets from '../../elements/predictions/AllSets'
 
 function Profile(props) {
     return (
@@ -15,9 +15,18 @@ function Profile(props) {
                 user={props.user}
                 handleLogout={props.handleLogout} 
             /></p>
-            <p>Want to analyze some data? <Link to="/analyze">Click here!</Link></p>
-            <p>All your models:</p>
-            <AllModels user={props.user} />
+            <p>Want to analyze some data? <Link
+                to={{
+                    pathname: "/submission",
+                    state: {
+                        user: props.user
+                    }
+                }}
+            >
+                Click here!
+            </Link></p>
+            <p>All Setmodels:</p>
+            <AllSets user={props.user} />
         </div>
     )
 }

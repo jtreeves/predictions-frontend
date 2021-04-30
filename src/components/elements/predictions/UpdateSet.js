@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import axios from 'axios'
-import New from './New'
+import CreateSet from './CreateSet'
 import { Redirect } from 'react-router-dom'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-function UpdateModels(props) {
+function UpdateSet(props) {
     const [updateClicked, setUpdateClicked] = useState(false)
     const [saveClicked, setSaveClicked] = useState(false)
     const [title, setTitle] = useState(props.title)
@@ -77,7 +77,8 @@ function UpdateModels(props) {
 
     if (updateClicked && !saveClicked) {
         return (
-            <New 
+            <CreateSet 
+                heading="Update Data Set"
                 handleSubmit={handleSave}
                 title={title}
                 handleTitle={handleTitle}
@@ -100,4 +101,4 @@ function UpdateModels(props) {
     }
 }
 
-export default UpdateModels
+export default UpdateSet

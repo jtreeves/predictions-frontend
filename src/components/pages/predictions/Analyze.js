@@ -4,9 +4,9 @@ import axios from 'axios'
 import alert from 'alert'
 
 // Import internal components
-import New from '../../elements/predictions/New'
-import Results from '../../elements/predictions/Results'
-import Save from '../../elements/predictions/Save'
+import New from '../../elements/predictions/CreateSet'
+import Results from '../../elements/predictions/GeneratedModels'
+import Save from '../../elements/predictions/SaveSet'
 
 // Create shortcut for environmental variable
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL

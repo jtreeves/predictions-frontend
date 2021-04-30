@@ -14,6 +14,7 @@ import Profile from './components/pages/users/Profile'
 import Authentication from './components/middleware/Authentication'
 import PrivateRoute from './components/middleware/Private'
 import Analyze from './components/pages/predictions/Analyze'
+import Submission from './components/pages/predictions/Submission'
 
 // Import internal CSS
 import './App.css'
@@ -85,6 +86,11 @@ function App() {
                         <PrivateRoute
                             path="/analysis"
                             component={Analysis}
+                            user={currentUser}
+                        />
+                        <PrivateRoute
+                            path="/submission"
+                            component={Submission}
                             user={currentUser}
                         />
                     </Switch>

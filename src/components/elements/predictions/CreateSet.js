@@ -2,10 +2,10 @@
 import FormGroup from '../main/FormGroup'
 
 // Create function
-function New(props) {
+function CreateSet(props) {
     return (
         <div>
-            <h1>Create a New Data Set</h1>
+            <h1>{props.heading}</h1>
             <form onSubmit={props.handleSubmit}>
                 <FormGroup
                     type="text"
@@ -49,4 +49,4 @@ function New(props) {
 }
 
 // Export function
-export default New
+export default CreateSet
