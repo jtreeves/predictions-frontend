@@ -1,16 +1,16 @@
 import Latex from 'react-latex'
-import FormatPoints from '../../middleware/FormatPoints'
-import FormatSlots from '../../middleware/FormatSlots'
 import GeneratePoints from "../../middleware/GeneratePoints"
-import GraphOutput from "../../middleware/GraphOutput"
-import VerticalAxis from '../../middleware/VerticalAxis'
 import HorizontalAxis from '../../middleware/HorizontalAxis'
+import VerticalAxis from '../../middleware/VerticalAxis'
+import GraphOutput from "../../middleware/GraphOutput"
+import FormatSlots from '../../middleware/FormatSlots'
+import FormatPoints from '../../middleware/FormatPoints'
 
 // Create function
 function GeneratedModels(props) {
     const precision = parseInt(props.precision)
     
-    const originalCoordinates = props.dataSet
+    const originalCoordinates = JSON.parse(props.dataSet)
     const linearCoordinates = GeneratePoints('linear', props.linearConstants, originalCoordinates)
     const quadraticCoordinates = GeneratePoints('quadratic', props.quadraticConstants, originalCoordinates)
     const cubicCoordinates = GeneratePoints('cubic', props.cubicConstants, originalCoordinates)
@@ -20,7 +20,7 @@ function GeneratedModels(props) {
     const logisticCoordinates = GeneratePoints('logistic', props.logisticConstants, originalCoordinates)
     const sinusoidalCoordinates = GeneratePoints('sinusoidal', props.sinusoidalConstants, originalCoordinates)
     const allCoordinates = [linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
-    
+
     const xaxis = HorizontalAxis(originalCoordinates)
     const yaxis = VerticalAxis(allCoordinates)
     const xMinimum = xaxis.minimum
@@ -105,7 +105,7 @@ function GeneratedModels(props) {
 
             <p><em><strong>Independent Variable</strong></em> {props.independent}</p>
             <p><em><strong>Dependent Variable</strong></em> {props.dependent}</p>
-            <p><em><strong>Raw Data</strong></em> {originalCoordinates}</p>
+            <p><em><strong>Raw Data</strong></em> {props.dataSet}</p>
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
 
             <GraphOutput 
