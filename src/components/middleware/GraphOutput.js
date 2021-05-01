@@ -46,6 +46,15 @@ function GraphOutput(props) {
             .style("fill", "none")
             .style("stroke", props.color)
             .style("stroke-width", 2.5)
+        
+        graph
+            .selectAll("plot")
+            .data(props.originalPoints)
+            .enter()
+            .append("circle")
+            .attr("cx", (d) => xScale(d.x))
+            .attr("cy", (d) => yScale(d.y))
+            .attr("r", 3)
     })
 
     return null

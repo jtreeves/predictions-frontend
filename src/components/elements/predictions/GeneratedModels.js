@@ -27,6 +27,11 @@ function GeneratedModels(props) {
     const xMaximum = xaxis.maximum
     const yMinimum = yaxis.minimum
     const yMaximum = yaxis.maximum
+
+    const originalPoints = []
+    for (const coordinatePair of originalCoordinates) {
+        originalPoints.push({x: coordinatePair[0], y: coordinatePair[1]})
+    }
     
     const linearRoots = FormatPoints(props.linearPoints.roots, true)
     const linearMaxima = FormatPoints(props.linearPoints.maxima)
@@ -106,6 +111,7 @@ function GeneratedModels(props) {
             <svg id="graph-output" />
             <GraphOutput 
                 points={sinusoidalCoordinates}
+                originalPoints={originalPoints}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
@@ -114,6 +120,7 @@ function GeneratedModels(props) {
             />
             <GraphOutput 
                 points={cubicCoordinates}
+                originalPoints={originalPoints}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
@@ -122,6 +129,7 @@ function GeneratedModels(props) {
             />
             <GraphOutput 
                 points={quadraticCoordinates}
+                originalPoints={originalPoints}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
@@ -130,6 +138,7 @@ function GeneratedModels(props) {
             />
             <GraphOutput 
                 points={logisticCoordinates}
+                originalPoints={originalPoints}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
@@ -138,6 +147,7 @@ function GeneratedModels(props) {
             />
             <GraphOutput 
                 points={hyperbolicCoordinates}
+                originalPoints={originalPoints}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
@@ -146,6 +156,7 @@ function GeneratedModels(props) {
             />
             <GraphOutput 
                 points={exponentialCoordinates}
+                originalPoints={originalPoints}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
@@ -154,6 +165,7 @@ function GeneratedModels(props) {
             />
             <GraphOutput 
                 points={logarithmicCoordinates}
+                originalPoints={originalPoints}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
@@ -162,6 +174,7 @@ function GeneratedModels(props) {
             />
             <GraphOutput 
                 points={linearCoordinates}
+                originalPoints={originalPoints}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
