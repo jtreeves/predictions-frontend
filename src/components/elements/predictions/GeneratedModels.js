@@ -108,6 +108,8 @@ function GeneratedModels(props) {
             <p><em><strong>Raw Data</strong></em> {props.dataSet}</p>
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
 
+            <svg />
+
             <GraphOutput 
                 points={linearCoordinates}
                 xMinimum={xMinimum}

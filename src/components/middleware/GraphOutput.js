@@ -25,7 +25,6 @@ function GraphOutput(props) {
 
         const graph = d3
             .select("svg")
-            .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -49,12 +48,7 @@ function GraphOutput(props) {
             .style("stroke-width", 2.5)
     })
 
-    return (
-        <svg
-            height={500}
-            width={500}
-        />
-    )
+    return null
 }
 
 export default GraphOutput
