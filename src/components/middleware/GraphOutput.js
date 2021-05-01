@@ -38,6 +38,21 @@ function GraphOutput(props) {
         graph
             .append("g")
             .call(d3.axisLeft(yScale))
+
+        graph
+            .append("text")
+            .attr("transform", `translate(${width / 2}, ${height + margin.bottom})`)
+            .style("text-anchor", "middle")
+            .text(props.independent)
+        
+        graph
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - margin.left)
+            .attr("x", 0 - height / 2)
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text(props.dependent)
         
         graph
             .append("path")

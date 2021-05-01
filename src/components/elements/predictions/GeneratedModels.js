@@ -116,6 +116,8 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
+                independent={props.independent}
+                dependent={props.dependent}
                 color="red"
             />
             <GraphOutput 
@@ -125,6 +127,8 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
+                independent={props.independent}
+                dependent={props.dependent}
                 color="blue"
             />
             <GraphOutput 
@@ -134,6 +138,8 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
+                independent={props.independent}
+                dependent={props.dependent}
                 color="green"
             />
             <GraphOutput 
@@ -143,6 +149,8 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
+                independent={props.independent}
+                dependent={props.dependent}
                 color="purple"
             />
             <GraphOutput 
@@ -152,6 +160,8 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
+                independent={props.independent}
+                dependent={props.dependent}
                 color="brown"
             />
             <GraphOutput 
@@ -161,6 +171,8 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
+                independent={props.independent}
+                dependent={props.dependent}
                 color="orange"
             />
             <GraphOutput 
@@ -170,6 +182,8 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
+                independent={props.independent}
+                dependent={props.dependent}
                 color="yellow"
             />
             <GraphOutput 
@@ -179,12 +193,11 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
+                independent={props.independent}
+                dependent={props.dependent}
                 color="pink"
             />
 
-            <p><em><strong>Independent Variable</strong></em> {props.independent}</p>
-            <p><em><strong>Dependent Variable</strong></em> {props.dependent}</p>
-            <p><em><strong>Raw Data</strong></em> {props.dataSet}</p>
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
 
             <h2>Linear Model</h2>
