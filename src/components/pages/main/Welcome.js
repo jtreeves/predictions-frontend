@@ -1,7 +1,7 @@
 import GeneratePoints from "../../middleware/GeneratePoints"
 import GraphOutput from "../../middleware/GraphOutput"
-import VerticalRange from '../../middleware/VerticalRange'
-import HorizontalRange from '../../middleware/HorizontalRange'
+import VerticalAxis from '../../middleware/VerticalAxis'
+import HorizontalAxis from '../../middleware/HorizontalAxis'
 
 // Create function
 function Welcome() {
@@ -18,8 +18,8 @@ function Welcome() {
 
     const allPoints = [linearPoints, quadraticPoints, cubicPoints, hyperbolicPoints, exponentialPoints, logarithmicPoints, logisticPoints, sinusoidalPoints]
     console.log('ALL POINTS: ', allPoints)
-    const yscale = VerticalRange(allPoints)
-    const xscale = HorizontalRange(originalPoints)
+    const yscale = VerticalAxis(allPoints).range
+    const xscale = HorizontalAxis(originalPoints).range
     console.log('X SCALE: ', xscale)
     console.log('Y SCALE: ', yscale)
     

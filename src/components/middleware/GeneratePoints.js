@@ -1,11 +1,10 @@
+import HorizontalAxis from './HorizontalAxis'
+
 function GeneratePoints(equationType, coefficients, originalPoints) {
-    let independents = []
-    for (const point of originalPoints) {
-        independents.push(point[0])
-    }
-    const maximum = Math.max(...independents)
-    const minimum = Math.min(...independents)
-    const range = maximum - minimum
+    const horizontals = HorizontalAxis(originalPoints)
+    const maximum = horizontals.maximum
+    const minimum = horizontals.minimum
+    const range = horizontals.range
     const increment = range / 100
 
     let finalPoints = []

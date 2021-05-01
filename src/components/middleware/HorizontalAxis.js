@@ -1,4 +1,4 @@
-function HorizontalRange(points) {
+function HorizontalAxis(points) {
     let independents = []
     for (const point of points) {
         independents.push(point[0])
@@ -6,7 +6,12 @@ function HorizontalRange(points) {
     const maximum = Math.max(...independents)
     const minimum = Math.min(...independents)
     const range = maximum - minimum
-    return range
+    const axis = {
+        maximum: maximum,
+        minimum: minimum,
+        range: range
+    }
+    return axis
 }
 
-export default HorizontalRange
+export default HorizontalAxis

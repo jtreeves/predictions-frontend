@@ -9,12 +9,12 @@ function GraphOutput(props) {
         
         const xScale = d3
             .scaleLinear()
-            .domain([0, 100])
+            .domain([0, 150])
             .range([0, width])
         
         const yScale = d3
             .scaleLinear()
-            .domain([0, 100])
+            .domain([0, 150])
             .range([height, 0])
 
         const path = d3

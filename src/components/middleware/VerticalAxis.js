@@ -1,4 +1,4 @@
-function VerticalRange(collections) {
+function VerticalAxis(collections) {
     let maxima = []
     let minima = []
     for (const collection of collections) {
@@ -12,7 +12,12 @@ function VerticalRange(collections) {
     const maximum = Math.max(...maxima)
     const minimum = Math.min(...minima)
     const range = maximum - minimum
-    return range
+    const axis = {
+        maximum: maximum,
+        minimum: minimum,
+        range: range
+    }
+    return axis
 }
 
-export default VerticalRange
+export default VerticalAxis
