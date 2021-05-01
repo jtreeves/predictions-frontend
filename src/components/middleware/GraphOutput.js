@@ -1,17 +1,7 @@
 import { useEffect } from 'react'
 import * as d3 from 'd3'
 
-function GraphOutput() {
-    const points = [
-        { x: 10, y: 20 },
-        { x: 20, y: 80 },
-        { x: 30, y: 50 },
-        { x: 40, y: 70 },
-        { x: 50, y: 30 },
-        { x: 60, y: 60 },
-        { x: 70, y: 10 }
-    ]
-
+function GraphOutput(props) {
     useEffect(() => {
         const margin = { top: 50, right: 50, bottom: 50, left: 50 }
         const width = 500 - margin.left - margin.right
@@ -34,7 +24,7 @@ function GraphOutput() {
             .curve(d3.curveCatmullRom.alpha(.5))
 
         const graph = d3
-            .select("#graph")
+            .select("svg")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -52,7 +42,7 @@ function GraphOutput() {
         
         graph
             .append("path")
-            .datum(points)
+            .datum(props.points)
             .attr("d", path)
             .style("fill", "none")
             .style("stroke", "black")
@@ -61,7 +51,6 @@ function GraphOutput() {
 
     return (
         <svg
-            id="graph"
             height={500}
             width={500}
         />
