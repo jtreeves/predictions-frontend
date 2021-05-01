@@ -13,15 +13,23 @@ function GraphOutput() {
         const width = 500 - margin.left - margin.right
         const height = 500 - margin.top - margin.bottom
         
-        const xScale = d3.scaleLinear().domain([0, 100]).range([0, width])
-        const yScale = d3.scaleLinear().domain([0, 100]).range([height, 0])
+        const xScale = d3
+            .scaleLinear()
+            .domain([0, 100])
+            .range([0, width])
+        
+        const yScale = d3
+            .scaleLinear()
+            .domain([0, 100])
+            .range([height, 0])
 
-        const path = d3.line()
+        const path = d3
+            .line()
             .x(d => xScale(d.x))
             .y(d => yScale(d.y))
             .curve(d3.curveCatmullRom.alpha(.5))
 
-        const svg = d3
+        const graph = d3
             .select("#graph")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -29,16 +37,16 @@ function GraphOutput() {
             .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
-        svg
+        graph
             .append("g")
             .attr("transform", `translate(0, ${height})`)
             .call(d3.axisBottom(xScale))
 
-        svg
+        graph
             .append("g")
             .call(d3.axisLeft(yScale))
         
-        svg
+        graph
             .append("path")
             .datum(points)
             .attr("d", path)
