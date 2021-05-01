@@ -10,7 +10,8 @@ function GraphOutput(props) {
         { type: "exponential", color: "orange" },
         { type: "logarithmic", color: "yellow" },
         { type: "logistic", color: "purple" },
-        { type: "sinusoidal", color: "red" }
+        { type: "sinusoidal", color: "red" },
+        { type: "original", color: "black" }
     ]
 
     useEffect(() => {
