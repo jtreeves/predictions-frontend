@@ -4,8 +4,12 @@ import * as d3 from 'd3'
 function GraphOutput() {
     const points = [
         { x: 10, y: 20 },
-        { x: 30, y: 40 },
-        { x: 80, y: 90 }
+        { x: 20, y: 80 },
+        { x: 30, y: 50 },
+        { x: 40, y: 70 },
+        { x: 50, y: 30 },
+        { x: 60, y: 60 },
+        { x: 70, y: 10 }
     ]
 
     useEffect(() => {
@@ -50,7 +54,9 @@ function GraphOutput() {
             .append("path")
             .datum(points)
             .attr("d", path)
+            .style("fill", "none")
             .style("stroke", "black")
+            .style("stroke-width", 2.5)
     })
 
     return (
