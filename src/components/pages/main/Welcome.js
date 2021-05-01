@@ -5,18 +5,19 @@ import HorizontalRange from '../../middleware/HorizontalRange'
 
 // Create function
 function Welcome() {
-    const linearPoints = GeneratePoints('linear', [0.9, 10])
-    const quadraticPoints = GeneratePoints('quadratic', [-0.03, 3, 5])
-    const cubicPoints = GeneratePoints('cubic', [-0.0004008, 0.05829, -1.721, 20])
-    const hyperbolicPoints = GeneratePoints('hyperbolic', [80.8081, 9.1919])
-    const exponentialPoints = GeneratePoints('exponential', [5, 1.0304])
-    const logarithmicPoints = GeneratePoints('logarithmic', [10, 5])
-    const logisticPoints = GeneratePoints('logistic', [100, 0.1, 50])
-    const sinusoidalPoints = GeneratePoints('sinusoidal', [40, 0.5, 7, 50])
-
     const originalPoints = [[1, 7], [5, 91], [100, 76], [24, 31]]
 
+    const linearPoints = GeneratePoints('linear', [0.9, 10], originalPoints)
+    const quadraticPoints = GeneratePoints('quadratic', [-0.03, 3, 5], originalPoints)
+    const cubicPoints = GeneratePoints('cubic', [-0.0004008, 0.05829, -1.721, 20], originalPoints)
+    const hyperbolicPoints = GeneratePoints('hyperbolic', [80.8081, 9.1919], originalPoints)
+    const exponentialPoints = GeneratePoints('exponential', [5, 1.0304], originalPoints)
+    const logarithmicPoints = GeneratePoints('logarithmic', [10, 5], originalPoints)
+    const logisticPoints = GeneratePoints('logistic', [100, 0.1, 50], originalPoints)
+    const sinusoidalPoints = GeneratePoints('sinusoidal', [40, 0.5, 7, 50], originalPoints)
+
     const allPoints = [linearPoints, quadraticPoints, cubicPoints, hyperbolicPoints, exponentialPoints, logarithmicPoints, logisticPoints, sinusoidalPoints]
+    console.log('ALL POINTS: ', allPoints)
     const yscale = VerticalRange(allPoints)
     const xscale = HorizontalRange(originalPoints)
     console.log('X SCALE: ', xscale)
