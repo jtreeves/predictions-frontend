@@ -45,7 +45,7 @@ function GraphOutput(props) {
             .datum(props.points)
             .attr("d", path)
             .style("fill", "none")
-            .style("stroke", "black")
+            .style("stroke", props.color)
             .style("stroke-width", 2.5)
     })
 
