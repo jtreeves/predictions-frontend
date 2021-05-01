@@ -18,8 +18,14 @@ function Welcome() {
 
     const allPoints = [linearPoints, quadraticPoints, cubicPoints, hyperbolicPoints, exponentialPoints, logarithmicPoints, logisticPoints, sinusoidalPoints]
     console.log('ALL POINTS: ', allPoints)
-    const yscale = VerticalAxis(allPoints).range
-    const xscale = HorizontalAxis(originalPoints).range
+    const xaxis = HorizontalAxis(originalPoints)
+    const yaxis = VerticalAxis(allPoints)
+    const xscale = xaxis.range
+    const yscale = yaxis.range
+    const xMinimum = xaxis.minimum
+    const xMaximum = xaxis.maximum
+    const yMinimum = yaxis.minimum
+    const yMaximum = yaxis.maximum
     console.log('X SCALE: ', xscale)
     console.log('Y SCALE: ', yscale)
     
@@ -29,34 +35,66 @@ function Welcome() {
             <p>Use our site to get regression models for any data set you enter.</p>
             <GraphOutput 
                 points={linearPoints}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
                 color="green"
             />
             <GraphOutput 
                 points={quadraticPoints}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
                 color="blue"
             />
             <GraphOutput 
                 points={cubicPoints}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
                 color="purple"
             />
             <GraphOutput 
                 points={hyperbolicPoints}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
                 color="orange"
             />
             <GraphOutput 
                 points={exponentialPoints}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
                 color="brown"
             />
             <GraphOutput 
                 points={logarithmicPoints}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
                 color="yellow"
             />
             <GraphOutput 
                 points={logisticPoints}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
                 color="pink"
             />
             <GraphOutput 
                 points={sinusoidalPoints}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
                 color="red"
             />
         </div>
