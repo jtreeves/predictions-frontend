@@ -24,7 +24,7 @@ function GraphOutput(props) {
             .curve(d3.curveCatmullRom.alpha(.5))
 
         const graph = d3
-            .select("svg")
+            .select("#graph-output")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
