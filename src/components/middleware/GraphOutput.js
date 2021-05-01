@@ -2,6 +2,17 @@ import { useEffect } from 'react'
 import * as d3 from 'd3'
 
 function GraphOutput(props) {
+    const legend = [
+        { type: "linear", color: "pink" },
+        { type: "quadratic", color: "green" },
+        { type: "cubic", color: "blue" },
+        { type: "hyperbolic", color: "brown" },
+        { type: "exponential", color: "orange" },
+        { type: "logarithmic", color: "yellow" },
+        { type: "logistic", color: "purple" },
+        { type: "sinusoidal", color: "red" }
+    ]
+
     useEffect(() => {
         const margin = { top: 50, right: 50, bottom: 50, left: 50 }
         const width = 500 - margin.left - margin.right
@@ -25,7 +36,7 @@ function GraphOutput(props) {
 
         const graph = d3
             .select("#graph-output")
-            .attr("width", width + margin.left + margin.right)
+            .attr("width", width + margin.left + 4 * margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
@@ -62,6 +73,31 @@ function GraphOutput(props) {
             .style("text-anchor", "middle")
             .text(props.dependent)
         
+        graph
+            .selectAll("legend")
+            .data(legend)
+            .enter()
+            .append("g")
+            .attr("transform", (d, i) => {
+                return `translate(${width + margin.right}, ${margin.top * i})`
+            })
+            .each(function (d, i) {
+                d3
+                    .select(this)
+                    .append("rect")
+                    .attr("width", 25)
+                    .attr("height", 25)
+                    .attr("fill", d.color)
+                d3
+                    .select(this)
+                    .append("text")
+                    .attr("text-anchor", "start")
+                    .attr("x", 25 + 10)
+                    .attr("y", 25 / 2)
+                    .attr("dy", "0.35em")
+                    .text(d.type)
+            })
+
         graph
             .append("path")
             .datum(props.points)
