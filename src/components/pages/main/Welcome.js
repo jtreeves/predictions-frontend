@@ -1,54 +1,16 @@
+import GeneratePoints from "../../middleware/GeneratePoints";
 import GraphOutput from "../../middleware/GraphOutput";
 
 // Create function
 function Welcome() {
-    let linearPoints = []
-    for (let x = 1; x < 100; x++) {
-        const y = 0.9 * x + 10
-        linearPoints.push({x: x, y: y})
-    }
-    
-    let quadraticPoints = []
-    for (let x = 1; x < 100; x++) {
-        const y = -0.03 * x**2 + 3 * x + 5
-        quadraticPoints.push({x: x, y: y})
-    }
-    
-    let cubicPoints = []
-    for (let x = 1; x < 100; x++) {
-        const y = -0.0004008 * x**3 + 0.05829 * x**2 - 1.721 * x + 20
-        cubicPoints.push({x: x, y: y})
-    }
-    
-    let hyperbolicPoints = []
-    for (let x = 1; x < 100; x++) {
-        const y = 80.8081 / x + 9.1919
-        hyperbolicPoints.push({x: x, y: y})
-    }
-    
-    let exponentialPoints = []
-    for (let x = 1; x < 100; x++) {
-        const y = 5 * 1.0304**x
-        exponentialPoints.push({x: x, y: y})
-    }
-    
-    let logarithmicPoints = []
-    for (let x = 1; x < 100; x++) {
-        const y = 10 * Math.log(x) + 5
-        logarithmicPoints.push({x: x, y: y})
-    }
-    
-    let logisticPoints = []
-    for (let x = 1; x < 100; x++) {
-        const y = 100 / (1 + Math.exp(-0.1 * (x - 50)))
-        logisticPoints.push({x: x, y: y})
-    }
-    
-    let sinusoidalPoints = []
-    for (let x = 1; x < 100; x++) {
-        const y = 40 * Math.sin(0.5 * (x - 7)) + 50
-        sinusoidalPoints.push({x: x, y: y})
-    }
+    const linearPoints = GeneratePoints('linear', [0.9, 10])
+    const quadraticPoints = GeneratePoints('quadratic', [-0.03, 3, 5])
+    const cubicPoints = GeneratePoints('cubic', [-0.0004008, 0.05829, -1.721, 20])
+    const hyperbolicPoints = GeneratePoints('hyperbolic', [80.8081, 9.1919])
+    const exponentialPoints = GeneratePoints('exponential', [5, 1.0304])
+    const logarithmicPoints = GeneratePoints('logarithmic', [10, 5])
+    const logisticPoints = GeneratePoints('logistic', [100, 0.1, 50])
+    const sinusoidalPoints = GeneratePoints('sinusoidal', [40, 0.5, 7, 50])
     
     return (
         <div>
