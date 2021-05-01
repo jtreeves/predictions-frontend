@@ -1,10 +1,32 @@
 import Latex from 'react-latex'
 import FormatPoints from '../../middleware/FormatPoints'
 import FormatSlots from '../../middleware/FormatSlots'
+import GeneratePoints from "../../middleware/GeneratePoints"
+import GraphOutput from "../../middleware/GraphOutput"
+import VerticalAxis from '../../middleware/VerticalAxis'
+import HorizontalAxis from '../../middleware/HorizontalAxis'
 
 // Create function
 function GeneratedModels(props) {
     const precision = parseInt(props.precision)
+    
+    const originalCoordinates = props.dataSet
+    const linearCoordinates = GeneratePoints('linear', props.linearConstants, originalCoordinates)
+    const quadraticCoordinates = GeneratePoints('quadratic', props.quadraticConstants, originalCoordinates)
+    const cubicCoordinates = GeneratePoints('cubic', props.cubicConstants, originalCoordinates)
+    const hyperbolicCoordinates = GeneratePoints('hyperbolic', props.hyperbolicConstants, originalCoordinates)
+    const exponentialCoordinates = GeneratePoints('exponential', props.exponentialConstants, originalCoordinates)
+    const logarithmicCoordinates = GeneratePoints('logarithmic', props.logarithmicConstants, originalCoordinates)
+    const logisticCoordinates = GeneratePoints('logistic', props.logisticConstants, originalCoordinates)
+    const sinusoidalCoordinates = GeneratePoints('sinusoidal', props.sinusoidalConstants, originalCoordinates)
+    const allCoordinates = [linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
+    
+    const xaxis = HorizontalAxis(originalCoordinates)
+    const yaxis = VerticalAxis(allCoordinates)
+    const xMinimum = xaxis.minimum
+    const xMaximum = xaxis.maximum
+    const yMinimum = yaxis.minimum
+    const yMaximum = yaxis.maximum
     
     const linearRoots = FormatPoints(props.linearPoints.roots, true)
     const linearMaxima = FormatPoints(props.linearPoints.maxima)
@@ -83,8 +105,73 @@ function GeneratedModels(props) {
 
             <p><em><strong>Independent Variable</strong></em> {props.independent}</p>
             <p><em><strong>Dependent Variable</strong></em> {props.dependent}</p>
-            <p><em><strong>Raw Data</strong></em> {props.dataSet}</p>
+            <p><em><strong>Raw Data</strong></em> {originalCoordinates}</p>
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
+
+            <GraphOutput 
+                points={linearCoordinates}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
+                color="green"
+            />
+            <GraphOutput 
+                points={quadraticCoordinates}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
+                color="blue"
+            />
+            <GraphOutput 
+                points={cubicCoordinates}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
+                color="purple"
+            />
+            <GraphOutput 
+                points={hyperbolicCoordinates}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
+                color="orange"
+            />
+            <GraphOutput 
+                points={exponentialCoordinates}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
+                color="brown"
+            />
+            <GraphOutput 
+                points={logarithmicCoordinates}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
+                color="yellow"
+            />
+            <GraphOutput 
+                points={logisticCoordinates}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
+                color="pink"
+            />
+            <GraphOutput 
+                points={sinusoidalCoordinates}
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                yMinimum={yMinimum}
+                yMaximum={yMaximum}
+                color="red"
+            />
 
             <h2>Linear Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{linearEquation}</Latex></p>
