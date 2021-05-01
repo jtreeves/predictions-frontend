@@ -120,7 +120,9 @@ function Submission(props) {
                     handleDependent={handleDependent}
                     precision={precision}
                     handlePrecision={handlePrecision}
+                    dataSet={dataSet}
                     handleDataSet={handleDataSet}
+                    setDataSet={setDataSet}
                 />
             </div>
         )

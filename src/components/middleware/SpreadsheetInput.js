@@ -1,9 +1,6 @@
-import { useState } from 'react'
 import CreateSet from '../elements/predictions/CreateSet'
 
 function SpreadsheetInput(props) {
-    const [dataSet, setDataSet] = useState('')
-
     const handleSpreadsheet = (e) => {
         e.preventDefault()
         const file = document.querySelector("#csv").files[0]
@@ -33,12 +30,12 @@ function SpreadsheetInput(props) {
             }
             const trimmedLine = lineOfPoints.slice(0, -1)
             const encapsulatedPoints = '[' + trimmedLine + ']'
-            setDataSet(encapsulatedPoints)
+            props.setDataSet(encapsulatedPoints)
         }
         reader.readAsText(file)
     }
 
-    if (dataSet === '') {
+    if (props.dataSet === '') {
         return (
             <div>
                 <input type="file" id="csv" />
@@ -58,7 +55,7 @@ function SpreadsheetInput(props) {
                 handleDependent={props.handleDependent}
                 precision={props.precision}
                 handlePrecision={props.handlePrecision}
-                dataSet={dataSet}
+                dataSet={props.dataSet}
                 handleDataSet={props.handleDataSet}
             />
         )
