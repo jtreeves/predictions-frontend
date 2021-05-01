@@ -106,95 +106,101 @@ function GeneratedModels(props) {
 
     return (
         <div>
-            <h1>{props.title}</h1>
-
             <svg id="graph-output" />
             <GraphOutput 
-                points={sinusoidalCoordinates}
-                originalPoints={originalPoints}
+                title={props.title}
+                independent={props.independent}
+                dependent={props.dependent}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                independent={props.independent}
-                dependent={props.dependent}
+                originalPoints={originalPoints}
+                points={sinusoidalCoordinates}
                 color="red"
             />
             <GraphOutput 
-                points={cubicCoordinates}
-                originalPoints={originalPoints}
+                title={props.title}
+                independent={props.independent}
+                dependent={props.dependent}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                independent={props.independent}
-                dependent={props.dependent}
+                originalPoints={originalPoints}
+                points={cubicCoordinates}
                 color="blue"
             />
             <GraphOutput 
-                points={quadraticCoordinates}
-                originalPoints={originalPoints}
+                title={props.title}
+                independent={props.independent}
+                dependent={props.dependent}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                independent={props.independent}
-                dependent={props.dependent}
+                originalPoints={originalPoints}
+                points={quadraticCoordinates}
                 color="green"
             />
             <GraphOutput 
-                points={logisticCoordinates}
-                originalPoints={originalPoints}
+                title={props.title}
+                independent={props.independent}
+                dependent={props.dependent}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                independent={props.independent}
-                dependent={props.dependent}
+                originalPoints={originalPoints}
+                points={logisticCoordinates}
                 color="purple"
             />
             <GraphOutput 
-                points={hyperbolicCoordinates}
-                originalPoints={originalPoints}
+                title={props.title}
+                independent={props.independent}
+                dependent={props.dependent}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                independent={props.independent}
-                dependent={props.dependent}
+                originalPoints={originalPoints}
+                points={hyperbolicCoordinates}
                 color="brown"
             />
             <GraphOutput 
-                points={exponentialCoordinates}
-                originalPoints={originalPoints}
+                title={props.title}
+                independent={props.independent}
+                dependent={props.dependent}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                independent={props.independent}
-                dependent={props.dependent}
+                originalPoints={originalPoints}
+                points={exponentialCoordinates}
                 color="orange"
             />
             <GraphOutput 
-                points={logarithmicCoordinates}
-                originalPoints={originalPoints}
+                title={props.title}
+                independent={props.independent}
+                dependent={props.dependent}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                independent={props.independent}
-                dependent={props.dependent}
+                originalPoints={originalPoints}
+                points={logarithmicCoordinates}
                 color="yellow"
             />
             <GraphOutput 
-                points={linearCoordinates}
-                originalPoints={originalPoints}
+                title={props.title}
+                independent={props.independent}
+                dependent={props.dependent}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                independent={props.independent}
-                dependent={props.dependent}
+                originalPoints={originalPoints}
+                points={linearCoordinates}
                 color="pink"
             />
 

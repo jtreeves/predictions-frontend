@@ -38,6 +38,14 @@ function GraphOutput(props) {
         graph
             .append("g")
             .call(d3.axisLeft(yScale))
+        
+        graph
+            .append("text")
+            .attr("x", width / 2)             
+            .attr("y", 0 - margin.top / 2)
+            .attr("text-anchor", "middle")
+            .style("font-size", margin.top / 2)
+            .text(props.title)
 
         graph
             .append("text")
