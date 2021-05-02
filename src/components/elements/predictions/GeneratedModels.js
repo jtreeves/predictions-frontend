@@ -9,8 +9,13 @@ import FormatPoints from '../../middleware/FormatPoints'
 // Create function
 function GeneratedModels(props) {
     const precision = parseInt(props.precision)
-    
-    const originalCoordinates = JSON.parse(props.dataSet)
+    const originalPoints = JSON.parse(props.dataSet)
+
+    const originalCoordinates = []
+    for (const point of originalPoints) {
+        originalCoordinates.push({ x: point[0], y: point[1] })
+    }
+
     const linearCoordinates = GeneratePoints('linear', props.linearConstants, originalCoordinates)
     const quadraticCoordinates = GeneratePoints('quadratic', props.quadraticConstants, originalCoordinates)
     const cubicCoordinates = GeneratePoints('cubic', props.cubicConstants, originalCoordinates)
@@ -19,7 +24,8 @@ function GeneratedModels(props) {
     const logarithmicCoordinates = GeneratePoints('logarithmic', props.logarithmicConstants, originalCoordinates)
     const logisticCoordinates = GeneratePoints('logistic', props.logisticConstants, originalCoordinates)
     const sinusoidalCoordinates = GeneratePoints('sinusoidal', props.sinusoidalConstants, originalCoordinates)
-    const allCoordinates = [linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
+
+    const allCoordinates = [originalCoordinates, linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
 
     const xaxis = HorizontalAxis(originalCoordinates)
     const yaxis = VerticalAxis(allCoordinates)
@@ -27,11 +33,6 @@ function GeneratedModels(props) {
     const xMaximum = xaxis.maximum
     const yMinimum = yaxis.minimum
     const yMaximum = yaxis.maximum
-
-    const originalPoints = []
-    for (const coordinatePair of originalCoordinates) {
-        originalPoints.push({x: coordinatePair[0], y: coordinatePair[1]})
-    }
     
     const linearRoots = FormatPoints(props.linearPoints.roots, true)
     const linearMaxima = FormatPoints(props.linearPoints.maxima)
@@ -115,7 +116,7 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                originalPoints={originalPoints}
+                originalPoints={originalCoordinates}
                 points={sinusoidalCoordinates}
                 color="red"
             />
@@ -127,7 +128,7 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                originalPoints={originalPoints}
+                originalPoints={originalCoordinates}
                 points={cubicCoordinates}
                 color="blue"
             />
@@ -139,7 +140,7 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                originalPoints={originalPoints}
+                originalPoints={originalCoordinates}
                 points={quadraticCoordinates}
                 color="green"
             />
@@ -151,7 +152,7 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                originalPoints={originalPoints}
+                originalPoints={originalCoordinates}
                 points={logisticCoordinates}
                 color="purple"
             />
@@ -163,7 +164,7 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                originalPoints={originalPoints}
+                originalPoints={originalCoordinates}
                 points={hyperbolicCoordinates}
                 color="brown"
             />
@@ -175,7 +176,7 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                originalPoints={originalPoints}
+                originalPoints={originalCoordinates}
                 points={exponentialCoordinates}
                 color="orange"
             />
@@ -187,7 +188,7 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                originalPoints={originalPoints}
+                originalPoints={originalCoordinates}
                 points={logarithmicCoordinates}
                 color="yellow"
             />
@@ -199,7 +200,7 @@ function GeneratedModels(props) {
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                originalPoints={originalPoints}
+                originalPoints={originalCoordinates}
                 points={linearCoordinates}
                 color="pink"
             />

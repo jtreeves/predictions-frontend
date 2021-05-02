@@ -1,7 +1,7 @@
 function HorizontalAxis(points) {
     let independents = []
     for (const point of points) {
-        independents.push(point[0])
+        independents.push(point.x)
     }
     const maximum = Math.max(...independents)
     const minimum = Math.min(...independents)
