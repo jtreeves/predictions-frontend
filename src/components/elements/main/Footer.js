@@ -1,7 +1,7 @@
 // Create function
 function Footer() {
     return (
-        <footer className="bg-dark text-center text-muted">
+        <footer>
             © 2021 Jackson Reeves
         </footer>
     )
