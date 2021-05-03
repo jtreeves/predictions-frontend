@@ -101,10 +101,66 @@ function GraphOutput(props) {
 
         graph
             .append("path")
-            .datum(props.points)
+            .datum(props.linearPoints)
             .attr("d", path)
             .style("fill", "none")
-            .style("stroke", props.color)
+            .style("stroke", "pink")
+            .style("stroke-width", 2.5)
+        
+        graph
+            .append("path")
+            .datum(props.quadraticPoints)
+            .attr("d", path)
+            .style("fill", "none")
+            .style("stroke", "green")
+            .style("stroke-width", 2.5)
+        
+        graph
+            .append("path")
+            .datum(props.cubicPoints)
+            .attr("d", path)
+            .style("fill", "none")
+            .style("stroke", "blue")
+            .style("stroke-width", 2.5)
+        
+        graph
+            .append("path")
+            .datum(props.hyperbolicPoints)
+            .attr("d", path)
+            .style("fill", "none")
+            .style("stroke", "brown")
+            .style("stroke-width", 2.5)
+        
+        graph
+            .append("path")
+            .datum(props.exponentialPoints)
+            .attr("d", path)
+            .style("fill", "none")
+            .style("stroke", "orange")
+            .style("stroke-width", 2.5)
+        
+        graph
+            .append("path")
+            .datum(props.logarithmicPoints)
+            .attr("d", path)
+            .style("fill", "none")
+            .style("stroke", "yellow")
+            .style("stroke-width", 2.5)
+        
+        graph
+            .append("path")
+            .datum(props.logisticPoints)
+            .attr("d", path)
+            .style("fill", "none")
+            .style("stroke", "purple")
+            .style("stroke-width", 2.5)
+        
+        graph
+            .append("path")
+            .datum(props.sinusoidalPoints)
+            .attr("d", path)
+            .style("fill", "none")
+            .style("stroke", "red")
             .style("stroke-width", 2.5)
         
         graph
