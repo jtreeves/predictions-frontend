@@ -33,7 +33,7 @@ function CreateSet(props) {
                 />
 
                 <FormGroup
-                    type="text"
+                    type="number"
                     label="precision"
                     value={props.precision}
                     display="Precision"

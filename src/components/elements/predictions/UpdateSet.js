@@ -46,25 +46,37 @@ function UpdateSet(props) {
     
     const handleSave = async (e) => {
         e.preventDefault()
-        const cleanedDataSet = CleanCollection(dataSet)
-        const submission = {
-            title: title,
-            independent: independent,
-            dependent: dependent,
-            precision: precision,
-            dataSet: cleanedDataSet
-        }
-        try {
-            await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + props.source)
-            const predictions = await axios.post(REACT_APP_SERVER_URL + 'api', submission)
-            const source = predictions.data.regressions.source
-            await axios.post(REACT_APP_SERVER_URL + 'predictions/' + props.user.id, { source })
-            await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: props.favorite})
-            await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: props.note})
-            setSaveClicked(true)
-        } catch(error) {
-            alert(error.response.data.msg)
-            console.log(`UPDATED PREDICTION ERROR: ${error}`)
+        if (title === '') {
+            alert('You must give this data set a title')
+        } else if (independent === '') {
+            alert('You must identify the independent variable of this data set')
+        } else if (dependent === '') {
+            alert('You must identify the dependent variable of this data set')
+        } else if (precision < 1) {
+            alert('Precision must be a positive integer')
+        } else if (dataSet === '') {
+            alert('You must provide a data set')
+        } else {
+            const cleanedDataSet = CleanCollection(dataSet)
+            const submission = {
+                title: title,
+                independent: independent,
+                dependent: dependent,
+                precision: parseInt(precision),
+                dataSet: JSON.parse(cleanedDataSet)
+            }
+            try {
+                await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + props.source)
+                const predictions = await axios.post(REACT_APP_SERVER_URL + 'api', submission)
+                const source = predictions.data.regressions.source
+                await axios.post(REACT_APP_SERVER_URL + 'predictions/' + props.user.id, { source })
+                await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: props.favorite})
+                await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: props.note})
+                setSaveClicked(true)
+            } catch(error) {
+                alert(error.response.data.msg)
+                console.log(`UPDATED PREDICTION ERROR: ${error}`)
+            }
         }
     }
 

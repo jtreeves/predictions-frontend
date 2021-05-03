@@ -10,7 +10,7 @@ function Submission(props) {
     const [title, setTitle] = useState('')
     const [independent, setIndependent] = useState('')
     const [dependent, setDependent] = useState('')
-    const [precision, setPrecision] = useState('')
+    const [precision, setPrecision] = useState(4)
     const [dataSet, setDataSet] = useState('')
     const [models, setModels] = useState({})
     const [manual, setManual] = useState(false)
@@ -55,24 +55,36 @@ function Submission(props) {
     // Submit form
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const cleanedDataSet = CleanCollection(dataSet)
-        const submission = {
-            title: title,
-            independent: independent,
-            dependent: dependent,
-            precision: precision,
-            dataSet: cleanedDataSet
-        }
-        try {
-            const predictions = await axios.post(REACT_APP_SERVER_URL + 'api',
-                submission
-            )
-            setModels(predictions.data.regressions)
-            setManual(false)
-            setUpload(false)
-            setSubmitted(true)
-        } catch (error) {
-            alert(error)
+        if (title === '') {
+            alert('You must give this data set a title')
+        } else if (independent === '') {
+            alert('You must identify the independent variable of this data set')
+        } else if (dependent === '') {
+            alert('You must identify the dependent variable of this data set')
+        } else if (precision < 1) {
+            alert('Precision must be a positive integer')
+        } else if (dataSet === '') {
+            alert('You must provide a data set')
+        } else {
+            const cleanedDataSet = CleanCollection(dataSet)
+            const submission = {
+                title: title,
+                independent: independent,
+                dependent: dependent,
+                precision: parseInt(precision),
+                dataSet: JSON.parse(cleanedDataSet)
+            }
+            try {
+                const predictions = await axios.post(REACT_APP_SERVER_URL + 'api',
+                    submission
+                )
+                setModels(predictions.data.regressions)
+                setManual(false)
+                setUpload(false)
+                setSubmitted(true)
+            } catch (error) {
+                alert(error)
+            }
         }
     }
 
