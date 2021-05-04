@@ -202,7 +202,7 @@ function GeneratedModels(props) {
     const yMinimum = yaxis.minimum
     const yMaximum = yaxis.maximum
     const xRange = xMaximum - xMinimum
-    const futureInput = xMaximum + xRange / 2
+    const futureInput = Math.round(xMaximum + xRange / 2)
 
     const linearEvaluation = Evaluations('linear', props.linearConstants, futureInput)
     const quadraticEvaluation = Evaluations('quadratic', props.quadraticConstants, futureInput)
