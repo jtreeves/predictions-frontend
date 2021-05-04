@@ -137,62 +137,6 @@ function GeneratedModels(props) {
         }
     }
 
-    const displayButtons = []
-    
-    if (displayLinear) {
-        displayButtons.push(<button onClick={handleDisplayLinear}>Hide Linear Graph</button>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayLinear}>Show Linear Graph</button>)
-    }
-
-    if (displayQuadratic) {
-        displayButtons.push(<button onClick={handleDisplayQuadratic}>Hide Quadratic Graph</button>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayQuadratic}>Show Quadratic Graph</button>)
-    }
-
-    if (displayCubic) {
-        displayButtons.push(<button onClick={handleDisplayCubic}>Hide Cubic Graph</button>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayCubic}>Show Cubic Graph</button>)
-    }
-
-    if (displayHyperbolic) {
-        displayButtons.push(<button onClick={handleDisplayHyperbolic}>Hide Hyperbolic Graph</button>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayHyperbolic}>Show Hyperbolic Graph</button>)
-    }
-
-    if (displayExponential) {
-        displayButtons.push(<button onClick={handleDisplayExponential}>Hide Exponential Graph</button>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayExponential}>Show Exponential Graph</button>)
-    }
-
-    if (displayLogarithmic) {
-        displayButtons.push(<button onClick={handleDisplayLogarithmic}>Hide Logarithmic Graph</button>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayLogarithmic}>Show Logarithmic Graph</button>)
-    }
-
-    if (displayLogistic) {
-        displayButtons.push(<button onClick={handleDisplayLogistic}>Hide Logistic Graph</button>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayLogistic}>Show Logistic Graph</button>)
-    }
-
-    if (displaySinusoidal) {
-        displayButtons.push(<button onClick={handleDisplaySinusoidal}>Hide Sinusoidal Graph</button>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplaySinusoidal}>Show Sinusoidal Graph</button>)
-    }
-
-    if (displayOriginal) {
-        displayButtons.push(<button onClick={handleDisplayOriginal}>Hide Original Points</button>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayOriginal}>Show Original Points</button>)
-    }
-
     const allCoordinates = [originalCoordinates, linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
 
     const xaxis = HorizontalAxis(originalPoints)
@@ -301,6 +245,151 @@ function GeneratedModels(props) {
     const logisticCorrelation = '$' + props.logisticCorrelation.toFixed(precision) + '$'
     const sinusoidalCorrelation = '$' + props.sinusoidalCorrelation.toFixed(precision) + '$'
 
+    const displayButtons = []
+    const modelBreakdowns = []
+    
+    if (displayLinear) {
+        displayButtons.push(<button onClick={handleDisplayLinear}>Hide Linear Graph</button>)
+        modelBreakdowns.push(<div>
+            <h2>Linear Model</h2>
+            <p><em><strong>Equation</strong></em> <Latex>{linearEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> <Latex>{linearCorrelation}</Latex></p>
+            <p><em><strong>Key Points</strong></em>
+                <br />ROOTS: <Latex>{linearRoots}</Latex>
+                <br />MAXIMA: <Latex>{linearMaxima}</Latex>
+                <br />MINIMA: <Latex>{linearMinima}</Latex>
+                <br />INFLECTIONS: <Latex>{linearInflections}</Latex>
+            </p>
+        </div>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayLinear}>Show Linear Graph</button>)
+    }
+
+    if (displayQuadratic) {
+        displayButtons.push(<button onClick={handleDisplayQuadratic}>Hide Quadratic Graph</button>)
+        modelBreakdowns.push(<div>
+            <h2>Quadratic Model</h2>
+            <p><em><strong>Equation</strong></em> <Latex>{quadraticEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> <Latex>{quadraticCorrelation}</Latex></p>
+            <p><em><strong>Key Points</strong></em>
+                <br />ROOTS: <Latex>{quadraticRoots}</Latex>
+                <br />MAXIMA: <Latex>{quadraticMaxima}</Latex>
+                <br />MINIMA: <Latex>{quadraticMinima}</Latex>
+                <br />INFLECTIONS: <Latex>{quadraticInflections}</Latex>
+            </p>
+        </div>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayQuadratic}>Show Quadratic Graph</button>)
+    }
+
+    if (displayCubic) {
+        displayButtons.push(<button onClick={handleDisplayCubic}>Hide Cubic Graph</button>)
+        modelBreakdowns.push(<div>
+            <h2>Cubic Model</h2>
+            <p><em><strong>Equation</strong></em> <Latex>{cubicEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> <Latex>{cubicCorrelation}</Latex></p>
+            <p><em><strong>Key Points</strong></em>
+                <br />ROOTS: <Latex>{cubicRoots}</Latex>
+                <br />MAXIMA: <Latex>{cubicMaxima}</Latex>
+                <br />MINIMA: <Latex>{cubicMinima}</Latex>
+                <br />INFLECTIONS: <Latex>{cubicInflections}</Latex>
+            </p>
+        </div>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayCubic}>Show Cubic Graph</button>)
+    }
+
+    if (displayHyperbolic) {
+        displayButtons.push(<button onClick={handleDisplayHyperbolic}>Hide Hyperbolic Graph</button>)
+        modelBreakdowns.push(<div>
+            <h2>Hyperbolic Model</h2>
+            <p><em><strong>Equation</strong></em> <Latex>{hyperbolicEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> <Latex>{hyperbolicCorrelation}</Latex></p>
+            <p><em><strong>Key Points</strong></em>
+                <br />ROOTS: <Latex>{hyperbolicRoots}</Latex>
+                <br />MAXIMA: <Latex>{hyperbolicMaxima}</Latex>
+                <br />MINIMA: <Latex>{hyperbolicMinima}</Latex>
+                <br />INFLECTIONS: <Latex>{hyperbolicInflections}</Latex>
+            </p>
+        </div>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayHyperbolic}>Show Hyperbolic Graph</button>)
+    }
+
+    if (displayExponential) {
+        displayButtons.push(<button onClick={handleDisplayExponential}>Hide Exponential Graph</button>)
+        modelBreakdowns.push(<div>
+            <h2>Exponential Model</h2>
+            <p><em><strong>Equation</strong></em> <Latex>{exponentialEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> <Latex>{exponentialCorrelation}</Latex></p>
+            <p><em><strong>Key Points</strong></em>
+                <br />ROOTS: <Latex>{exponentialRoots}</Latex>
+                <br />MAXIMA: <Latex>{exponentialMaxima}</Latex>
+                <br />MINIMA: <Latex>{exponentialMinima}</Latex>
+                <br />INFLECTIONS: <Latex>{exponentialInflections}</Latex>
+            </p>
+        </div>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayExponential}>Show Exponential Graph</button>)
+    }
+
+    if (displayLogarithmic) {
+        displayButtons.push(<button onClick={handleDisplayLogarithmic}>Hide Logarithmic Graph</button>)
+        modelBreakdowns.push(<div>
+            <h2>Logarithmic Model</h2>
+            <p><em><strong>Equation</strong></em> <Latex>{logarithmicEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> <Latex>{logarithmicCorrelation}</Latex></p>
+            <p><em><strong>Key Points</strong></em>
+                <br />ROOTS: <Latex>{logarithmicRoots}</Latex>
+                <br />MAXIMA: <Latex>{logarithmicMaxima}</Latex>
+                <br />MINIMA: <Latex>{logarithmicMinima}</Latex>
+                <br />INFLECTIONS: <Latex>{logarithmicInflections}</Latex>
+            </p>
+        </div>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayLogarithmic}>Show Logarithmic Graph</button>)
+    }
+
+    if (displayLogistic) {
+        displayButtons.push(<button onClick={handleDisplayLogistic}>Hide Logistic Graph</button>)
+        modelBreakdowns.push(<div>
+            <h2>Logistic Model</h2>
+            <p><em><strong>Equation</strong></em> <Latex>{logisticEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> <Latex>{logisticCorrelation}</Latex></p>
+            <p><em><strong>Key Points</strong></em>
+                <br />ROOTS: <Latex>{logisticRoots}</Latex>
+                <br />MAXIMA: <Latex>{logisticMaxima}</Latex>
+                <br />MINIMA: <Latex>{logisticMinima}</Latex>
+                <br />INFLECTIONS: <Latex>{logisticInflections}</Latex>
+            </p>
+        </div>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayLogistic}>Show Logistic Graph</button>)
+    }
+
+    if (displaySinusoidal) {
+        displayButtons.push(<button onClick={handleDisplaySinusoidal}>Hide Sinusoidal Graph</button>)
+        modelBreakdowns.push(<div>
+            <h2>Sinusoidal Model</h2>
+            <p><em><strong>Equation</strong></em> <Latex>{sinusoidalEquation}</Latex></p>
+            <p><em><strong>Correlation</strong></em> <Latex>{sinusoidalCorrelation}</Latex></p>
+            <p><em><strong>Key Points</strong></em>
+                <br />ROOTS: <Latex>{sinusoidalRoots}</Latex>
+                <br />MAXIMA: <Latex>{sinusoidalMaxima}</Latex>
+                <br />MINIMA: <Latex>{sinusoidalMinima}</Latex>
+                <br />INFLECTIONS: <Latex>{sinusoidalInflections}</Latex>
+            </p>
+        </div>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplaySinusoidal}>Show Sinusoidal Graph</button>)
+    }
+
+    if (displayOriginal) {
+        displayButtons.push(<button onClick={handleDisplayOriginal}>Hide Original Points</button>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayOriginal}>Show Original Points</button>)
+    }
+
     return (
         <div>
             <GraphOutput 
@@ -344,85 +433,7 @@ function GeneratedModels(props) {
             />
             <button onClick={handleFutureValue}>Submit</button>
 
-            <h2>Linear Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{linearEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{linearCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{linearRoots}</Latex>
-                <br />MAXIMA: <Latex>{linearMaxima}</Latex>
-                <br />MINIMA: <Latex>{linearMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{linearInflections}</Latex>
-            </p>
-
-            <h2>Quadratic Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{quadraticEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{quadraticCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{quadraticRoots}</Latex>
-                <br />MAXIMA: <Latex>{quadraticMaxima}</Latex>
-                <br />MINIMA: <Latex>{quadraticMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{quadraticInflections}</Latex>
-            </p>
-
-            <h2>Cubic Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{cubicEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{cubicCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{cubicRoots}</Latex>
-                <br />MAXIMA: <Latex>{cubicMaxima}</Latex>
-                <br />MINIMA: <Latex>{cubicMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{cubicInflections}</Latex>
-            </p>
-
-            <h2>Hyperbolic Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{hyperbolicEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{hyperbolicCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{hyperbolicRoots}</Latex>
-                <br />MAXIMA: <Latex>{hyperbolicMaxima}</Latex>
-                <br />MINIMA: <Latex>{hyperbolicMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{hyperbolicInflections}</Latex>
-            </p>
-
-            <h2>Exponential Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{exponentialEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{exponentialCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{exponentialRoots}</Latex>
-                <br />MAXIMA: <Latex>{exponentialMaxima}</Latex>
-                <br />MINIMA: <Latex>{exponentialMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{exponentialInflections}</Latex>
-            </p>
-
-            <h2>Logarithmic Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{logarithmicEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{logarithmicCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{logarithmicRoots}</Latex>
-                <br />MAXIMA: <Latex>{logarithmicMaxima}</Latex>
-                <br />MINIMA: <Latex>{logarithmicMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{logarithmicInflections}</Latex>
-            </p>
-
-            <h2>Logistic Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{logisticEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{logisticCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{logisticRoots}</Latex>
-                <br />MAXIMA: <Latex>{logisticMaxima}</Latex>
-                <br />MINIMA: <Latex>{logisticMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{logisticInflections}</Latex>
-            </p>
-
-            <h2>Sinusoidal Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{sinusoidalEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{sinusoidalCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{sinusoidalRoots}</Latex>
-                <br />MAXIMA: <Latex>{sinusoidalMaxima}</Latex>
-                <br />MINIMA: <Latex>{sinusoidalMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{sinusoidalInflections}</Latex>
-            </p>
+            {modelBreakdowns}
         </div>
     )
 }
