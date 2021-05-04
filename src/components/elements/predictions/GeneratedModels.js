@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import Latex from 'react-latex'
-import GeneratePoints from "../../middleware/GeneratePoints"
+import GeneratePoints from '../../middleware/GeneratePoints'
 import HorizontalAxis from '../../middleware/HorizontalAxis'
 import VerticalAxis from '../../middleware/VerticalAxis'
-import GraphOutput from "../../middleware/GraphOutput"
+import GraphOutput from '../../middleware/GraphOutput'
 import FormatSlots from '../../middleware/FormatSlots'
 import FormatPoints from '../../middleware/FormatPoints'
+import Evaluations from '../../middleware/Evaluations'
 
 // Create function
 function GeneratedModels(props) {
@@ -200,6 +201,17 @@ function GeneratedModels(props) {
     const xMaximum = xaxis.maximum
     const yMinimum = yaxis.minimum
     const yMaximum = yaxis.maximum
+    const xRange = xMaximum - xMinimum
+    const futureInput = xMaximum + xRange / 2
+
+    const linearEvaluation = Evaluations('linear', props.linearConstants, futureInput)
+    const quadraticEvaluation = Evaluations('quadratic', props.quadraticConstants, futureInput)
+    const cubicEvaluation = Evaluations('cubic', props.cubicConstants, futureInput)
+    const hyperbolicEvaluation = Evaluations('hyperbolic', props.hyperbolicConstants, futureInput)
+    const exponentialEvaluation = Evaluations('exponential', props.exponentialConstants, futureInput)
+    const logarithmicEvaluation = Evaluations('logarithmic', props.logarithmicConstants, futureInput)
+    const logisticEvaluation = Evaluations('logistic', props.logisticConstants, futureInput)
+    const sinusoidalEvaluation = Evaluations('sinusoidal', props.sinusoidalConstants, futureInput)
 
     const linearRoots = FormatPoints(props.linearPoints.roots, true)
     const linearMaxima = FormatPoints(props.linearPoints.maxima)
@@ -295,6 +307,16 @@ function GeneratedModels(props) {
             {displayButtons}
 
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
+
+            <h2>Predicted Future Values at an Input of {futureInput}</h2>
+            <p><em><strong>Linear Prediction</strong></em> {linearEvaluation}</p>
+            <p><em><strong>Quadratic Prediction</strong></em> {quadraticEvaluation}</p>
+            <p><em><strong>Cubic Prediction</strong></em> {cubicEvaluation}</p>
+            <p><em><strong>Hyperbolic Prediction</strong></em> {hyperbolicEvaluation}</p>
+            <p><em><strong>Exponential Prediction</strong></em> {exponentialEvaluation}</p>
+            <p><em><strong>Logarithmic Prediction</strong></em> {logarithmicEvaluation}</p>
+            <p><em><strong>Logistic Prediction</strong></em> {logisticEvaluation}</p>
+            <p><em><strong>Sinusoidal Prediction</strong></em> {sinusoidalEvaluation}</p>
 
             <h2>Linear Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{linearEquation}</Latex></p>
