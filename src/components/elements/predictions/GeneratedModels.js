@@ -275,7 +275,6 @@ function GeneratedModels(props) {
     const yAxis = VerticalAxis(allCoordinates)
     const yMinimum = yAxis.minimum
     const yMaximum = yAxis.maximum
-    // const xRange = xMaximum - xMinimum
     const futureInput = Math.round(xMaximum + xRange / 2)
 
     const [testInput, setTestInput] = useState(futureInput)
