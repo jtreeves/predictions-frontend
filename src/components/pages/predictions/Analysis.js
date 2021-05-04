@@ -54,6 +54,7 @@ function Analysis(props) {
         sinusoidalPoints={models.sinusoidal_points}
         sinusoidalCorrelation={models.sinusoidal_correlation}
         bestFit={models.best_fit}
+        favorite={opinions.favorite}
     />
 
     if (!stored) {

@@ -13,30 +13,94 @@ function GeneratedModels(props) {
     const precision = parseInt(props.precision)
     const points = JSON.parse(props.dataSet)
 
+    const [checkFavorite, setCheckFavorite] = useState(true)
+
     const originalPoints = []
     for (const point of points) {
         originalPoints.push({ x: point[0], y: point[1] })
     }
 
-    const [displayLinear, setDisplayLinear] = useState(true)
-    const [displayQuadratic, setDisplayQuadratic] = useState(true)
-    const [displayCubic, setDisplayCubic] = useState(true)
-    const [displayHyperbolic, setDisplayHyperbolic] = useState(true)
-    const [displayExponential, setDisplayExponential] = useState(true)
-    const [displayLogarithmic, setDisplayLogarithmic] = useState(true)
-    const [displayLogistic, setDisplayLogistic] = useState(true)
-    const [displaySinusoidal, setDisplaySinusoidal] = useState(true)
+    const [displayLinear, setDisplayLinear] = useState(false)
+    const [displayQuadratic, setDisplayQuadratic] = useState(false)
+    const [displayCubic, setDisplayCubic] = useState(false)
+    const [displayHyperbolic, setDisplayHyperbolic] = useState(false)
+    const [displayExponential, setDisplayExponential] = useState(false)
+    const [displayLogarithmic, setDisplayLogarithmic] = useState(false)
+    const [displayLogistic, setDisplayLogistic] = useState(false)
+    const [displaySinusoidal, setDisplaySinusoidal] = useState(false)
     const [displayOriginal, setDisplayOriginal] = useState(true)
-    
-    const [linearCoordinates, setLinearCoordinates] = useState(GeneratePoints('linear', props.linearConstants, originalPoints))
-    const [quadraticCoordinates, setQuadraticCoordinates] = useState(GeneratePoints('quadratic', props.quadraticConstants, originalPoints))
-    const [cubicCoordinates, setCubicCoordinates] = useState(GeneratePoints('cubic', props.cubicConstants, originalPoints))
-    const [hyperbolicCoordinates, setHyperbolicCoordinates] = useState(GeneratePoints('hyperbolic', props.hyperbolicConstants, originalPoints))
-    const [exponentialCoordinates, setExponentialCoordinates] = useState(GeneratePoints('exponential', props.exponentialConstants, originalPoints))
-    const [logarithmicCoordinates, setLogarithmicCoordinates] = useState(GeneratePoints('logarithmic', props.logarithmicConstants, originalPoints))
-    const [logisticCoordinates, setLogisticCoordinates] = useState(GeneratePoints('logistic', props.logisticConstants, originalPoints))
-    const [sinusoidalCoordinates, setSinusoidalCoordinates] = useState(GeneratePoints('sinusoidal', props.sinusoidalConstants, originalPoints))
+
+    const [linearCoordinates, setLinearCoordinates] = useState('')
+    const [quadraticCoordinates, setQuadraticCoordinates] = useState('')
+    const [cubicCoordinates, setCubicCoordinates] = useState('')
+    const [hyperbolicCoordinates, setHyperbolicCoordinates] = useState('')
+    const [exponentialCoordinates, setExponentialCoordinates] = useState('')
+    const [logarithmicCoordinates, setLogarithmicCoordinates] = useState('')
+    const [logisticCoordinates, setLogisticCoordinates] = useState('')
+    const [sinusoidalCoordinates, setSinusoidalCoordinates] = useState('')
     const [originalCoordinates, setOriginalCoordinates] = useState(originalPoints)
+
+    if (checkFavorite) {
+        if (props.favorite) {
+            if (props.favorite === 'linear') {
+                setDisplayLinear(true)
+                setLinearCoordinates(GeneratePoints('linear', props.linearConstants, originalPoints))
+            }
+    
+            if (props.favorite === 'quadratic') {
+                setDisplayQuadratic(true)
+                setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, originalPoints))
+            }
+    
+            if (props.favorite === 'cubic') {
+                setDisplayCubic(true)
+                setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, originalPoints))
+            }
+    
+            if (props.favorite === 'hyperbolic') {
+                setDisplayHyperbolic(true)
+                setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, originalPoints))
+            }
+    
+            if (props.favorite === 'exponential') {
+                setDisplayExponential(true)
+                setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, originalPoints))
+            }
+    
+            if (props.favorite === 'logarithmic') {
+                setDisplayLogarithmic(true)
+                setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, originalPoints))
+            }
+    
+            if (props.favorite === 'logistic') {
+                setDisplayLogistic(true)
+                setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, originalPoints))
+            }
+    
+            if (props.favorite === 'sinusoidal') {
+                setDisplaySinusoidal(true)
+                setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, originalPoints))
+            }
+        } else {
+            setDisplayLinear(true)
+            setLinearCoordinates(GeneratePoints('linear', props.linearConstants, originalPoints))
+            setDisplayQuadratic(true)
+            setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, originalPoints))
+            setDisplayCubic(true)
+            setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, originalPoints))
+            setDisplayHyperbolic(true)
+            setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, originalPoints))
+            setDisplayExponential(true)
+            setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, originalPoints))
+            setDisplayLogarithmic(true)
+            setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, originalPoints))
+            setDisplayLogistic(true)
+            setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, originalPoints))
+            setDisplaySinusoidal(true)
+            setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, originalPoints))
+        }
+        setCheckFavorite(false)
+    }
     
     const handleDisplayLinear = (e) => {
         e.preventDefault()
@@ -419,7 +483,7 @@ function GeneratedModels(props) {
                 logisticPoints={logisticCoordinates}
                 sinusoidalPoints={sinusoidalCoordinates}
             />
-            
+
             {displayButtons}
 
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>

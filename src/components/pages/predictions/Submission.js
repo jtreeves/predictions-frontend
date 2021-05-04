@@ -147,7 +147,7 @@ function Submission(props) {
                     pathname: "/analysis",
                     state: {
                         models: models, 
-                        opinions: null,
+                        opinions: { favorite: null },
                         user: props.user,
                         stored: false
                     }
