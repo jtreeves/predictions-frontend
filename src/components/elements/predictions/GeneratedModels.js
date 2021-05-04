@@ -10,11 +10,11 @@ import FormatPoints from '../../middleware/FormatPoints'
 // Create function
 function GeneratedModels(props) {
     const precision = parseInt(props.precision)
-    const originalPoints = JSON.parse(props.dataSet)
+    const points = JSON.parse(props.dataSet)
 
-    const originalCoordinates = []
-    for (const point of originalPoints) {
-        originalCoordinates.push({ x: point[0], y: point[1] })
+    const originalPoints = []
+    for (const point of points) {
+        originalPoints.push({ x: point[0], y: point[1] })
     }
 
     const [displayLinear, setDisplayLinear] = useState(true)
@@ -25,15 +25,17 @@ function GeneratedModels(props) {
     const [displayLogarithmic, setDisplayLogarithmic] = useState(true)
     const [displayLogistic, setDisplayLogistic] = useState(true)
     const [displaySinusoidal, setDisplaySinusoidal] = useState(true)
+    const [displayOriginal, setDisplayOriginal] = useState(true)
     
-    const [linearCoordinates, setLinearCoordinates] = useState(GeneratePoints('linear', props.linearConstants, originalCoordinates))
-    const [quadraticCoordinates, setQuadraticCoordinates] = useState(GeneratePoints('quadratic', props.quadraticConstants, originalCoordinates))
-    const [cubicCoordinates, setCubicCoordinates] = useState(GeneratePoints('cubic', props.cubicConstants, originalCoordinates))
-    const [hyperbolicCoordinates, setHyperbolicCoordinates] = useState(GeneratePoints('hyperbolic', props.hyperbolicConstants, originalCoordinates))
-    const [exponentialCoordinates, setExponentialCoordinates] = useState(GeneratePoints('exponential', props.exponentialConstants, originalCoordinates))
-    const [logarithmicCoordinates, setLogarithmicCoordinates] = useState(GeneratePoints('logarithmic', props.logarithmicConstants, originalCoordinates))
-    const [logisticCoordinates, setLogisticCoordinates] = useState(GeneratePoints('logistic', props.logisticConstants, originalCoordinates))
-    const [sinusoidalCoordinates, setSinusoidalCoordinates] = useState(GeneratePoints('sinusoidal', props.sinusoidalConstants, originalCoordinates))
+    const [linearCoordinates, setLinearCoordinates] = useState(GeneratePoints('linear', props.linearConstants, originalPoints))
+    const [quadraticCoordinates, setQuadraticCoordinates] = useState(GeneratePoints('quadratic', props.quadraticConstants, originalPoints))
+    const [cubicCoordinates, setCubicCoordinates] = useState(GeneratePoints('cubic', props.cubicConstants, originalPoints))
+    const [hyperbolicCoordinates, setHyperbolicCoordinates] = useState(GeneratePoints('hyperbolic', props.hyperbolicConstants, originalPoints))
+    const [exponentialCoordinates, setExponentialCoordinates] = useState(GeneratePoints('exponential', props.exponentialConstants, originalPoints))
+    const [logarithmicCoordinates, setLogarithmicCoordinates] = useState(GeneratePoints('logarithmic', props.logarithmicConstants, originalPoints))
+    const [logisticCoordinates, setLogisticCoordinates] = useState(GeneratePoints('logistic', props.logisticConstants, originalPoints))
+    const [sinusoidalCoordinates, setSinusoidalCoordinates] = useState(GeneratePoints('sinusoidal', props.sinusoidalConstants, originalPoints))
+    const [originalCoordinates, setOriginalCoordinates] = useState(originalPoints)
     
     const handleDisplayLinear = (e) => {
         e.preventDefault()
@@ -42,7 +44,7 @@ function GeneratedModels(props) {
             setLinearCoordinates('')
         } else {
             setDisplayLinear(true)
-            setLinearCoordinates(GeneratePoints('linear', props.linearConstants, originalCoordinates))
+            setLinearCoordinates(GeneratePoints('linear', props.linearConstants, originalPoints))
         }
     }
     
@@ -53,7 +55,7 @@ function GeneratedModels(props) {
             setQuadraticCoordinates('')
         } else {
             setDisplayQuadratic(true)
-            setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, originalCoordinates))
+            setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, originalPoints))
         }
     }
     
@@ -64,7 +66,7 @@ function GeneratedModels(props) {
             setCubicCoordinates('')
         } else {
             setDisplayCubic(true)
-            setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, originalCoordinates))
+            setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, originalPoints))
         }
     }
     
@@ -75,7 +77,7 @@ function GeneratedModels(props) {
             setHyperbolicCoordinates('')
         } else {
             setDisplayHyperbolic(true)
-            setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, originalCoordinates))
+            setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, originalPoints))
         }
     }
     
@@ -86,7 +88,7 @@ function GeneratedModels(props) {
             setExponentialCoordinates('')
         } else {
             setDisplayExponential(true)
-            setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, originalCoordinates))
+            setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, originalPoints))
         }
     }
     
@@ -97,7 +99,7 @@ function GeneratedModels(props) {
             setLogarithmicCoordinates('')
         } else {
             setDisplayLogarithmic(true)
-            setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, originalCoordinates))
+            setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, originalPoints))
         }
     }
     
@@ -108,7 +110,7 @@ function GeneratedModels(props) {
             setLogisticCoordinates('')
         } else {
             setDisplayLogistic(true)
-            setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, originalCoordinates))
+            setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, originalPoints))
         }
     }
     
@@ -119,7 +121,18 @@ function GeneratedModels(props) {
             setSinusoidalCoordinates('')
         } else {
             setDisplaySinusoidal(true)
-            setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, originalCoordinates))
+            setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, originalPoints))
+        }
+    }
+    
+    const handleDisplayOriginal = (e) => {
+        e.preventDefault()
+        if (displayOriginal) {
+            setDisplayOriginal(false)
+            setOriginalCoordinates('')
+        } else {
+            setDisplayOriginal(true)
+            setOriginalCoordinates(originalPoints)
         }
     }
 
@@ -173,9 +186,15 @@ function GeneratedModels(props) {
         displayButtons.push(<button onClick={handleDisplaySinusoidal}>Show Sinusoidal Graph</button>)
     }
 
+    if (displayOriginal) {
+        displayButtons.push(<button onClick={handleDisplayOriginal}>Hide Original Points</button>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayOriginal}>Show Original Points</button>)
+    }
+
     const allCoordinates = [originalCoordinates, linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
 
-    const xaxis = HorizontalAxis(originalCoordinates)
+    const xaxis = HorizontalAxis(originalPoints)
     const yaxis = VerticalAxis(allCoordinates)
     const xMinimum = xaxis.minimum
     const xMaximum = xaxis.maximum
