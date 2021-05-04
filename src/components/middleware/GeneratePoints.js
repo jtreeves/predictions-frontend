@@ -1,16 +1,9 @@
 import Evaluations from './Evaluations'
 
-function GeneratePoints(equationType, coefficients, minimum, maximum, adjustment = 0) {
-    const range = maximum - minimum
-    const adjustedRange = range * (1 + adjustment)
-    const tail = (adjustedRange - range) / 2
-    const adjustedMinimum = minimum - tail
-    const adjustedMaximum = maximum + tail
-    const increment = adjustedRange / 100
-
+function GeneratePoints(equationType, coefficients, minimum, maximum, increment) {
     let finalPoints = []
 
-    for (let x = adjustedMinimum; x <= adjustedMaximum; x += increment) {
+    for (let x = minimum; x <= maximum; x += increment) {
         const y = Evaluations(equationType, coefficients, x)
         finalPoints.push({x: x, y: y})
     }
