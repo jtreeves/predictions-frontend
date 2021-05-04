@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import * as d3 from 'd3'
 
 function GraphOutput(props) {
+    console.log('PROPS.LINEARPOINTS: ', props.linearPoints)
     const legend = [
         { type: "linear", color: "pink" },
         { type: "quadratic", color: "green" },
@@ -18,7 +19,11 @@ function GraphOutput(props) {
         const margin = { top: 50, right: 50, bottom: 50, left: 50 }
         const width = 500 - margin.left - margin.right
         const height = 500 - margin.top - margin.bottom
-        
+
+        d3
+            .select(".main-graph")
+            .remove()
+
         const xScale = d3
             .scaleLinear()
             .domain([props.xMinimum, props.xMaximum])
@@ -36,7 +41,9 @@ function GraphOutput(props) {
             .curve(d3.curveCatmullRom.alpha(.5))
 
         const graph = d3
-            .select("#graph-output")
+            .select(".graph-container")
+            .append("svg")
+            .attr("class", "main-graph")
             .attr("width", width + margin.left + 4 * margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -99,13 +106,15 @@ function GraphOutput(props) {
                     .text(d.type)
             })
 
-        graph
-            .append("path")
-            .datum(props.linearPoints)
-            .attr("d", path)
-            .style("fill", "none")
-            .style("stroke", "pink")
-            .style("stroke-width", 2.5)
+        if (props.linearPoints) {
+            graph
+                .append("path")
+                .datum(props.linearPoints)
+                .attr("d", path)
+                .style("fill", "none")
+                .style("stroke", "pink")
+                .style("stroke-width", 2.5)
+        }
         
         graph
             .append("path")
@@ -155,13 +164,15 @@ function GraphOutput(props) {
             .style("stroke", "purple")
             .style("stroke-width", 2.5)
         
-        graph
-            .append("path")
-            .datum(props.sinusoidalPoints)
-            .attr("d", path)
-            .style("fill", "none")
-            .style("stroke", "red")
-            .style("stroke-width", 2.5)
+        if (props.sinusoidalPoints) {
+            graph
+                .append("path")
+                .datum(props.sinusoidalPoints)
+                .attr("d", path)
+                .style("fill", "none")
+                .style("stroke", "red")
+                .style("stroke-width", 2.5)
+        }
         
         graph
             .selectAll("plot")

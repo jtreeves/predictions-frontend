@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Latex from 'react-latex'
 import GeneratePoints from "../../middleware/GeneratePoints"
 import HorizontalAxis from '../../middleware/HorizontalAxis'
@@ -16,14 +17,41 @@ function GeneratedModels(props) {
         originalCoordinates.push({ x: point[0], y: point[1] })
     }
 
-    const linearCoordinates = GeneratePoints('linear', props.linearConstants, originalCoordinates)
-    const quadraticCoordinates = GeneratePoints('quadratic', props.quadraticConstants, originalCoordinates)
-    const cubicCoordinates = GeneratePoints('cubic', props.cubicConstants, originalCoordinates)
-    const hyperbolicCoordinates = GeneratePoints('hyperbolic', props.hyperbolicConstants, originalCoordinates)
-    const exponentialCoordinates = GeneratePoints('exponential', props.exponentialConstants, originalCoordinates)
-    const logarithmicCoordinates = GeneratePoints('logarithmic', props.logarithmicConstants, originalCoordinates)
-    const logisticCoordinates = GeneratePoints('logistic', props.logisticConstants, originalCoordinates)
-    const sinusoidalCoordinates = GeneratePoints('sinusoidal', props.sinusoidalConstants, originalCoordinates)
+    const [displayLinear, setDisplayLinear] = useState(true)
+    const [displayQuadratic, setDisplayQuadratic] = useState(true)
+    const [displayCubic, setDisplayCubic] = useState(true)
+    const [displayHyperbolic, setDisplayHyperbolic] = useState(true)
+    const [displayExponential, setDisplayExponential] = useState(true)
+    const [displayLogarithmic, setDisplayLogarithmic] = useState(true)
+    const [displayLogistic, setDisplayLogistic] = useState(true)
+    const [displaySinusoidal, setDisplaySinusoidal] = useState(true)
+    
+    const [linearCoordinates, setLinearCoordinates] = useState(GeneratePoints('linear', props.linearConstants, originalCoordinates))
+    const [quadraticCoordinates, setQuadraticCoordinates] = useState(GeneratePoints('quadratic', props.quadraticConstants, originalCoordinates))
+    const [cubicCoordinates, setCubicCoordinates] = useState(GeneratePoints('cubic', props.cubicConstants, originalCoordinates))
+    const [hyperbolicCoordinates, setHyperbolicCoordinates] = useState(GeneratePoints('hyperbolic', props.hyperbolicConstants, originalCoordinates))
+    const [exponentialCoordinates, setExponentialCoordinates] = useState(GeneratePoints('exponential', props.exponentialConstants, originalCoordinates))
+    const [logarithmicCoordinates, setLogarithmicCoordinates] = useState(GeneratePoints('logarithmic', props.logarithmicConstants, originalCoordinates))
+    const [logisticCoordinates, setLogisticCoordinates] = useState(GeneratePoints('logistic', props.logisticConstants, originalCoordinates))
+    const [sinusoidalCoordinates, setSinusoidalCoordinates] = useState(GeneratePoints('sinusoidal', props.sinusoidalConstants, originalCoordinates))
+    
+    const handleDisplayLinear = (e) => {
+        e.preventDefault()
+        if (displayLinear) {
+            setDisplayLinear(false)
+            setLinearCoordinates('')
+        } else {
+            setDisplayLinear(true)
+            setLinearCoordinates(GeneratePoints('linear', props.linearConstants, originalCoordinates))
+        }
+    }
+
+    const displayButtons = []
+    if (displayLinear) {
+        displayButtons.push(<button onClick={handleDisplayLinear}>Hide Linear Graph</button>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayLinear}>Show Linear Graph</button>)
+    }
 
     const allCoordinates = [originalCoordinates, linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
 
@@ -107,7 +135,9 @@ function GeneratedModels(props) {
 
     return (
         <div>
-            <svg id="graph-output" />
+            <div className="graph-container">
+                <svg className="main-graph" />
+            </div>
             <GraphOutput 
                 title={props.title}
                 independent={props.independent}
@@ -126,6 +156,7 @@ function GeneratedModels(props) {
                 logisticPoints={logisticCoordinates}
                 sinusoidalPoints={sinusoidalCoordinates}
             />
+            {displayButtons}
 
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
 
