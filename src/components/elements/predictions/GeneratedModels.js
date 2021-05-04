@@ -212,9 +212,38 @@ function GeneratedModels(props) {
         }
     }
 
-    const handleZoom = (e) => {
+    const handleZoomOut = (e) => {
         e.preventDefault()
         setZoom(zoom + 0.1)
+        if (displayLinear) {
+            setLinearCoordinates(GeneratePoints('linear', props.linearConstants, adjustedMinimum, adjustedMaximum, increment))
+        }
+        if (displayQuadratic) {
+            setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, adjustedMinimum, adjustedMaximum, increment))
+        }
+        if (displayCubic) {
+            setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, adjustedMinimum, adjustedMaximum, increment))
+        }
+        if (displayHyperbolic) {
+            setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, adjustedMinimum, adjustedMaximum, increment))
+        }
+        if (displayExponential) {
+            setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, adjustedMinimum, adjustedMaximum, increment))
+        }
+        if (displayLogarithmic) {
+            setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, adjustedMinimum, adjustedMaximum, increment))
+        }
+        if (displayLogistic) {
+            setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, adjustedMinimum, adjustedMaximum, increment))
+        }
+        if (displaySinusoidal) {
+            setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, adjustedMinimum, adjustedMaximum, increment))
+        }
+    }
+    
+    const handleZoomIn = (e) => {
+        e.preventDefault()
+        setZoom(zoom - 0.1)
         if (displayLinear) {
             setLinearCoordinates(GeneratePoints('linear', props.linearConstants, adjustedMinimum, adjustedMaximum, increment))
         }
@@ -523,7 +552,8 @@ function GeneratedModels(props) {
 
             {displayButtons}
 
-            <button onClick={handleZoom}>Zoom In</button>
+            <button onClick={handleZoomOut}>Zoom Out</button>
+            <button onClick={handleZoomIn}>Zoom In</button>
 
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
 
