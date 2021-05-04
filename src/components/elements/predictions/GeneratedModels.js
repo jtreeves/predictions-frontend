@@ -61,7 +61,7 @@ function GeneratedModels(props) {
     const xMaximum = xaxis.maximum
     const yMinimum = yaxis.minimum
     const yMaximum = yaxis.maximum
-    
+
     const linearRoots = FormatPoints(props.linearPoints.roots, true)
     const linearMaxima = FormatPoints(props.linearPoints.maxima)
     const linearMinima = FormatPoints(props.linearPoints.minima)
@@ -135,9 +135,6 @@ function GeneratedModels(props) {
 
     return (
         <div>
-            <div className="graph-container">
-                <svg className="main-graph" />
-            </div>
             <GraphOutput 
                 title={props.title}
                 independent={props.independent}

@@ -197,7 +197,11 @@ function GraphOutput(props) {
         }
     })
 
-    return null
+    return (
+        <div className="graph-container">
+            <svg className="main-graph" />
+        </div>
+    )
 }
 
 export default GraphOutput
