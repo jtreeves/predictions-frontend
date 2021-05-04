@@ -45,12 +45,132 @@ function GeneratedModels(props) {
             setLinearCoordinates(GeneratePoints('linear', props.linearConstants, originalCoordinates))
         }
     }
+    
+    const handleDisplayQuadratic = (e) => {
+        e.preventDefault()
+        if (displayQuadratic) {
+            setDisplayQuadratic(false)
+            setQuadraticCoordinates('')
+        } else {
+            setDisplayQuadratic(true)
+            setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, originalCoordinates))
+        }
+    }
+    
+    const handleDisplayCubic = (e) => {
+        e.preventDefault()
+        if (displayCubic) {
+            setDisplayCubic(false)
+            setCubicCoordinates('')
+        } else {
+            setDisplayCubic(true)
+            setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, originalCoordinates))
+        }
+    }
+    
+    const handleDisplayHyperbolic = (e) => {
+        e.preventDefault()
+        if (displayHyperbolic) {
+            setDisplayHyperbolic(false)
+            setHyperbolicCoordinates('')
+        } else {
+            setDisplayHyperbolic(true)
+            setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, originalCoordinates))
+        }
+    }
+    
+    const handleDisplayExponential = (e) => {
+        e.preventDefault()
+        if (displayExponential) {
+            setDisplayExponential(false)
+            setExponentialCoordinates('')
+        } else {
+            setDisplayExponential(true)
+            setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, originalCoordinates))
+        }
+    }
+    
+    const handleDisplayLogarithmic = (e) => {
+        e.preventDefault()
+        if (displayLogarithmic) {
+            setDisplayLogarithmic(false)
+            setLogarithmicCoordinates('')
+        } else {
+            setDisplayLogarithmic(true)
+            setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, originalCoordinates))
+        }
+    }
+    
+    const handleDisplayLogistic = (e) => {
+        e.preventDefault()
+        if (displayLogistic) {
+            setDisplayLogistic(false)
+            setLogisticCoordinates('')
+        } else {
+            setDisplayLogistic(true)
+            setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, originalCoordinates))
+        }
+    }
+    
+    const handleDisplaySinusoidal = (e) => {
+        e.preventDefault()
+        if (displaySinusoidal) {
+            setDisplaySinusoidal(false)
+            setSinusoidalCoordinates('')
+        } else {
+            setDisplaySinusoidal(true)
+            setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, originalCoordinates))
+        }
+    }
 
     const displayButtons = []
+    
     if (displayLinear) {
         displayButtons.push(<button onClick={handleDisplayLinear}>Hide Linear Graph</button>)
     } else {
         displayButtons.push(<button onClick={handleDisplayLinear}>Show Linear Graph</button>)
+    }
+
+    if (displayQuadratic) {
+        displayButtons.push(<button onClick={handleDisplayQuadratic}>Hide Quadratic Graph</button>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayQuadratic}>Show Quadratic Graph</button>)
+    }
+
+    if (displayCubic) {
+        displayButtons.push(<button onClick={handleDisplayCubic}>Hide Cubic Graph</button>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayCubic}>Show Cubic Graph</button>)
+    }
+
+    if (displayHyperbolic) {
+        displayButtons.push(<button onClick={handleDisplayHyperbolic}>Hide Hyperbolic Graph</button>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayHyperbolic}>Show Hyperbolic Graph</button>)
+    }
+
+    if (displayExponential) {
+        displayButtons.push(<button onClick={handleDisplayExponential}>Hide Exponential Graph</button>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayExponential}>Show Exponential Graph</button>)
+    }
+
+    if (displayLogarithmic) {
+        displayButtons.push(<button onClick={handleDisplayLogarithmic}>Hide Logarithmic Graph</button>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayLogarithmic}>Show Logarithmic Graph</button>)
+    }
+
+    if (displayLogistic) {
+        displayButtons.push(<button onClick={handleDisplayLogistic}>Hide Logistic Graph</button>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplayLogistic}>Show Logistic Graph</button>)
+    }
+
+    if (displaySinusoidal) {
+        displayButtons.push(<button onClick={handleDisplaySinusoidal}>Hide Sinusoidal Graph</button>)
+    } else {
+        displayButtons.push(<button onClick={handleDisplaySinusoidal}>Show Sinusoidal Graph</button>)
     }
 
     const allCoordinates = [originalCoordinates, linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
