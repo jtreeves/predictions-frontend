@@ -5,6 +5,7 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function AllSets(props) {
     const [predictions, setPredictions] = useState([])
+    const [loading, setLoading] = useState(true)
     
     const getPredictions = async () => {
         try {
@@ -49,17 +50,26 @@ function AllSets(props) {
         } catch(error) {
             setPredictions('')
         }
+        setLoading(false)
     }
 
     useEffect(() => {
         getPredictions()
     })
 
-    return (
-        <div>
-            {predictions}
-        </div>
-    )
+    if (loading) {
+        return (
+            <div>
+                LOADING!
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                {predictions}
+            </div>
+        )
+    }
 }
 
 export default AllSets
