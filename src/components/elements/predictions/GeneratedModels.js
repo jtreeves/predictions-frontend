@@ -246,10 +246,12 @@ function GeneratedModels(props) {
     const sinusoidalCorrelation = '$' + props.sinusoidalCorrelation.toFixed(precision) + '$'
 
     const displayButtons = []
+    const futureEvaluations = []
     const modelBreakdowns = []
     
     if (displayLinear) {
         displayButtons.push(<button onClick={handleDisplayLinear}>Hide Linear Graph</button>)
+        futureEvaluations.push(<p><em><strong>Linear Prediction</strong></em> {linearEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Linear Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{linearEquation}</Latex></p>
@@ -267,6 +269,7 @@ function GeneratedModels(props) {
 
     if (displayQuadratic) {
         displayButtons.push(<button onClick={handleDisplayQuadratic}>Hide Quadratic Graph</button>)
+        futureEvaluations.push(<p><em><strong>Quadratic Prediction</strong></em> {quadraticEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Quadratic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{quadraticEquation}</Latex></p>
@@ -284,6 +287,7 @@ function GeneratedModels(props) {
 
     if (displayCubic) {
         displayButtons.push(<button onClick={handleDisplayCubic}>Hide Cubic Graph</button>)
+        futureEvaluations.push(<p><em><strong>Cubic Prediction</strong></em> {cubicEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Cubic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{cubicEquation}</Latex></p>
@@ -301,6 +305,7 @@ function GeneratedModels(props) {
 
     if (displayHyperbolic) {
         displayButtons.push(<button onClick={handleDisplayHyperbolic}>Hide Hyperbolic Graph</button>)
+        futureEvaluations.push(<p><em><strong>Hyperbolic Prediction</strong></em> {hyperbolicEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Hyperbolic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{hyperbolicEquation}</Latex></p>
@@ -318,6 +323,7 @@ function GeneratedModels(props) {
 
     if (displayExponential) {
         displayButtons.push(<button onClick={handleDisplayExponential}>Hide Exponential Graph</button>)
+        futureEvaluations.push(<p><em><strong>Exponential Prediction</strong></em> {exponentialEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Exponential Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{exponentialEquation}</Latex></p>
@@ -335,6 +341,7 @@ function GeneratedModels(props) {
 
     if (displayLogarithmic) {
         displayButtons.push(<button onClick={handleDisplayLogarithmic}>Hide Logarithmic Graph</button>)
+        futureEvaluations.push(<p><em><strong>Logarithmic Prediction</strong></em> {logarithmicEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Logarithmic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{logarithmicEquation}</Latex></p>
@@ -352,6 +359,7 @@ function GeneratedModels(props) {
 
     if (displayLogistic) {
         displayButtons.push(<button onClick={handleDisplayLogistic}>Hide Logistic Graph</button>)
+        futureEvaluations.push(<p><em><strong>Logistic Prediction</strong></em> {logisticEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Logistic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{logisticEquation}</Latex></p>
@@ -369,6 +377,7 @@ function GeneratedModels(props) {
 
     if (displaySinusoidal) {
         displayButtons.push(<button onClick={handleDisplaySinusoidal}>Hide Sinusoidal Graph</button>)
+        futureEvaluations.push(<p><em><strong>Sinusoidal Prediction</strong></em> {sinusoidalEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Sinusoidal Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{sinusoidalEquation}</Latex></p>
@@ -410,19 +419,14 @@ function GeneratedModels(props) {
                 logisticPoints={logisticCoordinates}
                 sinusoidalPoints={sinusoidalCoordinates}
             />
+            
             {displayButtons}
 
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
 
             <h2>Predicted Future Values at an Input of {testInput}</h2>
-            <p><em><strong>Linear Prediction</strong></em> {linearEvaluation}</p>
-            <p><em><strong>Quadratic Prediction</strong></em> {quadraticEvaluation}</p>
-            <p><em><strong>Cubic Prediction</strong></em> {cubicEvaluation}</p>
-            <p><em><strong>Hyperbolic Prediction</strong></em> {hyperbolicEvaluation}</p>
-            <p><em><strong>Exponential Prediction</strong></em> {exponentialEvaluation}</p>
-            <p><em><strong>Logarithmic Prediction</strong></em> {logarithmicEvaluation}</p>
-            <p><em><strong>Logistic Prediction</strong></em> {logisticEvaluation}</p>
-            <p><em><strong>Sinusoidal Prediction</strong></em> {sinusoidalEvaluation}</p>
+            
+            {futureEvaluations}
 
             <label htmlFor="testInput">Choose a number to evaluate</label>
             <input
