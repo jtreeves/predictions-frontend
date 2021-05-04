@@ -40,6 +40,7 @@ function Favorite(props) {
                 <form onSubmit={handleSubmitting}>
                     <label for="graph">Select a graph:</label>
                     <select name="graph" id="graph" onChange={handleGraph}>
+                        <option value=""></option>
                         <option value="linear">Linear</option>
                         <option value="quadratic">Quadratic</option>
                         <option value="cubic">Cubic</option>
@@ -68,6 +69,7 @@ function Favorite(props) {
                 <form onSubmit={handleSubmitting}>
                     <label for="graph">Select a graph:</label>
                     <select name="graph" id="graph" onChange={handleGraph}>
+                        <option value=""></option>
                         <option value="linear">Linear</option>
                         <option value="quadratic">Quadratic</option>
                         <option value="cubic">Cubic</option>
