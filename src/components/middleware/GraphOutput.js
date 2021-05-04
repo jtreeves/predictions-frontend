@@ -2,17 +2,43 @@ import { useEffect } from 'react'
 import * as d3 from 'd3'
 
 function GraphOutput(props) {
-    const legend = [
-        { type: "linear", color: "pink" },
-        { type: "quadratic", color: "green" },
-        { type: "cubic", color: "blue" },
-        { type: "hyperbolic", color: "brown" },
-        { type: "exponential", color: "orange" },
-        { type: "logarithmic", color: "yellow" },
-        { type: "logistic", color: "purple" },
-        { type: "sinusoidal", color: "red" },
-        { type: "original", color: "black" }
-    ]
+    const legend = []
+
+    if (props.linearPoints) {
+        legend.push({ type: "linear", color: "pink" })
+    }
+
+    if (props.quadraticPoints) {
+        legend.push({ type: "quadratic", color: "green" })
+    }
+    
+    if (props.cubicPoints) {
+        legend.push({ type: "cubic", color: "blue" })
+    }
+    
+    if (props.hyperbolicPoints) {
+        legend.push({ type: "hyperbolic", color: "brown" })
+    }
+    
+    if (props.exponentialPoints) {
+        legend.push({ type: "exponential", color: "orange" })
+    }
+    
+    if (props.logarithmicPoints) {
+        legend.push({ type: "logarithmic", color: "yellow" })
+    }
+    
+    if (props.logisticPoints) {
+        legend.push({ type: "logistic", color: "purple" })
+    }
+    
+    if (props.sinusoidalPoints) {
+        legend.push({ type: "sinusoidal", color: "red" })
+    }
+    
+    if (props.originalPoints) {
+        legend.push({ type: "original", color: "black" })
+    }
 
     useEffect(() => {
         const margin = { top: 50, right: 50, bottom: 50, left: 50 }
