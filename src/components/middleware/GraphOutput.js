@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import * as d3 from 'd3'
 
 function GraphOutput(props) {
-    console.log('PROPS.LINEARPOINTS: ', props.linearPoints)
     const legend = [
         { type: "linear", color: "pink" },
         { type: "quadratic", color: "green" },
@@ -116,53 +115,65 @@ function GraphOutput(props) {
                 .style("stroke-width", 2.5)
         }
         
-        graph
-            .append("path")
-            .datum(props.quadraticPoints)
-            .attr("d", path)
-            .style("fill", "none")
-            .style("stroke", "green")
-            .style("stroke-width", 2.5)
+        if (props.quadraticPoints) {
+            graph
+                .append("path")
+                .datum(props.quadraticPoints)
+                .attr("d", path)
+                .style("fill", "none")
+                .style("stroke", "green")
+                .style("stroke-width", 2.5)
+        }
         
-        graph
-            .append("path")
-            .datum(props.cubicPoints)
-            .attr("d", path)
-            .style("fill", "none")
-            .style("stroke", "blue")
-            .style("stroke-width", 2.5)
+        if (props.cubicPoints) {
+            graph
+                .append("path")
+                .datum(props.cubicPoints)
+                .attr("d", path)
+                .style("fill", "none")
+                .style("stroke", "blue")
+                .style("stroke-width", 2.5)
+        }
         
-        graph
-            .append("path")
-            .datum(props.hyperbolicPoints)
-            .attr("d", path)
-            .style("fill", "none")
-            .style("stroke", "brown")
-            .style("stroke-width", 2.5)
+        if (props.hyperbolicPoints) {
+            graph
+                .append("path")
+                .datum(props.hyperbolicPoints)
+                .attr("d", path)
+                .style("fill", "none")
+                .style("stroke", "brown")
+                .style("stroke-width", 2.5)
+        }
         
-        graph
-            .append("path")
-            .datum(props.exponentialPoints)
-            .attr("d", path)
-            .style("fill", "none")
-            .style("stroke", "orange")
-            .style("stroke-width", 2.5)
+        if (props.exponentialPoints) {
+            graph
+                .append("path")
+                .datum(props.exponentialPoints)
+                .attr("d", path)
+                .style("fill", "none")
+                .style("stroke", "orange")
+                .style("stroke-width", 2.5)
+        }
         
-        graph
-            .append("path")
-            .datum(props.logarithmicPoints)
-            .attr("d", path)
-            .style("fill", "none")
-            .style("stroke", "yellow")
-            .style("stroke-width", 2.5)
+        if (props.logarithmicPoints) {
+            graph
+                .append("path")
+                .datum(props.logarithmicPoints)
+                .attr("d", path)
+                .style("fill", "none")
+                .style("stroke", "yellow")
+                .style("stroke-width", 2.5)
+        }
         
-        graph
-            .append("path")
-            .datum(props.logisticPoints)
-            .attr("d", path)
-            .style("fill", "none")
-            .style("stroke", "purple")
-            .style("stroke-width", 2.5)
+        if (props.logisticPoints) {
+            graph
+                .append("path")
+                .datum(props.logisticPoints)
+                .attr("d", path)
+                .style("fill", "none")
+                .style("stroke", "purple")
+                .style("stroke-width", 2.5)
+        }
         
         if (props.sinusoidalPoints) {
             graph
@@ -174,14 +185,16 @@ function GraphOutput(props) {
                 .style("stroke-width", 2.5)
         }
         
-        graph
-            .selectAll("plot")
-            .data(props.originalPoints)
-            .enter()
-            .append("circle")
-            .attr("cx", (d) => xScale(d.x))
-            .attr("cy", (d) => yScale(d.y))
-            .attr("r", 3)
+        if (props.originalPoints) {
+            graph
+                .selectAll("plot")
+                .data(props.originalPoints)
+                .enter()
+                .append("circle")
+                .attr("cx", (d) => xScale(d.x))
+                .attr("cy", (d) => yScale(d.y))
+                .attr("r", 3)
+        }
     })
 
     return null
