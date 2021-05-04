@@ -204,14 +204,31 @@ function GeneratedModels(props) {
     const xRange = xMaximum - xMinimum
     const futureInput = Math.round(xMaximum + xRange / 2)
 
-    const linearEvaluation = Evaluations('linear', props.linearConstants, futureInput)
-    const quadraticEvaluation = Evaluations('quadratic', props.quadraticConstants, futureInput)
-    const cubicEvaluation = Evaluations('cubic', props.cubicConstants, futureInput)
-    const hyperbolicEvaluation = Evaluations('hyperbolic', props.hyperbolicConstants, futureInput)
-    const exponentialEvaluation = Evaluations('exponential', props.exponentialConstants, futureInput)
-    const logarithmicEvaluation = Evaluations('logarithmic', props.logarithmicConstants, futureInput)
-    const logisticEvaluation = Evaluations('logistic', props.logisticConstants, futureInput)
-    const sinusoidalEvaluation = Evaluations('sinusoidal', props.sinusoidalConstants, futureInput)
+    const [testInput, setTestInput] = useState(futureInput)
+    const [linearEvaluation, setLinearEvaluation] = useState(Evaluations('linear', props.linearConstants, futureInput))
+    const [quadraticEvaluation, setQuadraticEvaluation] = useState(Evaluations('quadratic', props.quadraticConstants, futureInput))
+    const [cubicEvaluation, setCubicEvaluation] = useState(Evaluations('cubic', props.cubicConstants, futureInput))
+    const [hyperbolicEvaluation, setHyperbolicEvaluation] = useState(Evaluations('hyperbolic', props.hyperbolicConstants, futureInput))
+    const [exponentialEvaluation, setExponentialEvaluation] = useState(Evaluations('exponential', props.exponentialConstants, futureInput))
+    const [logarithmicEvaluation, setLogarithmicEvaluation] = useState(Evaluations('logarithmic', props.logarithmicConstants, futureInput))
+    const [logisticEvaluation, setLogisticEvaluation] = useState(Evaluations('logistic', props.logisticConstants, futureInput))
+    const [sinusoidalEvaluation, setSinusoidalEvaluation] = useState(Evaluations('sinusoidal', props.sinusoidalConstants, futureInput))
+
+    const handleTestInput = (e) => {
+        setTestInput(Number(e.target.value))
+    }
+
+    const handleFutureValue = (e) => {
+        e.preventDefault()
+        setLinearEvaluation(Evaluations('linear', props.linearConstants, testInput))
+        setQuadraticEvaluation(Evaluations('quadratic', props.quadraticConstants, testInput))
+        setCubicEvaluation(Evaluations('cubic', props.cubicConstants, testInput))
+        setHyperbolicEvaluation(Evaluations('hyperbolic', props.hyperbolicConstants, testInput))
+        setExponentialEvaluation(Evaluations('exponential', props.exponentialConstants, testInput))
+        setLogarithmicEvaluation(Evaluations('logarithmic', props.logarithmicConstants, testInput))
+        setLogisticEvaluation(Evaluations('logistic', props.logisticConstants, testInput))
+        setSinusoidalEvaluation(Evaluations('sinusoidal', props.sinusoidalConstants, testInput))
+    }
 
     const linearRoots = FormatPoints(props.linearPoints.roots, true)
     const linearMaxima = FormatPoints(props.linearPoints.maxima)
@@ -308,7 +325,7 @@ function GeneratedModels(props) {
 
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
 
-            <h2>Predicted Future Values at an Input of {futureInput}</h2>
+            <h2>Predicted Future Values at an Input of {testInput}</h2>
             <p><em><strong>Linear Prediction</strong></em> {linearEvaluation}</p>
             <p><em><strong>Quadratic Prediction</strong></em> {quadraticEvaluation}</p>
             <p><em><strong>Cubic Prediction</strong></em> {cubicEvaluation}</p>
@@ -317,6 +334,15 @@ function GeneratedModels(props) {
             <p><em><strong>Logarithmic Prediction</strong></em> {logarithmicEvaluation}</p>
             <p><em><strong>Logistic Prediction</strong></em> {logisticEvaluation}</p>
             <p><em><strong>Sinusoidal Prediction</strong></em> {sinusoidalEvaluation}</p>
+
+            <label htmlFor="testInput">Choose a number to evaluate</label>
+            <input
+                type="text"
+                name="testInput"
+                value={testInput}
+                onChange={handleTestInput}
+            />
+            <button onClick={handleFutureValue}>Submit</button>
 
             <h2>Linear Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{linearEquation}</Latex></p>
