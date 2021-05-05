@@ -2,6 +2,11 @@ import { useEffect } from 'react'
 import * as d3 from 'd3'
 
 function Table(props) {
+    const headers = [
+        props.independent,
+        props.dependent
+    ]
+
     useEffect(() => {
         d3
             .select(".main-table")
@@ -21,7 +26,7 @@ function Table(props) {
         thead
             .append("tr")
             .selectAll("th")
-            .data(props.headers)
+            .data(headers)
             .enter()
             .append("th")
             .text((heading) => heading)

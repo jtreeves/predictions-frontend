@@ -7,6 +7,7 @@ import GraphOutput from '../../middleware/GraphOutput'
 import FormatSlots from '../../middleware/FormatSlots'
 import FormatPoints from '../../middleware/FormatPoints'
 import Evaluations from '../../middleware/Evaluations'
+import Table from '../../middleware/Table'
 
 // Create function
 function GeneratedModels(props) {
@@ -570,6 +571,12 @@ function GeneratedModels(props) {
             <button onClick={handleFutureValue}>Submit</button>
 
             {modelBreakdowns}
+
+            <Table 
+                independent={props.independent}
+                dependent={props.dependent}
+                points={originalPoints}
+            />
         </div>
     )
 }
