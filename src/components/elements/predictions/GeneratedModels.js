@@ -13,15 +13,18 @@ import Table from '../../middleware/Table'
 function GeneratedModels(props) {
     const precision = parseInt(props.precision)
     const points = JSON.parse(props.dataSet)
-
+    
     const [checkFavorite, setCheckFavorite] = useState(true)
     const [zoom, setZoom] = useState(0)
-
+    
     const originalPoints = []
     for (const point of points) {
         originalPoints.push({ x: point[0], y: point[1] })
     }
 
+    const [displayTable, setDisplayTable] = useState(false)
+    const [table, setTable] = useState('')
+    
     const xAxis = HorizontalAxis(originalPoints)
     const xMinimum = xAxis.minimum
     const xMaximum = xAxis.maximum
@@ -210,6 +213,21 @@ function GeneratedModels(props) {
         } else {
             setDisplayOriginal(true)
             setOriginalCoordinates(originalPoints)
+        }
+    }
+    
+    const handleDisplayTable = (e) => {
+        e.preventDefault()
+        if (displayTable) {
+            setDisplayTable(false)
+            setTable('')
+        } else {
+            setDisplayTable(true)
+            setTable(<Table 
+                independent={props.independent}
+                dependent={props.dependent}
+                points={originalPoints}
+            />)
         }
     }
 
@@ -529,6 +547,14 @@ function GeneratedModels(props) {
         displayButtons.push(<button onClick={handleDisplayOriginal}>Show Original Points</button>)
     }
 
+    const displayTableButtons = []
+
+    if (displayTable) {
+        displayTableButtons.push(<button onClick={handleDisplayTable}>Hide Table of Original Points</button>)
+    } else {
+        displayTableButtons.push(<button onClick={handleDisplayTable}>Show Table of Original Points</button>)
+    }
+
     return (
         <div>
             <GraphOutput 
@@ -572,11 +598,8 @@ function GeneratedModels(props) {
 
             {modelBreakdowns}
 
-            <Table 
-                independent={props.independent}
-                dependent={props.dependent}
-                points={originalPoints}
-            />
+            {displayTableButtons}
+            {table}
         </div>
     )
 }
