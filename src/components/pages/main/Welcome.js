@@ -1,5 +1,3 @@
-import Table from "../../middleware/Table";
-
 // Create function
 function Welcome() {
     return (
