@@ -11,7 +11,7 @@ function DisplayName(props) {
             const currentUser = await axios.get(REACT_APP_SERVER_URL + 'users/' + userId)
             setName(currentUser.data.user.name)
         } catch(error) {
-            alert('Problem getting name of user')
+            setName('')
         }
     }
 
