@@ -6,10 +6,10 @@ import VerticalAxis from '../../middleware/VerticalAxis'
 import GraphOutput from '../../middleware/GraphOutput'
 import FormatSlots from '../../middleware/FormatSlots'
 import FormatPoints from '../../middleware/FormatPoints'
-import Evaluations from '../../middleware/Evaluations'
 import Table from '../../middleware/Table'
 import Zoom from './Zoom'
 import CheckFavorite from '../../middleware/CheckFavorite'
+import FutureEvaluations from './FutureEvaluations'
 
 // Create function
 function GeneratedModels(props) {
@@ -176,34 +176,6 @@ function GeneratedModels(props) {
     const yAxis = VerticalAxis(allCoordinates)
     const yMinimum = yAxis.minimum
     const yMaximum = yAxis.maximum
-    const xRange = xMaximum - xMinimum
-    const futureInput = Math.round(xMaximum + xRange / 2)
-
-    const [testInput, setTestInput] = useState(futureInput)
-    const [linearEvaluation, setLinearEvaluation] = useState(Evaluations('linear', props.linearConstants, futureInput))
-    const [quadraticEvaluation, setQuadraticEvaluation] = useState(Evaluations('quadratic', props.quadraticConstants, futureInput))
-    const [cubicEvaluation, setCubicEvaluation] = useState(Evaluations('cubic', props.cubicConstants, futureInput))
-    const [hyperbolicEvaluation, setHyperbolicEvaluation] = useState(Evaluations('hyperbolic', props.hyperbolicConstants, futureInput))
-    const [exponentialEvaluation, setExponentialEvaluation] = useState(Evaluations('exponential', props.exponentialConstants, futureInput))
-    const [logarithmicEvaluation, setLogarithmicEvaluation] = useState(Evaluations('logarithmic', props.logarithmicConstants, futureInput))
-    const [logisticEvaluation, setLogisticEvaluation] = useState(Evaluations('logistic', props.logisticConstants, futureInput))
-    const [sinusoidalEvaluation, setSinusoidalEvaluation] = useState(Evaluations('sinusoidal', props.sinusoidalConstants, futureInput))
-
-    const handleTestInput = (e) => {
-        setTestInput(Number(e.target.value))
-    }
-
-    const handleFutureValue = (e) => {
-        e.preventDefault()
-        setLinearEvaluation(Evaluations('linear', props.linearConstants, testInput))
-        setQuadraticEvaluation(Evaluations('quadratic', props.quadraticConstants, testInput))
-        setCubicEvaluation(Evaluations('cubic', props.cubicConstants, testInput))
-        setHyperbolicEvaluation(Evaluations('hyperbolic', props.hyperbolicConstants, testInput))
-        setExponentialEvaluation(Evaluations('exponential', props.exponentialConstants, testInput))
-        setLogarithmicEvaluation(Evaluations('logarithmic', props.logarithmicConstants, testInput))
-        setLogisticEvaluation(Evaluations('logistic', props.logisticConstants, testInput))
-        setSinusoidalEvaluation(Evaluations('sinusoidal', props.sinusoidalConstants, testInput))
-    }
 
     const linearRoots = FormatPoints(props.linearPoints.roots, true)
     const linearMaxima = FormatPoints(props.linearPoints.maxima)
@@ -277,12 +249,10 @@ function GeneratedModels(props) {
     const sinusoidalCorrelation = '$' + props.sinusoidalCorrelation.toFixed(precision) + '$'
 
     const displayButtons = []
-    const futureEvaluations = []
     const modelBreakdowns = []
     
     if (displayLinear) {
         displayButtons.push(<button onClick={handleDisplayLinear}>Hide Linear Graph</button>)
-        futureEvaluations.push(<p><em><strong>Linear Prediction</strong></em> {linearEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Linear Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{linearEquation}</Latex></p>
@@ -300,7 +270,6 @@ function GeneratedModels(props) {
 
     if (displayQuadratic) {
         displayButtons.push(<button onClick={handleDisplayQuadratic}>Hide Quadratic Graph</button>)
-        futureEvaluations.push(<p><em><strong>Quadratic Prediction</strong></em> {quadraticEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Quadratic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{quadraticEquation}</Latex></p>
@@ -318,7 +287,6 @@ function GeneratedModels(props) {
 
     if (displayCubic) {
         displayButtons.push(<button onClick={handleDisplayCubic}>Hide Cubic Graph</button>)
-        futureEvaluations.push(<p><em><strong>Cubic Prediction</strong></em> {cubicEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Cubic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{cubicEquation}</Latex></p>
@@ -336,7 +304,6 @@ function GeneratedModels(props) {
 
     if (displayHyperbolic) {
         displayButtons.push(<button onClick={handleDisplayHyperbolic}>Hide Hyperbolic Graph</button>)
-        futureEvaluations.push(<p><em><strong>Hyperbolic Prediction</strong></em> {hyperbolicEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Hyperbolic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{hyperbolicEquation}</Latex></p>
@@ -354,7 +321,6 @@ function GeneratedModels(props) {
 
     if (displayExponential) {
         displayButtons.push(<button onClick={handleDisplayExponential}>Hide Exponential Graph</button>)
-        futureEvaluations.push(<p><em><strong>Exponential Prediction</strong></em> {exponentialEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Exponential Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{exponentialEquation}</Latex></p>
@@ -372,7 +338,6 @@ function GeneratedModels(props) {
 
     if (displayLogarithmic) {
         displayButtons.push(<button onClick={handleDisplayLogarithmic}>Hide Logarithmic Graph</button>)
-        futureEvaluations.push(<p><em><strong>Logarithmic Prediction</strong></em> {logarithmicEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Logarithmic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{logarithmicEquation}</Latex></p>
@@ -390,7 +355,6 @@ function GeneratedModels(props) {
 
     if (displayLogistic) {
         displayButtons.push(<button onClick={handleDisplayLogistic}>Hide Logistic Graph</button>)
-        futureEvaluations.push(<p><em><strong>Logistic Prediction</strong></em> {logisticEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Logistic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{logisticEquation}</Latex></p>
@@ -408,7 +372,6 @@ function GeneratedModels(props) {
 
     if (displaySinusoidal) {
         displayButtons.push(<button onClick={handleDisplaySinusoidal}>Hide Sinusoidal Graph</button>)
-        futureEvaluations.push(<p><em><strong>Sinusoidal Prediction</strong></em> {sinusoidalEvaluation}</p>)
         modelBreakdowns.push(<div>
             <h2>Sinusoidal Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{sinusoidalEquation}</Latex></p>
@@ -495,18 +458,26 @@ function GeneratedModels(props) {
 
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
 
-            <h2>Predicted Future Values at an Input of {testInput}</h2>
-            
-            {futureEvaluations}
-
-            <label htmlFor="testInput">Choose a number to evaluate</label>
-            <input
-                type="text"
-                name="testInput"
-                value={testInput}
-                onChange={handleTestInput}
+            <FutureEvaluations 
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                linearConstants={props.linearConstants}
+                displayLinear={displayLinear}
+                quadraticConstants={props.quadraticConstants}
+                displayQuadratic={displayQuadratic}
+                cubicConstants={props.cubicConstants}
+                displayCubic={displayCubic}
+                hyperbolicConstants={props.hyperbolicConstants}
+                displayHyperbolic={displayHyperbolic}
+                exponentialConstants={props.exponentialConstants}
+                displayExponential={displayExponential}
+                logarithmicConstants={props.logarithmicConstants}
+                displayLogarithmic={displayLogarithmic}
+                logisticConstants={props.logisticConstants}
+                displayLogistic={displayLogistic}
+                sinusoidalConstants={props.sinusoidalConstants}
+                displaySinusoidal={displaySinusoidal}
             />
-            <button onClick={handleFutureValue}>Submit</button>
 
             {modelBreakdowns}
 
