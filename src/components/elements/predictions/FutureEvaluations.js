@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Evaluations from '../../utilities/predictions/Evaluations'
+import FormattedEvaluations from './FormattedEvaluations'
 
 function FutureEvaluations(props) {
     const [futureInput, setFutureInput] = useState(Math.round(props.xMaximum + (props.xMaximum - props.xMinimum) / 2))
@@ -31,35 +32,59 @@ function FutureEvaluations(props) {
     const allEvaluations = []
 
     if (props.displayLinear) {
-        allEvaluations.push(<p><em><strong>Linear Prediction</strong></em> {linearEvaluation}</p>)
+        allEvaluations.push(<FormattedEvaluations 
+            type="Linear"
+            evaluation={linearEvaluation}
+        />)
     }
 
     if (props.displayQuadratic) {
-        allEvaluations.push(<p><em><strong>Quadratic Prediction</strong></em> {quadraticEvaluation}</p>)
+        allEvaluations.push(<FormattedEvaluations 
+            type="Quadratic"
+            evaluation={quadraticEvaluation}
+        />)
     }
 
     if (props.displayCubic) {
-        allEvaluations.push(<p><em><strong>Cubic Prediction</strong></em> {cubicEvaluation}</p>)
+        allEvaluations.push(<FormattedEvaluations 
+            type="Cubic"
+            evaluation={cubicEvaluation}
+        />)
     }
 
     if (props.displayHyperbolic) {
-        allEvaluations.push(<p><em><strong>Hyperbolic Prediction</strong></em> {hyperbolicEvaluation}</p>)
+        allEvaluations.push(<FormattedEvaluations 
+            type="Hyperbolic"
+            evaluation={hyperbolicEvaluation}
+        />)
     } 
 
     if (props.displayExponential) {
-        allEvaluations.push(<p><em><strong>Exponential Prediction</strong></em> {exponentialEvaluation}</p>)
+        allEvaluations.push(<FormattedEvaluations 
+            type="Exponential"
+            evaluation={exponentialEvaluation}
+        />)
     } 
 
     if (props.displayLogarithmic) {
-        allEvaluations.push(<p><em><strong>Logarithmic Prediction</strong></em> {logarithmicEvaluation}</p>)
+        allEvaluations.push(<FormattedEvaluations 
+            type="Logarithmic"
+            evaluation={logarithmicEvaluation}
+        />)
     } 
 
     if (props.displayLogistic) {
-        allEvaluations.push(<p><em><strong>Logistic Prediction</strong></em> {logisticEvaluation}</p>)
+        allEvaluations.push(<FormattedEvaluations 
+            type="Logistic"
+            evaluation={logisticEvaluation}
+        />)
     } 
 
     if (props.displaySinusoidal) {
-        allEvaluations.push(<p><em><strong>Sinusoidal Prediction</strong></em> {sinusoidalEvaluation}</p>)
+        allEvaluations.push(<FormattedEvaluations 
+            type="Sinusoidal"
+            evaluation={sinusoidalEvaluation}
+        />)
     }
 
     return (
