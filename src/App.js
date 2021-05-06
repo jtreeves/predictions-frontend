@@ -7,6 +7,7 @@ import jwt_decode from 'jwt-decode'
 import Authentication from './components/utilities/main/Authentication'
 import PrivateRoute from './components/elements/main/PrivateRoute'
 import Navigation from './components/elements/main/Navigation'
+import Header from './components/elements/main/Header'
 import Footer from './components/elements/main/Footer'
 import Welcome from './components/pages/main/Welcome'
 import About from './components/pages/main/About'
@@ -15,10 +16,6 @@ import Login from './components/pages/users/Login'
 import Profile from './components/pages/users/Profile'
 import Submission from './components/pages/predictions/Submission'
 import Analysis from './components/pages/predictions/Analysis'
-
-// Import internal CSS
-import './App.css'
-import Header from './components/elements/main/Header'
 
 // Create function for the main operations of the app
 function App() {
