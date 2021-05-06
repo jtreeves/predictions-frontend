@@ -75,6 +75,7 @@ function Signup() {
                         label="name"
                         value={name}
                         display="Name"
+                        tooltip="This can be your full name or a username of your choosing"
                         onChange={handleName}
                     />
                     <FormGroup
@@ -82,6 +83,7 @@ function Signup() {
                         label="email"
                         value={email}
                         display="Email"
+                        tooltip="This will be the email associated with your account"
                         onChange={handleEmail}
                     />
                     <FormGroup
@@ -89,6 +91,7 @@ function Signup() {
                         label="password"
                         value={password}
                         display="Password"
+                        tooltip="This will be the password you will use to access your account"
                         onChange={handlePassword}
                     />
                     <FormGroup
@@ -96,6 +99,7 @@ function Signup() {
                         label="confirmPassword"
                         value={confirmPassword}
                         display="Confirm Password"
+                        tooltip="Make sure this matches the password above!"
                         onChange={handleConfirmPassword}
                     />
                     <button

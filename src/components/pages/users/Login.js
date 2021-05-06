@@ -60,6 +60,7 @@ function Login(props) {
                         label="email"
                         value={email}
                         display="Email"
+                        tooltip="What is the email address associated with this account?"
                         onChange={handleEmail}
                     />
                     <FormGroup
@@ -67,6 +68,7 @@ function Login(props) {
                         label="password"
                         value={password}
                         display="Password"
+                        tooltip="What is your password?"
                         onChange={handlePassword}
                     />
                     <button

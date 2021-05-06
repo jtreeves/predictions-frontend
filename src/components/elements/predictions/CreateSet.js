@@ -13,6 +13,7 @@ function CreateSet(props) {
                     label="title"
                     value={props.title}
                     display="Title"
+                    tooltip="What do you want to call this data set?"
                     onChange={props.handleTitle}
                 />
 
@@ -21,6 +22,7 @@ function CreateSet(props) {
                     label="independent"
                     value={props.independent}
                     display="Independent"
+                    tooltip="What is the input variable?"
                     onChange={props.handleIndependent}
                 />
 
@@ -29,6 +31,7 @@ function CreateSet(props) {
                     label="dependent"
                     value={props.dependent}
                     display="Dependent"
+                    tooltip="What is the output variable"
                     onChange={props.handleDependent}
                 />
 
@@ -37,6 +40,7 @@ function CreateSet(props) {
                     label="precision"
                     value={props.precision}
                     display="Precision"
+                    tooltip="When it comes to rounding, how many decimal places do you want to use?"
                     onChange={props.handlePrecision}
                 />
 
@@ -45,6 +49,7 @@ function CreateSet(props) {
                     label="dataSet"
                     value={props.dataSet}
                     display="Data Set"
+                    tooltip="What is the complete data set?"
                     onChange={props.handleDataSet}
                 />
                 
