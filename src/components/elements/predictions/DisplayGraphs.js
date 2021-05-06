@@ -157,9 +157,9 @@ function DisplayGraphs(props) {
     }
 
     return (
-        <div>
+        <section>
             {displayButtons}
-        </div>
+        </section>
     )
 }
 

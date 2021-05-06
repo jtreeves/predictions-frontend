@@ -87,10 +87,10 @@ function Zoom(props) {
     }
 
     return (
-        <div>
+        <section>
             <button onClick={handleZoomOut}>Zoom Out</button>
             <button onClick={handleZoomIn}>Zoom In</button>
-        </div>
+        </section>
     )
 }
 

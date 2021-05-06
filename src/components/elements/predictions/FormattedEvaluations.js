@@ -1,7 +1,7 @@
 function FormattedEvaluations(props) {
     return (
         <p>
-            <em><strong>{props.type} Prediction</strong></em> {props.evaluation}
+            <mark>{props.type} Prediction</mark> {props.evaluation}
         </p>
     )
 }

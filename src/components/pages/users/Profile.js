@@ -10,19 +10,18 @@ function Profile(props) {
     CheckExpiration(props.user.exp, props.handleLogout)
     
     return (
-        <div>
-            <h1>Welcome, <DisplayName user={props.user} /></h1>
-            <p><ChangeName 
+        <main>
+            <DisplayName user={props.user} />
+            <ChangeName 
                 user={props.user}
-            /></p>
-            <p><DeleteAccount 
+            />
+            <DeleteAccount 
                 user={props.user}
                 handleLogout={props.handleLogout} 
-            /></p>
+            />
             <p>Want to analyze some data? <Link to="/submission">Click here!</Link></p>
-            <p>All models:</p>
             <AllSets user={props.user} />
-        </div>
+        </main>
     )
 }
 

@@ -53,7 +53,7 @@ function GeneratedModels(props) {
 
     CheckFavorite(props.favorite, xMinimum, xMaximum, increment, props.precision, props.linearConstants, setDisplayLinear, setLinearCoordinates, props.quadraticConstants, setDisplayQuadratic, setQuadraticCoordinates, props.cubicConstants, setDisplayCubic, setCubicCoordinates, props.hyperbolicConstants, setDisplayHyperbolic, setHyperbolicCoordinates, props.exponentialConstants, setDisplayExponential, setExponentialCoordinates, props.logarithmicConstants, setDisplayLogarithmic, setLogarithmicCoordinates, props.logisticConstants, setDisplayLogistic, setLogisticCoordinates, props.sinusoidalConstants, setDisplaySinusoidal, setSinusoidalCoordinates) 
     return (
-        <div>
+        <section>
             <GraphOutput 
                 title={props.title}
                 independent={props.independent}
@@ -216,7 +216,7 @@ function GeneratedModels(props) {
                 dependent={props.dependent}
                 points={originalPoints}
             />
-        </div>
+        </section>
     )
 }
 

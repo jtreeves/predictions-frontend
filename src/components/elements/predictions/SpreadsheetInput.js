@@ -37,10 +37,10 @@ function SpreadsheetInput(props) {
 
     if (props.dataSet === '') {
         return (
-            <div>
+            <form>
                 <input type="file" id="csv" />
                 <button id="upload" onClick={handleSpreadsheet}>Upload Data</button>
-            </div>
+            </form>
         )
     } else {
         return (

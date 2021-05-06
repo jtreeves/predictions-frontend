@@ -28,19 +28,11 @@ function DeleteAccount(props) {
 
     if (!deleteClicked && !confirmClicked) {
         return (
-            <div>
-                <form onSubmit={handleDeleteClicked}>
-                    <button type="submit">Delete Account</button>
-                </form>
-            </div>
+            <button onClick={handleDeleteClicked}>Delete Account</button>
         )
     } else if (deleteClicked && !confirmClicked) {
         return (
-            <div>
-                <form onSubmit={handleConfirmClicked}>
-                    <button type="submit">Yes, Delete My Account</button>
-                </form>
-            </div>
+            <button onClick={handleConfirmClicked}>Yes, Delete My Account</button>
         )
     } else {
         props.handleLogout()

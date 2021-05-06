@@ -36,9 +36,7 @@ function ChangeName(props) {
 
     if (!updateClicked && !saveClicked) {
         return (
-            <form onSubmit={handleUpdate}>
-                <button type="submit">Change Name</button>
-            </form>
+            <button onClick={handleUpdate}>Change Name</button>
         )
     } else if (updateClicked && !saveClicked) {
         return (
@@ -52,7 +50,6 @@ function ChangeName(props) {
                 />
                 <button
                     type="submit"
-                    className="btn btn-primary float-right"
                 >
                     Update Name
                 </button>

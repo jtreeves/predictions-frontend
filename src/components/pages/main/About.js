@@ -3,10 +3,10 @@ import '../../../style/about.css'
 // Create function
 function About() {
     return (
-        <div>
+        <main>
             <h1>About</h1>
             <p>We provide regression models of the following types: linear, quadratic, cubic, hyperbolic, exponential, logarithmic, logistic, and sinusoidal.</p>
-        </div>
+        </main>
     )
 }
 

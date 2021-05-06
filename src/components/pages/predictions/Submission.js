@@ -96,17 +96,17 @@ function Submission(props) {
 
     if (!manual && !upload && !submitted) {
         return (
-            <div>
+            <main>
                 <p>Did you want to manually type in your data set, or would you rather upload a CSV file of it?</p>
                 <button onClick={handleManual}>Manual</button>
                 <button onClick={handleUpload}>Upload</button>
-            </div>
+            </main>
         )
     }
 
     if (manual) {
         return (
-            <div>
+            <main>
                 <CreateSet
                     heading="Create a New Data Set"
                     handleSubmit={handleSubmit}
@@ -121,13 +121,13 @@ function Submission(props) {
                     dataSet={dataSet}
                     handleDataSet={handleDataSet}
                 />
-            </div>
+            </main>
         )
     }
     
     if (upload) {
         return (
-            <div>
+            <main>
                 <SpreadsheetInput 
                     handleSubmit={handleSubmit}
                     title={title}
@@ -142,7 +142,7 @@ function Submission(props) {
                     handleDataSet={handleDataSet}
                     setDataSet={setDataSet}
                 />
-            </div>
+            </main>
         )
     }
     

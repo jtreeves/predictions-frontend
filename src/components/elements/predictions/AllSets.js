@@ -27,7 +27,7 @@ function AllSets(props) {
             }
             const results = collatedData.map((datum, index) => {
                 return (
-                    <div 
+                    <button 
                         key={index}
                     >
                         <Link
@@ -43,7 +43,7 @@ function AllSets(props) {
                         >
                             {datum.models.title}
                         </Link>
-                    </div>
+                    </button>
                 )
             })
             setPredictions(results)
@@ -59,15 +59,16 @@ function AllSets(props) {
 
     if (loading) {
         return (
-            <div>
+            <section>
                 LOADING!
-            </div>
+            </section>
         )
     } else {
         return (
-            <div>
+            <section>
+                <h2>Models</h2>
                 {predictions}
-            </div>
+            </section>
         )
     }
 }

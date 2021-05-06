@@ -69,7 +69,7 @@ function Signup() {
 
     if (!redirect) {
         return (
-            <div>
+            <main>
                 <h1>Sign Up</h1>
                 <form onSubmit={handleSubmit}>
                     <FormGroup
@@ -110,7 +110,7 @@ function Signup() {
                         Submit
                     </button>
                 </form>
-            </div>
+            </main>
         )
     } else {
         return <Redirect to="/login" />

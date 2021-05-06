@@ -173,9 +173,9 @@ function ModelsAnalyses(props) {
     }
 
     return (
-        <div>
+        <section>
             {allAnalyses}
-        </div>
+        </section>
     )
 }
 

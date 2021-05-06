@@ -87,9 +87,7 @@ function UpdateSet(props) {
 
     if (!updateClicked && !saveClicked) {
         return (
-            <form onSubmit={handleUpdate}>
-                <button type="submit">Update</button>
-            </form>
+            <button onClick={handleUpdate}>Update</button>
         )
     } else if (updateClicked && !saveClicked) {
         return (

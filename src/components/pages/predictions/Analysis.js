@@ -61,18 +61,18 @@ function Analysis(props) {
 
     if (!stored) {
         return (
-            <div>
+            <main>
                 {generatedModelsSection}
 
                 <SaveSet 
                     user={props.user}
                     source={models.source}
                 />
-            </div>
+            </main>
         )
     } else {
         return (
-            <div>
+            <main>
                 {generatedModelsSection}
 
                 <Favorite 
@@ -100,7 +100,7 @@ function Analysis(props) {
                 <DeleteSet
                     source={models.source} 
                 />
-            </div>
+            </main>
         )
     }
 }

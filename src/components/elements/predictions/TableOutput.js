@@ -48,9 +48,9 @@ function TableOutput(props) {
     })
 
     return (
-        <div className="table-of-data">
+        <section className="table-of-data">
             <table className="main-table" />
-        </div>
+        </section>
     )
 }
 

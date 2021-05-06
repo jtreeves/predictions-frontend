@@ -31,9 +31,7 @@ function Note(props) {
     if (comment === '') {
         if (!changing) {
             return (
-                <form onSubmit={handleChanging}>
-                    <button type="submit">Add Note</button>
-                </form>
+                <button onClick={handleChanging}>Add Note</button>
             )
         } else {
             return (
@@ -47,12 +45,10 @@ function Note(props) {
     } else {
         if (!changing) {
             return (
-                <div>
-                    <p><em><strong>Note</strong></em> {comment}</p>
-                    <form onSubmit={handleChanging}>
-                        <button type="submit">Update Note</button>
-                    </form>
-                </div>
+                <section>
+                    <p><mark>Note</mark> {comment}</p>
+                    <button onClick={handleChanging}>Update Note</button>
+                </section>
             )
         } else if (!submitting) {
             return (

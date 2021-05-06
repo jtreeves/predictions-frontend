@@ -4,7 +4,7 @@ import FormGroup from '../main/FormGroup'
 // Create function
 function CreateSet(props) {
     return (
-        <div>
+        <section>
             <h1>{props.heading}</h1>
 
             <form onSubmit={props.handleSubmit}>
@@ -55,7 +55,7 @@ function CreateSet(props) {
                 
                 <button type="submit">Submit</button>
             </form>
-        </div>
+        </section>
     )
 }
 

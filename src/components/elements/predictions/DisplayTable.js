@@ -29,10 +29,10 @@ function DisplayTable(props) {
     }
 
     return (
-        <div>
+        <section>
             {displayButton}
             {table}
-        </div>
+        </section>
     )
 }
 

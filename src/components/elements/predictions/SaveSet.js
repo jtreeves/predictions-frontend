@@ -8,7 +8,7 @@ function SaveSet(props) {
     const userId = props.user.id
     const source = props.source
 
-    const handleSubmit = async (e) => {
+    const handleSave = async (e) => {
         try {
             e.preventDefault()
             await axios.post(REACT_APP_SERVER_URL + 'predictions/' + userId, { source })
@@ -21,11 +21,7 @@ function SaveSet(props) {
 
     if (!saved) {
         return (
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <button type="submit">Save</button>
-                </form>
-            </div>
+            <button onClick={handleSave}>Save</button>
         )
     } else {
         return <Redirect to="/profile" />

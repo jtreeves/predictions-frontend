@@ -54,7 +54,7 @@ function Login(props) {
 
     if (!props.user) {
         return (
-            <div>
+            <main>
                 <h1>Log In</h1>
                 <form onSubmit={handleSubmit}>
                     <FormGroup
@@ -79,7 +79,7 @@ function Login(props) {
                         Submit
                     </button>
                 </form>
-            </div>
+            </main>
         )
     } else {
         return <Redirect to="/profile" />

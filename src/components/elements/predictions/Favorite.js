@@ -31,9 +31,7 @@ function Favorite(props) {
     if (graph === '') {
         if (!changing) {
             return (
-                <form onSubmit={handleChanging}>
-                    <button type="submit">Choose Favorite</button>
-                </form>
+                <button onClick={handleChanging}>Choose Favorite</button>
             )
         } else {
             return (
@@ -57,12 +55,10 @@ function Favorite(props) {
     } else {
         if (!changing) {
             return (
-                <div>
-                    <p><em><strong>Favorite</strong></em> {graph}</p>
-                    <form onSubmit={handleChanging}>
-                        <button type="submit">Change Favorite</button>
-                    </form>
-                </div>
+                <section>
+                    <p><mark>Favorite</mark> {graph}</p>
+                    <button onClick={handleChanging}>Change Favorite</button>
+                </section>
             )
         } else if (!submitting) {
             return (

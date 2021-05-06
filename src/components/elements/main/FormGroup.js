@@ -5,7 +5,7 @@ function FormGroup(props) {
     const [tooltip, setTooltip] = useState(false)
 
     return (
-        <div>
+        <section>
             <label htmlFor={props.label}>{props.display}</label>
             <input
                 type={props.type}
@@ -18,7 +18,7 @@ function FormGroup(props) {
             {tooltip && (
                 <p>{props.tooltip}</p>
             )}
-        </div>
+        </section>
     )
 }
 

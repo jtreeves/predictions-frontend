@@ -88,7 +88,7 @@ function FutureEvaluations(props) {
     }
 
     return (
-        <div>
+        <section>
             <h2>Predicted Future Values at an Input of {futureInput}</h2>
             
             {allEvaluations}
@@ -101,7 +101,7 @@ function FutureEvaluations(props) {
                 onChange={handleFutureInput}
             />
             <button onClick={handleFutureValue}>Submit</button>
-        </div>
+        </section>
     )
 }
 

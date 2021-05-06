@@ -6,7 +6,7 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 function DeleteSet(props) {
     const [deleted, setDeleted] = useState(false)
 
-    const handleSubmit = async (e) => {
+    const handleDelete = async (e) => {
         try {
             e.preventDefault()
             await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + props.source)
@@ -19,11 +19,7 @@ function DeleteSet(props) {
 
     if (!deleted) {
         return (
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <button type="submit">Delete</button>
-                </form>
-            </div>
+            <button onClick={handleDelete}>Delete</button>
         )
     } else {
         return <Redirect to="/profile" />

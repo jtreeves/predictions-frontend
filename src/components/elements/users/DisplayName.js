@@ -19,7 +19,9 @@ function DisplayName(props) {
         getName()
     })
 
-    return name
+    return (
+        <h1>{name}</h1>
+    )
 }
 
 export default DisplayName
