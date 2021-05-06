@@ -27,23 +27,26 @@ function AllSets(props) {
             }
             const results = collatedData.map((datum, index) => {
                 return (
-                    <button 
+                    <li
                         key={index}
                     >
-                        <Link
-                            to={{
-                                pathname: "/analysis",
-                                state: {
-                                    models: datum.models, 
-                                    opinions: datum.opinions,
-                                    user: props.user,
-                                    stored: true
-                                }
-                            }}
-                        >
-                            {datum.models.title}
-                        </Link>
-                    </button>
+                        <button>
+                            <Link
+                                to={{
+                                    pathname: "/analysis",
+                                    state: {
+                                        models: datum.models, 
+                                        opinions: datum.opinions,
+                                        user: props.user,
+                                        stored: true
+                                    }
+                                }}
+                                style={{ textDecoration: 'none' }} 
+                            >
+                                {datum.models.title}
+                            </Link>
+                        </button>
+                    </li>
                 )
             })
             setPredictions(results)
@@ -65,10 +68,10 @@ function AllSets(props) {
         )
     } else {
         return (
-            <section>
+            <ul>
                 <h2>Models</h2>
                 {predictions}
-            </section>
+            </ul>
         )
     }
 }

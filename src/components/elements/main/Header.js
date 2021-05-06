@@ -1,9 +1,16 @@
+import { Link } from 'react-router-dom'
+
 // Create function
 function Header() {
     return (
-        <header>
-            Tiresias
-        </header>
+        <Link 
+            to="/" 
+            style={{ textDecoration: 'none' }} 
+        >
+            <header>
+                Tiresias
+            </header>
+        </Link>
     )
 }
 

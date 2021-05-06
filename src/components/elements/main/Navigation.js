@@ -6,54 +6,57 @@ function Navigation(props) {
     return (
         <nav>
             <ul>
-                <li>
-                    <NavLink
-                        exact to="/"
-                    >
+                <NavLink
+                    exact to="/"
+                    style={{ textDecoration: 'none' }} 
+                >
+                    <li>
                         Home
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        exact to="/about"
-                    >
+                    </li>
+                </NavLink>
+                <NavLink
+                    to="/about"
+                    style={{ textDecoration: 'none' }} 
+                >
+                    <li>
                         About
-                    </NavLink>
-                </li>
+                    </li>
+                </NavLink>
             </ul>
             {
                 props.isAuth
                 ? <ul>
-                    <li>
-                        <NavLink
-                            to="/profile"
-                        >
+                    <NavLink
+                        to="/profile"
+                        style={{ textDecoration: 'none' }} 
+                    >
+                        <li>
                             Profile
-                        </NavLink>
-                    </li>
-                    <li>
-                        <span
-                            onClick={props.handleLogout}
-                        >
+                        </li>
+                    </NavLink>
+                    <span onClick={props.handleLogout}>
+                        <li>
                             Logout
-                        </span>
-                    </li>
+                        </li>
+                    </span>
                 </ul>
                 : <ul>
-                    <li>
-                        <NavLink
-                            to="/signup"
-                        >
+                    <NavLink
+                        to="/signup"
+                        style={{ textDecoration: 'none' }} 
+                    >
+                        <li>
                             Create Account
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            to="/login"
-                        >
+                        </li>
+                    </NavLink>
+                    <NavLink
+                        to="/login"
+                        style={{ textDecoration: 'none' }} 
+                    >
+                        <li>
                             Login
-                        </NavLink>
-                    </li>
+                        </li>
+                    </NavLink>
                 </ul>
             }
         </nav>
