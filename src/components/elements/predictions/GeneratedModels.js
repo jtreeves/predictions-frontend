@@ -8,6 +8,7 @@ import FutureEvaluations from './FutureEvaluations'
 import DisplayGraphs from './DisplayGraphs'
 import ModelsAnalyses from './ModelsAnalyses'
 import DisplayTable from './DisplayTable'
+import BestFit from './BestFit'
 
 // Create function
 function GeneratedModels(props) {
@@ -152,7 +153,9 @@ function GeneratedModels(props) {
                 setSinusoidalCoordinates={setSinusoidalCoordinates}
             />
 
-            <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
+            <BestFit 
+                bestFit={props.bestFit}
+            />
 
             <FutureEvaluations 
                 xMinimum={xMinimum}
