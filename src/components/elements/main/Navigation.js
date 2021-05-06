@@ -3,64 +3,79 @@ import { NavLink } from 'react-router-dom'
 
 // Create function
 function Navigation(props) {
-    return (
-        <nav>
-            <ul>
-                <NavLink
-                    exact to="/"
-                    style={{ textDecoration: 'none' }} 
-                >
-                    <li>
-                        Home
-                    </li>
-                </NavLink>
-                <NavLink
-                    to="/about"
-                    style={{ textDecoration: 'none' }} 
-                >
-                    <li>
-                        About
-                    </li>
-                </NavLink>
-            </ul>
-            {
-                props.isAuth
-                ? <ul>
-                    <NavLink
-                        to="/profile"
-                        style={{ textDecoration: 'none' }} 
-                    >
-                        <li>
-                            Profile
-                        </li>
-                    </NavLink>
-                    <span onClick={props.handleLogout}>
-                        <li>
-                            Logout
-                        </li>
-                    </span>
+    const about = <NavLink
+        to="/about"
+        style={{ textDecoration: 'none' }} 
+    >
+        <li>
+            About
+        </li>
+    </NavLink>
+
+    const profile = <NavLink
+        to="/profile"
+        style={{ textDecoration: 'none' }} 
+    >
+        <li>
+            All Sets
+        </li>
+    </NavLink>
+    
+    const submission = <NavLink
+        to="/submission"
+        style={{ textDecoration: 'none' }} 
+    >
+        <li>
+            Add New Set
+        </li>
+    </NavLink>
+
+    const signup = <NavLink
+        to="/signup"
+        style={{ textDecoration: 'none' }} 
+    >
+        <li>
+            Signup
+        </li>
+    </NavLink>
+
+    const login = <NavLink
+        to="/login"
+        style={{ textDecoration: 'none' }} 
+    >
+        <li>
+            Login
+        </li>
+    </NavLink>
+
+    const logout = <span onClick={props.handleLogout}>
+        <li>
+            Logout
+        </li>
+    </span>
+
+    if (!props.isAuthenticated) {
+        return (
+            <nav>
+                <ul>
+                    {about}
+                    {signup}
+                    {login}
                 </ul>
-                : <ul>
-                    <NavLink
-                        to="/signup"
-                        style={{ textDecoration: 'none' }} 
-                    >
-                        <li>
-                            Create Account
-                        </li>
-                    </NavLink>
-                    <NavLink
-                        to="/login"
-                        style={{ textDecoration: 'none' }} 
-                    >
-                        <li>
-                            Login
-                        </li>
-                    </NavLink>
+            </nav>
+        )
+    } else {
+        return (
+            <nav>
+                <ul>
+                    {profile}
+                    {submission}
+                    {about}
+                    {logout}
                 </ul>
-            }
-        </nav>
-    )
+            </nav>
+        )
+    }
 }
 
 // Export function

@@ -54,7 +54,10 @@ function App() {
 
     return (
         <div>
-            <Navigation handleLogout={handleLogout} isAuth={isAuthenticated} />
+            <Navigation 
+                isAuthenticated={isAuthenticated} 
+                handleLogout={handleLogout} 
+            />
 
             <Header />
 
