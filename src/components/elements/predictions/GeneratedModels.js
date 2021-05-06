@@ -2,31 +2,25 @@ import { useState } from 'react'
 import HorizontalAxis from '../../middleware/HorizontalAxis'
 import VerticalAxis from '../../middleware/VerticalAxis'
 import GraphOutput from '../../middleware/GraphOutput'
-import Zoom from './Zoom'
 import CheckFavorite from '../../middleware/CheckFavorite'
-import FutureEvaluations from './FutureEvaluations'
 import DisplayGraphs from './DisplayGraphs'
+import FutureEvaluations from './FutureEvaluations'
 import ModelsAnalyses from './ModelsAnalyses'
 import DisplayTable from './DisplayTable'
+import Zoom from './Zoom'
 import BestFit from './BestFit'
 
 // Create function
 function GeneratedModels(props) {
     const points = JSON.parse(props.dataSet)
-    
-    const [checkFavorite, setCheckFavorite] = useState(true)
-    const [zoom, setZoom] = useState(0)
-    
     const originalPoints = []
     for (const point of points) {
         originalPoints.push({ x: point[0], y: point[1] })
     }
     
-    const xAxis = HorizontalAxis(originalPoints, zoom)
-    const xMinimum = xAxis.minimum
-    const xMaximum = xAxis.maximum
-    const increment = xAxis.increment
-
+    const [checkFavorite, setCheckFavorite] = useState(true)
+    const [zoom, setZoom] = useState(0)
+    
     const [displayLinear, setDisplayLinear] = useState(false)
     const [displayQuadratic, setDisplayQuadratic] = useState(false)
     const [displayCubic, setDisplayCubic] = useState(false)
@@ -47,17 +41,21 @@ function GeneratedModels(props) {
     const [sinusoidalCoordinates, setSinusoidalCoordinates] = useState('')
     const [originalCoordinates, setOriginalCoordinates] = useState(originalPoints)
 
-    if (checkFavorite) {
-        CheckFavorite(props.favorite, xMinimum, xMaximum, increment, props.linearConstants, setDisplayLinear, setLinearCoordinates, props.quadraticConstants, setDisplayQuadratic, setQuadraticCoordinates, props.cubicConstants, setDisplayCubic, setCubicCoordinates, props.hyperbolicConstants, setDisplayHyperbolic, setHyperbolicCoordinates, props.exponentialConstants, setDisplayExponential, setExponentialCoordinates, props.logarithmicConstants, setDisplayLogarithmic, setLogarithmicCoordinates, props.logisticConstants, setDisplayLogistic, setLogisticCoordinates, props.sinusoidalConstants, setDisplaySinusoidal, setSinusoidalCoordinates)
-        setCheckFavorite(false)
-    }
-    
     const allCoordinates = [originalCoordinates, linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
+
+    const xAxis = HorizontalAxis(originalPoints, zoom)
+    const xMinimum = xAxis.minimum
+    const xMaximum = xAxis.maximum
+    const increment = xAxis.increment
 
     const yAxis = VerticalAxis(allCoordinates)
     const yMinimum = yAxis.minimum
     const yMaximum = yAxis.maximum
 
+    if (checkFavorite) {
+        CheckFavorite(props.favorite, xMinimum, xMaximum, increment, props.linearConstants, setDisplayLinear, setLinearCoordinates, props.quadraticConstants, setDisplayQuadratic, setQuadraticCoordinates, props.cubicConstants, setDisplayCubic, setCubicCoordinates, props.hyperbolicConstants, setDisplayHyperbolic, setHyperbolicCoordinates, props.exponentialConstants, setDisplayExponential, setExponentialCoordinates, props.logarithmicConstants, setDisplayLogarithmic, setLogarithmicCoordinates, props.logisticConstants, setDisplayLogistic, setLogisticCoordinates, props.sinusoidalConstants, setDisplaySinusoidal, setSinusoidalCoordinates)
+        setCheckFavorite(false)
+    }
     return (
         <div>
             <GraphOutput 
