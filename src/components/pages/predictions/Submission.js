@@ -67,23 +67,28 @@ function Submission(props) {
             alert('You must provide a data set')
         } else {
             const cleanedDataSet = CleanCollection(dataSet)
-            const submission = {
-                title: title,
-                independent: independent,
-                dependent: dependent,
-                precision: parseInt(precision),
-                dataSet: JSON.parse(cleanedDataSet)
-            }
-            try {
-                const predictions = await axios.post(REACT_APP_SERVER_URL + 'api',
-                    submission
-                )
-                setModels(predictions.data.regressions)
-                setManual(false)
-                setUpload(false)
-                setSubmitted(true)
-            } catch (error) {
-                alert(error)
+            const parsedDataSet = JSON.parse(cleanedDataSet)
+            if (parsedDataSet.length < 10) {
+                alert('You must include at least 10 points in your data set')
+            } else {
+                const submission = {
+                    title: title,
+                    independent: independent,
+                    dependent: dependent,
+                    precision: parseInt(precision),
+                    dataSet: parsedDataSet
+                }
+                try {
+                    const predictions = await axios.post(REACT_APP_SERVER_URL + 'api',
+                        submission
+                    )
+                    setModels(predictions.data.regressions)
+                    setManual(false)
+                    setUpload(false)
+                    setSubmitted(true)
+                } catch (error) {
+                    alert(error)
+                }
             }
         }
     }
