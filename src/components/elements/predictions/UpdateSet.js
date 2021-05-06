@@ -58,24 +58,29 @@ function UpdateSet(props) {
             alert('You must provide a data set')
         } else {
             const cleanedDataSet = CleanCollection(dataSet)
-            const submission = {
-                title: title,
-                independent: independent,
-                dependent: dependent,
-                precision: parseInt(precision),
-                dataSet: JSON.parse(cleanedDataSet)
-            }
-            try {
-                await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + props.source)
-                const predictions = await axios.post(REACT_APP_SERVER_URL + 'api', submission)
-                const source = predictions.data.regressions.source
-                await axios.post(REACT_APP_SERVER_URL + 'predictions/' + props.user.id, { source })
-                await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: props.favorite})
-                await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: props.note})
-                setSaveClicked(true)
-            } catch(error) {
-                alert(error.response.data.msg)
-                console.log(`UPDATED PREDICTION ERROR: ${error}`)
+            const parsedDataSet = JSON.parse(cleanedDataSet)
+            if (parsedDataSet.length < 10) {
+                alert('You must include at least 10 points in your data set')
+            } else {
+                const submission = {
+                    title: title,
+                    independent: independent,
+                    dependent: dependent,
+                    precision: parseInt(precision),
+                    dataSet: parsedDataSet
+                }
+                try {
+                    await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + props.source)
+                    const predictions = await axios.post(REACT_APP_SERVER_URL + 'api', submission)
+                    const source = predictions.data.regressions.source
+                    await axios.post(REACT_APP_SERVER_URL + 'predictions/' + props.user.id, { source })
+                    await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: props.favorite})
+                    await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: props.note})
+                    setSaveClicked(true)
+                } catch(error) {
+                    alert(error.response.data.msg)
+                    console.log(`UPDATED PREDICTION ERROR: ${error}`)
+                }
             }
         }
     }
