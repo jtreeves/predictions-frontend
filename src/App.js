@@ -18,6 +18,7 @@ import Analysis from './components/pages/predictions/Analysis'
 
 // Import internal CSS
 import './App.css'
+import Header from './components/elements/main/Header'
 
 // Create function for the main operations of the app
 function App() {
@@ -55,6 +56,8 @@ function App() {
     return (
         <div>
             <Navigation handleLogout={handleLogout} isAuth={isAuthenticated} />
+
+            <Header />
 
             <Switch>
                 <Route exact path="/" component={Welcome} />
