@@ -18,9 +18,6 @@ function GeneratedModels(props) {
         originalPoints.push({ x: point[0], y: point[1] })
     }
     
-    const [checkFavorite, setCheckFavorite] = useState(true)
-    const [zoom, setZoom] = useState(0)
-    
     const [displayLinear, setDisplayLinear] = useState(false)
     const [displayQuadratic, setDisplayQuadratic] = useState(false)
     const [displayCubic, setDisplayCubic] = useState(false)
@@ -41,6 +38,8 @@ function GeneratedModels(props) {
     const [sinusoidalCoordinates, setSinusoidalCoordinates] = useState('')
     const [originalCoordinates, setOriginalCoordinates] = useState(originalPoints)
 
+    const [zoom, setZoom] = useState(0)
+    
     const allCoordinates = [originalCoordinates, linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
 
     const xAxis = HorizontalAxis(originalPoints, zoom)
@@ -52,10 +51,7 @@ function GeneratedModels(props) {
     const yMinimum = yAxis.minimum
     const yMaximum = yAxis.maximum
 
-    if (checkFavorite) {
-        CheckFavorite(props.favorite, xMinimum, xMaximum, increment, props.precision, props.linearConstants, setDisplayLinear, setLinearCoordinates, props.quadraticConstants, setDisplayQuadratic, setQuadraticCoordinates, props.cubicConstants, setDisplayCubic, setCubicCoordinates, props.hyperbolicConstants, setDisplayHyperbolic, setHyperbolicCoordinates, props.exponentialConstants, setDisplayExponential, setExponentialCoordinates, props.logarithmicConstants, setDisplayLogarithmic, setLogarithmicCoordinates, props.logisticConstants, setDisplayLogistic, setLogisticCoordinates, props.sinusoidalConstants, setDisplaySinusoidal, setSinusoidalCoordinates)
-        setCheckFavorite(false)
-    }
+    CheckFavorite(props.favorite, xMinimum, xMaximum, increment, props.precision, props.linearConstants, setDisplayLinear, setLinearCoordinates, props.quadraticConstants, setDisplayQuadratic, setQuadraticCoordinates, props.cubicConstants, setDisplayCubic, setCubicCoordinates, props.hyperbolicConstants, setDisplayHyperbolic, setHyperbolicCoordinates, props.exponentialConstants, setDisplayExponential, setExponentialCoordinates, props.logarithmicConstants, setDisplayLogarithmic, setLogarithmicCoordinates, props.logisticConstants, setDisplayLogistic, setLogisticCoordinates, props.sinusoidalConstants, setDisplaySinusoidal, setSinusoidalCoordinates) 
     return (
         <div>
             <GraphOutput 
