@@ -1,7 +1,6 @@
 import Evaluations from './Evaluations'
 
 function GeneratePoints(equationType, coefficients, minimum, maximum, increment) {
-    console.log('MAXIMUM IN GENERATE POINTS: ', maximum)
     let finalPoints = []
 
     for (let x = minimum; x <= maximum; x += increment) {

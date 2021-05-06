@@ -521,6 +521,8 @@ function GeneratedModels(props) {
                 zoom={zoom}
                 setZoom={setZoom}
                 originalPoints={originalPoints}
+                displayOriginal={displayOriginal}
+                setOriginalCoordinates={setOriginalCoordinates}
                 linearConstants={props.linearConstants}
                 displayLinear={displayLinear}
                 setLinearCoordinates={setLinearCoordinates}

@@ -9,6 +9,15 @@ function Zoom(props) {
         const xMinimum = xAxis.minimum
         const xMaximum = xAxis.maximum
         const increment = xAxis.increment
+        if (props.displayOriginal) {
+            props.setOriginalCoordinates(props.originalPoints.filter((point) => {
+                if (point.x >= xMinimum && point.x <= xMaximum) {
+                    return true
+                } else {
+                    return false
+                }
+            }))
+        }
         if (props.displayLinear) {
             props.setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment))
         }
@@ -42,6 +51,15 @@ function Zoom(props) {
         const xMinimum = xAxis.minimum
         const xMaximum = xAxis.maximum
         const increment = xAxis.increment
+        if (props.displayOriginal) {
+            props.setOriginalCoordinates(props.originalPoints.filter((point) => {
+                if (point.x >= xMinimum && point.x <= xMaximum) {
+                    return true
+                } else {
+                    return false
+                }
+            }))
+        }
         if (props.displayLinear) {
             props.setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment))
         }

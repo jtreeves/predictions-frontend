@@ -11,7 +11,6 @@ function HorizontalAxis(points, scale = 0) {
     const scaledMinimum = minimum - tail
     const scaledMaximum = maximum + tail
     const increment = scaledRange / 100
-    console.log('SCALED MAXIMUM: ', scaledMaximum)
     const axis = {
         minimum: scaledMinimum,
         maximum: scaledMaximum,
