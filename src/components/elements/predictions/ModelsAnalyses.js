@@ -1,6 +1,6 @@
-import Latex from 'react-latex'
 import FormatSlots from '../../utilities/predictions/FormatSlots'
 import FormatPoints from '../../utilities/predictions/FormatPoints'
+import FormattedAnalyses from './FormattedAnalyses'
 
 function ModelsAnalyses(props) {
     const linearSecondSlot = FormatSlots(props.linearConstants[1])
@@ -77,115 +77,99 @@ function ModelsAnalyses(props) {
     const allAnalyses = []
     
     if (props.displayLinear) {
-        allAnalyses.push(<div>
-            <h2>Linear Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{linearEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{linearCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{linearRoots}</Latex>
-                <br />MAXIMA: <Latex>{linearMaxima}</Latex>
-                <br />MINIMA: <Latex>{linearMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{linearInflections}</Latex>
-            </p>
-        </div>)
+        allAnalyses.push(<FormattedAnalyses 
+            type="Linear"
+            equation={linearEquation}
+            correlation={linearCorrelation}
+            roots={linearRoots}
+            maxima={linearMaxima}
+            minima={linearMinima}
+            inflections={linearInflections}
+        />)
     } 
 
     if (props.displayQuadratic) {
-        allAnalyses.push(<div>
-            <h2>Quadratic Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{quadraticEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{quadraticCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{quadraticRoots}</Latex>
-                <br />MAXIMA: <Latex>{quadraticMaxima}</Latex>
-                <br />MINIMA: <Latex>{quadraticMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{quadraticInflections}</Latex>
-            </p>
-        </div>)
+        allAnalyses.push(<FormattedAnalyses 
+            type="Quadratic"
+            equation={quadraticEquation}
+            correlation={quadraticCorrelation}
+            roots={quadraticRoots}
+            maxima={quadraticMaxima}
+            minima={quadraticMinima}
+            inflections={quadraticInflections}
+        />)
     } 
 
     if (props.displayCubic) {
-        allAnalyses.push(<div>
-            <h2>Cubic Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{cubicEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{cubicCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{cubicRoots}</Latex>
-                <br />MAXIMA: <Latex>{cubicMaxima}</Latex>
-                <br />MINIMA: <Latex>{cubicMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{cubicInflections}</Latex>
-            </p>
-        </div>)
+        allAnalyses.push(<FormattedAnalyses 
+            type="Cubic"
+            equation={cubicEquation}
+            correlation={cubicCorrelation}
+            roots={cubicRoots}
+            maxima={cubicMaxima}
+            minima={cubicMinima}
+            inflections={cubicInflections}
+        />)
     } 
 
     if (props.displayHyperbolic) {
-        allAnalyses.push(<div>
-            <h2>Hyperbolic Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{hyperbolicEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{hyperbolicCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{hyperbolicRoots}</Latex>
-                <br />MAXIMA: <Latex>{hyperbolicMaxima}</Latex>
-                <br />MINIMA: <Latex>{hyperbolicMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{hyperbolicInflections}</Latex>
-            </p>
-        </div>)
+        allAnalyses.push(<FormattedAnalyses 
+            type="Hyperbolic"
+            equation={hyperbolicEquation}
+            correlation={hyperbolicCorrelation}
+            roots={hyperbolicRoots}
+            maxima={hyperbolicMaxima}
+            minima={hyperbolicMinima}
+            inflections={hyperbolicInflections}
+        />)
     } 
 
     if (props.displayExponential) {
-        allAnalyses.push(<div>
-            <h2>Exponential Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{exponentialEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{exponentialCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{exponentialRoots}</Latex>
-                <br />MAXIMA: <Latex>{exponentialMaxima}</Latex>
-                <br />MINIMA: <Latex>{exponentialMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{exponentialInflections}</Latex>
-            </p>
-        </div>)
+        allAnalyses.push(<FormattedAnalyses 
+            type="Exponential"
+            equation={exponentialEquation}
+            correlation={exponentialCorrelation}
+            roots={exponentialRoots}
+            maxima={exponentialMaxima}
+            minima={exponentialMinima}
+            inflections={exponentialInflections}
+        />)
     } 
 
     if (props.displayLogarithmic) {
-        allAnalyses.push(<div>
-            <h2>Logarithmic Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{logarithmicEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{logarithmicCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{logarithmicRoots}</Latex>
-                <br />MAXIMA: <Latex>{logarithmicMaxima}</Latex>
-                <br />MINIMA: <Latex>{logarithmicMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{logarithmicInflections}</Latex>
-            </p>
-        </div>)
+        allAnalyses.push(<FormattedAnalyses 
+            type="Logarithmic"
+            equation={logarithmicEquation}
+            correlation={logarithmicCorrelation}
+            roots={logarithmicRoots}
+            maxima={logarithmicMaxima}
+            minima={logarithmicMinima}
+            inflections={logarithmicInflections}
+        />)
     } 
 
     if (props.displayLogistic) {
-        allAnalyses.push(<div>
-            <h2>Logistic Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{logisticEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{logisticCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{logisticRoots}</Latex>
-                <br />MAXIMA: <Latex>{logisticMaxima}</Latex>
-                <br />MINIMA: <Latex>{logisticMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{logisticInflections}</Latex>
-            </p>
-        </div>)
+        allAnalyses.push(<FormattedAnalyses 
+            type="Logistic"
+            equation={logisticEquation}
+            correlation={logisticCorrelation}
+            roots={logisticRoots}
+            maxima={logisticMaxima}
+            minima={logisticMinima}
+            inflections={logisticInflections}
+        />)
     } 
 
     if (props.displaySinusoidal) {
-        allAnalyses.push(<div>
-            <h2>Sinusoidal Model</h2>
-            <p><em><strong>Equation</strong></em> <Latex>{sinusoidalEquation}</Latex></p>
-            <p><em><strong>Correlation</strong></em> <Latex>{sinusoidalCorrelation}</Latex></p>
-            <p><em><strong>Key Points</strong></em>
-                <br />ROOTS: <Latex>{sinusoidalRoots}</Latex>
-                <br />MAXIMA: <Latex>{sinusoidalMaxima}</Latex>
-                <br />MINIMA: <Latex>{sinusoidalMinima}</Latex>
-                <br />INFLECTIONS: <Latex>{sinusoidalInflections}</Latex>
-            </p>
-        </div>)
+        allAnalyses.push(<FormattedAnalyses 
+            type="Sinusoidal"
+            equation={sinusoidalEquation}
+            correlation={sinusoidalCorrelation}
+            roots={sinusoidalRoots}
+            maxima={sinusoidalMaxima}
+            minima={sinusoidalMinima}
+            inflections={sinusoidalInflections}
+        />)
     }
 
     return (
