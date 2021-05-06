@@ -103,57 +103,57 @@ function DisplayGraphs(props) {
     const displayButtons = []
 
     if (props.displayLinear) {
-        displayButtons.push(<button onClick={handleDisplayLinear}>Hide Linear Graph</button>)
+        displayButtons.push(<button key="linear" onClick={handleDisplayLinear}>Hide Linear Graph</button>)
     } else {
-        displayButtons.push(<button onClick={handleDisplayLinear}>Show Linear Graph</button>)
+        displayButtons.push(<button key="linear" onClick={handleDisplayLinear}>Show Linear Graph</button>)
     }
 
     if (props.displayQuadratic) {
-        displayButtons.push(<button onClick={handleDisplayQuadratic}>Hide Quadratic Graph</button>)
+        displayButtons.push(<button key="quadratic" onClick={handleDisplayQuadratic}>Hide Quadratic Graph</button>)
     } else {
-        displayButtons.push(<button onClick={handleDisplayQuadratic}>Show Quadratic Graph</button>)
+        displayButtons.push(<button key="quadratic" onClick={handleDisplayQuadratic}>Show Quadratic Graph</button>)
     }
 
     if (props.displayCubic) {
-        displayButtons.push(<button onClick={handleDisplayCubic}>Hide Cubic Graph</button>)
+        displayButtons.push(<button key="cubic" onClick={handleDisplayCubic}>Hide Cubic Graph</button>)
     } else {
-        displayButtons.push(<button onClick={handleDisplayCubic}>Show Cubic Graph</button>)
+        displayButtons.push(<button key="cubic" onClick={handleDisplayCubic}>Show Cubic Graph</button>)
     }
 
     if (props.displayHyperbolic) {
-        displayButtons.push(<button onClick={handleDisplayHyperbolic}>Hide Hyperbolic Graph</button>)
+        displayButtons.push(<button key="hyperbolic" onClick={handleDisplayHyperbolic}>Hide Hyperbolic Graph</button>)
     } else {
-        displayButtons.push(<button onClick={handleDisplayHyperbolic}>Show Hyperbolic Graph</button>)
+        displayButtons.push(<button key="hyperbolic" onClick={handleDisplayHyperbolic}>Show Hyperbolic Graph</button>)
     }
 
     if (props.displayExponential) {
-        displayButtons.push(<button onClick={handleDisplayExponential}>Hide Exponential Graph</button>)
+        displayButtons.push(<button key="exponential" onClick={handleDisplayExponential}>Hide Exponential Graph</button>)
     } else {
-        displayButtons.push(<button onClick={handleDisplayExponential}>Show Exponential Graph</button>)
+        displayButtons.push(<button key="exponential" onClick={handleDisplayExponential}>Show Exponential Graph</button>)
     }
 
     if (props.displayLogarithmic) {
-        displayButtons.push(<button onClick={handleDisplayLogarithmic}>Hide Logarithmic Graph</button>)
+        displayButtons.push(<button key="logarithmic" onClick={handleDisplayLogarithmic}>Hide Logarithmic Graph</button>)
     } else {
-        displayButtons.push(<button onClick={handleDisplayLogarithmic}>Show Logarithmic Graph</button>)
+        displayButtons.push(<button key="logarithmic" onClick={handleDisplayLogarithmic}>Show Logarithmic Graph</button>)
     }
 
     if (props.displayLogistic) {
-        displayButtons.push(<button onClick={handleDisplayLogistic}>Hide Logistic Graph</button>)
+        displayButtons.push(<button key="logistic" onClick={handleDisplayLogistic}>Hide Logistic Graph</button>)
     } else {
-        displayButtons.push(<button onClick={handleDisplayLogistic}>Show Logistic Graph</button>)
+        displayButtons.push(<button key="logistic" onClick={handleDisplayLogistic}>Show Logistic Graph</button>)
     }
 
     if (props.displaySinusoidal) {
-        displayButtons.push(<button onClick={handleDisplaySinusoidal}>Hide Sinusoidal Graph</button>)
+        displayButtons.push(<button key="sinusoidal" onClick={handleDisplaySinusoidal}>Hide Sinusoidal Graph</button>)
     } else {
-        displayButtons.push(<button onClick={handleDisplaySinusoidal}>Show Sinusoidal Graph</button>)
+        displayButtons.push(<button key="sinusoidal" onClick={handleDisplaySinusoidal}>Show Sinusoidal Graph</button>)
     }
 
     if (props.displayOriginal) {
-        displayButtons.push(<button onClick={handleDisplayOriginal}>Hide Original Points</button>)
+        displayButtons.push(<button key="original" onClick={handleDisplayOriginal}>Hide Original Points</button>)
     } else {
-        displayButtons.push(<button onClick={handleDisplayOriginal}>Show Original Points</button>)
+        displayButtons.push(<button key="original" onClick={handleDisplayOriginal}>Show Original Points</button>)
     }
 
     return (
