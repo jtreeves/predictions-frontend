@@ -2,12 +2,12 @@ import { useState } from 'react'
 import HorizontalAxis from '../../middleware/HorizontalAxis'
 import VerticalAxis from '../../middleware/VerticalAxis'
 import GraphOutput from '../../middleware/GraphOutput'
-import Table from '../../middleware/Table'
 import Zoom from './Zoom'
 import CheckFavorite from '../../middleware/CheckFavorite'
 import FutureEvaluations from './FutureEvaluations'
 import DisplayGraphs from './DisplayGraphs'
 import ModelsAnalyses from './ModelsAnalyses'
+import DisplayTable from './DisplayTable'
 
 // Create function
 function GeneratedModels(props) {
@@ -20,9 +20,6 @@ function GeneratedModels(props) {
     for (const point of points) {
         originalPoints.push({ x: point[0], y: point[1] })
     }
-
-    const [displayTable, setDisplayTable] = useState(false)
-    const [table, setTable] = useState('')
     
     const xAxis = HorizontalAxis(originalPoints, zoom)
     const xMinimum = xAxis.minimum
@@ -54,34 +51,11 @@ function GeneratedModels(props) {
         setCheckFavorite(false)
     }
     
-    const handleDisplayTable = (e) => {
-        e.preventDefault()
-        if (displayTable) {
-            setDisplayTable(false)
-            setTable('')
-        } else {
-            setDisplayTable(true)
-            setTable(<Table 
-                independent={props.independent}
-                dependent={props.dependent}
-                points={originalPoints}
-            />)
-        }
-    }
-
     const allCoordinates = [originalCoordinates, linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
 
     const yAxis = VerticalAxis(allCoordinates)
     const yMinimum = yAxis.minimum
     const yMaximum = yAxis.maximum
-
-    const displayTableButtons = []
-
-    if (displayTable) {
-        displayTableButtons.push(<button onClick={handleDisplayTable}>Hide Table of Original Points</button>)
-    } else {
-        displayTableButtons.push(<button onClick={handleDisplayTable}>Show Table of Original Points</button>)
-    }
 
     return (
         <div>
@@ -237,8 +211,11 @@ function GeneratedModels(props) {
                 displaySinusoidal={displaySinusoidal}
             />
 
-            {displayTableButtons}
-            {table}
+            <DisplayTable 
+                independent={props.independent}
+                dependent={props.dependent}
+                points={originalPoints}
+            />
         </div>
     )
 }
