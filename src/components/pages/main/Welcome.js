@@ -1,3 +1,5 @@
+import '../../../style/welcome.css'
+
 // Create function
 function Welcome() {
     return (

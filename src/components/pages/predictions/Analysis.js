@@ -8,6 +8,8 @@ import DeleteSet from '../../elements/predictions/DeleteSet'
 import Favorite from '../../elements/predictions/Favorite'
 import Note from '../../elements/predictions/Note'
 
+import '../../../style/analysis.css'
+
 // Create function
 function Analysis(props) {
     const location = useLocation()

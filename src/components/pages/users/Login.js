@@ -8,6 +8,8 @@ import jwt_decode from 'jwt-decode'
 import Authentication from '../../utilities/main/Authentication'
 import FormGroup from '../../elements/main/FormGroup'
 
+import '../../../style/login.css'
+
 // Create shortcut for environmental variable
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 

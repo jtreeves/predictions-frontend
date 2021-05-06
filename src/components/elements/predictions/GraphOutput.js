@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import * as d3 from 'd3'
+import '../../../style/graph.css'
 
 function GraphOutput(props) {
     const legend = []

@@ -6,6 +6,8 @@ import axios from 'axios'
 // Import internal component
 import FormGroup from '../../elements/main/FormGroup'
 
+import '../../../style/signup.css'
+
 // Create shortcut for environmental variable
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 

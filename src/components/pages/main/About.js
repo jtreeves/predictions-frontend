@@ -1,3 +1,5 @@
+import '../../../style/about.css'
+
 // Create function
 function About() {
     return (

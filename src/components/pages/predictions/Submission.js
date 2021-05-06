@@ -4,6 +4,7 @@ import axios from 'axios'
 import CreateSet from '../../elements/predictions/CreateSet'
 import SpreadsheetInput from '../../elements/predictions/SpreadsheetInput'
 import CleanCollection from '../../utilities/predictions/CleanCollection'
+import '../../../style/submission.css'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Submission(props) {

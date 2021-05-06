@@ -4,6 +4,7 @@ import ChangeName from '../../elements/users/ChangeName'
 import DeleteAccount from '../../elements/users/DeleteAccount'
 import AllSets from '../../elements/predictions/AllSets'
 import CheckExpiration from '../../utilities/users/CheckExpiration'
+import '../../../style/profile.css'
 
 function Profile(props) {
     CheckExpiration(props.user.exp, props.handleLogout)

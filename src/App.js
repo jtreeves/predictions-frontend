@@ -17,6 +17,8 @@ import Profile from './components/pages/users/Profile'
 import Submission from './components/pages/predictions/Submission'
 import Analysis from './components/pages/predictions/Analysis'
 
+import './style/main.css'
+
 // Create function for the main operations of the app
 function App() {
     //  Set initial state values
