@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Latex from 'react-latex'
-import GeneratePoints from '../../middleware/GeneratePoints'
 import HorizontalAxis from '../../middleware/HorizontalAxis'
 import VerticalAxis from '../../middleware/VerticalAxis'
 import GraphOutput from '../../middleware/GraphOutput'
@@ -10,6 +9,7 @@ import Table from '../../middleware/Table'
 import Zoom from './Zoom'
 import CheckFavorite from '../../middleware/CheckFavorite'
 import FutureEvaluations from './FutureEvaluations'
+import DisplayGraphs from './DisplayGraphs'
 
 // Create function
 function GeneratedModels(props) {
@@ -55,105 +55,6 @@ function GeneratedModels(props) {
     if (checkFavorite) {
         CheckFavorite(props.favorite, xMinimum, xMaximum, increment, props.linearConstants, setDisplayLinear, setLinearCoordinates, props.quadraticConstants, setDisplayQuadratic, setQuadraticCoordinates, props.cubicConstants, setDisplayCubic, setCubicCoordinates, props.hyperbolicConstants, setDisplayHyperbolic, setHyperbolicCoordinates, props.exponentialConstants, setDisplayExponential, setExponentialCoordinates, props.logarithmicConstants, setDisplayLogarithmic, setLogarithmicCoordinates, props.logisticConstants, setDisplayLogistic, setLogisticCoordinates, props.sinusoidalConstants, setDisplaySinusoidal, setSinusoidalCoordinates)
         setCheckFavorite(false)
-    }
-    
-    const handleDisplayLinear = (e) => {
-        e.preventDefault()
-        if (displayLinear) {
-            setDisplayLinear(false)
-            setLinearCoordinates('')
-        } else {
-            setDisplayLinear(true)
-            setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment))
-        }
-    }
-    
-    const handleDisplayQuadratic = (e) => {
-        e.preventDefault()
-        if (displayQuadratic) {
-            setDisplayQuadratic(false)
-            setQuadraticCoordinates('')
-        } else {
-            setDisplayQuadratic(true)
-            setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, xMinimum, xMaximum, increment))
-        }
-    }
-    
-    const handleDisplayCubic = (e) => {
-        e.preventDefault()
-        if (displayCubic) {
-            setDisplayCubic(false)
-            setCubicCoordinates('')
-        } else {
-            setDisplayCubic(true)
-            setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, xMinimum, xMaximum, increment))
-        }
-    }
-    
-    const handleDisplayHyperbolic = (e) => {
-        e.preventDefault()
-        if (displayHyperbolic) {
-            setDisplayHyperbolic(false)
-            setHyperbolicCoordinates('')
-        } else {
-            setDisplayHyperbolic(true)
-            setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, xMinimum, xMaximum, increment))
-        }
-    }
-    
-    const handleDisplayExponential = (e) => {
-        e.preventDefault()
-        if (displayExponential) {
-            setDisplayExponential(false)
-            setExponentialCoordinates('')
-        } else {
-            setDisplayExponential(true)
-            setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, xMinimum, xMaximum, increment))
-        }
-    }
-    
-    const handleDisplayLogarithmic = (e) => {
-        e.preventDefault()
-        if (displayLogarithmic) {
-            setDisplayLogarithmic(false)
-            setLogarithmicCoordinates('')
-        } else {
-            setDisplayLogarithmic(true)
-            setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, xMinimum, xMaximum, increment))
-        }
-    }
-    
-    const handleDisplayLogistic = (e) => {
-        e.preventDefault()
-        if (displayLogistic) {
-            setDisplayLogistic(false)
-            setLogisticCoordinates('')
-        } else {
-            setDisplayLogistic(true)
-            setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, xMinimum, xMaximum, increment))
-        }
-    }
-    
-    const handleDisplaySinusoidal = (e) => {
-        e.preventDefault()
-        if (displaySinusoidal) {
-            setDisplaySinusoidal(false)
-            setSinusoidalCoordinates('')
-        } else {
-            setDisplaySinusoidal(true)
-            setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, xMinimum, xMaximum, increment))
-        }
-    }
-    
-    const handleDisplayOriginal = (e) => {
-        e.preventDefault()
-        if (displayOriginal) {
-            setDisplayOriginal(false)
-            setOriginalCoordinates('')
-        } else {
-            setDisplayOriginal(true)
-            setOriginalCoordinates(originalPoints)
-        }
     }
     
     const handleDisplayTable = (e) => {
@@ -248,11 +149,9 @@ function GeneratedModels(props) {
     const logisticCorrelation = '$' + props.logisticCorrelation.toFixed(precision) + '$'
     const sinusoidalCorrelation = '$' + props.sinusoidalCorrelation.toFixed(precision) + '$'
 
-    const displayButtons = []
     const modelBreakdowns = []
     
     if (displayLinear) {
-        displayButtons.push(<button onClick={handleDisplayLinear}>Hide Linear Graph</button>)
         modelBreakdowns.push(<div>
             <h2>Linear Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{linearEquation}</Latex></p>
@@ -264,12 +163,9 @@ function GeneratedModels(props) {
                 <br />INFLECTIONS: <Latex>{linearInflections}</Latex>
             </p>
         </div>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayLinear}>Show Linear Graph</button>)
-    }
+    } 
 
     if (displayQuadratic) {
-        displayButtons.push(<button onClick={handleDisplayQuadratic}>Hide Quadratic Graph</button>)
         modelBreakdowns.push(<div>
             <h2>Quadratic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{quadraticEquation}</Latex></p>
@@ -281,12 +177,9 @@ function GeneratedModels(props) {
                 <br />INFLECTIONS: <Latex>{quadraticInflections}</Latex>
             </p>
         </div>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayQuadratic}>Show Quadratic Graph</button>)
-    }
+    } 
 
     if (displayCubic) {
-        displayButtons.push(<button onClick={handleDisplayCubic}>Hide Cubic Graph</button>)
         modelBreakdowns.push(<div>
             <h2>Cubic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{cubicEquation}</Latex></p>
@@ -298,12 +191,9 @@ function GeneratedModels(props) {
                 <br />INFLECTIONS: <Latex>{cubicInflections}</Latex>
             </p>
         </div>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayCubic}>Show Cubic Graph</button>)
-    }
+    } 
 
     if (displayHyperbolic) {
-        displayButtons.push(<button onClick={handleDisplayHyperbolic}>Hide Hyperbolic Graph</button>)
         modelBreakdowns.push(<div>
             <h2>Hyperbolic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{hyperbolicEquation}</Latex></p>
@@ -315,12 +205,9 @@ function GeneratedModels(props) {
                 <br />INFLECTIONS: <Latex>{hyperbolicInflections}</Latex>
             </p>
         </div>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayHyperbolic}>Show Hyperbolic Graph</button>)
-    }
+    } 
 
     if (displayExponential) {
-        displayButtons.push(<button onClick={handleDisplayExponential}>Hide Exponential Graph</button>)
         modelBreakdowns.push(<div>
             <h2>Exponential Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{exponentialEquation}</Latex></p>
@@ -332,12 +219,9 @@ function GeneratedModels(props) {
                 <br />INFLECTIONS: <Latex>{exponentialInflections}</Latex>
             </p>
         </div>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayExponential}>Show Exponential Graph</button>)
-    }
+    } 
 
     if (displayLogarithmic) {
-        displayButtons.push(<button onClick={handleDisplayLogarithmic}>Hide Logarithmic Graph</button>)
         modelBreakdowns.push(<div>
             <h2>Logarithmic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{logarithmicEquation}</Latex></p>
@@ -349,12 +233,9 @@ function GeneratedModels(props) {
                 <br />INFLECTIONS: <Latex>{logarithmicInflections}</Latex>
             </p>
         </div>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayLogarithmic}>Show Logarithmic Graph</button>)
-    }
+    } 
 
     if (displayLogistic) {
-        displayButtons.push(<button onClick={handleDisplayLogistic}>Hide Logistic Graph</button>)
         modelBreakdowns.push(<div>
             <h2>Logistic Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{logisticEquation}</Latex></p>
@@ -366,12 +247,9 @@ function GeneratedModels(props) {
                 <br />INFLECTIONS: <Latex>{logisticInflections}</Latex>
             </p>
         </div>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayLogistic}>Show Logistic Graph</button>)
-    }
+    } 
 
     if (displaySinusoidal) {
-        displayButtons.push(<button onClick={handleDisplaySinusoidal}>Hide Sinusoidal Graph</button>)
         modelBreakdowns.push(<div>
             <h2>Sinusoidal Model</h2>
             <p><em><strong>Equation</strong></em> <Latex>{sinusoidalEquation}</Latex></p>
@@ -383,14 +261,6 @@ function GeneratedModels(props) {
                 <br />INFLECTIONS: <Latex>{sinusoidalInflections}</Latex>
             </p>
         </div>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplaySinusoidal}>Show Sinusoidal Graph</button>)
-    }
-
-    if (displayOriginal) {
-        displayButtons.push(<button onClick={handleDisplayOriginal}>Hide Original Points</button>)
-    } else {
-        displayButtons.push(<button onClick={handleDisplayOriginal}>Show Original Points</button>)
     }
 
     const displayTableButtons = []
@@ -422,7 +292,47 @@ function GeneratedModels(props) {
                 sinusoidalPoints={sinusoidalCoordinates}
             />
 
-            {displayButtons}
+            <DisplayGraphs 
+                xMinimum={xMinimum}
+                xMaximum={xMaximum}
+                increment={increment}
+                originalPoints={originalPoints}
+                displayOriginal={displayOriginal}
+                setDisplayOriginal={setDisplayOriginal}
+                setOriginalCoordinates={setOriginalCoordinates}
+                linearConstants={props.linearConstants}
+                displayLinear={displayLinear}
+                setDisplayLinear={setDisplayLinear}
+                setLinearCoordinates={setLinearCoordinates}
+                quadraticConstants={props.quadraticConstants}
+                displayQuadratic={displayQuadratic}
+                setDisplayQuadratic={setDisplayQuadratic}
+                setQuadraticCoordinates={setQuadraticCoordinates}
+                cubicConstants={props.cubicConstants}
+                displayCubic={displayCubic}
+                setDisplayCubic={setDisplayCubic}
+                setCubicCoordinates={setCubicCoordinates}
+                hyperbolicConstants={props.hyperbolicConstants}
+                displayHyperbolic={displayHyperbolic}
+                setDisplayHyperbolic={setDisplayHyperbolic}
+                setHyperbolicCoordinates={setHyperbolicCoordinates}
+                exponentialConstants={props.exponentialConstants}
+                displayExponential={displayExponential}
+                setDisplayExponential={setDisplayExponential}
+                setExponentialCoordinates={setExponentialCoordinates}
+                logarithmicConstants={props.logarithmicConstants}
+                displayLogarithmic={displayLogarithmic}
+                setDisplayLogarithmic={setDisplayLogarithmic}
+                setLogarithmicCoordinates={setLogarithmicCoordinates}
+                logisticConstants={props.logisticConstants}
+                displayLogistic={displayLogistic}
+                setDisplayLogistic={setDisplayLogistic}
+                setLogisticCoordinates={setLogisticCoordinates}
+                sinusoidalConstants={props.sinusoidalConstants}
+                displaySinusoidal={displaySinusoidal}
+                setDisplaySinusoidal={setDisplaySinusoidal}
+                setSinusoidalCoordinates={setSinusoidalCoordinates}
+            />
 
             <Zoom 
                 zoom={zoom}
