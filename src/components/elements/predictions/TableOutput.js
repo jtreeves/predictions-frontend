@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import * as d3 from 'd3'
 
-function Table(props) {
+function TableOutput(props) {
     const headers = [
         props.independent,
         props.dependent
@@ -53,4 +53,4 @@ function Table(props) {
     )
 }
 
-export default Table
+export default TableOutput

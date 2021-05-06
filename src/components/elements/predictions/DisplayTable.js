@@ -1,18 +1,18 @@
 import { useState } from 'react'
-import Table from './Table'
+import TableOutput from './TableOutput'
 
 function DisplayTable(props) {
-    const [displayTable, setDisplayTable] = useState(false)
+    const [display, setDisplay] = useState(false)
     const [table, setTable] = useState('')
 
-    const handleDisplayTable = (e) => {
+    const handleDisplay = (e) => {
         e.preventDefault()
-        if (displayTable) {
-            setDisplayTable(false)
+        if (display) {
+            setDisplay(false)
             setTable('')
         } else {
-            setDisplayTable(true)
-            setTable(<Table 
+            setDisplay(true)
+            setTable(<TableOutput 
                 independent={props.independent}
                 dependent={props.dependent}
                 points={props.points}
@@ -20,17 +20,17 @@ function DisplayTable(props) {
         }
     }
 
-    const displayTableButton = []
+    const displayButton = []
 
-    if (displayTable) {
-        displayTableButton.push(<button onClick={handleDisplayTable}>Hide Table of Original Points</button>)
+    if (display) {
+        displayButton.push(<button onClick={handleDisplay}>Hide Table of Original Points</button>)
     } else {
-        displayTableButton.push(<button onClick={handleDisplayTable}>Show Table of Original Points</button>)
+        displayButton.push(<button onClick={handleDisplay}>Show Table of Original Points</button>)
     }
 
     return (
         <div>
-            {displayTableButton}
+            {displayButton}
             {table}
         </div>
     )
