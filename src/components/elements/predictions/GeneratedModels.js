@@ -9,6 +9,7 @@ import FormatPoints from '../../middleware/FormatPoints'
 import Evaluations from '../../middleware/Evaluations'
 import Table from '../../middleware/Table'
 import Zoom from './Zoom'
+import CheckFavorite from '../../middleware/CheckFavorite'
 
 // Create function
 function GeneratedModels(props) {
@@ -52,64 +53,7 @@ function GeneratedModels(props) {
     const [originalCoordinates, setOriginalCoordinates] = useState(originalPoints)
 
     if (checkFavorite) {
-        if (props.favorite) {
-            if (props.favorite === 'linear') {
-                setDisplayLinear(true)
-                setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment))
-            }
-    
-            if (props.favorite === 'quadratic') {
-                setDisplayQuadratic(true)
-                setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, xMinimum, xMaximum, increment))
-            }
-    
-            if (props.favorite === 'cubic') {
-                setDisplayCubic(true)
-                setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, xMinimum, xMaximum, increment))
-            }
-    
-            if (props.favorite === 'hyperbolic') {
-                setDisplayHyperbolic(true)
-                setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, xMinimum, xMaximum, increment))
-            }
-    
-            if (props.favorite === 'exponential') {
-                setDisplayExponential(true)
-                setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, xMinimum, xMaximum, increment))
-            }
-    
-            if (props.favorite === 'logarithmic') {
-                setDisplayLogarithmic(true)
-                setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, xMinimum, xMaximum, increment))
-            }
-    
-            if (props.favorite === 'logistic') {
-                setDisplayLogistic(true)
-                setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, xMinimum, xMaximum, increment))
-            }
-    
-            if (props.favorite === 'sinusoidal') {
-                setDisplaySinusoidal(true)
-                setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, xMinimum, xMaximum, increment))
-            }
-        } else {
-            setDisplayLinear(true)
-            setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment))
-            setDisplayQuadratic(true)
-            setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, xMinimum, xMaximum, increment))
-            setDisplayCubic(true)
-            setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, xMinimum, xMaximum, increment))
-            setDisplayHyperbolic(true)
-            setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, xMinimum, xMaximum, increment))
-            setDisplayExponential(true)
-            setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, xMinimum, xMaximum, increment))
-            setDisplayLogarithmic(true)
-            setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, xMinimum, xMaximum, increment))
-            setDisplayLogistic(true)
-            setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, xMinimum, xMaximum, increment))
-            setDisplaySinusoidal(true)
-            setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, xMinimum, xMaximum, increment))
-        }
+        CheckFavorite(props.favorite, xMinimum, xMaximum, increment, props.linearConstants, setDisplayLinear, setLinearCoordinates, props.quadraticConstants, setDisplayQuadratic, setQuadraticCoordinates, props.cubicConstants, setDisplayCubic, setCubicCoordinates, props.hyperbolicConstants, setDisplayHyperbolic, setHyperbolicCoordinates, props.exponentialConstants, setDisplayExponential, setExponentialCoordinates, props.logarithmicConstants, setDisplayLogarithmic, setLogarithmicCoordinates, props.logisticConstants, setDisplayLogistic, setLogisticCoordinates, props.sinusoidalConstants, setDisplaySinusoidal, setSinusoidalCoordinates)
         setCheckFavorite(false)
     }
     
