@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import HorizontalAxis from '../../middleware/HorizontalAxis'
 import VerticalAxis from '../../middleware/VerticalAxis'
-import GraphOutput from '../../middleware/GraphOutput'
+import GraphOutput from './GraphOutput'
 import CheckFavorite from '../../middleware/CheckFavorite'
 import DisplayGraphs from './DisplayGraphs'
 import FutureEvaluations from './FutureEvaluations'

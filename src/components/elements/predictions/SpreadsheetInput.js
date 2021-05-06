@@ -1,4 +1,4 @@
-import CreateSet from '../elements/predictions/CreateSet'
+import CreateSet from './CreateSet'
 
 function SpreadsheetInput(props) {
     const handleSpreadsheet = (e) => {

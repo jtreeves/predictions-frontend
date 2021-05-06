@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Table from '../../middleware/Table'
+import Table from './Table'
 
 function DisplayTable(props) {
     const [displayTable, setDisplayTable] = useState(false)
