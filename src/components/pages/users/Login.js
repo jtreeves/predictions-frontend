@@ -5,7 +5,7 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
 // Import internal components
-import Authentication from '../../utilities/Authentication'
+import Authentication from '../../utilities/main/Authentication'
 import FormGroup from '../../elements/main/FormGroup'
 
 // Create shortcut for environmental variable

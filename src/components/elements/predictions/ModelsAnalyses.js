@@ -1,6 +1,6 @@
 import Latex from 'react-latex'
-import FormatSlots from '../../utilities/FormatSlots'
-import FormatPoints from '../../utilities/FormatPoints'
+import FormatSlots from '../../utilities/predictions/FormatSlots'
+import FormatPoints from '../../utilities/predictions/FormatPoints'
 
 function ModelsAnalyses(props) {
     const linearSecondSlot = FormatSlots(props.linearConstants[1])

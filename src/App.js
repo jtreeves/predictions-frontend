@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 
 // Import internal components
-import Authentication from './components/utilities/Authentication'
+import Authentication from './components/utilities/main/Authentication'
 import PrivateRoute from './components/elements/main/PrivateRoute'
 import Navigation from './components/elements/main/Navigation'
 import Footer from './components/elements/main/Footer'

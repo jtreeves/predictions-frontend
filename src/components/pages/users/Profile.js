@@ -3,13 +3,10 @@ import DisplayName from '../../elements/users/DisplayName'
 import ChangeName from '../../elements/users/ChangeName'
 import DeleteAccount from '../../elements/users/DeleteAccount'
 import AllSets from '../../elements/predictions/AllSets'
+import CheckExpiration from '../../utilities/users/CheckExpiration'
 
 function Profile(props) {
-    const expirationTime = new Date(props.user.exp * 1000)
-    if (Date.now() >= expirationTime) {
-        alert('Your session has expired. Please log in.')
-        props.handleLogout()
-    }
+    CheckExpiration(props.user.exp, props.handleLogout)
     
     return (
         <div>

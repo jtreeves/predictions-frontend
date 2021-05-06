@@ -1,4 +1,4 @@
-import GeneratePoints from '../../utilities/GeneratePoints'
+import GeneratePoints from '../../utilities/predictions/GeneratePoints'
 
 function DisplayGraphs(props) {
     const handleDisplayLinear = (e) => {
