@@ -5,6 +5,12 @@ import DeleteAccount from '../../elements/users/DeleteAccount'
 import AllSets from '../../elements/predictions/AllSets'
 
 function Profile(props) {
+    const expirationTime = new Date(props.user.exp * 1000)
+    if (Date.now() >= expirationTime) {
+        alert('Your session has expired. Please log in.')
+        props.handleLogout()
+    }
+    
     return (
         <div>
             <h1>Welcome, <DisplayName user={props.user} /></h1>

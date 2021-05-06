@@ -53,7 +53,7 @@ function GeneratedModels(props) {
     const yMaximum = yAxis.maximum
 
     if (checkFavorite) {
-        CheckFavorite(props.favorite, xMinimum, xMaximum, increment, props.linearConstants, setDisplayLinear, setLinearCoordinates, props.quadraticConstants, setDisplayQuadratic, setQuadraticCoordinates, props.cubicConstants, setDisplayCubic, setCubicCoordinates, props.hyperbolicConstants, setDisplayHyperbolic, setHyperbolicCoordinates, props.exponentialConstants, setDisplayExponential, setExponentialCoordinates, props.logarithmicConstants, setDisplayLogarithmic, setLogarithmicCoordinates, props.logisticConstants, setDisplayLogistic, setLogisticCoordinates, props.sinusoidalConstants, setDisplaySinusoidal, setSinusoidalCoordinates)
+        CheckFavorite(props.favorite, xMinimum, xMaximum, increment, props.precision, props.linearConstants, setDisplayLinear, setLinearCoordinates, props.quadraticConstants, setDisplayQuadratic, setQuadraticCoordinates, props.cubicConstants, setDisplayCubic, setCubicCoordinates, props.hyperbolicConstants, setDisplayHyperbolic, setHyperbolicCoordinates, props.exponentialConstants, setDisplayExponential, setExponentialCoordinates, props.logarithmicConstants, setDisplayLogarithmic, setLogarithmicCoordinates, props.logisticConstants, setDisplayLogistic, setLogisticCoordinates, props.sinusoidalConstants, setDisplaySinusoidal, setSinusoidalCoordinates)
         setCheckFavorite(false)
     }
     return (
@@ -78,6 +78,7 @@ function GeneratedModels(props) {
             />
 
             <DisplayGraphs 
+                precision={props.precision}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 increment={increment}
@@ -120,6 +121,7 @@ function GeneratedModels(props) {
             />
 
             <Zoom 
+                precision={props.precision}
                 zoom={zoom}
                 setZoom={setZoom}
                 originalPoints={originalPoints}

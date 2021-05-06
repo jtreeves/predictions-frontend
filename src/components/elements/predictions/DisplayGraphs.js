@@ -8,7 +8,7 @@ function DisplayGraphs(props) {
             props.setLinearCoordinates('')
         } else {
             props.setDisplayLinear(true)
-            props.setLinearCoordinates(GeneratePoints('linear', props.linearConstants, props.xMinimum, props.xMaximum, props.increment))
+            props.setLinearCoordinates(GeneratePoints('linear', props.linearConstants, props.xMinimum, props.xMaximum, props.increment, props.precision))
         }
     }
     
@@ -19,7 +19,7 @@ function DisplayGraphs(props) {
             props.setQuadraticCoordinates('')
         } else {
             props.setDisplayQuadratic(true)
-            props.setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, props.xMinimum, props.xMaximum, props.increment))
+            props.setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, props.xMinimum, props.xMaximum, props.increment, props.precision))
         }
     }
     
@@ -30,7 +30,7 @@ function DisplayGraphs(props) {
             props.setCubicCoordinates('')
         } else {
             props.setDisplayCubic(true)
-            props.setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, props.xMinimum, props.xMaximum, props.increment))
+            props.setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, props.xMinimum, props.xMaximum, props.increment, props.precision))
         }
     }
     
@@ -41,7 +41,7 @@ function DisplayGraphs(props) {
             props.setHyperbolicCoordinates('')
         } else {
             props.setDisplayHyperbolic(true)
-            props.setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, props.xMinimum, props.xMaximum, props.increment))
+            props.setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, props.xMinimum, props.xMaximum, props.increment, props.precision))
         }
     }
     
@@ -52,7 +52,7 @@ function DisplayGraphs(props) {
             props.setExponentialCoordinates('')
         } else {
             props.setDisplayExponential(true)
-            props.setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, props.xMinimum, props.xMaximum, props.increment))
+            props.setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, props.xMinimum, props.xMaximum, props.increment, props.precision))
         }
     }
     
@@ -63,7 +63,7 @@ function DisplayGraphs(props) {
             props.setLogarithmicCoordinates('')
         } else {
             props.setDisplayLogarithmic(true)
-            props.setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, props.xMinimum, props.xMaximum, props.increment))
+            props.setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, props.xMinimum, props.xMaximum, props.increment, props.precision))
         }
     }
     
@@ -74,7 +74,7 @@ function DisplayGraphs(props) {
             props.setLogisticCoordinates('')
         } else {
             props.setDisplayLogistic(true)
-            props.setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, props.xMinimum, props.xMaximum, props.increment))
+            props.setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, props.xMinimum, props.xMaximum, props.increment, props.precision))
         }
     }
     
@@ -85,7 +85,7 @@ function DisplayGraphs(props) {
             props.setSinusoidalCoordinates('')
         } else {
             props.setDisplaySinusoidal(true)
-            props.setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, props.xMinimum, props.xMaximum, props.increment))
+            props.setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, props.xMinimum, props.xMaximum, props.increment, props.precision))
         }
     }
     

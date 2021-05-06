@@ -19,28 +19,28 @@ function Zoom(props) {
             }))
         }
         if (props.displayLinear) {
-            props.setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment))
+            props.setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displayQuadratic) {
-            props.setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, xMinimum, xMaximum, increment))
+            props.setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displayCubic) {
-            props.setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, xMinimum, xMaximum, increment))
+            props.setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displayHyperbolic) {
-            props.setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, xMinimum, xMaximum, increment))
+            props.setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displayExponential) {
-            props.setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, xMinimum, xMaximum, increment))
+            props.setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displayLogarithmic) {
-            props.setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, xMinimum, xMaximum, increment))
+            props.setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displayLogistic) {
-            props.setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, xMinimum, xMaximum, increment))
+            props.setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displaySinusoidal) {
-            props.setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, xMinimum, xMaximum, increment))
+            props.setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, xMinimum, xMaximum, increment, props.precision))
         }
     }
     
@@ -61,28 +61,28 @@ function Zoom(props) {
             }))
         }
         if (props.displayLinear) {
-            props.setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment))
+            props.setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displayQuadratic) {
-            props.setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, xMinimum, xMaximum, increment))
+            props.setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displayCubic) {
-            props.setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, xMinimum, xMaximum, increment))
+            props.setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displayHyperbolic) {
-            props.setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, xMinimum, xMaximum, increment))
+            props.setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displayExponential) {
-            props.setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, xMinimum, xMaximum, increment))
+            props.setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displayLogarithmic) {
-            props.setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, xMinimum, xMaximum, increment))
+            props.setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displayLogistic) {
-            props.setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, xMinimum, xMaximum, increment))
+            props.setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, xMinimum, xMaximum, increment, props.precision))
         }
         if (props.displaySinusoidal) {
-            props.setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, xMinimum, xMaximum, increment))
+            props.setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, xMinimum, xMaximum, increment, props.precision))
         }
     }
 
