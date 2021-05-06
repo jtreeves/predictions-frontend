@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import * as d3 from 'd3'
 
 function GraphOutput(props) {
+    console.log('MAX IN GRAPH OUTPUT: ', props.xMaximum)
     const legend = []
 
     if (props.linearPoints) {

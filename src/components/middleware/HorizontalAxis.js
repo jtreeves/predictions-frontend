@@ -1,4 +1,4 @@
-function HorizontalAxis(points, scale) {
+function HorizontalAxis(points, scale = 0) {
     let independents = []
     for (const point of points) {
         independents.push(point.x)
@@ -11,6 +11,7 @@ function HorizontalAxis(points, scale) {
     const scaledMinimum = minimum - tail
     const scaledMaximum = maximum + tail
     const increment = scaledRange / 100
+    console.log('SCALED MAXIMUM: ', scaledMaximum)
     const axis = {
         minimum: scaledMinimum,
         maximum: scaledMaximum,

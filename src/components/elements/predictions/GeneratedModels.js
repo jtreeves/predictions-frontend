@@ -8,6 +8,7 @@ import FormatSlots from '../../middleware/FormatSlots'
 import FormatPoints from '../../middleware/FormatPoints'
 import Evaluations from '../../middleware/Evaluations'
 import Table from '../../middleware/Table'
+import Zoom from './Zoom'
 
 // Create function
 function GeneratedModels(props) {
@@ -223,64 +224,6 @@ function GeneratedModels(props) {
                 dependent={props.dependent}
                 points={originalPoints}
             />)
-        }
-    }
-
-    const handleZoomOut = (e) => {
-        e.preventDefault()
-        setZoom(zoom + 0.1)
-        if (displayLinear) {
-            setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment))
-        }
-        if (displayQuadratic) {
-            setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, xMinimum, xMaximum, increment))
-        }
-        if (displayCubic) {
-            setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, xMinimum, xMaximum, increment))
-        }
-        if (displayHyperbolic) {
-            setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, xMinimum, xMaximum, increment))
-        }
-        if (displayExponential) {
-            setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, xMinimum, xMaximum, increment))
-        }
-        if (displayLogarithmic) {
-            setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, xMinimum, xMaximum, increment))
-        }
-        if (displayLogistic) {
-            setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, xMinimum, xMaximum, increment))
-        }
-        if (displaySinusoidal) {
-            setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, xMinimum, xMaximum, increment))
-        }
-    }
-    
-    const handleZoomIn = (e) => {
-        e.preventDefault()
-        setZoom(zoom - 0.1)
-        if (displayLinear) {
-            setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment))
-        }
-        if (displayQuadratic) {
-            setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, xMinimum, xMaximum, increment))
-        }
-        if (displayCubic) {
-            setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, xMinimum, xMaximum, increment))
-        }
-        if (displayHyperbolic) {
-            setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, xMinimum, xMaximum, increment))
-        }
-        if (displayExponential) {
-            setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, xMinimum, xMaximum, increment))
-        }
-        if (displayLogarithmic) {
-            setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, xMinimum, xMaximum, increment))
-        }
-        if (displayLogistic) {
-            setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, xMinimum, xMaximum, increment))
-        }
-        if (displaySinusoidal) {
-            setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, xMinimum, xMaximum, increment))
         }
     }
 
@@ -574,8 +517,35 @@ function GeneratedModels(props) {
 
             {displayButtons}
 
-            <button onClick={handleZoomOut}>Zoom Out</button>
-            <button onClick={handleZoomIn}>Zoom In</button>
+            <Zoom 
+                zoom={zoom}
+                setZoom={setZoom}
+                originalPoints={originalPoints}
+                linearConstants={props.linearConstants}
+                displayLinear={displayLinear}
+                setLinearCoordinates={setLinearCoordinates}
+                quadraticConstants={props.quadraticConstants}
+                displayQuadratic={displayQuadratic}
+                setQuadraticCoordinates={setQuadraticCoordinates}
+                cubicConstants={props.cubicConstants}
+                displayCubic={displayCubic}
+                setCubicCoordinates={setCubicCoordinates}
+                hyperbolicConstants={props.hyperbolicConstants}
+                displayHyperbolic={displayHyperbolic}
+                setHyperbolicCoordinates={setHyperbolicCoordinates}
+                exponentialConstants={props.exponentialConstants}
+                displayExponential={displayExponential}
+                setExponentialCoordinates={setExponentialCoordinates}
+                logarithmicConstants={props.logarithmicConstants}
+                displayLogarithmic={displayLogarithmic}
+                setLogarithmicCoordinates={setLogarithmicCoordinates}
+                logisticConstants={props.logisticConstants}
+                displayLogistic={displayLogistic}
+                setLogisticCoordinates={setLogisticCoordinates}
+                sinusoidalConstants={props.sinusoidalConstants}
+                displaySinusoidal={displaySinusoidal}
+                setSinusoidalCoordinates={setSinusoidalCoordinates}
+            />
 
             <p><em><strong>Best Fit</strong></em> {props.bestFit}</p>
 
