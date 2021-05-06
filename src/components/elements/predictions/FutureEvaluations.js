@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Evaluations from '../../middleware/Evaluations'
+import Evaluations from '../../utilities/Evaluations'
 
 function FutureEvaluations(props) {
     const [futureInput, setFutureInput] = useState(Math.round(props.xMaximum + (props.xMaximum - props.xMinimum) / 2))

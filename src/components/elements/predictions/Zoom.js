@@ -1,5 +1,5 @@
-import HorizontalAxis from '../../middleware/HorizontalAxis'
-import GeneratePoints from '../../middleware/GeneratePoints'
+import HorizontalAxis from '../../utilities/HorizontalAxis'
+import GeneratePoints from '../../utilities/GeneratePoints'
 
 function Zoom(props) {
     const handleZoomOut = (e) => {

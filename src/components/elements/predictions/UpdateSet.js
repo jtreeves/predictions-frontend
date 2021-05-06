@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import CreateSet from './CreateSet'
-import CleanCollection from '../../middleware/CleanCollection'
+import CleanCollection from '../../utilities/CleanCollection'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function UpdateSet(props) {
