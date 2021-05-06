@@ -156,6 +156,7 @@ function GeneratedModels(props) {
             />
 
             <FutureEvaluations 
+                precision={props.precision}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 linearConstants={props.linearConstants}

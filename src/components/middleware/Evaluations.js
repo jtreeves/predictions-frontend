@@ -1,4 +1,4 @@
-function Evaluations(equationType, coefficients, independent) {
+function Evaluations(equationType, coefficients, precision, independent) {
     let dependent = 0
 
     if (equationType === 'linear') {
@@ -19,7 +19,7 @@ function Evaluations(equationType, coefficients, independent) {
         dependent += coefficients[0] * Math.sin(coefficients[1] * (independent - coefficients[2])) + coefficients[3]
     }
     
-    return dependent
+    return dependent.toFixed(precision)
 }
 
 export default Evaluations

@@ -3,14 +3,14 @@ import Evaluations from '../../middleware/Evaluations'
 
 function FutureEvaluations(props) {
     const [futureInput, setFutureInput] = useState(Math.round(props.xMaximum + (props.xMaximum - props.xMinimum) / 2))
-    const [linearEvaluation, setLinearEvaluation] = useState(Evaluations('linear', props.linearConstants, futureInput))
-    const [quadraticEvaluation, setQuadraticEvaluation] = useState(Evaluations('quadratic', props.quadraticConstants, futureInput))
-    const [cubicEvaluation, setCubicEvaluation] = useState(Evaluations('cubic', props.cubicConstants, futureInput))
-    const [hyperbolicEvaluation, setHyperbolicEvaluation] = useState(Evaluations('hyperbolic', props.hyperbolicConstants, futureInput))
-    const [exponentialEvaluation, setExponentialEvaluation] = useState(Evaluations('exponential', props.exponentialConstants, futureInput))
-    const [logarithmicEvaluation, setLogarithmicEvaluation] = useState(Evaluations('logarithmic', props.logarithmicConstants, futureInput))
-    const [logisticEvaluation, setLogisticEvaluation] = useState(Evaluations('logistic', props.logisticConstants, futureInput))
-    const [sinusoidalEvaluation, setSinusoidalEvaluation] = useState(Evaluations('sinusoidal', props.sinusoidalConstants, futureInput))
+    const [linearEvaluation, setLinearEvaluation] = useState(Evaluations('linear', props.linearConstants, props.precision, futureInput))
+    const [quadraticEvaluation, setQuadraticEvaluation] = useState(Evaluations('quadratic', props.quadraticConstants, props.precision, futureInput))
+    const [cubicEvaluation, setCubicEvaluation] = useState(Evaluations('cubic', props.cubicConstants, props.precision, futureInput))
+    const [hyperbolicEvaluation, setHyperbolicEvaluation] = useState(Evaluations('hyperbolic', props.hyperbolicConstants, props.precision, futureInput))
+    const [exponentialEvaluation, setExponentialEvaluation] = useState(Evaluations('exponential', props.exponentialConstants, props.precision, futureInput))
+    const [logarithmicEvaluation, setLogarithmicEvaluation] = useState(Evaluations('logarithmic', props.logarithmicConstants, props.precision, futureInput))
+    const [logisticEvaluation, setLogisticEvaluation] = useState(Evaluations('logistic', props.logisticConstants, props.precision, futureInput))
+    const [sinusoidalEvaluation, setSinusoidalEvaluation] = useState(Evaluations('sinusoidal', props.sinusoidalConstants, props.precision, futureInput))
 
     const handleFutureInput = (e) => {
         setFutureInput(Number(e.target.value))
@@ -18,14 +18,14 @@ function FutureEvaluations(props) {
 
     const handleFutureValue = (e) => {
         e.preventDefault()
-        setLinearEvaluation(Evaluations('linear', props.linearConstants, futureInput))
-        setQuadraticEvaluation(Evaluations('quadratic', props.quadraticConstants, futureInput))
-        setCubicEvaluation(Evaluations('cubic', props.cubicConstants, futureInput))
-        setHyperbolicEvaluation(Evaluations('hyperbolic', props.hyperbolicConstants, futureInput))
-        setExponentialEvaluation(Evaluations('exponential', props.exponentialConstants, futureInput))
-        setLogarithmicEvaluation(Evaluations('logarithmic', props.logarithmicConstants, futureInput))
-        setLogisticEvaluation(Evaluations('logistic', props.logisticConstants, futureInput))
-        setSinusoidalEvaluation(Evaluations('sinusoidal', props.sinusoidalConstants, futureInput))
+        setLinearEvaluation(Evaluations('linear', props.linearConstants, props.precision, futureInput))
+        setQuadraticEvaluation(Evaluations('quadratic', props.quadraticConstants, props.precision, futureInput))
+        setCubicEvaluation(Evaluations('cubic', props.cubicConstants, props.precision, futureInput))
+        setHyperbolicEvaluation(Evaluations('hyperbolic', props.hyperbolicConstants, props.precision, futureInput))
+        setExponentialEvaluation(Evaluations('exponential', props.exponentialConstants, props.precision, futureInput))
+        setLogarithmicEvaluation(Evaluations('logarithmic', props.logarithmicConstants, props.precision, futureInput))
+        setLogisticEvaluation(Evaluations('logistic', props.logisticConstants, props.precision, futureInput))
+        setSinusoidalEvaluation(Evaluations('sinusoidal', props.sinusoidalConstants, props.precision, futureInput))
     }
 
     const allEvaluations = []
