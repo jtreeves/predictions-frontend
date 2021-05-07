@@ -99,8 +99,20 @@ function Submission(props) {
             <main>
                 <h1>Add a New Data Set</h1>
                 <p>Did you want to manually type in your data set, or would you rather upload a CSV file of it?</p>
-                <button onClick={handleManual}>Manual</button>
-                <button onClick={handleUpload}>Upload</button>
+                <section className="submission">
+                    <button 
+                        onClick={handleManual}
+                        className="submission"
+                    >
+                        Manual
+                    </button>
+                    <button 
+                        onClick={handleUpload}
+                        className="submission"
+                    >
+                        Upload
+                    </button>
+                </section>
             </main>
         )
     }

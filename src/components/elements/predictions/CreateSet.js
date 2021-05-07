@@ -50,7 +50,12 @@ function CreateSet(props) {
                 onChange={props.handleDataSet}
             />
             
-            <button type="submit">Submit</button>
+            <button 
+                type="submit"
+                className="submission"
+            >
+                Submit
+            </button>
         </form>
     )
 }

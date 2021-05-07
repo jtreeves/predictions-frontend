@@ -39,7 +39,13 @@ function SpreadsheetInput(props) {
         return (
             <form>
                 <input type="file" id="csv" />
-                <button id="upload" onClick={handleSpreadsheet}>Upload Data</button>
+                <button 
+                    id="upload" 
+                    onClick={handleSpreadsheet}
+                    className="submission"
+                >
+                    Upload Data
+                </button>
             </form>
         )
     } else {

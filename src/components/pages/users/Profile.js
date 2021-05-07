@@ -15,14 +15,30 @@ function Profile(props) {
             <h1>Profile</h1>
             <DisplayName user={props.user} />
             <DisplayEmail user={props.user} />
-            <ChangeName user={props.user} />
-            <ChangeEmail user={props.user} />
-            <DeleteAccount 
-                user={props.user}
-                handleLogout={props.handleLogout} 
-            />
-            <Link to="/datasets"><button>View All Your Saved Data Sets</button></Link>
-            <Link to="/submission"><button>Add a New Data Set</button></Link>
+            <section className="profile">
+                <h2>Update Account</h2>
+                <ChangeName user={props.user} />
+                <ChangeEmail user={props.user} />
+                <DeleteAccount 
+                    user={props.user}
+                    handleLogout={props.handleLogout} 
+                />
+            </section>
+            <section className="profile">
+                <h2>Analyze Data</h2>
+                <Link 
+                    to="/datasets"
+                    style={{ textDecoration: 'none' }}
+                >
+                    <button className="profile">View All Your Saved Data Sets</button>
+                </Link>
+                <Link 
+                    to="/submission"
+                    style={{ textDecoration: 'none' }}
+                >
+                    <button className="profile">Add a New Data Set</button>
+                </Link>
+            </section>
         </main>
     )
 }

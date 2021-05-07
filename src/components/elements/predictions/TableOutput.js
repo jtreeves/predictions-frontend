@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import * as d3 from 'd3'
-import '../../../style/table.css'
 
 function TableOutput(props) {
     const headers = [

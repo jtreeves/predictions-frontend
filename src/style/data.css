@@ -1,0 +1,21 @@
+ul.data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+button.data {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    display: block;
+    width: 500px;
+    height: 100px;
+    color: black;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+button.data:hover {
+    font-weight: bold;
+}

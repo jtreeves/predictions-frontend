@@ -1,0 +1,50 @@
+table.main-table {
+    border-collapse: collapse;
+}
+
+table.main-table, table.main-table tr, table.main-table td, table.main-table th {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+}
+
+table.main-table thead {
+    background: lightgray;
+}
+
+.graph-container h1 {
+    margin-bottom: -25px;
+}
+
+section.analysis label {
+    margin-right: 10px;
+}
+
+section.analysis button {
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+section.analysis button:hover {
+    font-weight: bold;
+}
+
+.linear-checkbox:before {
+    background: white;
+}
+.linear-checkbox:after {
+    background: black;
+}
+
+.linear-box {
+    height: 100px;
+    width: 100px;
+}
+
+.blue-box {
+    background: blue;
+}
+.red-box {
+    background: red;
+}

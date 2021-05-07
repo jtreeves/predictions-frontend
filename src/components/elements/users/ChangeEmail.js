@@ -36,7 +36,12 @@ function ChangeEmail(props) {
 
     if (!updateClicked && !saveClicked) {
         return (
-            <button onClick={handleUpdate}>Change Email</button>
+            <button 
+                onClick={handleUpdate}
+                className="profile"
+            >
+                Change Email
+            </button>
         )
     } else if (updateClicked && !saveClicked) {
         return (
@@ -46,10 +51,12 @@ function ChangeEmail(props) {
                     label="email"
                     value={email}
                     display="Email"
+                    tooltip="What email address do you want to associate with this account?"
                     onChange={handleEmail}
                 />
                 <button
                     type="submit"
+                    className="profile"
                 >
                     Update Email
                 </button>

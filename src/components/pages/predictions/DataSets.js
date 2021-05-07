@@ -31,22 +31,22 @@ function DataSets(props) {
                     <li
                         key={index}
                     >
-                        <button>
-                            <Link
-                                to={{
-                                    pathname: "/analysis",
-                                    state: {
-                                        models: datum.models, 
-                                        opinions: datum.opinions,
-                                        user: props.user,
-                                        stored: true
-                                    }
-                                }}
-                                style={{ textDecoration: 'none' }} 
-                            >
+                        <Link
+                            to={{
+                                pathname: "/analysis",
+                                state: {
+                                    models: datum.models, 
+                                    opinions: datum.opinions,
+                                    user: props.user,
+                                    stored: true
+                                }
+                            }}
+                            style={{ textDecoration: 'none' }} 
+                        >
+                            <button className="data">
                                 {datum.models.title}
-                            </Link>
-                        </button>
+                            </button>
+                        </Link>
                     </li>
                 )
             })
@@ -71,7 +71,7 @@ function DataSets(props) {
         return (
             <main>
                 <h1>Models</h1>
-                <ul>
+                <ul className="data">
                     {predictions}
                 </ul>
             </main>

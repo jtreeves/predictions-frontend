@@ -36,7 +36,12 @@ function ChangeName(props) {
 
     if (!updateClicked && !saveClicked) {
         return (
-            <button onClick={handleUpdate}>Change Name</button>
+            <button 
+                onClick={handleUpdate}
+                className="profile"
+            >
+                Change Name
+            </button>
         )
     } else if (updateClicked && !saveClicked) {
         return (
@@ -46,10 +51,12 @@ function ChangeName(props) {
                     label="name"
                     value={name}
                     display="Name"
+                    tooltip="What do you want your new name to be?"
                     onChange={handleName}
                 />
                 <button
                     type="submit"
+                    className="profile"
                 >
                     Update Name
                 </button>

@@ -7,13 +7,12 @@ body {
 }
 
 header {
-    font-size: 60px;
-    text-align: center;
-    margin: 25px 0;
-    text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    color: black;
+    font-size: 60px;
+    text-align: center;
+    color: whitesmoke;
+    margin: 25px 0;
 }
 
 footer {
@@ -26,27 +25,22 @@ main {
     background: whitesmoke;
     border: 1px solid black;
     border-radius: 5px;
-    padding: 10px 25px 25px 25px;
     margin: 0 150px;
-    min-height: 600px;
+    padding: 10px 25px 25px 25px;
+    min-height: 400px;
 }
 
-mark {
-    background: none;
-    font-weight: bold;
-    font-style: italic;
+h1, h2 {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
 }
 
 h1 {
-    text-align: center;
     font-size: 40px;
-    font-family: 'Roboto', sans-serif;
 }
 
 h2 {
-    text-align: center;
     font-size: 30px;
-    font-family: 'Roboto', sans-serif;
 }
 
 ul {
@@ -56,28 +50,60 @@ ul {
 }
 
 nav {
-    position: fixed;
+    background: lightblue;
+    font-family: 'Roboto', sans-serif;
     width: 100px;
     border-top: 1px solid black;
     border-right: 1px solid black;
-    margin-top: 150px;
-    background: lightblue;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    font-family: 'Roboto', sans-serif;
+    margin-top: 150px;
+    position: fixed;
 }
 
 nav li {
     display: block;
     width: 100px;
     height: 100px;
+    line-height: 100px;
     border-bottom: 1px solid black;
     color: black;
-    cursor: pointer;
     text-align: center;
-    line-height: 100px;
+    cursor: pointer;
 }
 
 nav li:hover {
+    font-weight: bold;
+}
+
+form {
+    display: grid;
+    row-gap: 10px;
+}
+
+form section {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+form button {
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    width: 25%;
+    justify-self: center;
+}
+
+form button:hover {
+    font-weight: bold;
+}
+
+form label {
+    font-style: italic;
+    font-weight: bold;
+}
+
+mark {
+    background: none;
+    font-style: italic;
     font-weight: bold;
 }

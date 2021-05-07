@@ -88,7 +88,7 @@ function FutureEvaluations(props) {
     }
 
     return (
-        <section>
+        <section className="analysis">
             <h2>Predicted Future Values at an Input of {futureInput}</h2>
             
             {allEvaluations}
