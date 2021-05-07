@@ -103,57 +103,57 @@ function DisplayGraphs(props) {
     const displayButtons = []
 
     if (props.displayLinear) {
-        displayButtons.push(<button key="linear" onClick={handleDisplayLinear}>Hide Linear Graph</button>)
+        displayButtons.push(<div><button className="box pink" onClick={handleDisplayLinear} />linear</div>)
     } else {
-        displayButtons.push(<button key="linear" onClick={handleDisplayLinear}>Show Linear Graph</button>)
+        displayButtons.push(<div><button className="box blank" onClick={handleDisplayLinear} />linear</div>)
     }
 
     if (props.displayQuadratic) {
-        displayButtons.push(<button key="quadratic" onClick={handleDisplayQuadratic}>Hide Quadratic Graph</button>)
+        displayButtons.push(<div><button className="box green" onClick={handleDisplayQuadratic} />quadratic</div>)
     } else {
-        displayButtons.push(<button key="quadratic" onClick={handleDisplayQuadratic}>Show Quadratic Graph</button>)
+        displayButtons.push(<div><button className="box blank" onClick={handleDisplayQuadratic} />quadratic</div>)
     }
 
     if (props.displayCubic) {
-        displayButtons.push(<button key="cubic" onClick={handleDisplayCubic}>Hide Cubic Graph</button>)
+        displayButtons.push(<div><button className="box blue" onClick={handleDisplayCubic} />cubic</div>)
     } else {
-        displayButtons.push(<button key="cubic" onClick={handleDisplayCubic}>Show Cubic Graph</button>)
+        displayButtons.push(<div><button className="box blank" onClick={handleDisplayCubic} />cubic</div>)
     }
 
     if (props.displayHyperbolic) {
-        displayButtons.push(<button key="hyperbolic" onClick={handleDisplayHyperbolic}>Hide Hyperbolic Graph</button>)
+        displayButtons.push(<div><button className="box brown" onClick={handleDisplayHyperbolic} />hyperbolic</div>)
     } else {
-        displayButtons.push(<button key="hyperbolic" onClick={handleDisplayHyperbolic}>Show Hyperbolic Graph</button>)
+        displayButtons.push(<div><button className="box blank" onClick={handleDisplayHyperbolic} />hyperbolic</div>)
     }
 
     if (props.displayExponential) {
-        displayButtons.push(<button key="exponential" onClick={handleDisplayExponential}>Hide Exponential Graph</button>)
+        displayButtons.push(<div><button className="box orange" onClick={handleDisplayExponential} />exponential</div>)
     } else {
-        displayButtons.push(<button key="exponential" onClick={handleDisplayExponential}>Show Exponential Graph</button>)
+        displayButtons.push(<div><button className="box blank" onClick={handleDisplayExponential} />exponential</div>)
     }
 
     if (props.displayLogarithmic) {
-        displayButtons.push(<button key="logarithmic" onClick={handleDisplayLogarithmic}>Hide Logarithmic Graph</button>)
+        displayButtons.push(<div><button className="box yellow" onClick={handleDisplayLogarithmic} />logarithmic</div>)
     } else {
-        displayButtons.push(<button key="logarithmic" onClick={handleDisplayLogarithmic}>Show Logarithmic Graph</button>)
+        displayButtons.push(<div><button className="box blank" onClick={handleDisplayLogarithmic} />logarithmic</div>)
     }
 
     if (props.displayLogistic) {
-        displayButtons.push(<button key="logistic" onClick={handleDisplayLogistic}>Hide Logistic Graph</button>)
+        displayButtons.push(<div><button className="box purple" onClick={handleDisplayLogistic} />logistic</div>)
     } else {
-        displayButtons.push(<button key="logistic" onClick={handleDisplayLogistic}>Show Logistic Graph</button>)
+        displayButtons.push(<div><button className="box blank" onClick={handleDisplayLogistic} />logistic</div>)
     }
 
     if (props.displaySinusoidal) {
-        displayButtons.push(<button key="sinusoidal" onClick={handleDisplaySinusoidal}>Hide Sinusoidal Graph</button>)
+        displayButtons.push(<div><button className="box red" onClick={handleDisplaySinusoidal} />sinusoidal</div>)
     } else {
-        displayButtons.push(<button key="sinusoidal" onClick={handleDisplaySinusoidal}>Show Sinusoidal Graph</button>)
+        displayButtons.push(<div><button className="box blank" onClick={handleDisplaySinusoidal} />sinusoidal</div>)
     }
 
     if (props.displayOriginal) {
-        displayButtons.push(<button key="original" onClick={handleDisplayOriginal}>Hide Original Points</button>)
+        displayButtons.push(<div><button className="box black" onClick={handleDisplayOriginal} />original</div>)
     } else {
-        displayButtons.push(<button key="original" onClick={handleDisplayOriginal}>Show Original Points</button>)
+        displayButtons.push(<div><button className="box blank" onClick={handleDisplayOriginal} />original</div>)
     }
 
     return (

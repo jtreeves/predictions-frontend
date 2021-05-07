@@ -30,21 +30,47 @@ section.analysis button:hover {
     font-weight: bold;
 }
 
-.linear-checkbox:before {
-    background: white;
+button.box {
+    height: 25px;
+    width: 25px;
 }
-.linear-checkbox:after {
+
+button.pink { 
+    background: pink;
+}
+
+button.blue {
+    background: blue;
+}
+
+button.yellow {
+    background: yellow;
+}
+
+button.orange {
+    background: orange;
+}
+
+button.red {
+    background: red;
+}
+
+button.purple {
+    background: purple;
+}
+
+button.brown {
+    background: brown;
+}
+
+button.green {
+    background: green;
+}
+
+button.black {
     background: black;
 }
 
-.linear-box {
-    height: 100px;
-    width: 100px;
-}
-
-.blue-box {
-    background: blue;
-}
-.red-box {
-    background: red;
+button.blank {
+    background: white;
 }
