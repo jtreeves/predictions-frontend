@@ -33,74 +33,85 @@ function FutureEvaluations(props) {
 
     if (props.displayLinear) {
         allEvaluations.push(<FormattedEvaluations 
-            type="Linear"
+            type="linear"
             evaluation={linearEvaluation}
+            dependent={props.dependent}
         />)
     }
 
     if (props.displayQuadratic) {
         allEvaluations.push(<FormattedEvaluations 
-            type="Quadratic"
+            type="quadratic"
             evaluation={quadraticEvaluation}
+            dependent={props.dependent}
         />)
     }
 
     if (props.displayCubic) {
         allEvaluations.push(<FormattedEvaluations 
-            type="Cubic"
+            type="cubic"
             evaluation={cubicEvaluation}
+            dependent={props.dependent}
         />)
     }
 
     if (props.displayHyperbolic) {
         allEvaluations.push(<FormattedEvaluations 
-            type="Hyperbolic"
+            type="hyperbolic"
             evaluation={hyperbolicEvaluation}
+            dependent={props.dependent}
         />)
     } 
 
     if (props.displayExponential) {
         allEvaluations.push(<FormattedEvaluations 
-            type="Exponential"
+            type="exponential"
             evaluation={exponentialEvaluation}
+            dependent={props.dependent}
         />)
     } 
 
     if (props.displayLogarithmic) {
         allEvaluations.push(<FormattedEvaluations 
-            type="Logarithmic"
+            type="logarithmic"
             evaluation={logarithmicEvaluation}
+            dependent={props.dependent}
         />)
     } 
 
     if (props.displayLogistic) {
         allEvaluations.push(<FormattedEvaluations 
-            type="Logistic"
+            type="logistic"
             evaluation={logisticEvaluation}
+            dependent={props.dependent}
         />)
     } 
 
     if (props.displaySinusoidal) {
         allEvaluations.push(<FormattedEvaluations 
-            type="Sinusoidal"
+            type="sinusoidal"
             evaluation={sinusoidalEvaluation}
+            dependent={props.dependent}
         />)
     }
 
     return (
         <section className="analysis">
-            <h2>Predicted Future Values at an Input of {futureInput}</h2>
+            <h2>Predicted Future Values</h2>
+
+            <p>
+                When there are <input
+                    type="text"
+                    name="futureInput"
+                    title="Input any number to plug into the respective equations"
+                    value={futureInput}
+                    onChange={handleFutureInput}
+                /> {props.independent} ...
+            </p>
             
             {allEvaluations}
 
-            <label htmlFor="futureInput">Choose a number to evaluate</label>
-            <input
-                type="text"
-                name="futureInput"
-                value={futureInput}
-                onChange={handleFutureInput}
-            />
-            <button onClick={handleFutureValue}>Submit</button>
+            <button onClick={handleFutureValue}>Generate New Evaluations</button>
         </section>
     )
 }

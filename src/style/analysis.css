@@ -23,7 +23,6 @@ section.analysis label {
 section.analysis button {
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
-    margin-left: 10px;
 }
 
 section.analysis button:hover {

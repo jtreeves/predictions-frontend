@@ -111,6 +111,8 @@ function GeneratedModels(props) {
             />
 
             <FutureEvaluations 
+                independent={props.independent}
+                dependent={props.dependent}
                 precision={props.precision}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}

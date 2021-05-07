@@ -1,7 +1,7 @@
 function FormattedEvaluations(props) {
     return (
         <p>
-            <mark>{props.type} Prediction</mark> {props.evaluation}
+            ... according to the <mark>{props.type} model</mark>, there will be {props.evaluation} {props.dependent}
         </p>
     )
 }
