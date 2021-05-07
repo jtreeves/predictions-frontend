@@ -2,13 +2,10 @@ import { useState } from 'react'
 import HorizontalAxis from '../../utilities/predictions/HorizontalAxis'
 import VerticalAxis from '../../utilities/predictions/VerticalAxis'
 import CheckFavorite from '../../utilities/predictions/CheckFavorite'
-import GraphOutput from './GraphOutput'
-import DisplayGraphs from './DisplayGraphs'
 import FutureEvaluations from './FutureEvaluations'
 import ModelsAnalyses from './ModelsAnalyses'
 import DisplayTable from './DisplayTable'
-import Zoom from './Zoom'
-import BestFit from './BestFit'
+import GraphSection from './GraphSection'
 
 // Create function
 function GeneratedModels(props) {
@@ -54,103 +51,63 @@ function GeneratedModels(props) {
     CheckFavorite(props.favorite, xMinimum, xMaximum, increment, props.precision, props.linearConstants, setDisplayLinear, setLinearCoordinates, props.quadraticConstants, setDisplayQuadratic, setQuadraticCoordinates, props.cubicConstants, setDisplayCubic, setCubicCoordinates, props.hyperbolicConstants, setDisplayHyperbolic, setHyperbolicCoordinates, props.exponentialConstants, setDisplayExponential, setExponentialCoordinates, props.logarithmicConstants, setDisplayLogarithmic, setLogarithmicCoordinates, props.logisticConstants, setDisplayLogistic, setLogisticCoordinates, props.sinusoidalConstants, setDisplaySinusoidal, setSinusoidalCoordinates) 
     return (
         <section>
-            <GraphOutput 
-                title={props.title}
+            <GraphSection 
                 independent={props.independent}
                 dependent={props.dependent}
+                bestFit={props.bestFit}
+                precision={props.precision}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}
                 yMinimum={yMinimum}
                 yMaximum={yMaximum}
-                originalPoints={originalCoordinates}
-                linearPoints={linearCoordinates}
-                quadraticPoints={quadraticCoordinates}
-                cubicPoints={cubicCoordinates}
-                hyperbolicPoints={hyperbolicCoordinates}
-                exponentialPoints={exponentialCoordinates}
-                logarithmicPoints={logarithmicCoordinates}
-                logisticPoints={logisticCoordinates}
-                sinusoidalPoints={sinusoidalCoordinates}
-            />
-
-            <DisplayGraphs 
-                precision={props.precision}
-                xMinimum={xMinimum}
-                xMaximum={xMaximum}
                 increment={increment}
+                zoom={zoom}
+                setZoom={setZoom}
                 originalPoints={originalPoints}
+                originalCoordinates={originalCoordinates}
                 displayOriginal={displayOriginal}
                 setDisplayOriginal={setDisplayOriginal}
                 setOriginalCoordinates={setOriginalCoordinates}
                 linearConstants={props.linearConstants}
+                linearCoordinates={linearCoordinates}
                 displayLinear={displayLinear}
                 setDisplayLinear={setDisplayLinear}
                 setLinearCoordinates={setLinearCoordinates}
                 quadraticConstants={props.quadraticConstants}
+                quadraticCoordinates={quadraticCoordinates}
                 displayQuadratic={displayQuadratic}
                 setDisplayQuadratic={setDisplayQuadratic}
                 setQuadraticCoordinates={setQuadraticCoordinates}
                 cubicConstants={props.cubicConstants}
+                cubicCoordinates={cubicCoordinates}
                 displayCubic={displayCubic}
                 setDisplayCubic={setDisplayCubic}
                 setCubicCoordinates={setCubicCoordinates}
                 hyperbolicConstants={props.hyperbolicConstants}
+                hyperbolicCoordinates={hyperbolicCoordinates}
                 displayHyperbolic={displayHyperbolic}
                 setDisplayHyperbolic={setDisplayHyperbolic}
                 setHyperbolicCoordinates={setHyperbolicCoordinates}
                 exponentialConstants={props.exponentialConstants}
+                exponentialCoordinates={exponentialCoordinates}
                 displayExponential={displayExponential}
                 setDisplayExponential={setDisplayExponential}
                 setExponentialCoordinates={setExponentialCoordinates}
                 logarithmicConstants={props.logarithmicConstants}
+                logarithmicCoordinates={logarithmicCoordinates}
                 displayLogarithmic={displayLogarithmic}
                 setDisplayLogarithmic={setDisplayLogarithmic}
                 setLogarithmicCoordinates={setLogarithmicCoordinates}
                 logisticConstants={props.logisticConstants}
+                logisticCoordinates={logisticCoordinates}
                 displayLogistic={displayLogistic}
                 setDisplayLogistic={setDisplayLogistic}
                 setLogisticCoordinates={setLogisticCoordinates}
                 sinusoidalConstants={props.sinusoidalConstants}
+                sinusoidalCoordinates={sinusoidalCoordinates}
                 displaySinusoidal={displaySinusoidal}
                 setDisplaySinusoidal={setDisplaySinusoidal}
                 setSinusoidalCoordinates={setSinusoidalCoordinates}
-            />
-
-            <Zoom 
-                precision={props.precision}
-                zoom={zoom}
-                setZoom={setZoom}
-                originalPoints={originalPoints}
-                displayOriginal={displayOriginal}
-                setOriginalCoordinates={setOriginalCoordinates}
-                linearConstants={props.linearConstants}
-                displayLinear={displayLinear}
-                setLinearCoordinates={setLinearCoordinates}
-                quadraticConstants={props.quadraticConstants}
-                displayQuadratic={displayQuadratic}
-                setQuadraticCoordinates={setQuadraticCoordinates}
-                cubicConstants={props.cubicConstants}
-                displayCubic={displayCubic}
-                setCubicCoordinates={setCubicCoordinates}
-                hyperbolicConstants={props.hyperbolicConstants}
-                displayHyperbolic={displayHyperbolic}
-                setHyperbolicCoordinates={setHyperbolicCoordinates}
-                exponentialConstants={props.exponentialConstants}
-                displayExponential={displayExponential}
-                setExponentialCoordinates={setExponentialCoordinates}
-                logarithmicConstants={props.logarithmicConstants}
-                displayLogarithmic={displayLogarithmic}
-                setLogarithmicCoordinates={setLogarithmicCoordinates}
-                logisticConstants={props.logisticConstants}
-                displayLogistic={displayLogistic}
-                setLogisticCoordinates={setLogisticCoordinates}
-                sinusoidalConstants={props.sinusoidalConstants}
-                displaySinusoidal={displaySinusoidal}
-                setSinusoidalCoordinates={setSinusoidalCoordinates}
-            />
-
-            <BestFit 
-                bestFit={props.bestFit}
             />
 
             <FutureEvaluations 

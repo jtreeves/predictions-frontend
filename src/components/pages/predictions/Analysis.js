@@ -26,7 +26,6 @@ function Analysis(props) {
     const dataSet = '[' + trimmedStringedData + ']'
     
     const generatedModelsSection = <GeneratedModels
-        title={models.title}
         independent={models.independent}
         dependent={models.dependent}
         precision={models.precision}
@@ -62,6 +61,8 @@ function Analysis(props) {
     if (!stored) {
         return (
             <main>
+                <h1>{models.title}</h1>
+
                 {generatedModelsSection}
 
                 <SaveSet 
@@ -73,6 +74,8 @@ function Analysis(props) {
     } else {
         return (
             <main>
+                <h1>{models.title}</h1>
+
                 {generatedModelsSection}
 
                 <Favorite 

@@ -1,10 +1,7 @@
 import { useEffect } from 'react'
 import * as d3 from 'd3'
-import DisplayLegend from '../../utilities/predictions/DisplayLegend'
 
 function GraphOutput(props) {
-    const legend = DisplayLegend(props.linearPoints, props.quadraticPoints, props.cubicPoints, props.hyperbolicPoints, props.exponentialPoints, props.logarithmicPoints, props.logisticPoints, props.sinusoidalPoints, props.originalPoints)
-
     useEffect(() => {
         const margin = { top: 50, right: 50, bottom: 50, left: 100 }
         const width = 550 - margin.left - margin.right
@@ -34,7 +31,7 @@ function GraphOutput(props) {
             .select(".graph-container")
             .append("svg")
             .attr("class", "main-graph")
-            .attr("width", width + margin.left + 4 * margin.right)
+            .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
@@ -62,116 +59,91 @@ function GraphOutput(props) {
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text(props.dependent)
-        
-        graph
-            .selectAll("legend")
-            .data(legend)
-            .enter()
-            .append("g")
-            .attr("transform", (d, i) => {
-                return `translate(${width + margin.right}, ${margin.top * i})`
-            })
-            .each(function (d, i) {
-                d3
-                    .select(this)
-                    .append("rect")
-                    .attr("width", 25)
-                    .attr("height", 25)
-                    .attr("fill", d.color)
-                d3
-                    .select(this)
-                    .append("text")
-                    .attr("text-anchor", "start")
-                    .attr("x", 25 + 10)
-                    .attr("y", 25 / 2)
-                    .attr("dy", "0.35em")
-                    .text(d.type)
-            })
 
-        if (props.linearPoints) {
+        if (props.linearCoordinates) {
             graph
                 .append("path")
-                .datum(props.linearPoints)
+                .datum(props.linearCoordinates)
                 .attr("d", path)
                 .style("fill", "none")
                 .style("stroke", "pink")
                 .style("stroke-width", 2.5)
         }
         
-        if (props.quadraticPoints) {
+        if (props.quadraticCoordinates) {
             graph
                 .append("path")
-                .datum(props.quadraticPoints)
+                .datum(props.quadraticCoordinates)
                 .attr("d", path)
                 .style("fill", "none")
                 .style("stroke", "green")
                 .style("stroke-width", 2.5)
         }
         
-        if (props.cubicPoints) {
+        if (props.cubicCoordinates) {
             graph
                 .append("path")
-                .datum(props.cubicPoints)
+                .datum(props.cubicCoordinates)
                 .attr("d", path)
                 .style("fill", "none")
                 .style("stroke", "blue")
                 .style("stroke-width", 2.5)
         }
         
-        if (props.hyperbolicPoints) {
+        if (props.hyperbolicCoordinates) {
             graph
                 .append("path")
-                .datum(props.hyperbolicPoints)
+                .datum(props.hyperbolicCoordinates)
                 .attr("d", path)
                 .style("fill", "none")
                 .style("stroke", "brown")
                 .style("stroke-width", 2.5)
         }
         
-        if (props.exponentialPoints) {
+        if (props.exponentialCoordinates) {
             graph
                 .append("path")
-                .datum(props.exponentialPoints)
+                .datum(props.exponentialCoordinates)
                 .attr("d", path)
                 .style("fill", "none")
                 .style("stroke", "orange")
                 .style("stroke-width", 2.5)
         }
         
-        if (props.logarithmicPoints) {
+        if (props.logarithmicCoordinates) {
             graph
                 .append("path")
-                .datum(props.logarithmicPoints)
+                .datum(props.logarithmicCoordinates)
                 .attr("d", path)
                 .style("fill", "none")
                 .style("stroke", "yellow")
                 .style("stroke-width", 2.5)
         }
         
-        if (props.logisticPoints) {
+        if (props.logisticCoordinates) {
             graph
                 .append("path")
-                .datum(props.logisticPoints)
+                .datum(props.logisticCoordinates)
                 .attr("d", path)
                 .style("fill", "none")
                 .style("stroke", "purple")
                 .style("stroke-width", 2.5)
         }
         
-        if (props.sinusoidalPoints) {
+        if (props.sinusoidalCoordinates) {
             graph
                 .append("path")
-                .datum(props.sinusoidalPoints)
+                .datum(props.sinusoidalCoordinates)
                 .attr("d", path)
                 .style("fill", "none")
                 .style("stroke", "red")
                 .style("stroke-width", 2.5)
         }
         
-        if (props.originalPoints) {
+        if (props.originalCoordinates) {
             graph
                 .selectAll("plot")
-                .data(props.originalPoints)
+                .data(props.originalCoordinates)
                 .enter()
                 .append("circle")
                 .attr("cx", (d) => xScale(d.x))
@@ -182,7 +154,6 @@ function GraphOutput(props) {
 
     return (
         <section className="graph-container">
-            <h1>{props.title}</h1>
             <svg className="main-graph" />
         </section>
     )

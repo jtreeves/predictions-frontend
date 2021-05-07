@@ -87,9 +87,22 @@ function Zoom(props) {
     }
 
     return (
-        <section>
-            <button onClick={handleZoomOut}>Zoom Out</button>
-            <button onClick={handleZoomIn}>Zoom In</button>
+        <section className="zoom">
+            <h3>Zoom</h3>
+            
+            <article>
+                <button 
+                    onClick={handleZoomOut}
+                >
+                    -
+                </button>
+
+                <button 
+                    onClick={handleZoomIn}
+                >
+                    +
+                </button>
+            </article>
         </section>
     )
 }
