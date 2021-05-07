@@ -21,7 +21,6 @@ function Profile(props) {
                 user={props.user}
                 handleLogout={props.handleLogout} 
             />
-            <p>Want to analyze some data? <Link to="/submission">Click here!</Link></p>
             <Link to="/datasets"><button>View All Your Saved Data Sets</button></Link>
             <Link to="/submission"><button>Add a New Data Set</button></Link>
         </main>
