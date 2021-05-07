@@ -11,11 +11,13 @@ import Header from './components/elements/main/Header'
 import Footer from './components/elements/main/Footer'
 import Welcome from './components/pages/main/Welcome'
 import About from './components/pages/main/About'
+import Usage from './components/pages/main/Usage'
 import Signup from './components/pages/users/Signup'
 import Login from './components/pages/users/Login'
 import Profile from './components/pages/users/Profile'
 import Submission from './components/pages/predictions/Submission'
 import Analysis from './components/pages/predictions/Analysis'
+import DataSets from './components/pages/predictions/DataSets'
 
 import './style/main.css'
 
@@ -62,8 +64,17 @@ function App() {
             <Header />
 
             <Switch>
-                <Route exact path="/" component={Welcome} />
+                {isAuthenticated ? <PrivateRoute 
+                    exact path="/" 
+                    component={Profile} 
+                    user={currentUser}
+                    handleLogout={handleLogout}
+                /> : <Route 
+                    exact path="/" 
+                    component={Welcome} 
+                />}
                 <Route path="/about" component={About} />
+                <Route path="/usage" component={Usage} />
                 <Route path="/signup" component={Signup} />
                 <Route
                     path="/login"
@@ -90,6 +101,11 @@ function App() {
                 <PrivateRoute
                     path="/analysis"
                     component={Analysis}
+                    user={currentUser}
+                />
+                <PrivateRoute
+                    path="/datasets"
+                    component={DataSets}
                     user={currentUser}
                 />
             </Switch>

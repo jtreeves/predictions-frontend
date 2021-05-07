@@ -22,7 +22,7 @@ function DeleteSet(props) {
             <button onClick={handleDelete}>Delete</button>
         )
     } else {
-        return <Redirect to="/profile" />
+        return <Redirect to="/datasets" />
     }
 }
 

@@ -11,13 +11,22 @@ function Navigation(props) {
             About
         </li>
     </NavLink>
+    
+    const usage = <NavLink
+        to="/usage"
+        style={{ textDecoration: 'none' }} 
+    >
+        <li>
+            Usage
+        </li>
+    </NavLink>
 
     const profile = <NavLink
         to="/profile"
         style={{ textDecoration: 'none' }} 
     >
         <li>
-            All Sets
+            Profile
         </li>
     </NavLink>
     
@@ -27,6 +36,15 @@ function Navigation(props) {
     >
         <li>
             Add New Set
+        </li>
+    </NavLink>
+    
+    const data = <NavLink
+        to="/datasets"
+        style={{ textDecoration: 'none' }} 
+    >
+        <li>
+            All Sets
         </li>
     </NavLink>
 
@@ -54,25 +72,30 @@ function Navigation(props) {
         </li>
     </span>
 
+    const unauthorized = <ul>
+        {about}
+        {signup}
+        {login}
+    </ul>
+
+    const authorized = <ul>
+        {data}
+        {submission}
+        {usage}
+        {profile}
+        {logout}
+    </ul>
+
     if (!props.isAuthenticated) {
         return (
             <nav>
-                <ul>
-                    {about}
-                    {signup}
-                    {login}
-                </ul>
+                {unauthorized}
             </nav>
         )
     } else {
         return (
             <nav>
-                <ul>
-                    {profile}
-                    {submission}
-                    {about}
-                    {logout}
-                </ul>
+                {authorized}
             </nav>
         )
     }

@@ -2,25 +2,28 @@ import { Link } from 'react-router-dom'
 import DisplayName from '../../elements/users/DisplayName'
 import ChangeName from '../../elements/users/ChangeName'
 import DeleteAccount from '../../elements/users/DeleteAccount'
-import AllSets from '../../elements/predictions/AllSets'
 import CheckExpiration from '../../utilities/users/CheckExpiration'
 import '../../../style/profile.css'
+import DisplayEmail from '../../elements/users/DisplayEmail'
+import ChangeEmail from '../../elements/users/ChangeEmail'
 
 function Profile(props) {
     CheckExpiration(props.user.exp, props.handleLogout)
     
     return (
         <main>
+            <h1>Profile</h1>
             <DisplayName user={props.user} />
-            <ChangeName 
-                user={props.user}
-            />
+            <DisplayEmail user={props.user} />
+            <ChangeName user={props.user} />
+            <ChangeEmail user={props.user} />
             <DeleteAccount 
                 user={props.user}
                 handleLogout={props.handleLogout} 
             />
             <p>Want to analyze some data? <Link to="/submission">Click here!</Link></p>
-            <AllSets user={props.user} />
+            <Link to="/datasets"><button>View All Your Saved Data Sets</button></Link>
+            <Link to="/submission"><button>Add a New Data Set</button></Link>
         </main>
     )
 }

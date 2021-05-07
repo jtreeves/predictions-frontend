@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import '../../../style/data.css'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-function AllSets(props) {
+function DataSets(props) {
     const [predictions, setPredictions] = useState([])
     const [loading, setLoading] = useState(true)
     
@@ -62,18 +63,20 @@ function AllSets(props) {
 
     if (loading) {
         return (
-            <section>
+            <main>
                 LOADING!
-            </section>
+            </main>
         )
     } else {
         return (
-            <ul>
-                <h2>Models</h2>
-                {predictions}
-            </ul>
+            <main>
+                <h1>Models</h1>
+                <ul>
+                    {predictions}
+                </ul>
+            </main>
         )
     }
 }
 
-export default AllSets
+export default DataSets

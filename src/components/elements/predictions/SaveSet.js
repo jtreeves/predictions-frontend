@@ -24,7 +24,7 @@ function SaveSet(props) {
             <button onClick={handleSave}>Save</button>
         )
     } else {
-        return <Redirect to="/profile" />
+        return <Redirect to="/datasets" />
     }
 }
 

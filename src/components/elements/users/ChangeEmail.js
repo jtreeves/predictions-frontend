@@ -9,13 +9,13 @@ import FormGroup from '../main/FormGroup'
 // Create shortcut for environmental variable
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-function ChangeName(props) {
+function ChangeEmail(props) {
     const [updateClicked, setUpdateClicked] = useState(false)
     const [saveClicked, setSaveClicked] = useState(false)
-    const [name, setName] = useState(props.user.name)
+    const [email, setEmail] = useState(props.user.email)
 
-    const handleName = (e) => {
-        setName(e.target.value)
+    const handleEmail = (e) => {
+        setEmail(e.target.value)
     }
 
     const handleUpdate = (e) => {
@@ -26,7 +26,7 @@ function ChangeName(props) {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-            await axios.put(REACT_APP_SERVER_URL + 'users/' + props.user.id + '/name', {name})
+            await axios.put(REACT_APP_SERVER_URL + 'users/' + props.user.id + '/email', {email})
             setSaveClicked(true)
         } catch(error) {
             alert(error.response.data.msg)
@@ -36,22 +36,22 @@ function ChangeName(props) {
 
     if (!updateClicked && !saveClicked) {
         return (
-            <button onClick={handleUpdate}>Change Name</button>
+            <button onClick={handleUpdate}>Change Email</button>
         )
     } else if (updateClicked && !saveClicked) {
         return (
             <form onSubmit={handleSubmit}>
                 <FormGroup
-                    type="text"
-                    label="name"
-                    value={name}
-                    display="Name"
-                    onChange={handleName}
+                    type="email"
+                    label="email"
+                    value={email}
+                    display="Email"
+                    onChange={handleEmail}
                 />
                 <button
                     type="submit"
                 >
-                    Update Name
+                    Update Email
                 </button>
             </form>
         )
@@ -62,4 +62,4 @@ function ChangeName(props) {
     }
 }
 
-export default ChangeName
+export default ChangeEmail

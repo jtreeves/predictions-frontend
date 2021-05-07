@@ -2,26 +2,26 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-function DisplayName(props) {
-    const [name, setName] = useState(props.user.name)
+function DisplayEmail(props) {
+    const [email, setEmail] = useState(props.user.email)
     const userId = props.user.id
 
-    const getName = async () => {
+    const getEmail = async () => {
         try {
             const currentUser = await axios.get(REACT_APP_SERVER_URL + 'users/' + userId)
-            setName(currentUser.data.user.name)
+            setEmail(currentUser.data.user.email)
         } catch(error) {
-            setName('')
+            setEmail('')
         }
     }
 
     useEffect(() => {
-        getName()
+        getEmail()
     })
 
     return (
-        <p><mark>Name</mark> {name}</p>
+        <p><mark>Email</mark> {email}</p>
     )
 }
 
-export default DisplayName
+export default DisplayEmail
