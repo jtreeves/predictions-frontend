@@ -158,7 +158,7 @@ function DisplayGraphs(props) {
 
     return (
         <section className="display-graphs">
-            <h3>Legend</h3>
+            <mark>Legend</mark>
             {displayButtons}
         </section>
     )

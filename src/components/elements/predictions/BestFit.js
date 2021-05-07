@@ -1,7 +1,7 @@
 function BestFit(props) {
     return (
         <section>
-            <h3>Best Fit</h3>
+            <mark>Best Fit</mark>
             <p>{props.bestFit}</p>
         </section>
     )

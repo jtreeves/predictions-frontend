@@ -88,7 +88,7 @@ function Zoom(props) {
 
     return (
         <section className="zoom">
-            <h3>Zoom</h3>
+            <mark>Zoom</mark>
 
             <article>
                 <button 
