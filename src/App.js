@@ -92,21 +92,24 @@ function App() {
                     component={Profile}
                     user={currentUser}
                     handleLogout={handleLogout}
-                />
+                    />
                 <PrivateRoute
                     path="/submission"
                     component={Submission}
                     user={currentUser}
-                />
+                    handleLogout={handleLogout}
+                    />
                 <PrivateRoute
                     path="/analysis"
                     component={Analysis}
                     user={currentUser}
-                />
+                    handleLogout={handleLogout}
+                    />
                 <PrivateRoute
                     path="/datasets"
                     component={DataSets}
                     user={currentUser}
+                    handleLogout={handleLogout}
                 />
             </Switch>
 

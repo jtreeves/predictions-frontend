@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import '../../../style/data.css'
+import CheckExpiration from '../../utilities/users/CheckExpiration'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function DataSets(props) {
+    CheckExpiration(props.user.exp, props.handleLogout)
+
     const [predictions, setPredictions] = useState([])
     const [loading, setLoading] = useState(true)
     

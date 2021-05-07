@@ -7,11 +7,14 @@ import UpdateSet from '../../elements/predictions/UpdateSet'
 import DeleteSet from '../../elements/predictions/DeleteSet'
 import Favorite from '../../elements/predictions/Favorite'
 import Note from '../../elements/predictions/Note'
+import CheckExpiration from '../../utilities/users/CheckExpiration'
 
 import '../../../style/analysis.css'
 
 // Create function
 function Analysis(props) {
+    CheckExpiration(props.user.exp, props.handleLogout)
+
     const location = useLocation()
     const models = location.state.models
     const opinions = location.state.opinions

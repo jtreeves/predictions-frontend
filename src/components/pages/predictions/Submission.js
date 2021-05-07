@@ -3,11 +3,14 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import CreateSet from '../../elements/predictions/CreateSet'
 import SpreadsheetInput from '../../elements/predictions/SpreadsheetInput'
+import CheckExpiration from '../../utilities/users/CheckExpiration'
 import CleanCollection from '../../utilities/predictions/CleanCollection'
 import '../../../style/submission.css'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Submission(props) {
+    CheckExpiration(props.user.exp, props.handleLogout)
+
     const [title, setTitle] = useState('')
     const [independent, setIndependent] = useState('')
     const [dependent, setDependent] = useState('')
