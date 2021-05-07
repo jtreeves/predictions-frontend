@@ -33,6 +33,7 @@ section.analysis button:hover {
 button.box {
     height: 25px;
     width: 25px;
+    cursor: pointer;
 }
 
 button.pink { 
