@@ -183,7 +183,7 @@ function ModelsAnalyses(props) {
     }
 
     return (
-        <section>
+        <section className="all-models">
             {allAnalyses}
         </section>
     )

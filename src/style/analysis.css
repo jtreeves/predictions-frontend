@@ -72,7 +72,6 @@ button.black {
 }
 
 button.blank {
-    /* background: white; */
     background: repeating-linear-gradient(
         45deg,
         lightgray,
@@ -126,4 +125,92 @@ section.display-graphs article {
 
 section.graph-adjustments p {
     margin: 0;
+}
+
+section.model-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 5px;
+}
+
+section.model-card h2 {
+    margin: 0;
+    padding: 10px;
+}
+
+section.model-card article {
+    padding: 0 20px;
+}
+
+section.model-card.pink {
+    border: 5px solid pink;
+}
+
+section.model-card.pink h2 {
+    background: pink;
+}
+
+section.model-card.green {
+    border: 5px solid green;
+}
+
+section.model-card.green h2 {
+    background: green;
+}
+
+section.model-card.blue {
+    border: 5px solid blue;
+}
+
+section.model-card.blue h2 {
+    background: blue;
+}
+
+section.model-card.red {
+    border: 5px solid red;
+}
+
+section.model-card.red h2 {
+    background: red;
+}
+
+section.model-card.brown {
+    border: 5px solid brown;
+}
+
+section.model-card.brown h2 {
+    background: brown;
+}
+
+section.model-card.yellow {
+    border: 5px solid yellow;
+}
+
+section.model-card.yellow h2 {
+    background: yellow;
+}
+
+section.model-card.orange {
+    border: 5px solid orange;
+}
+
+section.model-card.orange h2 {
+    background: orange;
+}
+
+section.model-card.purple {
+    border: 5px solid purple;
+}
+
+section.model-card.purple h2 {
+    background: purple;
+}
+
+section.all-models {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+    column-gap: 20px;
+    margin-top: 50px;
 }
