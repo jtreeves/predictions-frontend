@@ -44,42 +44,42 @@ function ModelsAnalyses(props) {
     const logisticCorrelation = '$' + props.logisticCorrelation.toFixed(props.precision) + '$'
     const sinusoidalCorrelation = '$' + props.sinusoidalCorrelation.toFixed(props.precision) + '$'
 
-    const linearRoots = FormatPoints(props.linearPoints.roots, props.precision, true)
+    const linearRoots = FormatPoints(props.linearPoints.roots, props.precision)
     const linearMaxima = FormatPoints(props.linearPoints.maxima, props.precision)
     const linearMinima = FormatPoints(props.linearPoints.minima, props.precision)
     const linearInflections = FormatPoints(props.linearPoints.inflections, props.precision)
 
-    const quadraticRoots = FormatPoints(props.quadraticPoints.roots, props.precision, true)
+    const quadraticRoots = FormatPoints(props.quadraticPoints.roots, props.precision)
     const quadraticMaxima = FormatPoints(props.quadraticPoints.maxima, props.precision)
     const quadraticMinima = FormatPoints(props.quadraticPoints.minima, props.precision)
     const quadraticInflections = FormatPoints(props.quadraticPoints.inflections, props.precision)
 
-    const cubicRoots = FormatPoints(props.cubicPoints.roots, props.precision, true)
+    const cubicRoots = FormatPoints(props.cubicPoints.roots, props.precision)
     const cubicMaxima = FormatPoints(props.cubicPoints.maxima, props.precision)
     const cubicMinima = FormatPoints(props.cubicPoints.minima, props.precision)
     const cubicInflections = FormatPoints(props.cubicPoints.inflections, props.precision)
 
-    const hyperbolicRoots = FormatPoints(props.hyperbolicPoints.roots, props.precision, true)
+    const hyperbolicRoots = FormatPoints(props.hyperbolicPoints.roots, props.precision)
     const hyperbolicMaxima = FormatPoints(props.hyperbolicPoints.maxima, props.precision)
     const hyperbolicMinima = FormatPoints(props.hyperbolicPoints.minima, props.precision)
     const hyperbolicInflections = FormatPoints(props.hyperbolicPoints.inflections, props.precision)
 
-    const exponentialRoots = FormatPoints(props.exponentialPoints.roots, props.precision, true)
+    const exponentialRoots = FormatPoints(props.exponentialPoints.roots, props.precision)
     const exponentialMaxima = FormatPoints(props.exponentialPoints.maxima, props.precision)
     const exponentialMinima = FormatPoints(props.exponentialPoints.minima, props.precision)
     const exponentialInflections = FormatPoints(props.exponentialPoints.inflections, props.precision)
 
-    const logarithmicRoots = FormatPoints(props.logarithmicPoints.roots, props.precision, true)
+    const logarithmicRoots = FormatPoints(props.logarithmicPoints.roots, props.precision)
     const logarithmicMaxima = FormatPoints(props.logarithmicPoints.maxima, props.precision)
     const logarithmicMinima = FormatPoints(props.logarithmicPoints.minima, props.precision)
     const logarithmicInflections = FormatPoints(props.logarithmicPoints.inflections, props.precision)
     
-    const logisticRoots = FormatPoints(props.logisticPoints.roots, props.precision, true)
+    const logisticRoots = FormatPoints(props.logisticPoints.roots, props.precision)
     const logisticMaxima = FormatPoints(props.logisticPoints.maxima, props.precision)
     const logisticMinima = FormatPoints(props.logisticPoints.minima, props.precision)
     const logisticInflections = FormatPoints(props.logisticPoints.inflections, props.precision)
     
-    const sinusoidalRoots = FormatPoints(props.sinusoidalPoints.roots, props.precision, true)
+    const sinusoidalRoots = FormatPoints(props.sinusoidalPoints.roots, props.precision)
     const sinusoidalMaxima = FormatPoints(props.sinusoidalPoints.maxima, props.precision)
     const sinusoidalMinima = FormatPoints(props.sinusoidalPoints.minima, props.precision)
     const sinusoidalInflections = FormatPoints(props.sinusoidalPoints.inflections, props.precision)

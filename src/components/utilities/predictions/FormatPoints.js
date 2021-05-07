@@ -1,4 +1,4 @@
-function FormatPoints(points, precision, roots = false) {
+function FormatPoints(points, precision) {
     let formattedPoints = ''
     if (points[0] !== null) {
         for (const point of points) {
@@ -7,12 +7,7 @@ function FormatPoints(points, precision, roots = false) {
             if (!isNaN(x)) {
                 x = x.toFixed(precision)
             }
-
-            if (!roots) {
-                formattedPoints += `$ (${x}, ${y}),\\: $`
-            } else {
-                formattedPoints += `$ (${x}, 0.0),\\: $`
-            }
+            formattedPoints += `$ (${x}, ${y}),\\: $`
         }
         formattedPoints = formattedPoints.slice(0, -5) + '$'
     } else {
