@@ -1,6 +1,5 @@
-import BestFit from "./BestFit"
-import DisplayGraphs from "./DisplayGraphs"
-import Zoom from "./Zoom"
+import DisplayGraphs from './DisplayGraphs'
+import Zoom from './Zoom'
 
 function GraphAdjustments(props) {
     return (
@@ -46,10 +45,6 @@ function GraphAdjustments(props) {
                 displaySinusoidal={props.displaySinusoidal}
                 setDisplaySinusoidal={props.setDisplaySinusoidal}
                 setSinusoidalCoordinates={props.setSinusoidalCoordinates}
-            />
-
-            <BestFit 
-                bestFit={props.bestFit}
             />
 
             <Zoom 

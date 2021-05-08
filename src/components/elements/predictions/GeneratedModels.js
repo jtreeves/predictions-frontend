@@ -54,7 +54,6 @@ function GeneratedModels(props) {
             <GraphSection 
                 independent={props.independent}
                 dependent={props.dependent}
-                bestFit={props.bestFit}
                 precision={props.precision}
                 xMinimum={xMinimum}
                 xMaximum={xMaximum}

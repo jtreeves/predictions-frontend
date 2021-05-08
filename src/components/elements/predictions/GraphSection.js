@@ -1,5 +1,5 @@
-import GraphAdjustments from "./GraphAdjustments";
-import GraphOutput from "./GraphOutput";
+import GraphAdjustments from './GraphAdjustments'
+import GraphOutput from './GraphOutput'
 
 function GraphSection(props) {
     return (
@@ -23,7 +23,6 @@ function GraphSection(props) {
             />
 
             <GraphAdjustments 
-                bestFit={props.bestFit}
                 precision={props.precision}
                 zoom={props.zoom}
                 setZoom={props.setZoom}
