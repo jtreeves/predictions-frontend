@@ -66,7 +66,7 @@ function CreateSet(props) {
 
     if (!props.stored) {
         return (
-            <form>
+            <form id="raw-data-form">
                 {title}
                 {independent}
                 {dependent}
@@ -77,7 +77,7 @@ function CreateSet(props) {
         )
     } else {
         return (
-            <form>
+            <form id="raw-data-form">
                 {title}
                 {independent}
                 {dependent}
