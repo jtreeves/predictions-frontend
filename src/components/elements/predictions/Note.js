@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import FormGroup from '../main/FormGroup'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Note(props) {
@@ -24,39 +25,61 @@ function Note(props) {
             setSubmitting(true)
         } catch(error) {
             alert(error.response.data.msg)
-            console.log(`NOTE ERROR: ${error}`)
         }
     }
 
     if (note === '') {
         if (!changing) {
             return (
-                <button onClick={handleChanging}>Add Note</button>
+                <section>
+                    <mark>Note</mark>
+                    <p>You have not added a note yet.</p>
+                    <button onClick={handleChanging}>Add Note</button>
+                </section>
             )
         } else {
             return (
-                <form onSubmit={handleSubmitting}>
-                    <label for="note">Provide some details:</label>
-                    <input type="text" id="note" name="note" value={note} onChange={handleNote} />
-                    <button type="submit">Save Note</button>
-                </form>
+                <section>
+                    <mark>Note</mark>
+                    <form onSubmit={handleSubmitting}>
+                        <FormGroup
+                            type="textarea"
+                            label="note"
+                            value={note}
+                            display="Provide some details:"
+                            tooltip="Add a note to save your thoughts about this data set"
+                            onChange={handleNote}
+                        />
+                        <button type="submit">Save Note</button>
+                    </form>
+                </section>
             )
         }
     } else {
         if (!changing) {
             return (
                 <section>
-                    <p><mark>Note</mark> {note}</p>
+                    <mark>Note</mark>
+                    <p>{note}</p>
                     <button onClick={handleChanging}>Update Note</button>
                 </section>
             )
         } else if (!submitting) {
             return (
-                <form onSubmit={handleSubmitting}>
-                    <label for="note">Provide more details:</label>
-                    <input type="text" id="note" name="note" value={note} onChange={handleNote} />
-                    <button type="submit">Save Note</button>
-                </form>
+                <section>
+                    <mark>Note</mark>
+                    <form onSubmit={handleSubmitting}>
+                        <FormGroup
+                            type="textarea"
+                            label="note"
+                            value={note}
+                            display="Provide more details:"
+                            tooltip="Add even more of your thoughts about this data set"
+                            onChange={handleNote}
+                        />
+                        <button type="submit">Save Note</button>
+                    </form>
+                </section>
             )
         } else {
             setChanging(false)

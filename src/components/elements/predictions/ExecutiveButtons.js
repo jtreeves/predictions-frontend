@@ -6,7 +6,7 @@ import SaveSet from './SaveSet'
 function ExecutiveButtons(props) {
     if (!props.stored) {
         return (
-            <div>
+            <section className="executive-buttons">
                 <SaveSet 
                     user={props.user}
                     source={props.source}
@@ -15,17 +15,17 @@ function ExecutiveButtons(props) {
                 <UpdateButton />
 
                 <NewSet />
-            </div>
+            </section>
         )
     } else {
         return (
-            <div>
+            <section className="executive-buttons">
                 <UpdateButton />
 
                 <DeleteButton />
 
                 <NewSet />
-            </div>
+            </section>
         )
     }
 }
