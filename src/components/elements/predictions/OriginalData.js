@@ -64,13 +64,14 @@ function OriginalData(props) {
     const handleUndoSubmit = (e) => {
         e.preventDefault()
         const submitButton = document.getElementById('submit-button')
+        const deleteButton = document.getElementById('delete-button')
         const undoButton = document.getElementById('undo-submit-button')
         const warning = document.getElementById('submit-warning')
-        const deleteButton = document.getElementById('delete-button')
         submitButton.innerText = 'Update Set'
+        deleteButton.innerText = 'Delete Set'
+        deleteButton.style.display = 'block'
         undoButton.style.display = 'none'
         warning.style.display = 'none'
-        deleteButton.style.display = 'block'
         setTitle(props.title)
         setIndependent(props.independent)
         setDependent(props.dependent)
@@ -82,13 +83,14 @@ function OriginalData(props) {
     const handleUndoDelete = (e) => {
         e.preventDefault()
         const deleteButton = document.getElementById('delete-button')
+        const submitButton = document.getElementById('submit-button')
         const undoButton = document.getElementById('undo-delete-button')
         const warning = document.getElementById('delete-warning')
-        const submitButton = document.getElementById('submit-button')
         deleteButton.innerText = 'Delete Set'
+        submitButton.innerText = 'Update Set'
+        submitButton.style.display = 'block'
         undoButton.style.display = 'none'
         warning.style.display = 'none'
-        submitButton.style.display = 'block'
         window.scrollTo(0, 0)
     }
 
