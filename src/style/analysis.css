@@ -209,13 +209,66 @@ section.model-card.purple h2 {
 
 section.all-models {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
     row-gap: 20px;
-    column-gap: 20px;
-    margin-top: 50px;
+    /* column-gap: 20px; */
+    /* margin-top: 50px; */
 }
 
 section.data-section {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 5px solid black;
+}
+
+section.data-section h2 {
+    margin: 0;
+    padding: 10px;
+    background: black;
+    color: white;
+}
+
+section.data-section article {
     display: grid;
     grid-template-columns: 1fr 3fr;
+    background: white;
+    padding: 20px;
+}
+
+section.future-evaluations {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 5px solid silver;
+}
+
+section.future-evaluations h2 {
+    margin: 0;
+    padding: 10px;
+    background: silver;
+}
+
+section.future-evaluations article {
+    padding: 0 20px;
+}
+
+section.highlights {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 5px solid black;
+}
+
+section.highlights h2 {
+    margin: 0;
+    padding: 10px;
+    background: black;
+    color: white;
+}
+
+section.highlights article {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 }

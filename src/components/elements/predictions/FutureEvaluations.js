@@ -96,22 +96,24 @@ function FutureEvaluations(props) {
     }
 
     return (
-        <section className="analysis">
+        <section className="future-evaluations">
             <h2>Predicted Future Values</h2>
 
-            <p>
-                When there are <input
-                    type="text"
-                    name="futureInput"
-                    title="Input any number to plug into the respective equations"
-                    value={futureInput}
-                    onChange={handleFutureInput}
-                /> {props.independent} ...
-            </p>
-            
-            {allEvaluations}
+            <article>
+                <p>
+                    When there are <input
+                        type="text"
+                        name="futureInput"
+                        title="Input any number to plug into the respective equations"
+                        value={futureInput}
+                        onChange={handleFutureInput}
+                    /> {props.independent} ...
+                </p>
+                
+                {allEvaluations}
 
-            <button onClick={handleFutureValue}>Generate New Evaluations</button>
+                <button onClick={handleFutureValue}>Generate New Evaluations</button>
+            </article>
         </section>
     )
 }

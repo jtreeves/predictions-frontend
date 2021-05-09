@@ -4,19 +4,27 @@ import Note from './Note'
 
 function Highlights(props) {
     return (
-        <div>
-            <BestFit 
-                bestFit={props.bestFit}
-            />
-            <Favorite 
-                favorite={props.favorite}
-                source={props.source}
-            />
-            <Note 
-                note={props.note}
-                source={props.source}
-            />
-        </div>
+        <section className="highlights">
+            <h2>Highlights</h2>
+            
+            <article>
+                <aside>
+                    <BestFit 
+                        bestFit={props.bestFit}
+                    />
+
+                    <Favorite 
+                        favorite={props.favorite}
+                        source={props.source}
+                    />
+                </aside>
+
+                <Note 
+                    note={props.note}
+                    source={props.source}
+                />
+            </article>
+        </section>
     )
 }
 
