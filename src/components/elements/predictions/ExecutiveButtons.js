@@ -5,6 +5,8 @@ import NewSet from './NewSet'
 import Note from './Note'
 import SaveSet from './SaveSet'
 import UpdateSet from './UpdateSet'
+import UpdateButton from './UpdateButton'
+import DeleteButton from './DeleteButton'
 
 function ExecutiveButtons(props) {
     if (!props.stored) {
@@ -14,7 +16,9 @@ function ExecutiveButtons(props) {
                     user={props.user}
                     source={props.source}
                 />
-                <EditSet />
+
+                <UpdateButton />
+
                 <NewSet />
             </div>
         )
@@ -31,21 +35,9 @@ function ExecutiveButtons(props) {
                     source={props.source}
                 />
 
-                <UpdateSet 
-                    source={props.source} 
-                    title={props.title}
-                    independent={props.independent}
-                    dependent={props.dependent}
-                    precision={props.precision}
-                    dataSet={props.points}
-                    favorite={props.favorite}
-                    note={props.note}
-                    user={props.user}
-                />
-                
-                <DeleteSet 
-                    source={props.source}
-                />
+                <UpdateButton />
+
+                <DeleteButton />
             </div>
         )
     }

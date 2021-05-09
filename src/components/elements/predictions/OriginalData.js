@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import CreateSet from './CreateSet'
@@ -13,6 +13,13 @@ function OriginalData(props) {
     const [dataSet, setDataSet] = useState(props.dataSet)
     const [models, setModels] = useState({})
     const [submitted, setSubmitted] = useState(false)    
+    const [deleted, setDeleted] = useState(false)
+
+    useEffect(() => {
+        if (submitted) {
+            setSubmitted(false)
+        }
+    })
 
     let source = props.source
     const user = props.user
@@ -20,6 +27,13 @@ function OriginalData(props) {
     const opinions = {
         favorite: props.favorite,
         note: props.note
+    }
+
+    let buttonText = ''
+    if (!stored) {
+        buttonText = 'Create Set'
+    } else {
+        buttonText = 'Update Set'
     }
 
     // Set title from form
@@ -90,6 +104,7 @@ function OriginalData(props) {
                         await axios.post(REACT_APP_SERVER_URL + 'predictions/' + user.id, { source })
                         await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: opinions.favorite})
                         await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: opinions.note})
+                        setModels(predictions.data.regressions)
                         setSubmitted(true)
                     } catch(error) {
                         alert(error)
@@ -99,10 +114,21 @@ function OriginalData(props) {
         }
     }
 
-    if (!submitted) {
+    const handleDelete = async (e) => {
+        try {
+            e.preventDefault()
+            await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + source)
+            setDeleted(true)
+        } catch(error) {
+            alert(error)
+        }
+    }
+
+    if (!submitted && !deleted) {
         return (
             <CreateSet 
                 handleSubmit={handleSubmit}
+                handleDelete={handleDelete}
                 title={title}
                 handleTitle={handleTitle}
                 independent={independent}
@@ -113,9 +139,11 @@ function OriginalData(props) {
                 handlePrecision={handlePrecision}
                 dataSet={dataSet}
                 handleDataSet={handleDataSet}
+                stored={props.stored}
+                button={buttonText}
             />
         )
-    } else {
+    } else if (submitted) {
         return (
             <Redirect 
                 to={{
@@ -128,6 +156,10 @@ function OriginalData(props) {
                     }
                 }}
             />
+        )
+    } else if (deleted) {
+        return (
+            <Redirect to="/datasets" />
         )
     }
 }

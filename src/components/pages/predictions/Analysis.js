@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import HorizontalAxis from '../../utilities/predictions/HorizontalAxis'
 import VerticalAxis from '../../utilities/predictions/VerticalAxis'
@@ -21,6 +21,10 @@ function Analysis(props) {
     const models = location.state.models
     const opinions = location.state.opinions
     const stored = location.state.stored
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [location])
 
     const title = models.title
     const independent = models.independent

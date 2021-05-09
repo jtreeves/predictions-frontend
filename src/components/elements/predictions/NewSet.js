@@ -1,6 +1,13 @@
-function NewSet(props) {
+import { Link } from 'react-router-dom'
+
+function NewSet() {
     return (
-        <div></div>
+        <Link
+            to="/submission"
+            style={{ textDecoration: 'none' }} 
+        >
+            <button>Create New Set</button>
+        </Link>
     )
 }
 

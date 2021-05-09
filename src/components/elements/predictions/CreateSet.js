@@ -3,61 +3,91 @@ import FormGroup from '../main/FormGroup'
 
 // Create function
 function CreateSet(props) {
-    return (
-        <form onSubmit={props.handleSubmit}>
-            <FormGroup
-                type="text"
-                label="title"
-                value={props.title}
-                display="Title"
-                tooltip="What do you want to call this data set?"
-                onChange={props.handleTitle}
-            />
+    const title = <FormGroup
+        type="text"
+        label="title"
+        value={props.title}
+        display="Title"
+        tooltip="What do you want to call this data set?"
+        onChange={props.handleTitle}
+    />
 
-            <FormGroup
-                type="text"
-                label="independent"
-                value={props.independent}
-                display="Independent"
-                tooltip="What is the input variable?"
-                onChange={props.handleIndependent}
-            />
+    const independent = <FormGroup
+        type="text"
+        label="independent"
+        value={props.independent}
+        display="Independent"
+        tooltip="What is the input variable?"
+        onChange={props.handleIndependent}
+    />
 
-            <FormGroup
-                type="text"
-                label="dependent"
-                value={props.dependent}
-                display="Dependent"
-                tooltip="What is the output variable"
-                onChange={props.handleDependent}
-            />
+    const dependent = <FormGroup
+        type="text"
+        label="dependent"
+        value={props.dependent}
+        display="Dependent"
+        tooltip="What is the output variable"
+        onChange={props.handleDependent}
+    />
 
-            <FormGroup
-                type="number"
-                label="precision"
-                value={props.precision}
-                display="Precision"
-                tooltip="When it comes to rounding, how many decimal places do you want to use?"
-                onChange={props.handlePrecision}
-            />
+    const precision = <FormGroup
+        type="number"
+        label="precision"
+        value={props.precision}
+        display="Precision"
+        tooltip="When it comes to rounding, how many decimal places do you want to use?"
+        onChange={props.handlePrecision}
+    />
 
-            <FormGroup
-                type="textarea"
-                label="dataSet"
-                value={props.dataSet}
-                display="Data Set"
-                tooltip="What is the complete data set?"
-                onChange={props.handleDataSet}
-            />
-            
-            <button 
-                type="submit"
-                className="submission"
-            >
-                Submit
-            </button>
-        </form>
-    )
+    const dataSet = <FormGroup
+        type="textarea"
+        label="dataSet"
+        value={props.dataSet}
+        display="Data Set"
+        tooltip="What is the complete data set?"
+        onChange={props.handleDataSet}
+    />
+
+    const submitButton = <button 
+        className="submission"
+        id="submit-button"
+        onClick={props.handleSubmit}
+    >
+        {props.button}
+    </button>
+    
+    const deleteButton = <button 
+        className="submission"
+        id="delete-button"
+        onClick={props.handleDelete}
+    >
+        Delete Set
+    </button>
+
+    if (!props.stored) {
+        return (
+            <form>
+                {title}
+                {independent}
+                {dependent}
+                {precision}
+                {dataSet}
+                {submitButton}
+            </form>
+        )
+    } else {
+        return (
+            <form>
+                {title}
+                {independent}
+                {dependent}
+                {precision}
+                {dataSet}
+                {submitButton}
+                {deleteButton}
+            </form>
+        )
+    }
 }
 
 // Export function
