@@ -13,6 +13,9 @@ function EditSet(props) {
     const [dependent, setDependent] = useState(props.dependent)
     const [precision, setPrecision] = useState(props.precision)
     const [dataSet, setDataSet] = useState(props.dataSet)
+    const [models, setModels] = useState({})
+
+    const user = props.user
 
     // Set title from form
     const handleTitle = (e) => {
@@ -70,12 +73,9 @@ function EditSet(props) {
                     dataSet: parsedDataSet
                 }
                 try {
-                    await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + props.source)
                     const predictions = await axios.post(REACT_APP_SERVER_URL + 'api', submission)
-                    const source = predictions.data.regressions.source
-                    await axios.post(REACT_APP_SERVER_URL + 'predictions/' + props.user.id, { source })
-                    await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: props.favorite})
-                    await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: props.note})
+                    setModels(predictions.data.regressions)
+                    // const results = predictions.data.regressions
                     setSaveClicked(true)
                 } catch(error) {
                     alert(error.response.data.msg)
@@ -107,7 +107,17 @@ function EditSet(props) {
         )
     } else {
         return (
-            <Redirect to="/datasets" />
+            <Redirect 
+                to={{
+                    pathname: "/analysis",
+                    state: {
+                        models: models, 
+                        opinions: { favorite: null },
+                        user: user,
+                        stored: false
+                    }
+                }}
+            />
         )
     }
 }

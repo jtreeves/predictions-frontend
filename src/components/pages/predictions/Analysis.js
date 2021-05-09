@@ -61,6 +61,13 @@ function Analysis(props) {
     for (const point of points) {
         originalPoints.push({ x: point[0], y: point[1] })
     }
+
+    let stringedDataSet = ''
+    for (const point of points) {
+        stringedDataSet += `[${point[0]}, ${point[1]}], `
+    }
+    const trimmedStringedData = stringedDataSet.slice(0, -2)
+    const dataSet = '[' + trimmedStringedData + ']'
     
     const [displayLinear, setDisplayLinear] = useState(false)
     const [displayQuadratic, setDisplayQuadratic] = useState(false)
@@ -272,7 +279,19 @@ function Analysis(props) {
                 displaySinusoidal={displaySinusoidal}
             />
 
-            <DataSection />
+            <DataSection 
+                title={title}
+                independent={independent}
+                dependent={dependent}
+                precision={precision}
+                dataSet={dataSet}
+                points={originalPoints}
+                favorite={favorite}
+                note={note}
+                user={user}
+                stored={stored}
+                source={source}
+            />
         </main>
     )
 }

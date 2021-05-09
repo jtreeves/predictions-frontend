@@ -170,7 +170,10 @@ function Submission(props) {
                     pathname: "/analysis",
                     state: {
                         models: models, 
-                        opinions: { favorite: null },
+                        opinions: { 
+                            favorite: null,
+                            note: null
+                        },
                         user: props.user,
                         stored: false
                     }

@@ -42,7 +42,7 @@ function CreateSet(props) {
             />
 
             <FormGroup
-                type="text"
+                type="textarea"
                 label="dataSet"
                 value={props.dataSet}
                 display="Data Set"
