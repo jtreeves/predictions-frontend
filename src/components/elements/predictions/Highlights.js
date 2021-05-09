@@ -1,6 +1,5 @@
 import BestFit from './BestFit'
 import Favorite from './Favorite'
-import FavoriteModel from './FavoriteModel'
 import Note from './Note'
 
 function Highlights(props) {

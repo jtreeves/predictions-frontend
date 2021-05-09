@@ -1,9 +1,7 @@
-import Favorite from './Favorite'
-import NewSet from './NewSet'
-import Note from './Note'
-import SaveSet from './SaveSet'
 import UpdateButton from './UpdateButton'
 import DeleteButton from './DeleteButton'
+import NewSet from './NewSet'
+import SaveSet from './SaveSet'
 
 function ExecutiveButtons(props) {
     if (!props.stored) {
