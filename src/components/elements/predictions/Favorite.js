@@ -29,11 +29,14 @@ function Favorite(props) {
 
     if (favorite === '') {
         if (!changing) {
-            return (
+            return (<section>
+                <mark>Favorite</mark>
+                <p>You haven't chosen a favorite yet</p>
                 <button onClick={handleChanging}>Choose Favorite</button>
-            )
+            </section>)
         } else {
-            return (
+            return (<section>
+                <mark>Favorite</mark>
                 <form onSubmit={handleSubmitting}>
                     <label for="favorite">Select a graph:</label>
                     <select name="favorite" id="favorite" onChange={handleFavorite}>
@@ -49,18 +52,20 @@ function Favorite(props) {
                     </select>
                     <button type="submit">Save Favorite</button>
                 </form>
-            )
+            </section>)
         }
     } else {
         if (!changing) {
             return (
                 <section>
-                    <p><mark>Favorite</mark> {favorite}</p>
+                    <mark>Favorite</mark>
+                    <p>{favorite}</p>
                     <button onClick={handleChanging}>Change Favorite</button>
                 </section>
             )
         } else if (!submitting) {
-            return (
+            return (<section>
+                <mark>Favorite</mark>
                 <form onSubmit={handleSubmitting}>
                     <label for="favorite">Select a graph:</label>
                     <select name="favorite" id="favorite" onChange={handleFavorite}>
@@ -76,7 +81,7 @@ function Favorite(props) {
                     </select>
                     <button type="submit">Save Favorite</button>
                 </form>
-            )
+            </section>)
         } else {
             setChanging(false)
             setSubmitting(false)

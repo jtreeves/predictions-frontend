@@ -272,3 +272,8 @@ section.highlights article {
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
+
+section.highlights form label {
+    font-style: normal;
+    font-weight: normal;
+}
