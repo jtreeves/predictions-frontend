@@ -6,11 +6,13 @@ function Highlights(props) {
     return (
         <section className="highlights">
             <h2>Highlights</h2>
-            
+
             <article>
                 <aside>
                     <BestFit 
                         bestFit={props.bestFit}
+                        correlation={props.correlation}
+                        precision={props.precision}
                     />
 
                     <Favorite 

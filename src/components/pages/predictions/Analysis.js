@@ -71,6 +71,9 @@ function Analysis(props) {
     }
     const trimmedStringedData = stringedDataSet.slice(0, -2)
     const dataSet = '[' + trimmedStringedData + ']'
+
+    const allCorrelations = [linearCorrelation, quadraticCorrelation, cubicCorrelation, hyperbolicCorrelation, exponentialCorrelation, logarithmicCorrelation, logisticCorrelation, sinusoidalCorrelation]
+    const highestCorrelation = Math.max(...allCorrelations)
     
     const [displayLinear, setDisplayLinear] = useState(false)
     const [displayQuadratic, setDisplayQuadratic] = useState(false)
@@ -214,9 +217,11 @@ function Analysis(props) {
 
             <Highlights 
                 bestFit={bestFit}
+                correlation={highestCorrelation}
                 favorite={favorite}
                 note={note}
                 source={source}
+                precision={precision}
             />
 
             <FutureEvaluations 
