@@ -1,26 +1,15 @@
 function UpdateButton() {
     const handleSubmit = (e) => {
         e.preventDefault()
-        const rawDataForm = document.getElementById('raw-data-form')
         const submitButton = document.getElementById('submit-button')
+        const undoButton = document.getElementById('undo-submit-button')
+        const warning = document.getElementById('submit-warning')
         const deleteButton = document.getElementById('delete-button')
-        const undoButton = document.createElement('button')
-        const explanation = document.createElement('p')
-        submitButton.innerText = 'Update Set with New Data'
-        undoButton.innerText = 'Abandon All Changes'
-        explanation.innerText = 'Make any changes you want, then click the update button'
-        rawDataForm.insertBefore(explanation, submitButton)
-        rawDataForm.insertBefore(undoButton, deleteButton)
+        undoButton.style.display = 'block'
+        warning.style.display = 'block'
         deleteButton.style.display = 'none'
+        submitButton.innerText = 'Update Set with New Data'
         submitButton.scrollIntoView()
-        undoButton.onclick = (e) => {
-            e.preventDefault()
-            window.scrollTo(0, 0)
-            deleteButton.style.display = 'block'
-            submitButton.innerText = 'Update Set'
-            undoButton.remove()
-            explanation.remove()
-        }
     }
 
     return (

@@ -1,10 +1,7 @@
-import EditSet from './EditSet'
 import Favorite from './Favorite'
-import DeleteSet from './DeleteSet'
 import NewSet from './NewSet'
 import Note from './Note'
 import SaveSet from './SaveSet'
-import UpdateSet from './UpdateSet'
 import UpdateButton from './UpdateButton'
 import DeleteButton from './DeleteButton'
 

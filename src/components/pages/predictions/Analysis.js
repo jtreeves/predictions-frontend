@@ -204,13 +204,13 @@ function Analysis(props) {
                 stored={stored}
                 user={user}
                 source={source}
+                favorite={favorite}
+                note={note}
                 title={title}
                 independent={independent}
                 dependent={dependent}
                 precision={precision}
-                dataSet={points}
-                favorite={favorite}
-                note={note}
+                dataSet={dataSet}
             />
 
             <Note 

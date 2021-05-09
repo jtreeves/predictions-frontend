@@ -64,27 +64,63 @@ function CreateSet(props) {
         Delete Set
     </button>
 
+    const undoSubmitButton = <button
+        id="undo-submit-button"
+        onClick={props.handleUndoSubmit}
+        style={{ display: 'none' }}
+    >
+        Abandon All Changes
+    </button>
+    
+    const undoDeleteButton = <button
+        id="undo-delete-button"
+        onClick={props.handleUndoDelete}
+        style={{ display: 'none' }}
+    >
+        No, I Want to Keep the Data Set
+    </button>
+
+    const submitWarning = <p
+        id="submit-warning"
+        style={{ display: 'none' }}
+    >
+        Make any changes you want, then click the update button
+    </p>
+    
+    const deleteWarning = <p
+        id="delete-warning"
+        style={{ display: 'none' }}
+    >
+        Are you sure you want to delete this set?
+    </p>
+
     if (!props.stored) {
         return (
-            <form id="raw-data-form">
+            <form>
                 {title}
                 {independent}
                 {dependent}
                 {precision}
                 {dataSet}
+                {submitWarning}
                 {submitButton}
+                {undoSubmitButton}
             </form>
         )
     } else {
         return (
-            <form id="raw-data-form">
+            <form>
                 {title}
                 {independent}
                 {dependent}
                 {precision}
                 {dataSet}
+                {submitWarning}
                 {submitButton}
+                {undoSubmitButton}
+                {deleteWarning}
                 {deleteButton}
+                {undoDeleteButton}
             </form>
         )
     }
