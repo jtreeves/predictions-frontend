@@ -6,7 +6,7 @@ import CheckFavorite from '../../utilities/predictions/CheckFavorite'
 import GraphSection from '../../elements/predictions/GraphSection'
 import ExecutiveButtons from '../../elements/predictions/ExecutiveButtons'
 import Note from '../../elements/predictions/Note'
-import HighlightedModels from '../../elements/predictions/HighlightedModels'
+import Highlights from '../../elements/predictions/Highlights'
 import FutureEvaluations from '../../elements/predictions/FutureEvaluations'
 import ModelsAnalyses from '../../elements/predictions/ModelsAnalyses'
 import DataSection from '../../elements/predictions/DataSection'
@@ -94,7 +94,7 @@ function Analysis(props) {
     const [originalCoordinates, setOriginalCoordinates] = useState(originalPoints)
 
     const [zoom, setZoom] = useState(0)
-    
+
     const allCoordinates = [originalCoordinates, linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
 
     const xAxis = HorizontalAxis(originalPoints, zoom)
@@ -213,14 +213,11 @@ function Analysis(props) {
                 dataSet={dataSet}
             />
 
-            <Note 
-                note={note}
-                source={source}
-            />
-
-            <HighlightedModels 
+            <Highlights 
                 bestFit={bestFit}
                 favorite={favorite}
+                note={note}
+                source={source}
             />
 
             <FutureEvaluations 

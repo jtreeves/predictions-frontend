@@ -7,7 +7,7 @@ import ModelsAnalyses from './ModelsAnalyses'
 import DisplayTable from './DisplayTable'
 import GraphSection from './GraphSection'
 import ExecutiveButtons from './ExecutiveButtons'
-import HighlightedModels from './HighlightedModels'
+import HighlightedModels from './Highlights'
 import OriginalData from './OriginalData'
 
 // Create function

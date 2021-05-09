@@ -22,19 +22,11 @@ function ExecutiveButtons(props) {
     } else {
         return (
             <div>
-                <Favorite 
-                    source={props.source}
-                    favorite={props.favorite}
-                />
-
-                <Note 
-                    note={props.note}
-                    source={props.source}
-                />
-
                 <UpdateButton />
 
                 <DeleteButton />
+
+                <NewSet />
             </div>
         )
     }
