@@ -95,14 +95,13 @@ form section {
     grid-template-columns: 1fr 3fr;
 }
 
-form button {
+button {
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
-    width: 25%;
-    justify-self: center;
+    padding: 10px;
 }
 
-form button:hover {
+button:hover {
     font-weight: bold;
 }
 
