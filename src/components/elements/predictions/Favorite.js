@@ -4,12 +4,12 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Favorite(props) {
     const source = props.source
-    const [graph, setGraph] = useState(props.graph)
+    const [favorite, setFavorite] = useState(props.favorite)
     const [changing, setChanging] = useState(false)
     const [submitting, setSubmitting] = useState(false)
 
-    const handleGraph = (e) => {
-        setGraph(e.target.value)
+    const handleFavorite = (e) => {
+        setFavorite(e.target.value)
     }
 
     const handleChanging = (e) => {
@@ -20,15 +20,14 @@ function Favorite(props) {
     const handleSubmitting = async (e) => {
         e.preventDefault()
         try {
-            await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: graph})
+            await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: favorite})
             setSubmitting(true)
         } catch(error) {
             alert(error.response.data.msg)
-            console.log(`FAVORITE ERROR: ${error}`)
         }
     }
 
-    if (graph === '') {
+    if (favorite === '') {
         if (!changing) {
             return (
                 <button onClick={handleChanging}>Choose Favorite</button>
@@ -36,8 +35,8 @@ function Favorite(props) {
         } else {
             return (
                 <form onSubmit={handleSubmitting}>
-                    <label for="graph">Select a graph:</label>
-                    <select name="graph" id="graph" onChange={handleGraph}>
+                    <label for="favorite">Select a graph:</label>
+                    <select name="favorite" id="favorite" onChange={handleFavorite}>
                         <option value=""></option>
                         <option value="linear">Linear</option>
                         <option value="quadratic">Quadratic</option>
@@ -56,15 +55,15 @@ function Favorite(props) {
         if (!changing) {
             return (
                 <section>
-                    <p><mark>Favorite</mark> {graph}</p>
+                    <p><mark>Favorite</mark> {favorite}</p>
                     <button onClick={handleChanging}>Change Favorite</button>
                 </section>
             )
         } else if (!submitting) {
             return (
                 <form onSubmit={handleSubmitting}>
-                    <label for="graph">Select a graph:</label>
-                    <select name="graph" id="graph" onChange={handleGraph}>
+                    <label for="favorite">Select a graph:</label>
+                    <select name="favorite" id="favorite" onChange={handleFavorite}>
                         <option value=""></option>
                         <option value="linear">Linear</option>
                         <option value="quadratic">Quadratic</option>

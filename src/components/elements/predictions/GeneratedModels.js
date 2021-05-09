@@ -6,6 +6,9 @@ import FutureEvaluations from './FutureEvaluations'
 import ModelsAnalyses from './ModelsAnalyses'
 import DisplayTable from './DisplayTable'
 import GraphSection from './GraphSection'
+import ExecutiveButtons from './ExecutiveButtons'
+import HighlightedModels from './HighlightedModels'
+import OriginalData from './OriginalData'
 
 // Create function
 function GeneratedModels(props) {
@@ -169,11 +172,11 @@ function GeneratedModels(props) {
                 displaySinusoidal={displaySinusoidal}
             />
 
-            <DisplayTable 
+            {/* <DisplayTable 
                 independent={props.independent}
                 dependent={props.dependent}
                 points={originalPoints}
-            />
+            /> */}
         </section>
     )
 }

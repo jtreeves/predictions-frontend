@@ -4,12 +4,12 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Note(props) {
     const source = props.source
-    const [comment, setComment] = useState(props.comment)
+    const [note, setNote] = useState(props.note)
     const [changing, setChanging] = useState(false)
     const [submitting, setSubmitting] = useState(false)
 
-    const handleComment = (e) => {
-        setComment(e.target.value)
+    const handleNote = (e) => {
+        setNote(e.target.value)
     }
 
     const handleChanging = (e) => {
@@ -20,7 +20,7 @@ function Note(props) {
     const handleSubmitting = async (e) => {
         e.preventDefault()
         try {
-            await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: comment})
+            await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: note})
             setSubmitting(true)
         } catch(error) {
             alert(error.response.data.msg)
@@ -28,7 +28,7 @@ function Note(props) {
         }
     }
 
-    if (comment === '') {
+    if (note === '') {
         if (!changing) {
             return (
                 <button onClick={handleChanging}>Add Note</button>
@@ -36,8 +36,8 @@ function Note(props) {
         } else {
             return (
                 <form onSubmit={handleSubmitting}>
-                    <label for="comment">Provide some details:</label>
-                    <input type="text" id="comment" name="comment" value={comment} onChange={handleComment} />
+                    <label for="note">Provide some details:</label>
+                    <input type="text" id="note" name="note" value={note} onChange={handleNote} />
                     <button type="submit">Save Note</button>
                 </form>
             )
@@ -46,15 +46,15 @@ function Note(props) {
         if (!changing) {
             return (
                 <section>
-                    <p><mark>Note</mark> {comment}</p>
+                    <p><mark>Note</mark> {note}</p>
                     <button onClick={handleChanging}>Update Note</button>
                 </section>
             )
         } else if (!submitting) {
             return (
                 <form onSubmit={handleSubmitting}>
-                    <label for="comment">Provide more details:</label>
-                    <input type="text" id="comment" name="comment" value={comment} onChange={handleComment} />
+                    <label for="note">Provide more details:</label>
+                    <input type="text" id="note" name="note" value={note} onChange={handleNote} />
                     <button type="submit">Save Note</button>
                 </form>
             )
