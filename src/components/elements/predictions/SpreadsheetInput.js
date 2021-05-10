@@ -63,6 +63,8 @@ function SpreadsheetInput(props) {
                 handlePrecision={props.handlePrecision}
                 dataSet={props.dataSet}
                 handleDataSet={props.handleDataSet}
+                stored={false}
+                button="Create Set"
             />
         )
     }

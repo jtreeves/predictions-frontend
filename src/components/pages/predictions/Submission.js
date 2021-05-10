@@ -136,6 +136,8 @@ function Submission(props) {
                     handlePrecision={handlePrecision}
                     dataSet={dataSet}
                     handleDataSet={handleDataSet}
+                    stored={false}
+                    button="Create Set"
                 />
             </main>
         )
