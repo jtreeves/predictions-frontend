@@ -5,6 +5,7 @@ import CreateSet from './CreateSet'
 import CleanCollection from '../../utilities/predictions/CleanCollection'
 import SpreadsheetInput from '../../utilities/predictions/SpreadsheetInput'
 import AllFormElements from '../../utilities/predictions/AllFormElements'
+import ResetFormElements from '../../utilities/predictions/ResetFormElements'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function OriginalData(props) {
@@ -82,12 +83,7 @@ function OriginalData(props) {
 
     const handleUndoSubmit = (e) => {
         e.preventDefault()
-        const allElements = AllFormElements()
-        allElements.submitButton.innerText = 'Update Set'
-        allElements.deleteButton.innerText = 'Delete Set'
-        allElements.deleteButton.style.display = 'block'
-        allElements.undoSubmitButton.style.display = 'none'
-        allElements.submitWarning.style.display = 'none'
+        ResetFormElements()
         setTitle(props.title)
         setIndependent(props.independent)
         setDependent(props.dependent)
@@ -98,12 +94,7 @@ function OriginalData(props) {
     
     const handleUndoDelete = (e) => {
         e.preventDefault()
-        const allElements = AllFormElements()
-        allElements.deleteButton.innerText = 'Delete Set'
-        allElements.submitButton.innerText = 'Update Set'
-        allElements.submitButton.style.display = 'block'
-        allElements.undoDeleteButton.style.display = 'none'
-        allElements.deleteWarning.style.display = 'none'
+        ResetFormElements()
         window.scrollTo(0, 0)
     }
 
@@ -163,10 +154,7 @@ function OriginalData(props) {
                             await axios.post(REACT_APP_SERVER_URL + 'predictions/' + user.id, { source })
                             await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: opinions.favorite})
                             await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: opinions.note})
-                            allElements.submitButton.innerText = 'Update Set'
-                            allElements.deleteButton.style.display = 'block'
-                            allElements.undoSubmitButton.style.display = 'none'
-                            allElements.submitWarning.style.display = 'none'
+                            ResetFormElements()
                             setModels(predictions.data.regressions)
                             setSubmitted(true)
                         } catch(error) {
@@ -190,10 +178,7 @@ function OriginalData(props) {
         } else {
             try {
                 await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + source)
-                allElements.deleteButton.innerText = 'Delete Set'
-                allElements.undoDeleteButton.style.display = 'none'
-                allElements.deleteWarning.style.display = 'none'
-                allElements.submitButton.style.display = 'block'
+                ResetFormElements()
                 setDeleted(true)
             } catch(error) {
                 alert(error)
