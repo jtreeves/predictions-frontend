@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
@@ -24,7 +23,8 @@ function SaveSet(props) {
             <button onClick={handleSave}>Save</button>
         )
     } else {
-        return <Redirect to="/datasets" />
+        alert('Your data set was saved!')
+        setSaved(false)
     }
 }
 
