@@ -63,8 +63,18 @@ function CreateSet(props) {
     >
         Delete Set
     </button>
+    
+    const hiddenDeleteButton = <button 
+        className="submission"
+        id="delete-button"
+        onClick={props.handleDelete}
+        style={{ display: 'none' }}
+    >
+        Delete Set
+    </button>
 
     const undoSubmitButton = <button
+        className="submission"
         id="undo-submit-button"
         onClick={props.handleUndoSubmit}
         style={{ display: 'none' }}
@@ -73,19 +83,12 @@ function CreateSet(props) {
     </button>
     
     const undoDeleteButton = <button
+        className="submission"
         id="undo-delete-button"
         onClick={props.handleUndoDelete}
         style={{ display: 'none' }}
     >
         No, I Want to Keep the Data Set
-    </button>
-    
-    const uploadButton = <button
-        id="undo-delete-button"
-        onClick={props.handleUpload}
-        style={{ display: 'none' }}
-    >
-        Upload Data from CSV File
     </button>
 
     const submitWarning = <p
@@ -102,32 +105,7 @@ function CreateSet(props) {
         Are you sure you want to delete this set?
     </p>
 
-    if (!props.initiated) {
-        return (
-            <form>
-                {title}
-                {independent}
-                {dependent}
-                {precision}
-                {dataSet}
-                {submitButton}
-                {uploadButton}
-            </form>
-        )
-    } else if (props.initiated && !props.stored) {
-        return (
-            <form>
-                {title}
-                {independent}
-                {dependent}
-                {precision}
-                {dataSet}
-                {submitWarning}
-                {submitButton}
-                {undoSubmitButton}
-            </form>
-        )
-    } else {
+    if (props.initiated) {
         return (
             <form>
                 {title}
@@ -143,7 +121,23 @@ function CreateSet(props) {
                 {undoDeleteButton}
             </form>
         )
-    }
+    } else {
+        return (
+            <form>
+                {title}
+                {independent}
+                {dependent}
+                {precision}
+                {dataSet}
+                {submitWarning}
+                {submitButton}
+                {undoSubmitButton}
+                {deleteWarning}
+                {hiddenDeleteButton}
+                {undoDeleteButton}
+            </form>
+        )
+    }    
 }
 
 // Export function

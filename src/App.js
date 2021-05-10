@@ -73,6 +73,7 @@ function App() {
                     exact path="/" 
                     component={Welcome} 
                 />}
+                <Route path="/welcome" component={Welcome} />
                 <Route path="/about" component={About} />
                 <Route path="/usage" component={Usage} />
                 <Route path="/signup" component={Signup} />

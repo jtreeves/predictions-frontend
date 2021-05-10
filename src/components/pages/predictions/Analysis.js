@@ -19,6 +19,7 @@ function Analysis(props) {
     const location = useLocation()
     const models = location.state.models
     const opinions = location.state.opinions
+    const initiated = location.state.initiated
     const stored = location.state.stored
 
     useEffect(() => {
@@ -294,6 +295,7 @@ function Analysis(props) {
                 favorite={favorite}
                 note={note}
                 user={user}
+                initiated={initiated}
                 stored={stored}
                 source={source}
             />

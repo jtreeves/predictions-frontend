@@ -6,6 +6,7 @@ import SpreadsheetInput from '../../elements/predictions/SpreadsheetInput'
 import CheckExpiration from '../../utilities/users/CheckExpiration'
 import CleanCollection from '../../utilities/predictions/CleanCollection'
 import '../../../style/submission.css'
+import OriginalData from '../../elements/predictions/OriginalData'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Submission(props) {
@@ -17,8 +18,8 @@ function Submission(props) {
     const [precision, setPrecision] = useState(4)
     const [dataSet, setDataSet] = useState('')
     const [models, setModels] = useState({})
-    const [manual, setManual] = useState(false)
-    const [upload, setUpload] = useState(false)
+    // const [manual, setManual] = useState(false)
+    // const [upload, setUpload] = useState(false)
     const [submitted, setSubmitted] = useState(false)
 
     // Set title from form
@@ -46,15 +47,15 @@ function Submission(props) {
         setDataSet(e.target.value)
     }
 
-    const handleManual = (e) => {
-        e.preventDefault()
-        setManual(true)
-    }
+    // const handleManual = (e) => {
+    //     e.preventDefault()
+    //     setManual(true)
+    // }
     
-    const handleUpload = (e) => {
-        e.preventDefault()
-        setUpload(true)
-    }
+    // const handleUpload = (e) => {
+    //     e.preventDefault()
+    //     setUpload(true)
+    // }
 
     // Submit form
     const handleSubmit = async (e) => {
@@ -87,8 +88,8 @@ function Submission(props) {
                         submission
                     )
                     setModels(predictions.data.regressions)
-                    setManual(false)
-                    setUpload(false)
+                    // setManual(false)
+                    // setUpload(false)
                     setSubmitted(true)
                 } catch (error) {
                     alert(error)
@@ -97,10 +98,10 @@ function Submission(props) {
         }
     }
 
-    if (!manual && !upload && !submitted) {
+    if (!submitted) {
         return (
             <main>
-                <h1>Add a New Data Set</h1>
+                {/* <h1>Add a New Data Set</h1>
                 <p>Did you want to manually type in your data set, or would you rather upload a CSV file of it?</p>
                 <section className="submission">
                     <button 
@@ -115,55 +116,68 @@ function Submission(props) {
                     >
                         Upload
                     </button>
-                </section>
+                </section> */}
+                <OriginalData 
+                title={title}
+                independent={independent}
+                dependent={dependent}
+                precision={precision}
+                dataSet={dataSet}
+                favorite=''
+                note=''
+                user={props.user}
+                initiated={false}
+                stored={false}
+                source=''
+                />
             </main>
         )
     }
 
-    if (manual) {
-        return (
-            <main>
-                <h1>Add a New Data Set</h1>
-                <CreateSet
-                    handleSubmit={handleSubmit}
-                    title={title}
-                    handleTitle={handleTitle}
-                    independent={independent}
-                    handleIndependent={handleIndependent}
-                    dependent={dependent}
-                    handleDependent={handleDependent}
-                    precision={precision}
-                    handlePrecision={handlePrecision}
-                    dataSet={dataSet}
-                    handleDataSet={handleDataSet}
-                    stored={false}
-                    button="Create Set"
-                />
-            </main>
-        )
-    }
+    // if (manual) {
+    //     return (
+    //         <main>
+    //             <h1>Add a New Data Set</h1>
+    //             <CreateSet
+    //                 handleSubmit={handleSubmit}
+    //                 title={title}
+    //                 handleTitle={handleTitle}
+    //                 independent={independent}
+    //                 handleIndependent={handleIndependent}
+    //                 dependent={dependent}
+    //                 handleDependent={handleDependent}
+    //                 precision={precision}
+    //                 handlePrecision={handlePrecision}
+    //                 dataSet={dataSet}
+    //                 handleDataSet={handleDataSet}
+    //                 stored={false}
+    //                 button="Create Set"
+    //             />
+    //         </main>
+    //     )
+    // }
     
-    if (upload) {
-        return (
-            <main>
-                <h1>Add a New Data Set</h1>
-                <SpreadsheetInput 
-                    handleSubmit={handleSubmit}
-                    title={title}
-                    handleTitle={handleTitle}
-                    independent={independent}
-                    handleIndependent={handleIndependent}
-                    dependent={dependent}
-                    handleDependent={handleDependent}
-                    precision={precision}
-                    handlePrecision={handlePrecision}
-                    dataSet={dataSet}
-                    handleDataSet={handleDataSet}
-                    setDataSet={setDataSet}
-                />
-            </main>
-        )
-    }
+    // if (upload) {
+    //     return (
+    //         <main>
+    //             <h1>Add a New Data Set</h1>
+    //             <SpreadsheetInput 
+    //                 handleSubmit={handleSubmit}
+    //                 title={title}
+    //                 handleTitle={handleTitle}
+    //                 independent={independent}
+    //                 handleIndependent={handleIndependent}
+    //                 dependent={dependent}
+    //                 handleDependent={handleDependent}
+    //                 precision={precision}
+    //                 handlePrecision={handlePrecision}
+    //                 dataSet={dataSet}
+    //                 handleDataSet={handleDataSet}
+    //                 setDataSet={setDataSet}
+    //             />
+    //         </main>
+    //     )
+    // }
     
     if (submitted) {
         return (

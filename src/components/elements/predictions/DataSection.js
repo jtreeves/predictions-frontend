@@ -22,6 +22,7 @@ function DataSection(props) {
                     favorite={props.favorite}
                     note={props.note}
                     user={props.user}
+                    initiated={props.initiated}
                     stored={props.stored}
                     source={props.source}
                 />
