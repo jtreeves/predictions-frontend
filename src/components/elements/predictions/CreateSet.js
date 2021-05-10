@@ -53,7 +53,7 @@ function CreateSet(props) {
         id="submit-button"
         onClick={props.handleSubmit}
     >
-        {props.button}
+        {props.submitText}
     </button>
     
     const deleteButton = <button 
@@ -79,6 +79,14 @@ function CreateSet(props) {
     >
         No, I Want to Keep the Data Set
     </button>
+    
+    const uploadButton = <button
+        id="undo-delete-button"
+        onClick={props.handleUpload}
+        style={{ display: 'none' }}
+    >
+        Upload Data from CSV File
+    </button>
 
     const submitWarning = <p
         id="submit-warning"
@@ -94,7 +102,19 @@ function CreateSet(props) {
         Are you sure you want to delete this set?
     </p>
 
-    if (!props.stored) {
+    if (!props.initiated) {
+        return (
+            <form>
+                {title}
+                {independent}
+                {dependent}
+                {precision}
+                {dataSet}
+                {submitButton}
+                {uploadButton}
+            </form>
+        )
+    } else if (props.initiated && !props.stored) {
         return (
             <form>
                 {title}

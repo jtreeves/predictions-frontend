@@ -1,9 +1,12 @@
 import CreateSet from './CreateSet'
+import { useRef } from 'react'
 
 function SpreadsheetInput(props) {
+    const fileToUpload = useRef(null)
     const handleSpreadsheet = (e) => {
         e.preventDefault()
         const file = document.querySelector("#csv").files[0]
+        console.log('FILE IN HANDLE: ', file)
 		const reader = new FileReader()
         reader.onload = (e) => {
             const data = e.target.result
@@ -38,7 +41,13 @@ function SpreadsheetInput(props) {
     if (props.dataSet === '') {
         return (
             <form>
-                <input type="file" id="csv" />
+                <input type="file" id="csv" 
+                // ref={fileToUpload}
+                // style={{display: 'none'}} 
+                />
+                {/* <button
+                    onClick={() => fileToUpload.current.click()}
+                >Browse</button> */}
                 <button 
                     id="upload" 
                     onClick={handleSpreadsheet}

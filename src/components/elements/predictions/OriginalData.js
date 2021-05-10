@@ -24,16 +24,17 @@ function OriginalData(props) {
     let source = props.source
     const user = props.user
     const stored = props.stored
+    const initiated = props.initiated
     const opinions = {
         favorite: props.favorite,
         note: props.note
     }
 
-    let buttonText = ''
-    if (!stored) {
-        buttonText = 'Create Set'
+    let submitText = ''
+    if (!initiated) {
+        submitText = 'Create Set'
     } else {
-        buttonText = 'Update Set'
+        submitText = 'Update Set'
     }
 
     // Set title from form
@@ -92,6 +93,10 @@ function OriginalData(props) {
         undoButton.style.display = 'none'
         warning.style.display = 'none'
         window.scrollTo(0, 0)
+    }
+
+    const handleUpload = (e) => {
+        e.preventDefault()
     }
 
     const handleSubmit = async (e) => {
@@ -196,8 +201,6 @@ function OriginalData(props) {
     if (!submitted && !deleted) {
         return (
             <CreateSet 
-                handleSubmit={handleSubmit}
-                handleDelete={handleDelete}
                 title={title}
                 handleTitle={handleTitle}
                 independent={independent}
@@ -208,10 +211,14 @@ function OriginalData(props) {
                 handlePrecision={handlePrecision}
                 dataSet={dataSet}
                 handleDataSet={handleDataSet}
-                stored={props.stored}
-                button={buttonText}
+                handleSubmit={handleSubmit}
+                handleDelete={handleDelete}
                 handleUndoSubmit={handleUndoSubmit}
                 handleUndoDelete={handleUndoDelete}
+                handleUpload={handleUpload}
+                initiated={initiated}
+                stored={stored}
+                submit={submitText}
             />
         )
     } else if (submitted) {

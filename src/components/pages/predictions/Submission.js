@@ -177,6 +177,7 @@ function Submission(props) {
                             note: null
                         },
                         user: props.user,
+                        initiated: true,
                         stored: false
                     }
                 }}

@@ -41,6 +41,7 @@ function DataSets(props) {
                                     models: datum.models, 
                                     opinions: datum.opinions,
                                     user: props.user,
+                                    initiated: true,
                                     stored: true
                                 }
                             }}
