@@ -12,6 +12,7 @@ function OriginalData(props) {
     const [precision, setPrecision] = useState(props.precision)
     const [dataSet, setDataSet] = useState(props.dataSet)
     const [models, setModels] = useState({})
+    const [source, setSource] = useState(props.source)
     const [initiated, setInitiated] = useState(props.initiated)
     const [submitted, setSubmitted] = useState(false)    
     const [deleted, setDeleted] = useState(false)
@@ -23,7 +24,6 @@ function OriginalData(props) {
         }
     }, [submitted])
 
-    let source = props.source
     const user = props.user
     const stored = props.stored
     const opinions = {
@@ -175,7 +175,7 @@ function OriginalData(props) {
                                 submission
                             )
                             submitButton.innerText = 'Update Set'
-                            deleteButton.style.display = 'block'
+                            deleteButton.style.display = 'none'
                             undoButton.style.display = 'none'
                             warning.style.display = 'none'
                             setModels(predictions.data.regressions)
@@ -188,7 +188,7 @@ function OriginalData(props) {
                         try {
                             await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + source)
                             const predictions = await axios.post(REACT_APP_SERVER_URL + 'api', submission)
-                            source = predictions.data.regressions.source
+                            setSource(predictions.data.regressions.source)
                             await axios.post(REACT_APP_SERVER_URL + 'predictions/' + user.id, { source })
                             await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: opinions.favorite})
                             await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: opinions.note})
@@ -261,7 +261,11 @@ function OriginalData(props) {
                     dataSet={dataSet}
                     handleDataSet={handleDataSet}
                     handleSubmit={handleSubmit}
+                    handleDelete={handleDelete}
+                    handleUndoSubmit={handleUndoSubmit}
+                    handleUndoDelete={handleUndoDelete}
                     initiated={initiated}
+                    stored={stored}
                     submitText={submitText}
                 />
             </section>

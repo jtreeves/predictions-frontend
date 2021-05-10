@@ -105,7 +105,7 @@ function CreateSet(props) {
         Are you sure you want to delete this set?
     </p>
 
-    if (!props.initiated && !props.stored) {
+    if (!props.initiated || !props.stored) {
         return (
             <form>
                 {title}

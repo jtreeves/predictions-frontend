@@ -10,6 +10,8 @@ function ExecutiveButtons(props) {
                 <SaveSet 
                     user={props.user}
                     source={props.source}
+                    stored={props.stored}
+                    setStored={props.setStored}
                 />
 
                 <UpdateButton />

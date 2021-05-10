@@ -15,12 +15,12 @@ import '../../../style/analysis.css'
 
 function Analysis(props) {
     CheckExpiration(props.user.exp, props.handleLogout)
-
+    
     const location = useLocation()
     const models = location.state.models
     const opinions = location.state.opinions
     const initiated = location.state.initiated
-    const stored = location.state.stored
+    const [stored, setStored] = useState(location.state.stored)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -204,16 +204,10 @@ function Analysis(props) {
             />
 
             <ExecutiveButtons 
-                stored={stored}
                 user={user}
                 source={source}
-                favorite={favorite}
-                note={note}
-                title={title}
-                independent={independent}
-                dependent={dependent}
-                precision={precision}
-                dataSet={dataSet}
+                stored={stored}
+                setStored={setStored}
             />
 
             <Highlights 
