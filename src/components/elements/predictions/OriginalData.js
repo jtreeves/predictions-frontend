@@ -4,6 +4,7 @@ import axios from 'axios'
 import CreateSet from './CreateSet'
 import CleanCollection from '../../utilities/predictions/CleanCollection'
 import SpreadsheetInput from '../../utilities/predictions/SpreadsheetInput'
+import AllFormElements from '../../utilities/predictions/AllFormElements'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function OriginalData(props) {
@@ -81,15 +82,12 @@ function OriginalData(props) {
 
     const handleUndoSubmit = (e) => {
         e.preventDefault()
-        const submitButton = document.getElementById('submit-button')
-        const deleteButton = document.getElementById('delete-button')
-        const undoButton = document.getElementById('undo-submit-button')
-        const warning = document.getElementById('submit-warning')
-        submitButton.innerText = 'Update Set'
-        deleteButton.innerText = 'Delete Set'
-        deleteButton.style.display = 'block'
-        undoButton.style.display = 'none'
-        warning.style.display = 'none'
+        const allElements = AllFormElements()
+        allElements.submitButton.innerText = 'Update Set'
+        allElements.deleteButton.innerText = 'Delete Set'
+        allElements.deleteButton.style.display = 'block'
+        allElements.undoSubmitButton.style.display = 'none'
+        allElements.submitWarning.style.display = 'none'
         setTitle(props.title)
         setIndependent(props.independent)
         setDependent(props.dependent)
@@ -100,30 +98,24 @@ function OriginalData(props) {
     
     const handleUndoDelete = (e) => {
         e.preventDefault()
-        const deleteButton = document.getElementById('delete-button')
-        const submitButton = document.getElementById('submit-button')
-        const undoButton = document.getElementById('undo-delete-button')
-        const warning = document.getElementById('delete-warning')
-        deleteButton.innerText = 'Delete Set'
-        submitButton.innerText = 'Update Set'
-        submitButton.style.display = 'block'
-        undoButton.style.display = 'none'
-        warning.style.display = 'none'
+        const allElements = AllFormElements()
+        allElements.deleteButton.innerText = 'Delete Set'
+        allElements.submitButton.innerText = 'Update Set'
+        allElements.submitButton.style.display = 'block'
+        allElements.undoDeleteButton.style.display = 'none'
+        allElements.deleteWarning.style.display = 'none'
         window.scrollTo(0, 0)
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const submitButton = document.getElementById('submit-button')
-        const undoButton = document.getElementById('undo-submit-button')
-        const warning = document.getElementById('submit-warning')
-        const deleteButton = document.getElementById('delete-button')
+        const allElements = AllFormElements()
 
-        if (submitButton.innerText === 'Update Set') {
-            submitButton.innerText = 'Update Set with New Data'
-            undoButton.style.display = 'block'
-            warning.style.display = 'block'
-            deleteButton.style.display = 'none'
+        if (allElements.submitButton.innerText === 'Update Set') {
+            allElements.submitButton.innerText = 'Update Set with New Data'
+            allElements.undoSubmitButton.style.display = 'block'
+            allElements.submitWarning.style.display = 'block'
+            allElements.deleteButton.style.display = 'none'
         } else {
             if (title === '') {
                 alert('You must give this data set a title')
@@ -153,10 +145,10 @@ function OriginalData(props) {
                             const predictions = await axios.post(REACT_APP_SERVER_URL + 'api',
                                 submission
                             )
-                            submitButton.innerText = 'Update Set'
-                            deleteButton.style.display = 'none'
-                            undoButton.style.display = 'none'
-                            warning.style.display = 'none'
+                            allElements.submitButton.innerText = 'Update Set'
+                            allElements.deleteButton.style.display = 'none'
+                            allElements.undoSubmitButton.style.display = 'none'
+                            allElements.submitWarning.style.display = 'none'
                             setModels(predictions.data.regressions)
                             setInitiated(true)
                             setSubmitted(true)
@@ -171,10 +163,10 @@ function OriginalData(props) {
                             await axios.post(REACT_APP_SERVER_URL + 'predictions/' + user.id, { source })
                             await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: opinions.favorite})
                             await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: opinions.note})
-                            submitButton.innerText = 'Update Set'
-                            deleteButton.style.display = 'block'
-                            undoButton.style.display = 'none'
-                            warning.style.display = 'none'
+                            allElements.submitButton.innerText = 'Update Set'
+                            allElements.deleteButton.style.display = 'block'
+                            allElements.undoSubmitButton.style.display = 'none'
+                            allElements.submitWarning.style.display = 'none'
                             setModels(predictions.data.regressions)
                             setSubmitted(true)
                         } catch(error) {
@@ -188,23 +180,20 @@ function OriginalData(props) {
 
     const handleDelete = async (e) => {
         e.preventDefault()
-        const deleteButton = document.getElementById('delete-button')
-        const undoButton = document.getElementById('undo-delete-button')
-        const warning = document.getElementById('delete-warning')
-        const submitButton = document.getElementById('submit-button')
+        const allElements = AllFormElements()
 
-        if (deleteButton.innerText === 'Delete Set') {
-            deleteButton.innerText = 'Yes, Delete Set'
-            undoButton.style.display = 'block'
-            warning.style.display = 'block'
-            submitButton.style.display = 'none'
+        if (allElements.deleteButton.innerText === 'Delete Set') {
+            allElements.deleteButton.innerText = 'Yes, Delete Set'
+            allElements.undoDeleteButton.style.display = 'block'
+            allElements.deleteWarning.style.display = 'block'
+            allElements.submitButton.style.display = 'none'
         } else {
             try {
                 await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + source)
-                deleteButton.innerText = 'Delete Set'
-                undoButton.style.display = 'none'
-                warning.style.display = 'none'
-                submitButton.style.display = 'block'
+                allElements.deleteButton.innerText = 'Delete Set'
+                allElements.undoDeleteButton.style.display = 'none'
+                allElements.deleteWarning.style.display = 'none'
+                allElements.submitButton.style.display = 'block'
                 setDeleted(true)
             } catch(error) {
                 alert(error)

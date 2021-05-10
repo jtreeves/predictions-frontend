@@ -1,20 +1,17 @@
+import AllFormElements from '../../utilities/predictions/AllFormElements'
+
 function DeleteButton() {
     const handleDelete = (e) => {
         e.preventDefault()
-        const deleteButton = document.getElementById('delete-button')
-        const undoDeleteButton = document.getElementById('undo-delete-button')
-        const deleteWarning = document.getElementById('delete-warning')
-        const submitButton = document.getElementById('submit-button')
-        const undoSubmitButton = document.getElementById('undo-submit-button')
-        const submitWarning = document.getElementById('submit-warning')
-        deleteButton.style.display = 'block'
-        undoDeleteButton.style.display = 'block'
-        deleteWarning.style.display = 'block'
-        submitButton.style.display = 'none'
-        undoSubmitButton.style.display = 'none'
-        submitWarning.style.display = 'none'
-        deleteButton.innerText = 'Yes, Delete Set'
-        deleteButton.scrollIntoView()
+        const allElements = AllFormElements()
+        allElements.deleteButton.style.display = 'block'
+        allElements.undoDeleteButton.style.display = 'block'
+        allElements.deleteWarning.style.display = 'block'
+        allElements.submitButton.style.display = 'none'
+        allElements.undoSubmitButton.style.display = 'none'
+        allElements.submitWarning.style.display = 'none'
+        allElements.deleteButton.innerText = 'Yes, Delete Set'
+        allElements.deleteButton.scrollIntoView()
     }
 
     return (

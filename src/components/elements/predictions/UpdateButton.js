@@ -1,20 +1,17 @@
+import AllFormElements from '../../utilities/predictions/AllFormElements'
+
 function UpdateButton() {
     const handleSubmit = (e) => {
         e.preventDefault()
-        const submitButton = document.getElementById('submit-button')
-        const undoSubmitButton = document.getElementById('undo-submit-button')
-        const submitWarning = document.getElementById('submit-warning')
-        const deleteButton = document.getElementById('delete-button')
-        const undoDeleteButton = document.getElementById('undo-delete-button')
-        const deleteWarning = document.getElementById('delete-warning')
-        submitButton.style.display = 'block'
-        undoSubmitButton.style.display = 'block'
-        submitWarning.style.display = 'block'
-        deleteButton.style.display = 'none'
-        undoDeleteButton.style.display = 'none'
-        deleteWarning.style.display = 'none'
-        submitButton.innerText = 'Update Set with New Data'
-        submitButton.scrollIntoView()
+        const allElements = AllFormElements()
+        allElements.submitButton.style.display = 'block'
+        allElements.undoSubmitButton.style.display = 'block'
+        allElements.submitWarning.style.display = 'block'
+        allElements.deleteButton.style.display = 'none'
+        allElements.undoDeleteButton.style.display = 'none'
+        allElements.deleteWarning.style.display = 'none'
+        allElements.submitButton.innerText = 'Update Set with New Data'
+        allElements.submitButton.scrollIntoView()
     }
 
     return (
