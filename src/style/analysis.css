@@ -277,3 +277,7 @@ section.highlights form label {
     font-style: normal;
     font-weight: normal;
 }
+
+section.note textarea {
+    height: 150px;
+}

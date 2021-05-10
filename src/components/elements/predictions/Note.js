@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import axios from 'axios'
-import FormGroup from '../main/FormGroup'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Note(props) {
@@ -24,15 +23,11 @@ function Note(props) {
 
     if (!submitting) {
         return (
-            <section>
+            <section className="note">
                 <mark>Note</mark>
                 <form onSubmit={handleSubmitting}>
-                    <FormGroup
-                        type="textarea"
-                        label="note"
+                    <textarea
                         value={note}
-                        display="Provide some details:"
-                        tooltip="Add a note to save your thoughts about this data set"
                         onChange={handleNote}
                     />
                     <button type="submit">Save Note</button>
