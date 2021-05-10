@@ -105,23 +105,7 @@ function CreateSet(props) {
         Are you sure you want to delete this set?
     </p>
 
-    if (props.initiated) {
-        return (
-            <form>
-                {title}
-                {independent}
-                {dependent}
-                {precision}
-                {dataSet}
-                {submitWarning}
-                {submitButton}
-                {undoSubmitButton}
-                {deleteWarning}
-                {deleteButton}
-                {undoDeleteButton}
-            </form>
-        )
-    } else {
+    if (!props.initiated && !props.stored) {
         return (
             <form>
                 {title}
@@ -137,7 +121,23 @@ function CreateSet(props) {
                 {undoDeleteButton}
             </form>
         )
-    }    
+    } else {
+        return (
+            <form>
+                {title}
+                {independent}
+                {dependent}
+                {precision}
+                {dataSet}
+                {submitWarning}
+                {submitButton}
+                {undoSubmitButton}
+                {deleteWarning}
+                {deleteButton}
+                {undoDeleteButton}
+            </form>
+        )
+    }
 }
 
 // Export function

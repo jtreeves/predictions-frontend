@@ -15,6 +15,7 @@ function OriginalData(props) {
     const [initiated, setInitiated] = useState(props.initiated)
     const [submitted, setSubmitted] = useState(false)    
     const [deleted, setDeleted] = useState(false)
+    const spreadsheet = useRef(null)
 
     useEffect(() => {
         if (submitted) {
@@ -25,7 +26,6 @@ function OriginalData(props) {
     let source = props.source
     const user = props.user
     const stored = props.stored
-    // const initiated = props.initiated
     const opinions = {
         favorite: props.favorite,
         note: props.note
@@ -36,52 +36,6 @@ function OriginalData(props) {
         submitText = 'Create Set'
     } else {
         submitText = 'Update Set'
-    }
-
-    const inputFile = useRef(null)
-    const handleClick = (e) => {
-        console.log('INSIDE HANDLE CLICK')
-        // e.preventDefault()
-        inputFile.current.click()
-
-    }
-    const handleFile = (e) => {
-        console.log('INSIDE HANDLE FILE')
-        // e.preventDefault()
-        const file = e.target.files[0]
-        console.log('FILE: ', file)
-        const reader = new FileReader()
-        reader.onload = (e) => {
-            const data = e.target.result
-            // const results = document.querySelector('#results')
-            // results.innerText = data
-            const newLines = [...data.matchAll('\r\n')]
-            const indices = [0]
-            for (const newLine of newLines) {
-                indices.push(newLine.index)
-                indices.push(newLine.index + 2)
-            }
-            indices.push(data.length)
-            let dataSections = []
-            for (let i = 0; i < indices.length - 1; i++) {
-                dataSections.push(data.slice(indices[i], indices[i + 1]))
-            }
-            let points = []
-            for (let i = 0; i < dataSections.length; i++) {
-                if (i%2 === 0) {
-                    points.push(dataSections[i])
-                }
-            }
-            let lineOfPoints = ''
-            for (const point of points) {
-                lineOfPoints += '[' + point + '],'
-            }
-            const trimmedLine = lineOfPoints.slice(0, -1)
-            const encapsulatedPoints = '[' + trimmedLine + ']'
-            // props.setDataSet(encapsulatedPoints)
-            setDataSet(encapsulatedPoints)
-        }
-        reader.readAsText(file)
     }
 
     // Set title from form
@@ -109,11 +63,42 @@ function OriginalData(props) {
         setDataSet(e.target.value)
     }
 
-    // const deleteButton = document.getElementById('delete-button')
+    const handleUpload = (e) => {
+        spreadsheet.current.click()
+    }
 
-    // if (!initiated) {
-    //     deleteButton.style.display = 'none'
-    // }
+    const handleSpreadsheet = (e) => {
+        const file = e.target.files[0]
+        const reader = new FileReader()
+        reader.onload = (e) => {
+            const data = e.target.result
+            const newLines = [...data.matchAll('\r\n')]
+            const indices = [0]
+            for (const newLine of newLines) {
+                indices.push(newLine.index)
+                indices.push(newLine.index + 2)
+            }
+            indices.push(data.length)
+            let dataSections = []
+            for (let i = 0; i < indices.length - 1; i++) {
+                dataSections.push(data.slice(indices[i], indices[i + 1]))
+            }
+            let points = []
+            for (let i = 0; i < dataSections.length; i++) {
+                if (i%2 === 0) {
+                    points.push(dataSections[i])
+                }
+            }
+            let lineOfPoints = ''
+            for (const point of points) {
+                lineOfPoints += '[' + point + '],'
+            }
+            const trimmedLine = lineOfPoints.slice(0, -1)
+            const encapsulatedPoints = '[' + trimmedLine + ']'
+            setDataSet(encapsulatedPoints)
+        }
+        reader.readAsText(file)
+    }
 
     const handleUndoSubmit = (e) => {
         e.preventDefault()
@@ -148,13 +133,8 @@ function OriginalData(props) {
         window.scrollTo(0, 0)
     }
 
-    // const handleUpload = (e) => {
-    //     e.preventDefault()
-    // }
-
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('INSIDE SUBMIT')
         const submitButton = document.getElementById('submit-button')
         const undoButton = document.getElementById('undo-submit-button')
         const warning = document.getElementById('submit-warning')
@@ -166,7 +146,6 @@ function OriginalData(props) {
             warning.style.display = 'block'
             deleteButton.style.display = 'none'
         } else {
-            console.log('INSIDE ELSE INSIDE SUBMIT')
             if (title === '') {
                 alert('You must give this data set a title')
             } else if (independent === '') {
@@ -254,40 +233,40 @@ function OriginalData(props) {
         }
     }
 
-    if (!submitted && !deleted && !initiated) {
+    if (!initiated) {
         return (
-            <div>
-                <input type="file" style={{display: 'none'}} 
-                ref={inputFile}
-                onChange={handleFile}
+            <section>
+                <input 
+                    type="file" 
+                    ref={spreadsheet}
+                    onChange={handleSpreadsheet}
+                    style={{display: 'none'}} 
                 />
-                <button onClick={handleClick}
-                >Upload</button>
-                <CreateSet 
-                title={title}
-                handleTitle={handleTitle}
-                independent={independent}
-                handleIndependent={handleIndependent}
-                dependent={dependent}
-                handleDependent={handleDependent}
-                precision={precision}
-                handlePrecision={handlePrecision}
-                dataSet={dataSet}
-                handleDataSet={handleDataSet}
-                handleSubmit={handleSubmit}
-                // handleDelete={handleDelete}
-                // handleUndoSubmit={handleUndoSubmit}
-                // handleUndoDelete={handleUndoDelete}
-                // handleUpload={handleUpload}
-                initiated={initiated}
-                // stored={stored}
-                submitText={submitText}
-            />
-            </div>
-        )
-    } else
 
-    if (!submitted && !deleted) {
+                <button 
+                    onClick={handleUpload}
+                >
+                    Upload
+                </button>
+
+                <CreateSet 
+                    title={title}
+                    handleTitle={handleTitle}
+                    independent={independent}
+                    handleIndependent={handleIndependent}
+                    dependent={dependent}
+                    handleDependent={handleDependent}
+                    precision={precision}
+                    handlePrecision={handlePrecision}
+                    dataSet={dataSet}
+                    handleDataSet={handleDataSet}
+                    handleSubmit={handleSubmit}
+                    initiated={initiated}
+                    submitText={submitText}
+                />
+            </section>
+        )
+    } else if (!submitted && !deleted) {
         return (
             <CreateSet 
                 title={title}
@@ -304,7 +283,6 @@ function OriginalData(props) {
                 handleDelete={handleDelete}
                 handleUndoSubmit={handleUndoSubmit}
                 handleUndoDelete={handleUndoDelete}
-                // handleUpload={handleUpload}
                 initiated={initiated}
                 stored={stored}
                 submitText={submitText}

@@ -1,5 +1,4 @@
 import CreateSet from './CreateSet'
-import { useRef, useState } from 'react'
 
 function SpreadsheetInput(props) {
     // const [upload, setUpload] = useState(false)
