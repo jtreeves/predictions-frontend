@@ -1,9 +1,6 @@
-// Import external dependencies
 import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-
-// Create shortcut for environmental variable
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function DeleteAccount(props) {

@@ -1,5 +1,5 @@
-import GraphAdjustments from '../../elements/predictions/GraphAdjustments'
 import GraphOutput from '../../elements/predictions/GraphOutput'
+import GraphAdjustments from '../../elements/predictions/GraphAdjustments'
 
 function GraphDisplay(props) {
     return (

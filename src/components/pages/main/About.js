@@ -1,6 +1,5 @@
 import '../../../style/main/about.css'
 
-// Create function
 function About() {
     return (
         <main>
@@ -10,5 +9,4 @@ function About() {
     )
 }
 
-// Export function
 export default About

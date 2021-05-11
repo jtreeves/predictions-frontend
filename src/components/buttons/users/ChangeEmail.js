@@ -1,13 +1,8 @@
-// Import external dependencies
 import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-
-// Import internal component
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../main/FormSubmit'
-
-// Create shortcut for environmental variable
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function ChangeEmail(props) {

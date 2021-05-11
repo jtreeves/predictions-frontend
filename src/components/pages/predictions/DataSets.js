@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import '../../../style/predictions/data.css'
 import CheckExpiration from '../../utilities/users/CheckExpiration'
+import '../../../style/predictions/data.css'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function DataSets(props) {
@@ -77,7 +77,7 @@ function DataSets(props) {
         return (
             <main>
                 <h1>Models</h1>
-                
+
                 <ul className="data">
                     {predictions}
                 </ul>

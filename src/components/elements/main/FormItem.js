@@ -1,4 +1,3 @@
-// Create function
 function FormItem(props) {
     if (props.type !== 'textarea') {
         return (
@@ -28,5 +27,4 @@ function FormItem(props) {
     }
 }
 
-// Export function
 export default FormItem

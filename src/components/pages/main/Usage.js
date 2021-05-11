@@ -1,6 +1,5 @@
 import '../../../style/main/usage.css'
 
-// Create function
 function Usage() {
     return (
         <main>
@@ -10,5 +9,4 @@ function Usage() {
     )
 }
 
-// Export function
 export default Usage

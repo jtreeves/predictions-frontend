@@ -1,36 +1,25 @@
-// Import external dependencies
 import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-
-// Import internal components
-import Authentication from '../../utilities/main/Authentication'
 import FormItem from '../../elements/main/FormItem'
-
-import '../../../style/users/login.css'
 import FormSubmit from '../../buttons/main/FormSubmit'
-
-// Create shortcut for environmental variable
+import Authentication from '../../utilities/main/Authentication'
+import '../../../style/users/login.css'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-// Create function
 function Login(props) {
-    // Set initial state values
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    // Set email from form
     const handleEmail = (e) => {
         setEmail(e.target.value)
     }
 
-    // Set password from form
     const handlePassword = (e) => {
         setPassword(e.target.value)
     }
 
-    // Submit form data
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
@@ -39,20 +28,13 @@ function Login(props) {
                 REACT_APP_SERVER_URL + 'users/login', 
                 userData
             )
-            // Create token from currentUser data
             const {token} = currentUser.data
-            // Store token in localStorage
             localStorage.setItem('jwtToken', token)
-            // Set token to auth header
             Authentication(token)
-            // Decode token to get user data
             const decoded = jwt_decode(token)
-            // Set current user with decoded data
             props.nowCurrentUser(decoded)
         } catch(error) {
-            // Alert user of any errors logging in
             alert(error.response.data.msg)
-            console.log(`LOGIN ERROR: ${error}`)
         }
     }
 
@@ -95,5 +77,4 @@ function Login(props) {
     }
 }
 
-// Export function
 export default Login

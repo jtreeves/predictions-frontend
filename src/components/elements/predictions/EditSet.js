@@ -1,8 +1,6 @@
-// Import internal component
 import FormItem from '../main/FormItem'
 import FormSubmit from '../../buttons/main/FormSubmit'
 
-// Create function
 function EditSet(props) {
     const title = <FormItem
         type="text"
@@ -138,5 +136,4 @@ function EditSet(props) {
     }
 }
 
-// Export function
 export default EditSet

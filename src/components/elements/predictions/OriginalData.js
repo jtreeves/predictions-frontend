@@ -3,9 +3,9 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import EditSet from './EditSet'
 import SpreadsheetInput from '../../utilities/predictions/SpreadsheetInput'
+import VettedInputs from '../../utilities/predictions/VettedInputs'
 import AllFormElements from '../../utilities/predictions/AllFormElements'
 import ResetFormElements from '../../utilities/predictions/ResetFormElements'
-import VettedInputs from '../../utilities/predictions/VettedInputs'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function OriginalData(props) {
@@ -41,27 +41,22 @@ function OriginalData(props) {
         submitText = 'Update Set'
     }
 
-    // Set title from form
     const handleTitle = (e) => {
         setTitle(e.target.value)
     }
 
-    // Set independent from form
     const handleIndependent = (e) => {
         setIndependent(e.target.value)
     }
 
-    // Set dependent from form
     const handleDependent = (e) => {
         setDependent(e.target.value)
     }
 
-    // Set precision from form
     const handlePrecision = (e) => {
         setPrecision(e.target.value)
     }
     
-    // Set dataSet from form
     const handleDataSet = (e) => {
         setDataSet(e.target.value)
     }

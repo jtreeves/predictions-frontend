@@ -1,6 +1,6 @@
-import FormatSlots from '../../utilities/predictions/FormatSlots'
-import FormatPoints from '../../utilities/predictions/FormatPoints'
 import FormattedAnalyses from '../../elements/predictions/FormattedAnalyses'
+import FormatPoints from '../../utilities/predictions/FormatPoints'
+import FormatSlots from '../../utilities/predictions/FormatSlots'
 
 function ModelsAnalyses(props) {
     const linearFirstSlot = props.linearConstants[0].toFixed(props.precision)

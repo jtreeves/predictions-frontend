@@ -1,6 +1,5 @@
 import '../../../style/main/welcome.css'
 
-// Create function
 function Welcome() {
     return (
         <main>
@@ -10,5 +9,4 @@ function Welcome() {
     )
 }
 
-// Export function
 export default Welcome

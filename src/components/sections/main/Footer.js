@@ -1,4 +1,3 @@
-// Create function
 function Footer() {
     return (
         <footer>
@@ -7,5 +6,4 @@ function Footer() {
     )
 }
 
-// Export function
 export default Footer

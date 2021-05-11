@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 
-// Create function
 function Header() {
     return (
         <Link 
@@ -14,5 +13,4 @@ function Header() {
     )
 }
 
-// Export function
 export default Header

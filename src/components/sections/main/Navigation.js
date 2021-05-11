@@ -1,7 +1,5 @@
-// Import external dependency
 import { NavLink } from 'react-router-dom'
 
-// Create function
 function Navigation(props) {
     const about = <NavLink
         to="/about"
@@ -101,5 +99,4 @@ function Navigation(props) {
     }
 }
 
-// Export function
 export default Navigation

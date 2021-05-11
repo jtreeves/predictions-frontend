@@ -14,6 +14,7 @@ function VettedInputs(title, independent, dependent, precision, dataSet) {
     } else {
         const cleanedDataSet = CleanCollection(dataSet)
         const parsedDataSet = JSON.parse(cleanedDataSet)
+        
         if (parsedDataSet.length < 10) {
             alert('You must include at least 10 points in your data set')
         } else {
