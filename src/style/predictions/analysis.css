@@ -1,25 +1,25 @@
-table.main-table {
+#main-table {
     border-collapse: collapse;
 }
 
-table.main-table, table.main-table tr, table.main-table td, table.main-table th {
+#main-table, #main-table tr, #main-table td, #main-table th {
     border: 1px solid black;
     padding: 5px;
     text-align: left;
 }
 
-table.main-table thead {
+#main-table thead {
     background: lightgray;
 }
 
-.graph-container h1 {
+#graph-container h1 {
     margin-bottom: -25px;
 }
-
+/* 
 section.analysis label {
     margin-right: 10px;
-}
-
+} */
+/* 
 section.analysis button {
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
@@ -27,7 +27,7 @@ section.analysis button {
 
 section.analysis button:hover {
     font-weight: bold;
-}
+} */
 
 button.box {
     height: 25px;
@@ -81,11 +81,11 @@ button.blank {
     );
 }
 
-section.zoom article {
+#zoom article {
     display: flex;
 }
 
-section.zoom button {
+#zoom button {
     cursor: pointer;
     font-weight: bold;
     font-size: 25px;
@@ -97,35 +97,35 @@ section.zoom button {
     margin-right: 10px;
 }
 
-section.graph-section {
+#graph-display {
     display: flex;
     margin-top: -50px;
 }
 
-section.graph-adjustments {
+#graph-adjustments {
     display: grid;
     row-gap: 10px;
     margin-top: 50px;
 }
 
-section.display-graphs {
+#legend {
     display: grid;
     row-gap: 10px;
 }
 
-section.display-graphs button {
+#legend button {
     margin-right: 10px;
 }
 
-section.display-graphs article {
+#legend article {
     display: flex;
     align-items: center;
     height: 25px;
 }
-
+/* 
 section.graph-adjustments p {
     margin: 0;
-}
+} */
 
 section.model-card {
     display: flex;
@@ -207,7 +207,7 @@ section.model-card.purple h2 {
     background: purple;
 }
 
-section.all-models {
+#models-analyses {
     display: grid;
     /* grid-template-columns: 1fr 1fr; */
     row-gap: 20px;
@@ -215,69 +215,69 @@ section.all-models {
     /* margin-top: 50px; */
 }
 
-section.data-section {
+#data-display {
     display: flex;
     flex-direction: column;
     border-radius: 5px;
     border: 5px solid black;
 }
 
-section.data-section h2 {
+#data-display h2 {
     margin: 0;
     padding: 10px;
     background: black;
     color: white;
 }
 
-section.data-section article {
+#data-display article {
     display: grid;
     grid-template-columns: 1fr 3fr;
     background: white;
     padding: 20px;
 }
 
-section.future-evaluations {
+#future-evaluations {
     display: flex;
     flex-direction: column;
     border-radius: 5px;
     border: 5px solid silver;
 }
 
-section.future-evaluations h2 {
+#future-evaluations h2 {
     margin: 0;
     padding: 10px;
     background: silver;
 }
 
-section.future-evaluations article {
+#future-evaluations article {
     padding: 0 20px;
 }
 
-section.highlights {
+#highlights {
     display: flex;
     flex-direction: column;
     border-radius: 5px;
     border: 5px solid black;
 }
 
-section.highlights h2 {
+#highlights h2 {
     margin: 0;
     padding: 10px;
     background: black;
     color: white;
 }
 
-section.highlights article {
+#highlights article {
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
 
-section.highlights form label {
+#highlights form label {
     font-style: normal;
     font-weight: normal;
 }
 
-section.note textarea {
+#note textarea {
     height: 150px;
 }

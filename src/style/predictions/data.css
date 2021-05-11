@@ -1,10 +1,10 @@
-ul.data {
+main.data ul {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
-
+/* 
 button.data {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
@@ -18,4 +18,4 @@ button.data {
 
 button.data:hover {
     font-weight: bold;
-}
+} */

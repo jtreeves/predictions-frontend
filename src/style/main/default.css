@@ -32,6 +32,7 @@ main {
 
 h1, h2, h3 {
     font-family: 'Roboto', sans-serif;
+    margin: 0;
 }
 
 h1, h2 {
@@ -49,6 +50,9 @@ h2 {
 h3 {
     font-size: 20px;
     font-style: italic;
+}
+
+p {
     margin: 0;
 }
 
@@ -90,14 +94,15 @@ form {
     row-gap: 10px;
 }
 
-form section {
+form article {
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
 
 button {
-    font-family: 'Roboto', sans-serif;
+    display: block;
     cursor: pointer;
+    font-family: 'Roboto', sans-serif;
     padding: 10px;
 }
 
@@ -105,13 +110,11 @@ button:hover {
     font-weight: bold;
 }
 
-form label {
+label, mark {
     font-style: italic;
     font-weight: bold;
 }
 
 mark {
     background: none;
-    font-style: italic;
-    font-weight: bold;
 }

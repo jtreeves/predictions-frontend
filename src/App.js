@@ -15,7 +15,7 @@ import Footer from './components/sections/main/Footer'
 import Navigation from './components/sections/main/Navigation'
 import PrivateRoute from './components/elements/main/PrivateRoute'
 import Authentication from './components/utilities/main/Authentication'
-import './style/main/main.css'
+import './style/main/default.css'
 
 function App() {
     const [currentUser, setCurrentUser] = useState('')

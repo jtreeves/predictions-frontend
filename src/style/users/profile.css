@@ -1,13 +1,13 @@
-p.profile {
+/* p.profile {
     text-align: center;
-}
+} */
 
-section.profile {
+main.profile section {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
+/* 
 button.profile {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
@@ -20,4 +20,4 @@ button.profile {
 
 button.profile:hover {
     font-weight: bold;
-}
+} */

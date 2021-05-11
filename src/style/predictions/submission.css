@@ -1,4 +1,4 @@
-section.submission {
+/* section.submission {
     display: grid;
     row-gap: 10px;
 }
@@ -12,4 +12,4 @@ button.submission {
 
 button.submission:hover {
     font-weight: bold;
-}
+} */
