@@ -4,8 +4,16 @@ function GeneratePoints(equationType, coefficients, minimum, maximum, increment,
     let finalPoints = []
 
     for (let x = minimum; x <= maximum; x += increment) {
-        const y = Evaluations(equationType, coefficients, precision, x)
-        finalPoints.push({x: x, y: y})
+        if (
+            (equationType !== ('logarithmic' || 'hyperbolic')) || 
+            (equationType === 'logarithmic' && x > 0) || 
+            (equationType === 'hyperbolic' && x !== 0)
+        ) {
+            const y = Evaluations(
+                equationType, coefficients, precision, x
+            )
+            finalPoints.push({x: x, y: y})
+        }
     }
     
     return finalPoints

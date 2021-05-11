@@ -111,9 +111,28 @@ function GraphOutput(props) {
         }
         
         if (props.logarithmicCoordinates) {
+            let adjustedLogarithmicCoordinates = []
+            const logarithmicSlope = (props.logarithmicCoordinates[99].y - props.logarithmicCoordinates[0].y) / (props.logarithmicCoordinates[99].x - props.logarithmicCoordinates[0].x)
+            for (const point of props.logarithmicCoordinates) {
+                if (point.x > 0) {
+                    adjustedLogarithmicCoordinates.push(point)
+                } else if (point.x <= 0) {
+                    if (logarithmicSlope > 0) {
+                        adjustedLogarithmicCoordinates.push({
+                            x: 0,
+                            y: props.yMinimum
+                        })
+                    } else {
+                        adjustedLogarithmicCoordinates.push({
+                            x: 0,
+                            y: props.yMaximum
+                        })
+                    }
+                }
+            }
             graph
                 .append("path")
-                .datum(props.logarithmicCoordinates)
+                .datum(adjustedLogarithmicCoordinates)
                 .attr("d", path)
                 .style("fill", "none")
                 .style("stroke", "yellow")
