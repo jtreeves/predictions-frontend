@@ -63,7 +63,7 @@ function Zoom(props) {
             className="analysis"
             id="zoom"
         >
-            <mark>Zoom</mark>
+            <h3>Zoom</h3>
 
             <p>
                 <button 

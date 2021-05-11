@@ -33,7 +33,7 @@ function Favorite(props) {
         if (favorite === '') {
             return (
                 <article className="analysis">
-                    <mark>Favorite</mark>
+                    <h3>Favorite</h3>
 
                     <p>You haven't chosen a favorite yet</p>
 
@@ -45,7 +45,7 @@ function Favorite(props) {
         } else {
             return (
                 <article className="analysis">
-                    <mark>Favorite</mark>
+                    <h3>Favorite</h3>
 
                     <p>{favorite}</p>
 
@@ -58,7 +58,7 @@ function Favorite(props) {
     } else {
         return (
             <article className="analysis">
-                <mark>Favorite</mark>
+                <h3>Favorite</h3>
 
                 <form>
                     <label for="favorite">Select a graph:</label>

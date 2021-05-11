@@ -3,7 +3,7 @@ function BestFit(props) {
 
     return (
         <article className="analysis">
-            <mark>Best Fit</mark>
+            <h3>Best Fit</h3>
             <p>{props.bestFit}</p>
             <p>{correlation}</p>
         </article>

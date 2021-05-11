@@ -7,7 +7,7 @@ function Submission(props) {
 
     return (
         <main className="submission">
-            <h2>Create a New Data Set</h2>
+            <h1>Create a New Data Set</h1>
 
             <OriginalData 
                 title=''

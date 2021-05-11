@@ -22,7 +22,10 @@ function DisplayEmail(props) {
     })
 
     return (
-        <p className="profile"><mark>Email</mark> {email}</p>
+        <article className="profile">
+            <h3>Email</h3>
+            {email}
+        </article>
     )
 }
 

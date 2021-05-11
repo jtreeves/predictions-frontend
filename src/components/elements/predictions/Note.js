@@ -30,7 +30,7 @@ function Note(props) {
                 className="analysis"
                 id="note"
             >
-                <mark>Note</mark>
+                <h3>Note</h3>
 
                 <form>
                     <textarea

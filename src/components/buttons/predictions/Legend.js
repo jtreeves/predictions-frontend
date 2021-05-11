@@ -161,7 +161,7 @@ function Legend(props) {
             className="analysis"
             id="legend"
         >
-            <mark>Legend</mark>
+            <h3>Legend</h3>
             {displayButtons}
         </article>
     )

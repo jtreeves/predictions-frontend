@@ -27,15 +27,15 @@ function FormattedAnalyses(props) {
 
             <article className="analysis">
                 <p>
-                    <mark>Equation</mark> <Latex>{props.equation}</Latex>
+                    <h3>Equation</h3> <Latex>{props.equation}</Latex>
                 </p>
 
                 <p>
-                    <mark>Correlation</mark> <Latex>{props.correlation}</Latex>
+                    <h3>Correlation</h3> <Latex>{props.correlation}</Latex>
                 </p>
 
                 <p>
-                    <mark>Key Points</mark>
+                    <h3>Key Points</h3>
                     <br />ROOTS: <Latex>{props.roots}</Latex>
                     <br />MAXIMA: <Latex>{props.maxima}</Latex>
                     <br />MINIMA: <Latex>{props.minima}</Latex>
