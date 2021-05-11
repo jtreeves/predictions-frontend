@@ -1,9 +1,10 @@
 // Import internal component
-import FormGroup from '../main/FormGroup'
+import FormItem from '../main/FormItem'
+import FormSubmit from '../../buttons/main/FormSubmit'
 
 // Create function
 function CreateSet(props) {
-    const title = <FormGroup
+    const title = <FormItem
         type="text"
         label="title"
         value={props.title}
@@ -12,7 +13,7 @@ function CreateSet(props) {
         onChange={props.handleTitle}
     />
 
-    const independent = <FormGroup
+    const independent = <FormItem
         type="text"
         label="independent"
         value={props.independent}
@@ -21,7 +22,7 @@ function CreateSet(props) {
         onChange={props.handleIndependent}
     />
 
-    const dependent = <FormGroup
+    const dependent = <FormItem
         type="text"
         label="dependent"
         value={props.dependent}
@@ -30,7 +31,7 @@ function CreateSet(props) {
         onChange={props.handleDependent}
     />
 
-    const precision = <FormGroup
+    const precision = <FormItem
         type="number"
         label="precision"
         value={props.precision}
@@ -39,7 +40,7 @@ function CreateSet(props) {
         onChange={props.handlePrecision}
     />
 
-    const dataSet = <FormGroup
+    const dataSet = <FormItem
         type="textarea"
         label="dataSet"
         value={props.dataSet}
@@ -48,48 +49,45 @@ function CreateSet(props) {
         onChange={props.handleDataSet}
     />
 
-    const submitButton = <button 
-        className="submission"
-        id="submit-button"
+    const submitButton = <FormSubmit 
+        text={props.submitText}
         onClick={props.handleSubmit}
-    >
-        {props.submitText}
-    </button>
-    
-    const deleteButton = <button 
+        id="submit-button"
         className="submission"
-        id="delete-button"
-        onClick={props.handleDelete}
-    >
-        Delete Set
-    </button>
+        display="block"
+    />
     
-    const hiddenDeleteButton = <button 
-        className="submission"
-        id="delete-button"
+    const deleteButton = <FormSubmit 
+        text="Delete Set"
         onClick={props.handleDelete}
-        style={{ display: 'none' }}
-    >
-        Delete Set
-    </button>
+        id="delete-button"
+        className="submission"
+        display="block"
+    />
+    
+    const hiddenDeleteButton = <FormSubmit 
+        text="Delete Set"
+        onClick={props.handleDelete}
+        id="delete-button"
+        className="submission"
+        display="none"
+    />
 
-    const undoSubmitButton = <button
-        className="submission"
-        id="undo-submit-button"
+    const undoSubmitButton = <FormSubmit 
+        text="Abandon All Changes"
         onClick={props.handleUndoSubmit}
-        style={{ display: 'none' }}
-    >
-        Abandon All Changes
-    </button>
-    
-    const undoDeleteButton = <button
+        id="undo-submit-button"
         className="submission"
-        id="undo-delete-button"
+        display="none"
+    />
+    
+    const undoDeleteButton = <FormSubmit 
+        text="No, I Want to Keep the Data Set"
         onClick={props.handleUndoDelete}
-        style={{ display: 'none' }}
-    >
-        No, I Want to Keep the Data Set
-    </button>
+        id="undo-delete-button"
+        className="submission"
+        display="none"
+    />
 
     const submitWarning = <p
         id="submit-warning"

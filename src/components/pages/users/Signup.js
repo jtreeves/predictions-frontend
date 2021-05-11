@@ -4,9 +4,10 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 // Import internal component
-import FormGroup from '../../elements/main/FormGroup'
+import FormItem from '../../sections/main/FormItem'
 
 import '../../../style/signup.css'
+import FormSubmit from '../../buttons/main/FormSubmit'
 
 // Create shortcut for environmental variable
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
@@ -71,8 +72,8 @@ function Signup() {
         return (
             <main>
                 <h1>Sign Up</h1>
-                <form onSubmit={handleSubmit}>
-                    <FormGroup
+                <form>
+                    <FormItem
                         type="text"
                         label="name"
                         value={name}
@@ -80,7 +81,8 @@ function Signup() {
                         tooltip="This can be your full name or a username of your choosing"
                         onChange={handleName}
                     />
-                    <FormGroup
+
+                    <FormItem
                         type="email"
                         label="email"
                         value={email}
@@ -88,7 +90,8 @@ function Signup() {
                         tooltip="This will be the email associated with your account"
                         onChange={handleEmail}
                     />
-                    <FormGroup
+
+                    <FormItem
                         type="password"
                         label="password"
                         value={password}
@@ -96,7 +99,8 @@ function Signup() {
                         tooltip="This will be the password you will use to access your account"
                         onChange={handlePassword}
                     />
-                    <FormGroup
+
+                    <FormItem
                         type="password"
                         label="confirmPassword"
                         value={confirmPassword}
@@ -104,11 +108,14 @@ function Signup() {
                         tooltip="Make sure this matches the password above!"
                         onChange={handleConfirmPassword}
                     />
-                    <button
-                        type="submit"
-                    >
-                        Submit
-                    </button>
+
+                    <FormSubmit 
+                        text="Submit"
+                        onClick={handleSubmit}
+                        id="signup-button"
+                        className="signup"
+                        display="block"
+                    />
                 </form>
             </main>
         )

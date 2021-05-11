@@ -6,9 +6,10 @@ import jwt_decode from 'jwt-decode'
 
 // Import internal components
 import Authentication from '../../utilities/main/Authentication'
-import FormGroup from '../../elements/main/FormGroup'
+import FormItem from '../../sections/main/FormItem'
 
 import '../../../style/login.css'
+import FormSubmit from '../../buttons/main/FormSubmit'
 
 // Create shortcut for environmental variable
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
@@ -56,8 +57,8 @@ function Login(props) {
         return (
             <main>
                 <h1>Log In</h1>
-                <form onSubmit={handleSubmit}>
-                    <FormGroup
+                <form>
+                    <FormItem
                         type="email"
                         label="email"
                         value={email}
@@ -65,7 +66,8 @@ function Login(props) {
                         tooltip="What is the email address associated with this account?"
                         onChange={handleEmail}
                     />
-                    <FormGroup
+
+                    <FormItem
                         type="password"
                         label="password"
                         value={password}
@@ -73,11 +75,14 @@ function Login(props) {
                         tooltip="What is your password?"
                         onChange={handlePassword}
                     />
-                    <button
-                        type="submit"
-                    >
-                        Submit
-                    </button>
+                    
+                    <FormSubmit 
+                        text="Submit"
+                        onClick={handleSubmit}
+                        id="login-button"
+                        className="login"
+                        display="block"
+                    />
                 </form>
             </main>
         )

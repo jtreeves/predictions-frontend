@@ -1,5 +1,5 @@
 import CheckExpiration from '../../utilities/users/CheckExpiration'
-import OriginalData from '../../elements/predictions/OriginalData'
+import OriginalData from '../../sections/predictions/OriginalData'
 
 function Submission(props) {
     CheckExpiration(props.user.exp, props.handleLogout)
@@ -7,7 +7,7 @@ function Submission(props) {
     return (
         <main>
             <h2>Create a New Data Set</h2>
-            
+
             <OriginalData 
                 title=''
                 independent=''

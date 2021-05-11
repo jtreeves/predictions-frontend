@@ -1,5 +1,5 @@
 // Create function
-function FormGroup(props) {
+function FormItem(props) {
     if (props.type !== 'textarea') {
         return (
             <section>
@@ -29,4 +29,4 @@ function FormGroup(props) {
 }
 
 // Export function
-export default FormGroup
+export default FormItem
