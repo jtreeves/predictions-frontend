@@ -7,7 +7,7 @@ function VettedInputs(title, independent, dependent, precision, dataSet) {
         alert('You must identify the independent variable of this data set')
     } else if (dependent === '') {
         alert('You must identify the dependent variable of this data set')
-    } else if (precision < 1 || precision != parseInt(precision)) {
+    } else if (precision < 1 || Number(precision) !== parseInt(precision)) {
         alert('Precision must be a positive integer')
     } else if (dataSet === '') {
         alert('You must provide a data set')
