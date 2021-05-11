@@ -96,7 +96,7 @@ function GraphOutput(props) {
             for (const point of props.hyperbolicCoordinates) {
                 if (point.x > 0) {
                     rightHyperbolicCoordinates.push(point)
-                } else {
+                } else if (point.x < 0) {
                     leftHyperbolicCoordinates.push(point)
                 }
             }
