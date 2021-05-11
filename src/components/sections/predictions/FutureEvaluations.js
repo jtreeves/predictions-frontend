@@ -112,7 +112,9 @@ function FutureEvaluations(props) {
                 
                 {allEvaluations}
 
-                <button onClick={handleFutureValue}>Generate New Evaluations</button>
+                <button onClick={handleFutureValue}>
+                    Generate New Evaluations
+                </button>
             </article>
         </section>
     )

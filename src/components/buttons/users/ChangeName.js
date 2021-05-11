@@ -27,11 +27,13 @@ function ChangeName(props) {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-            await axios.put(REACT_APP_SERVER_URL + 'users/' + props.user.id + '/name', {name})
+            await axios.put(
+                REACT_APP_SERVER_URL + 'users/' + props.user.id + '/name', 
+                {name}
+            )
             setSaveClicked(true)
         } catch(error) {
             alert(error.response.data.msg)
-            console.log(`UPDATE ERROR: ${error}`)
         }
     }
 

@@ -32,7 +32,7 @@ function Favorite(props) {
     if (!changing) {
         if (favorite === '') {
             return (
-                <section>
+                <article>
                     <mark>Favorite</mark>
 
                     <p>You haven't chosen a favorite yet</p>
@@ -40,11 +40,11 @@ function Favorite(props) {
                     <button onClick={handleChanging}>
                         Choose Favorite
                     </button>
-                </section>
+                </article>
             )
         } else {
             return (
-                <section>
+                <article>
                     <mark>Favorite</mark>
 
                     <p>{favorite}</p>
@@ -52,15 +52,15 @@ function Favorite(props) {
                     <button onClick={handleChanging}>
                         Change Favorite
                     </button>
-                </section>
+                </article>
             )
         }
     } else {
         return (
-            <section>
+            <article>
                 <mark>Favorite</mark>
 
-                <form onSubmit={handleSubmitting}>
+                <form>
                     <label for="favorite">Select a graph:</label>
 
                     <select 
@@ -79,9 +79,11 @@ function Favorite(props) {
                         <option value="sinusoidal">Sinusoidal</option>
                     </select>
 
-                    <button type="submit">Save Favorite</button>
+                    <button onClick={handleSubmitting}>
+                        Save Favorite
+                    </button>
                 </form>
-            </section>
+            </article>
         )
     }
 }

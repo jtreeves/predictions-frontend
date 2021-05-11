@@ -8,7 +8,9 @@ function DisplayName(props) {
 
     const getName = async () => {
         try {
-            const currentUser = await axios.get(REACT_APP_SERVER_URL + 'users/' + userId)
+            const currentUser = await axios.get(
+                REACT_APP_SERVER_URL + 'users/' + userId
+            )
             setName(currentUser.data.user.name)
         } catch(error) {
             setName('')

@@ -157,10 +157,10 @@ function Legend(props) {
     }
 
     return (
-        <section className="display-graphs">
+        <article className="display-graphs">
             <mark>Legend</mark>
             {displayButtons}
-        </section>
+        </article>
     )
 }
 

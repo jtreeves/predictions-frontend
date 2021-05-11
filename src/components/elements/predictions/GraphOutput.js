@@ -188,9 +188,9 @@ function GraphOutput(props) {
     })
 
     return (
-        <section className="graph-container">
+        <article className="graph-container">
             <svg className="main-graph" />
-        </section>
+        </article>
     )
 }
 

@@ -18,11 +18,12 @@ function DeleteAccount(props) {
     const handleConfirmClicked = async (e) => {
         try {
             e.preventDefault()
-            await axios.delete(REACT_APP_SERVER_URL + 'users/' + props.user.id)
+            await axios.delete(
+                REACT_APP_SERVER_URL + 'users/' + props.user.id
+            )
             setConfirmClicked(true)
         } catch(error) {
             alert(error.response.data.msg)
-            console.log(`DELETING ERROR: ${error}`)
         }
     }
 

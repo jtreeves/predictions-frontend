@@ -8,7 +8,9 @@ function DisplayEmail(props) {
 
     const getEmail = async () => {
         try {
-            const currentUser = await axios.get(REACT_APP_SERVER_URL + 'users/' + userId)
+            const currentUser = await axios.get(
+                REACT_APP_SERVER_URL + 'users/' + userId
+            )
             setEmail(currentUser.data.user.email)
         } catch(error) {
             setEmail('')

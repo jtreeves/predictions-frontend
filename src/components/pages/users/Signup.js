@@ -51,7 +51,9 @@ function Signup() {
                 if (password.length >= 8) {
                     // Create new user if both checks pass  
                     const newUser = {name, email, password}
-                    await axios.post(REACT_APP_SERVER_URL + 'users/signup', newUser)
+                    await axios.post(
+                        REACT_APP_SERVER_URL + 'users/signup', newUser
+                    )
                     setRedirect(true)
                 } else {
                     // Alert user if password too short
@@ -72,6 +74,7 @@ function Signup() {
         return (
             <main>
                 <h1>Sign Up</h1>
+                
                 <form>
                     <FormItem
                         type="text"

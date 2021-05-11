@@ -14,7 +14,10 @@ function Note(props) {
     const handleSubmitting = async (e) => {
         e.preventDefault()
         try {
-            await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: note})
+            await axios.put(
+                REACT_APP_SERVER_URL + 'predictions/' + source + '/note', 
+                {note: note}
+            )
             setSubmitting(true)
         } catch(error) {
             alert(error.response.data.msg)
@@ -23,16 +26,20 @@ function Note(props) {
 
     if (!submitting) {
         return (
-            <section className="note">
+            <article className="note">
                 <mark>Note</mark>
-                <form onSubmit={handleSubmitting}>
+
+                <form>
                     <textarea
                         value={note}
                         onChange={handleNote}
                     />
-                    <button type="submit">Save Note</button>
+
+                    <button onClick={handleSubmitting}>
+                        Save Note
+                    </button>
                 </form>
-            </section>
+            </article>
         )
     } else {
         alert('Your note was saved!')

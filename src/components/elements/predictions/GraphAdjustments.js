@@ -3,7 +3,7 @@ import Zoom from '../../buttons/predictions/Zoom'
 
 function GraphAdjustments(props) {
     return (
-        <section className="graph-adjustments">
+        <article className="graph-adjustments">
             <Legend 
                 precision={props.precision}
                 xMinimum={props.xMinimum}
@@ -79,7 +79,7 @@ function GraphAdjustments(props) {
                 displaySinusoidal={props.displaySinusoidal}
                 setSinusoidalCoordinates={props.setSinusoidalCoordinates}
             />
-        </section>
+        </article>
     )
 }
 

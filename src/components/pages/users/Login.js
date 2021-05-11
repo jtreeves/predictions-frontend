@@ -35,7 +35,9 @@ function Login(props) {
         try {
             e.preventDefault()
             const userData = {email, password}
-            const currentUser = await axios.post(REACT_APP_SERVER_URL + 'users/login', userData)
+            const currentUser = await axios.post(
+                REACT_APP_SERVER_URL + 'users/login', userData
+            )
             // Create token from currentUser data
             const {token} = currentUser.data
             // Store token in localStorage
@@ -57,6 +59,7 @@ function Login(props) {
         return (
             <main>
                 <h1>Log In</h1>
+
                 <form>
                     <FormItem
                         type="email"
