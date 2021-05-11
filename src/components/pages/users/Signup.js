@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 // Import internal component
-import FormItem from '../../sections/main/FormItem'
+import FormItem from '../../elements/main/FormItem'
 
 import '../../../style/users/signup.css'
 import FormSubmit from '../../buttons/main/FormSubmit'

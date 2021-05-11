@@ -1,6 +1,6 @@
-import BestFit from './BestFit'
-import Favorite from './Favorite'
-import Note from './Note'
+import BestFit from '../../elements/predictions/BestFit'
+import Favorite from '../../elements/predictions/Favorite'
+import Note from '../../elements/predictions/Note'
 
 function Highlights(props) {
     return (

@@ -1,6 +1,6 @@
 import GeneratePoints from '../../utilities/predictions/GeneratePoints'
 
-function DisplayGraphs(props) {
+function Legend(props) {
     const handleDisplayLinear = (e) => {
         e.preventDefault()
         if (props.displayLinear) {
@@ -164,4 +164,4 @@ function DisplayGraphs(props) {
     )
 }
 
-export default DisplayGraphs
+export default Legend

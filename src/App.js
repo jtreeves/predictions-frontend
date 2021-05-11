@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode'
 
 // Import internal components
 import Authentication from './components/utilities/main/Authentication'
-import PrivateRoute from './components/sections/main/PrivateRoute'
+import PrivateRoute from './components/elements/main/PrivateRoute'
 import Navigation from './components/sections/main/Navigation'
 import Header from './components/sections/main/Header'
 import Footer from './components/sections/main/Footer'

@@ -3,12 +3,12 @@ import { useLocation } from 'react-router-dom'
 import HorizontalAxis from '../../utilities/predictions/HorizontalAxis'
 import VerticalAxis from '../../utilities/predictions/VerticalAxis'
 import CheckFavorite from '../../utilities/predictions/CheckFavorite'
-import GraphSection from '../../sections/predictions/GraphSection'
+import GraphDisplay from '../../sections/predictions/GraphDisplay'
 import ExecutiveLevel from '../../buttons/predictions/ExecutiveLevel'
 import Highlights from '../../sections/predictions/Highlights'
 import FutureEvaluations from '../../sections/predictions/FutureEvaluations'
 import ModelsAnalyses from '../../sections/predictions/ModelsAnalyses'
-import DataSection from '../../sections/predictions/DataSection'
+import DataDisplay from '../../sections/predictions/DataDisplay'
 import CheckExpiration from '../../utilities/users/CheckExpiration'
 
 import '../../../style/predictions/analysis.css'
@@ -145,7 +145,7 @@ function Analysis(props) {
         <main>
             <h1>{title}</h1>
 
-            <GraphSection 
+            <GraphDisplay 
                 independent={independent}
                 dependent={dependent}
                 precision={precision}
@@ -279,7 +279,7 @@ function Analysis(props) {
                 displaySinusoidal={displaySinusoidal}
             />
 
-            <DataSection 
+            <DataDisplay 
                 title={title}
                 independent={independent}
                 dependent={dependent}

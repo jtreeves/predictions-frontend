@@ -1,7 +1,7 @@
-import OriginalData from './OriginalData'
-import TableOutput from './TableOutput'
+import OriginalData from '../../elements/predictions/OriginalData'
+import TableOutput from '../../elements/predictions/TableOutput'
 
-function DataSection(props) {
+function DataDisplay(props) {
     return (
         <section className="data-section">
             <h2>Original Data</h2>
@@ -31,4 +31,4 @@ function DataSection(props) {
     )
 }
 
-export default DataSection
+export default DataDisplay

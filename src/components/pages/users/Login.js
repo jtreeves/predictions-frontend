@@ -6,7 +6,7 @@ import jwt_decode from 'jwt-decode'
 
 // Import internal components
 import Authentication from '../../utilities/main/Authentication'
-import FormItem from '../../sections/main/FormItem'
+import FormItem from '../../elements/main/FormItem'
 
 import '../../../style/users/login.css'
 import FormSubmit from '../../buttons/main/FormSubmit'
