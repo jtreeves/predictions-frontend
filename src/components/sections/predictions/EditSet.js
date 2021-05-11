@@ -3,7 +3,7 @@ import FormItem from '../main/FormItem'
 import FormSubmit from '../../buttons/main/FormSubmit'
 
 // Create function
-function CreateSet(props) {
+function EditSet(props) {
     const title = <FormItem
         type="text"
         label="title"
@@ -139,4 +139,4 @@ function CreateSet(props) {
 }
 
 // Export function
-export default CreateSet
+export default EditSet

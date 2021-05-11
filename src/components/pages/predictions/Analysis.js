@@ -4,7 +4,7 @@ import HorizontalAxis from '../../utilities/predictions/HorizontalAxis'
 import VerticalAxis from '../../utilities/predictions/VerticalAxis'
 import CheckFavorite from '../../utilities/predictions/CheckFavorite'
 import GraphSection from '../../sections/predictions/GraphSection'
-import ExecutiveButtons from '../../buttons/predictions/ExecutiveButtons'
+import ExecutiveLevel from '../../buttons/predictions/ExecutiveLevel'
 import Highlights from '../../sections/predictions/Highlights'
 import FutureEvaluations from '../../sections/predictions/FutureEvaluations'
 import ModelsAnalyses from '../../sections/predictions/ModelsAnalyses'
@@ -203,7 +203,7 @@ function Analysis(props) {
                 setSinusoidalCoordinates={setSinusoidalCoordinates}
             />
 
-            <ExecutiveButtons 
+            <ExecutiveLevel 
                 user={user}
                 source={source}
                 stored={stored}

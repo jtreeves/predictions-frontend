@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Evaluations from '../../utilities/predictions/Evaluations'
-import FormattedEvaluations from './FormattedEvaluations'
+import EvaluationSentence from './EvaluationSentence'
 
 function FutureEvaluations(props) {
     const [futureInput, setFutureInput] = useState(Math.round(props.xMaximum + (props.xMaximum - props.xMinimum) / 2))
@@ -32,7 +32,7 @@ function FutureEvaluations(props) {
     const allEvaluations = []
 
     if (props.displayLinear) {
-        allEvaluations.push(<FormattedEvaluations 
+        allEvaluations.push(<EvaluationSentence 
             type="linear"
             evaluation={linearEvaluation}
             dependent={props.dependent}
@@ -40,7 +40,7 @@ function FutureEvaluations(props) {
     }
 
     if (props.displayQuadratic) {
-        allEvaluations.push(<FormattedEvaluations 
+        allEvaluations.push(<EvaluationSentence 
             type="quadratic"
             evaluation={quadraticEvaluation}
             dependent={props.dependent}
@@ -48,7 +48,7 @@ function FutureEvaluations(props) {
     }
 
     if (props.displayCubic) {
-        allEvaluations.push(<FormattedEvaluations 
+        allEvaluations.push(<EvaluationSentence 
             type="cubic"
             evaluation={cubicEvaluation}
             dependent={props.dependent}
@@ -56,7 +56,7 @@ function FutureEvaluations(props) {
     }
 
     if (props.displayHyperbolic) {
-        allEvaluations.push(<FormattedEvaluations 
+        allEvaluations.push(<EvaluationSentence 
             type="hyperbolic"
             evaluation={hyperbolicEvaluation}
             dependent={props.dependent}
@@ -64,7 +64,7 @@ function FutureEvaluations(props) {
     } 
 
     if (props.displayExponential) {
-        allEvaluations.push(<FormattedEvaluations 
+        allEvaluations.push(<EvaluationSentence 
             type="exponential"
             evaluation={exponentialEvaluation}
             dependent={props.dependent}
@@ -72,7 +72,7 @@ function FutureEvaluations(props) {
     } 
 
     if (props.displayLogarithmic) {
-        allEvaluations.push(<FormattedEvaluations 
+        allEvaluations.push(<EvaluationSentence 
             type="logarithmic"
             evaluation={logarithmicEvaluation}
             dependent={props.dependent}
@@ -80,7 +80,7 @@ function FutureEvaluations(props) {
     } 
 
     if (props.displayLogistic) {
-        allEvaluations.push(<FormattedEvaluations 
+        allEvaluations.push(<EvaluationSentence 
             type="logistic"
             evaluation={logisticEvaluation}
             dependent={props.dependent}
@@ -88,7 +88,7 @@ function FutureEvaluations(props) {
     } 
 
     if (props.displaySinusoidal) {
-        allEvaluations.push(<FormattedEvaluations 
+        allEvaluations.push(<EvaluationSentence 
             type="sinusoidal"
             evaluation={sinusoidalEvaluation}
             dependent={props.dependent}

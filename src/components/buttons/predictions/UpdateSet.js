@@ -1,6 +1,6 @@
 import AllFormElements from '../../utilities/predictions/AllFormElements'
 
-function UpdateButton() {
+function UpdateSet() {
     const handleSubmit = (e) => {
         e.preventDefault()
         const allElements = AllFormElements()
@@ -21,4 +21,4 @@ function UpdateButton() {
     )
 }
 
-export default UpdateButton
+export default UpdateSet

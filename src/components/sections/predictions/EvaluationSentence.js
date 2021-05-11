@@ -1,4 +1,4 @@
-function FormattedEvaluations(props) {
+function EvaluationSentence(props) {
     return (
         <p>
             ... according to the <mark>{props.type} model</mark>, there will be {props.evaluation} {props.dependent}
@@ -6,4 +6,4 @@ function FormattedEvaluations(props) {
     )
 }
 
-export default FormattedEvaluations
+export default EvaluationSentence

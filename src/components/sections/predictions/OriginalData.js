@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import CreateSet from './CreateSet'
+import EditSet from './EditSet'
 import SpreadsheetInput from '../../utilities/predictions/SpreadsheetInput'
 import AllFormElements from '../../utilities/predictions/AllFormElements'
 import ResetFormElements from '../../utilities/predictions/ResetFormElements'
@@ -182,7 +182,7 @@ function OriginalData(props) {
         }
     }
 
-    const rawDataForm = <CreateSet 
+    const rawDataForm = <EditSet 
         title={title}
         handleTitle={handleTitle}
         independent={independent}
