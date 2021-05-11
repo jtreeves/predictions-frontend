@@ -2,10 +2,10 @@ import { useState, useEffect, useRef } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import CreateSet from './CreateSet'
-import CleanCollection from '../../utilities/predictions/CleanCollection'
 import SpreadsheetInput from '../../utilities/predictions/SpreadsheetInput'
 import AllFormElements from '../../utilities/predictions/AllFormElements'
 import ResetFormElements from '../../utilities/predictions/ResetFormElements'
+import VettedInputs from '../../utilities/predictions/VettedInputs'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function OriginalData(props) {
@@ -108,58 +108,37 @@ function OriginalData(props) {
             allElements.submitWarning.style.display = 'block'
             allElements.deleteButton.style.display = 'none'
         } else {
-            if (title === '') {
-                alert('You must give this data set a title')
-            } else if (independent === '') {
-                alert('You must identify the independent variable of this data set')
-            } else if (dependent === '') {
-                alert('You must identify the dependent variable of this data set')
-            } else if (precision < 1) {
-                alert('Precision must be a positive integer')
-            } else if (dataSet === '') {
-                alert('You must provide a data set')
-            } else {
-                const cleanedDataSet = CleanCollection(dataSet)
-                const parsedDataSet = JSON.parse(cleanedDataSet)
-                if (parsedDataSet.length < 10) {
-                    alert('You must include at least 10 points in your data set')
-                } else {
-                    const submission = {
-                        title: title,
-                        independent: independent,
-                        dependent: dependent,
-                        precision: parseInt(precision),
-                        dataSet: parsedDataSet
+            const submission = VettedInputs(title, independent, dependent, precision, dataSet)
+            
+            if (submission) {
+                if (!stored) {
+                    try {
+                        const predictions = await axios.post(REACT_APP_SERVER_URL + 'api',
+                            submission
+                        )
+                        allElements.submitButton.innerText = 'Update Set'
+                        allElements.deleteButton.style.display = 'none'
+                        allElements.undoSubmitButton.style.display = 'none'
+                        allElements.submitWarning.style.display = 'none'
+                        setModels(predictions.data.regressions)
+                        setInitiated(true)
+                        setSubmitted(true)
+                    } catch (error) {
+                        alert(error)
                     }
-                    if (!stored) {
-                        try {
-                            const predictions = await axios.post(REACT_APP_SERVER_URL + 'api',
-                                submission
-                            )
-                            allElements.submitButton.innerText = 'Update Set'
-                            allElements.deleteButton.style.display = 'none'
-                            allElements.undoSubmitButton.style.display = 'none'
-                            allElements.submitWarning.style.display = 'none'
-                            setModels(predictions.data.regressions)
-                            setInitiated(true)
-                            setSubmitted(true)
-                        } catch (error) {
-                            alert(error)
-                        }
-                    } else {
-                        try {
-                            await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + source)
-                            const predictions = await axios.post(REACT_APP_SERVER_URL + 'api', submission)
-                            setSource(predictions.data.regressions.source)
-                            await axios.post(REACT_APP_SERVER_URL + 'predictions/' + user.id, { source })
-                            await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: opinions.favorite})
-                            await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: opinions.note})
-                            ResetFormElements()
-                            setModels(predictions.data.regressions)
-                            setSubmitted(true)
-                        } catch(error) {
-                            alert(error)
-                        }
+                } else {
+                    try {
+                        await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + source)
+                        const predictions = await axios.post(REACT_APP_SERVER_URL + 'api', submission)
+                        setSource(predictions.data.regressions.source)
+                        await axios.post(REACT_APP_SERVER_URL + 'predictions/' + user.id, { source })
+                        await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: opinions.favorite})
+                        await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: opinions.note})
+                        ResetFormElements()
+                        setModels(predictions.data.regressions)
+                        setSubmitted(true)
+                    } catch(error) {
+                        alert(error)
                     }
                 }
             }
@@ -186,6 +165,26 @@ function OriginalData(props) {
         }
     }
 
+    const rawDataForm = <CreateSet 
+        title={title}
+        handleTitle={handleTitle}
+        independent={independent}
+        handleIndependent={handleIndependent}
+        dependent={dependent}
+        handleDependent={handleDependent}
+        precision={precision}
+        handlePrecision={handlePrecision}
+        dataSet={dataSet}
+        handleDataSet={handleDataSet}
+        handleSubmit={handleSubmit}
+        handleDelete={handleDelete}
+        handleUndoSubmit={handleUndoSubmit}
+        handleUndoDelete={handleUndoDelete}
+        initiated={initiated}
+        stored={stored}
+        submitText={submitText}
+    />
+
     if (!initiated) {
         return (
             <section>
@@ -202,48 +201,14 @@ function OriginalData(props) {
                     Upload
                 </button>
 
-                <CreateSet 
-                    title={title}
-                    handleTitle={handleTitle}
-                    independent={independent}
-                    handleIndependent={handleIndependent}
-                    dependent={dependent}
-                    handleDependent={handleDependent}
-                    precision={precision}
-                    handlePrecision={handlePrecision}
-                    dataSet={dataSet}
-                    handleDataSet={handleDataSet}
-                    handleSubmit={handleSubmit}
-                    handleDelete={handleDelete}
-                    handleUndoSubmit={handleUndoSubmit}
-                    handleUndoDelete={handleUndoDelete}
-                    initiated={initiated}
-                    stored={stored}
-                    submitText={submitText}
-                />
+                {rawDataForm}
             </section>
         )
     } else if (!submitted && !deleted) {
         return (
-            <CreateSet 
-                title={title}
-                handleTitle={handleTitle}
-                independent={independent}
-                handleIndependent={handleIndependent}
-                dependent={dependent}
-                handleDependent={handleDependent}
-                precision={precision}
-                handlePrecision={handlePrecision}
-                dataSet={dataSet}
-                handleDataSet={handleDataSet}
-                handleSubmit={handleSubmit}
-                handleDelete={handleDelete}
-                handleUndoSubmit={handleUndoSubmit}
-                handleUndoDelete={handleUndoDelete}
-                initiated={initiated}
-                stored={stored}
-                submitText={submitText}
-            />
+            <section>
+                {rawDataForm}
+            </section>
         )
     } else if (submitted) {
         return (
