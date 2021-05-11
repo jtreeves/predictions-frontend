@@ -52,7 +52,8 @@ function Signup() {
                     // Create new user if both checks pass  
                     const newUser = {name, email, password}
                     await axios.post(
-                        REACT_APP_SERVER_URL + 'users/signup', newUser
+                        REACT_APP_SERVER_URL + 'users/signup', 
+                        newUser
                     )
                     setRedirect(true)
                 } else {
@@ -74,7 +75,7 @@ function Signup() {
         return (
             <main>
                 <h1>Sign Up</h1>
-                
+
                 <form>
                     <FormItem
                         type="text"

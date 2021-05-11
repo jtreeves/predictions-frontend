@@ -10,7 +10,10 @@ function SaveSet(props) {
     const handleSave = async (e) => {
         try {
             e.preventDefault()
-            await axios.post(REACT_APP_SERVER_URL + 'predictions/' + userId, { source })
+            await axios.post(
+                REACT_APP_SERVER_URL + 'predictions/' + userId, 
+                { source }
+            )
             alert('Your data set was saved!')
             setSaved(true)
         } catch(error) {

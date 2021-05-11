@@ -36,7 +36,8 @@ function Login(props) {
             e.preventDefault()
             const userData = {email, password}
             const currentUser = await axios.post(
-                REACT_APP_SERVER_URL + 'users/login', userData
+                REACT_APP_SERVER_URL + 'users/login', 
+                userData
             )
             // Create token from currentUser data
             const {token} = currentUser.data
