@@ -4,14 +4,14 @@ import HorizontalAxis from '../../utilities/predictions/HorizontalAxis'
 import VerticalAxis from '../../utilities/predictions/VerticalAxis'
 import CheckFavorite from '../../utilities/predictions/CheckFavorite'
 import GraphSection from '../../sections/predictions/GraphSection'
-import ExecutiveButtons from '../../sections/predictions/ExecutiveButtons'
+import ExecutiveButtons from '../../buttons/predictions/ExecutiveButtons'
 import Highlights from '../../sections/predictions/Highlights'
 import FutureEvaluations from '../../sections/predictions/FutureEvaluations'
 import ModelsAnalyses from '../../sections/predictions/ModelsAnalyses'
 import DataSection from '../../sections/predictions/DataSection'
 import CheckExpiration from '../../utilities/users/CheckExpiration'
 
-import '../../../style/analysis.css'
+import '../../../style/predictions/analysis.css'
 
 function Analysis(props) {
     CheckExpiration(props.user.exp, props.handleLogout)

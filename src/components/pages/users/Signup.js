@@ -6,7 +6,7 @@ import axios from 'axios'
 // Import internal component
 import FormItem from '../../sections/main/FormItem'
 
-import '../../../style/signup.css'
+import '../../../style/users/signup.css'
 import FormSubmit from '../../buttons/main/FormSubmit'
 
 // Create shortcut for environmental variable

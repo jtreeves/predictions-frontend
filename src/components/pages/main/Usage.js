@@ -1,4 +1,4 @@
-import '../../../style/usage.css'
+import '../../../style/main/usage.css'
 
 // Create function
 function Usage() {

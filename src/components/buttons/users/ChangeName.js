@@ -4,19 +4,19 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 // Import internal component
-import FormItem from '../main/FormItem'
-import FormSubmit from '../../buttons/main/FormSubmit'
+import FormItem from '../../sections/main/FormItem'
+import FormSubmit from '../main/FormSubmit'
 
 // Create shortcut for environmental variable
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-function ChangeEmail(props) {
+function ChangeName(props) {
     const [updateClicked, setUpdateClicked] = useState(false)
     const [saveClicked, setSaveClicked] = useState(false)
-    const [email, setEmail] = useState(props.user.email)
+    const [name, setName] = useState(props.user.name)
 
-    const handleEmail = (e) => {
-        setEmail(e.target.value)
+    const handleName = (e) => {
+        setName(e.target.value)
     }
 
     const handleUpdate = (e) => {
@@ -27,7 +27,7 @@ function ChangeEmail(props) {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-            await axios.put(REACT_APP_SERVER_URL + 'users/' + props.user.id + '/email', {email})
+            await axios.put(REACT_APP_SERVER_URL + 'users/' + props.user.id + '/name', {name})
             setSaveClicked(true)
         } catch(error) {
             alert(error.response.data.msg)
@@ -41,25 +41,25 @@ function ChangeEmail(props) {
                 onClick={handleUpdate}
                 className="profile"
             >
-                Change Email
+                Change Name
             </button>
         )
     } else if (updateClicked && !saveClicked) {
         return (
             <form>
                 <FormItem
-                    type="email"
-                    label="email"
-                    value={email}
-                    display="Email"
-                    tooltip="What email address do you want to associate with this account?"
-                    onChange={handleEmail}
+                    type="text"
+                    label="name"
+                    value={name}
+                    display="Name"
+                    tooltip="What do you want your new name to be?"
+                    onChange={handleName}
                 />
 
                 <FormSubmit 
-                    text="Update Email"
+                    text="Update Name"
                     onClick={handleSubmit}
-                    id="change-email-button"
+                    id="change-name-button"
                     className="profile"
                     display="block"
                 />
@@ -72,4 +72,4 @@ function ChangeEmail(props) {
     }
 }
 
-export default ChangeEmail
+export default ChangeName

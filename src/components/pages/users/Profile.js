@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import DisplayName from '../../sections/users/DisplayName'
-import ChangeName from '../../sections/users/ChangeName'
-import DeleteAccount from '../../sections/users/DeleteAccount'
+import ChangeName from '../../buttons/users/ChangeName'
+import DeleteAccount from '../../buttons/users/DeleteAccount'
 import CheckExpiration from '../../utilities/users/CheckExpiration'
-import '../../../style/profile.css'
+import '../../../style/users/profile.css'
 import DisplayEmail from '../../sections/users/DisplayEmail'
-import ChangeEmail from '../../sections/users/ChangeEmail'
+import ChangeEmail from '../../buttons/users/ChangeEmail'
 
 function Profile(props) {
     CheckExpiration(props.user.exp, props.handleLogout)

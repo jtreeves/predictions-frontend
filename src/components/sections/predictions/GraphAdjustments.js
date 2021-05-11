@@ -1,5 +1,5 @@
-import DisplayGraphs from './DisplayGraphs'
-import Zoom from './Zoom'
+import DisplayGraphs from '../../buttons/predictions/DisplayGraphs'
+import Zoom from '../../buttons/predictions/Zoom'
 
 function GraphAdjustments(props) {
     return (

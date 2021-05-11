@@ -8,7 +8,7 @@ import jwt_decode from 'jwt-decode'
 import Authentication from '../../utilities/main/Authentication'
 import FormItem from '../../sections/main/FormItem'
 
-import '../../../style/login.css'
+import '../../../style/users/login.css'
 import FormSubmit from '../../buttons/main/FormSubmit'
 
 // Create shortcut for environmental variable
@@ -75,7 +75,7 @@ function Login(props) {
                         tooltip="What is your password?"
                         onChange={handlePassword}
                     />
-                    
+
                     <FormSubmit 
                         text="Submit"
                         onClick={handleSubmit}

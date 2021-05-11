@@ -19,7 +19,7 @@ import Submission from './components/pages/predictions/Submission'
 import Analysis from './components/pages/predictions/Analysis'
 import DataSets from './components/pages/predictions/DataSets'
 
-import './style/main.css'
+import './style/main/main.css'
 
 // Create function for the main operations of the app
 function App() {

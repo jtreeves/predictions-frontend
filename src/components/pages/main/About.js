@@ -1,4 +1,4 @@
-import '../../../style/about.css'
+import '../../../style/main/about.css'
 
 // Create function
 function About() {
