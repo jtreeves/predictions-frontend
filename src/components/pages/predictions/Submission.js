@@ -6,7 +6,7 @@ function Submission(props) {
     CheckExpiration(props.user.exp, props.handleLogout)
 
     return (
-        <main>
+        <main className="submission">
             <h2>Create a New Data Set</h2>
 
             <OriginalData 

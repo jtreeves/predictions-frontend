@@ -15,7 +15,10 @@ function UpdateSet() {
     }
 
     return (
-        <button onClick={handleSubmit}>
+        <button 
+            onClick={handleSubmit}
+            className="analysis"
+        >
             Update Set
         </button>
     )

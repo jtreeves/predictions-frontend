@@ -53,7 +53,7 @@ function Signup() {
 
     if (!redirect) {
         return (
-            <main>
+            <main className="signup">
                 <h1>Sign Up</h1>
 
                 <form>

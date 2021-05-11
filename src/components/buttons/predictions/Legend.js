@@ -157,7 +157,10 @@ function Legend(props) {
     }
 
     return (
-        <article className="display-graphs">
+        <article 
+            className="analysis"
+            id="legend"
+        >
             <mark>Legend</mark>
             {displayButtons}
         </article>

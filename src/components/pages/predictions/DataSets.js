@@ -69,13 +69,13 @@ function DataSets(props) {
 
     if (loading) {
         return (
-            <main>
+            <main className="data">
                 LOADING!
             </main>
         )
     } else {
         return (
-            <main>
+            <main className="data">
                 <h1>Models</h1>
 
                 <ul className="data">

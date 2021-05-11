@@ -43,7 +43,7 @@ function ChangeName(props) {
         )
     } else if (updateClicked && !saveClicked) {
         return (
-            <form>
+            <form className="profile">
                 <FormItem
                     type="text"
                     label="name"

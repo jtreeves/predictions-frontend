@@ -23,7 +23,10 @@ function SaveSet(props) {
 
     if (!saved) {
         return (
-            <button onClick={handleSave}>
+            <button 
+                onClick={handleSave}
+                className="analysis"
+            >
                 Save Set
             </button>
         )

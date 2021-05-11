@@ -1,6 +1,6 @@
 function EvaluationSentence(props) {
     return (
-        <p>
+        <p className="analysis">
             ... according to the <mark>{props.type} model</mark>, there will be {props.evaluation} {props.dependent}
         </p>
     )

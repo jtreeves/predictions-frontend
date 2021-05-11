@@ -8,7 +8,7 @@ function GraphOutput(props) {
         const height = 500 - margin.top - margin.bottom
 
         d3
-            .select(".main-graph")
+            .select("#main-graph")
             .remove()
 
         const xScale = d3
@@ -28,9 +28,9 @@ function GraphOutput(props) {
             .curve(d3.curveCatmullRom.alpha(.5))
 
         const graph = d3
-            .select(".graph-container")
+            .select("#graph-container")
             .append("svg")
-            .attr("class", "main-graph")
+            .attr("id", "main-graph")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -188,8 +188,8 @@ function GraphOutput(props) {
     })
 
     return (
-        <article className="graph-container">
-            <svg className="main-graph" />
+        <article id="graph-container">
+            <svg id="main-graph" />
         </article>
     )
 }

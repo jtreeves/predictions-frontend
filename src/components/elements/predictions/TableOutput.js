@@ -9,13 +9,13 @@ function TableOutput(props) {
 
     useEffect(() => {
         d3
-            .select(".main-table")
+            .select("#main-table")
             .remove()
 
         const table = d3
-            .select(".table-of-data")
+            .select("#table-container")
             .append("table")
-            .attr("class", "main-table")
+            .attr("id", "main-table")
         
         const thead = table
             .append("thead")
@@ -47,8 +47,8 @@ function TableOutput(props) {
     })
 
     return (
-        <article className="table-of-data">
-            <table className="main-table" />
+        <article id="table-container">
+            <table id="main-table" />
         </article>
     )
 }

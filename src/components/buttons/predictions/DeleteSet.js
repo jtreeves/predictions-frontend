@@ -15,7 +15,10 @@ function DeleteSet() {
     }
 
     return (
-        <button onClick={handleDelete}>
+        <button 
+            onClick={handleDelete}
+            className="analysis"
+        >
             Delete Set
         </button>
     )

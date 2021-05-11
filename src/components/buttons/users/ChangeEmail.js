@@ -43,7 +43,7 @@ function ChangeEmail(props) {
         )
     } else if (updateClicked && !saveClicked) {
         return (
-            <form>
+            <form className="profile">
                 <FormItem
                     type="email"
                     label="email"

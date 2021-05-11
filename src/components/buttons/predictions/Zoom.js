@@ -59,7 +59,10 @@ function Zoom(props) {
     }
 
     return (
-        <article className="zoom">
+        <article 
+            className="analysis"
+            id="zoom"
+        >
             <mark>Zoom</mark>
 
             <p>

@@ -26,7 +26,10 @@ function Note(props) {
 
     if (!submitting) {
         return (
-            <article className="note">
+            <article 
+                className="analysis"
+                id="note"
+            >
                 <mark>Note</mark>
 
                 <form>

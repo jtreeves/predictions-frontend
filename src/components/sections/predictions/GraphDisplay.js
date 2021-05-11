@@ -3,7 +3,10 @@ import GraphAdjustments from '../../elements/predictions/GraphAdjustments'
 
 function GraphDisplay(props) {
     return (
-        <section className="graph-section">
+        <section 
+            className="analysis"
+            id="graph-display"
+        >
             <GraphOutput 
                 independent={props.independent}
                 dependent={props.dependent}

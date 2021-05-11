@@ -3,7 +3,10 @@ import TableOutput from '../../elements/predictions/TableOutput'
 
 function DataDisplay(props) {
     return (
-        <section className="data-section">
+        <section 
+            className="analysis"
+            id="data-display"
+        >
             <h2>Original Data</h2>
             
             <article>

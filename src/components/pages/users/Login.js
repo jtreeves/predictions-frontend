@@ -40,7 +40,7 @@ function Login(props) {
 
     if (!props.user) {
         return (
-            <main>
+            <main className="login">
                 <h1>Log In</h1>
 
                 <form>

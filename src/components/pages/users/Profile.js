@@ -8,7 +8,7 @@ function Profile(props) {
     CheckExpiration(props.user.exp, props.handleLogout)
     
     return (
-        <main>
+        <main className="profile">
             <h1>Profile</h1>
 
             <CoreInformation user={props.user} />

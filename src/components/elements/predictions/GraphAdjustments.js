@@ -3,7 +3,10 @@ import Zoom from '../../buttons/predictions/Zoom'
 
 function GraphAdjustments(props) {
     return (
-        <article className="graph-adjustments">
+        <article 
+            className="analysis"
+            id="graph-adjustments"
+        >
             <Legend 
                 precision={props.precision}
                 xMinimum={props.xMinimum}

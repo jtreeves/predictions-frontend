@@ -141,7 +141,7 @@ function Analysis(props) {
     ) 
 
     return (
-        <main>
+        <main className="analysis">
             <h1>{title}</h1>
 
             <GraphDisplay 
