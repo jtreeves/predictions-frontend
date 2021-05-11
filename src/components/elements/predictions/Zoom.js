@@ -1,7 +1,43 @@
 import HorizontalAxis from '../../utilities/predictions/HorizontalAxis'
-import GeneratePoints from '../../utilities/predictions/GeneratePoints'
+import ZoomSeparateGraphs from '../../utilities/predictions/ZoomSeparateGraphs'
 
 function Zoom(props) {
+    const handleSeparateGraphs = (xMinimum, xMaximum, increment) => {
+        ZoomSeparateGraphs(
+            props.displayOriginal, 
+            props.setOriginalCoordinates, 
+            props.originalPoints, 
+            props.displayLinear, 
+            props.setLinearCoordinates, 
+            props.linearConstants, 
+            props.displayQuadratic, 
+            props.setQuadraticCoordinates, 
+            props.quadraticConstants, 
+            props.displayCubic, 
+            props.setCubicCoordinates, 
+            props.cubicConstants, 
+            props.displayHyperbolic, 
+            props.setHyperbolicCoordinates, 
+            props.hyperbolicConstants, 
+            props.displayExponential, 
+            props.setExponentialCoordinates, 
+            props.exponentialConstants, 
+            props.displayLogarithmic, 
+            props.setLogarithmicCoordinates, 
+            props.logarithmicConstants, 
+            props.displayLogistic, 
+            props.setLogisticCoordinates, 
+            props.logisticConstants, 
+            props.displaySinusoidal, 
+            props.setSinusoidalCoordinates, 
+            props.sinusoidalConstants, 
+            xMinimum, 
+            xMaximum, 
+            increment, 
+            props.precision
+        )
+    }
+
     const handleZoomOut = (e) => {
         e.preventDefault()
         props.setZoom(props.zoom + 0.1)
@@ -9,39 +45,7 @@ function Zoom(props) {
         const xMinimum = xAxis.minimum
         const xMaximum = xAxis.maximum
         const increment = xAxis.increment
-        if (props.displayOriginal) {
-            props.setOriginalCoordinates(props.originalPoints.filter((point) => {
-                if (point.x >= xMinimum && point.x <= xMaximum) {
-                    return true
-                } else {
-                    return false
-                }
-            }))
-        }
-        if (props.displayLinear) {
-            props.setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displayQuadratic) {
-            props.setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displayCubic) {
-            props.setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displayHyperbolic) {
-            props.setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displayExponential) {
-            props.setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displayLogarithmic) {
-            props.setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displayLogistic) {
-            props.setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displaySinusoidal) {
-            props.setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, xMinimum, xMaximum, increment, props.precision))
-        }
+        handleSeparateGraphs(xMinimum, xMaximum, increment)
     }
     
     const handleZoomIn = (e) => {
@@ -51,39 +55,7 @@ function Zoom(props) {
         const xMinimum = xAxis.minimum
         const xMaximum = xAxis.maximum
         const increment = xAxis.increment
-        if (props.displayOriginal) {
-            props.setOriginalCoordinates(props.originalPoints.filter((point) => {
-                if (point.x >= xMinimum && point.x <= xMaximum) {
-                    return true
-                } else {
-                    return false
-                }
-            }))
-        }
-        if (props.displayLinear) {
-            props.setLinearCoordinates(GeneratePoints('linear', props.linearConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displayQuadratic) {
-            props.setQuadraticCoordinates(GeneratePoints('quadratic', props.quadraticConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displayCubic) {
-            props.setCubicCoordinates(GeneratePoints('cubic', props.cubicConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displayHyperbolic) {
-            props.setHyperbolicCoordinates(GeneratePoints('hyperbolic', props.hyperbolicConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displayExponential) {
-            props.setExponentialCoordinates(GeneratePoints('exponential', props.exponentialConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displayLogarithmic) {
-            props.setLogarithmicCoordinates(GeneratePoints('logarithmic', props.logarithmicConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displayLogistic) {
-            props.setLogisticCoordinates(GeneratePoints('logistic', props.logisticConstants, xMinimum, xMaximum, increment, props.precision))
-        }
-        if (props.displaySinusoidal) {
-            props.setSinusoidalCoordinates(GeneratePoints('sinusoidal', props.sinusoidalConstants, xMinimum, xMaximum, increment, props.precision))
-        }
+        handleSeparateGraphs(xMinimum, xMaximum, increment)
     }
 
     return (
