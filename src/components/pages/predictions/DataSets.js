@@ -13,7 +13,9 @@ function DataSets(props) {
     
     const getPredictions = async () => {
         try {
-            const foundPredictions = await axios.get(REACT_APP_SERVER_URL + 'predictions/all/' + props.user.id)
+            const foundPredictions = await axios.get(
+                REACT_APP_SERVER_URL + 'predictions/all/' + props.user.id
+            )
             const allPredictions = foundPredictions.data.predictions
             const allRegressions = []
             for (const prediction of allPredictions) {

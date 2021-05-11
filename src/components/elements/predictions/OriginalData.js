@@ -139,7 +139,7 @@ function OriginalData(props) {
                         setSource(predictions.data.regressions.source)
                         await axios.post(
                             REACT_APP_SERVER_URL + 'predictions/' + user.id, 
-                            { source }
+                            {source}
                         )
                         await axios.put(
                             REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', 
