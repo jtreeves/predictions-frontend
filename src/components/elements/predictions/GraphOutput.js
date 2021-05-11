@@ -91,9 +91,25 @@ function GraphOutput(props) {
         }
         
         if (props.hyperbolicCoordinates) {
+            let leftHyperbolicCoordinates = []
+            let rightHyperbolicCoordinates = []
+            for (const point of props.hyperbolicCoordinates) {
+                if (point.x > 0) {
+                    rightHyperbolicCoordinates.push(point)
+                } else {
+                    leftHyperbolicCoordinates.push(point)
+                }
+            }
             graph
                 .append("path")
-                .datum(props.hyperbolicCoordinates)
+                .datum(rightHyperbolicCoordinates)
+                .attr("d", path)
+                .style("fill", "none")
+                .style("stroke", "brown")
+                .style("stroke-width", 2.5)
+            graph
+                .append("path")
+                .datum(leftHyperbolicCoordinates)
                 .attr("d", path)
                 .style("fill", "none")
                 .style("stroke", "brown")
@@ -116,7 +132,7 @@ function GraphOutput(props) {
             for (const point of props.logarithmicCoordinates) {
                 if (point.x > 0) {
                     adjustedLogarithmicCoordinates.push(point)
-                } else if (point.x <= 0) {
+                } else {
                     if (logarithmicSlope > 0) {
                         adjustedLogarithmicCoordinates.push({
                             x: 0,
