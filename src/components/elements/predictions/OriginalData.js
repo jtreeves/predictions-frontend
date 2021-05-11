@@ -113,7 +113,8 @@ function OriginalData(props) {
             if (submission) {
                 if (!stored) {
                     try {
-                        const predictions = await axios.post(REACT_APP_SERVER_URL + 'api',
+                        const predictions = await axios.post(
+                            REACT_APP_SERVER_URL + 'api',
                             submission
                         )
                         allElements.submitButton.innerText = 'Update Set'
@@ -128,12 +129,26 @@ function OriginalData(props) {
                     }
                 } else {
                     try {
-                        await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + source)
-                        const predictions = await axios.post(REACT_APP_SERVER_URL + 'api', submission)
+                        await axios.delete(
+                            REACT_APP_SERVER_URL + 'predictions/' + source
+                        )
+                        const predictions = await axios.post(
+                            REACT_APP_SERVER_URL + 'api', 
+                            submission
+                        )
                         setSource(predictions.data.regressions.source)
-                        await axios.post(REACT_APP_SERVER_URL + 'predictions/' + user.id, { source })
-                        await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: opinions.favorite})
-                        await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/note', {note: opinions.note})
+                        await axios.post(
+                            REACT_APP_SERVER_URL + 'predictions/' + user.id, 
+                            { source }
+                        )
+                        await axios.put(
+                            REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', 
+                            {favorite: opinions.favorite}
+                        )
+                        await axios.put(
+                            REACT_APP_SERVER_URL + 'predictions/' + source + '/note', 
+                            {note: opinions.note}
+                        )
                         ResetFormElements()
                         setModels(predictions.data.regressions)
                         setSubmitted(true)
@@ -156,7 +171,9 @@ function OriginalData(props) {
             allElements.submitButton.style.display = 'none'
         } else {
             try {
-                await axios.delete(REACT_APP_SERVER_URL + 'predictions/' + source)
+                await axios.delete(
+                    REACT_APP_SERVER_URL + 'predictions/' + source
+                )
                 ResetFormElements()
                 setDeleted(true)
             } catch(error) {
