@@ -6,7 +6,6 @@ function Favorite(props) {
     const source = props.source
     const [favorite, setFavorite] = useState(props.favorite)
     const [changing, setChanging] = useState(false)
-    const [submitting, setSubmitting] = useState(false)
 
     const handleFavorite = (e) => {
         setFavorite(e.target.value)
@@ -20,55 +19,55 @@ function Favorite(props) {
     const handleSubmitting = async (e) => {
         e.preventDefault()
         try {
-            await axios.put(REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', {favorite: favorite})
-            setSubmitting(true)
+            await axios.put(
+                REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', 
+                {favorite: favorite}
+            )
+            setChanging(false)
         } catch(error) {
             alert(error.response.data.msg)
         }
     }
 
-    if (favorite === '') {
-        if (!changing) {
-            return (<section>
-                <mark>Favorite</mark>
-                <p>You haven't chosen a favorite yet</p>
-                <button onClick={handleChanging}>Choose Favorite</button>
-            </section>)
-        } else {
-            return (<section>
-                <mark>Favorite</mark>
-                <form onSubmit={handleSubmitting}>
-                    <label for="favorite">Select a graph:</label>
-                    <select name="favorite" id="favorite" onChange={handleFavorite}>
-                        <option value=""></option>
-                        <option value="linear">Linear</option>
-                        <option value="quadratic">Quadratic</option>
-                        <option value="cubic">Cubic</option>
-                        <option value="hyperbolic">Hyperbolic</option>
-                        <option value="exponential">Exponential</option>
-                        <option value="logarithmic">Logarithmic</option>
-                        <option value="logistic">Logistic</option>
-                        <option value="sinusoidal">Sinusoidal</option>
-                    </select>
-                    <button type="submit">Save Favorite</button>
-                </form>
-            </section>)
-        }
-    } else {
-        if (!changing) {
+    if (!changing) {
+        if (favorite === '') {
             return (
                 <section>
                     <mark>Favorite</mark>
-                    <p>{favorite}</p>
-                    <button onClick={handleChanging}>Change Favorite</button>
+
+                    <p>You haven't chosen a favorite yet</p>
+
+                    <button onClick={handleChanging}>
+                        Choose Favorite
+                    </button>
                 </section>
             )
-        } else if (!submitting) {
-            return (<section>
+        } else {
+            return (
+                <section>
+                    <mark>Favorite</mark>
+
+                    <p>{favorite}</p>
+
+                    <button onClick={handleChanging}>
+                        Change Favorite
+                    </button>
+                </section>
+            )
+        }
+    } else {
+        return (
+            <section>
                 <mark>Favorite</mark>
+
                 <form onSubmit={handleSubmitting}>
                     <label for="favorite">Select a graph:</label>
-                    <select name="favorite" id="favorite" onChange={handleFavorite}>
+
+                    <select 
+                        name="favorite" 
+                        id="favorite" 
+                        onChange={handleFavorite}
+                    >
                         <option value=""></option>
                         <option value="linear">Linear</option>
                         <option value="quadratic">Quadratic</option>
@@ -79,13 +78,11 @@ function Favorite(props) {
                         <option value="logistic">Logistic</option>
                         <option value="sinusoidal">Sinusoidal</option>
                     </select>
+
                     <button type="submit">Save Favorite</button>
                 </form>
-            </section>)
-        } else {
-            setChanging(false)
-            setSubmitting(false)
-        }
+            </section>
+        )
     }
 }
 
