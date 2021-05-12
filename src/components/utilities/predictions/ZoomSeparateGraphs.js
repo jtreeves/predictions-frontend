@@ -2,13 +2,9 @@ import GeneratePoints from './GeneratePoints'
 
 function ZoomSeparateGraphs(displayOriginal, setOriginalCoordinates, originalPoints, displayLinear, setLinearCoordinates, linearConstants, displayQuadratic, setQuadraticCoordinates, quadraticConstants, displayCubic, setCubicCoordinates, cubicConstants, displayHyperbolic, setHyperbolicCoordinates, hyperbolicConstants, displayExponential, setExponentialCoordinates, exponentialConstants, displayLogarithmic, setLogarithmicCoordinates, logarithmicConstants, displayLogistic, setLogisticCoordinates, logisticConstants, displaySinusoidal, setSinusoidalCoordinates, sinusoidalConstants, xMinimum, xMaximum, increment, precision) {
     if (displayOriginal) {
-        setOriginalCoordinates(originalPoints.filter((point) => {
-            if (point.x >= xMinimum && point.x <= xMaximum) {
-                return true
-            } else {
-                return false
-            }
-        }))
+        setOriginalCoordinates(originalPoints.filter(point => 
+            point.x >= xMinimum && point.x <= xMaximum
+        ))
     }
 
     if (displayLinear) {

@@ -26,9 +26,7 @@ main {
     border: 1px solid black;
     border-radius: 5px;
     margin: 0 150px;
-    /* padding: 10px 25px 25px 25px; */
     padding: 25px;
-    /* min-height: 400px; */
     display: grid;
     row-gap: 25px;
 }

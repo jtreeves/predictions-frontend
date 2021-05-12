@@ -3,9 +3,9 @@ import * as d3 from 'd3'
 
 function GraphOutput(props) {
     useEffect(() => {
-        const margin = { top: 0, right: 0, bottom: 50, left: 75 }
-        const width = 475 - margin.left - margin.right
-        const height = 450 - margin.top - margin.bottom
+        const margin = { top: 5, right: 5, bottom: 50, left: 75 }
+        const width = 480 - margin.left - margin.right
+        const height = 455 - margin.top - margin.bottom
 
         d3
             .select("#main-graph")
