@@ -209,6 +209,7 @@ function OriginalData(props) {
 
                 <button 
                     onClick={handleUpload}
+                    id="upload-button"
                 >
                     Upload
                 </button>

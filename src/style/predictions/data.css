@@ -1,8 +1,5 @@
 main.data ul {
     display: grid;
     row-gap: 10px;
-}
-
-main.data ul li {
-    justify-self: center;
+    justify-items: center;
 }

@@ -98,7 +98,7 @@ function EditSet(props) {
 
     if (!props.initiated || !props.stored) {
         return (
-            <form id="edit-set">
+            <form>
                 {title}
                 {independent}
                 {dependent}
@@ -114,7 +114,7 @@ function EditSet(props) {
         )
     } else {
         return (
-            <form id="edit-set">
+            <form>
                 {title}
                 {independent}
                 {dependent}
