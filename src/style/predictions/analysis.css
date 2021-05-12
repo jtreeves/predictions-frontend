@@ -105,13 +105,9 @@ button.blank {
 
 #graph-display {
     display: grid;
-    grid-template-columns: 600px 200px;
-    column-gap: 10px;
+    grid-template-columns: 475px 150px;
+    column-gap: 25px;
     align-items: start;
-}
-
-#main-graph {
-    margin-top: -50px;
 }
 
 #graph-adjustments {

@@ -3,9 +3,9 @@ import * as d3 from 'd3'
 
 function GraphOutput(props) {
     useEffect(() => {
-        const margin = { top: 50, right: 50, bottom: 50, left: 75 }
-        const width = 525 - margin.left - margin.right
-        const height = 500 - margin.top - margin.bottom
+        const margin = { top: 0, right: 0, bottom: 50, left: 75 }
+        const width = 475 - margin.left - margin.right
+        const height = 450 - margin.top - margin.bottom
 
         d3
             .select("#main-graph")
@@ -128,7 +128,7 @@ function GraphOutput(props) {
         
         if (props.logarithmicCoordinates) {
             let adjustedLogarithmicCoordinates = []
-            const logarithmicSlope = (props.logarithmicCoordinates[99].y - props.logarithmicCoordinates[0].y) / (props.logarithmicCoordinates[99].x - props.logarithmicCoordinates[0].x)
+            const logarithmicSlope = (props.logarithmicCoordinates[90].y - props.logarithmicCoordinates[10].y) / (props.logarithmicCoordinates[90].x - props.logarithmicCoordinates[10].x)
             for (const point of props.logarithmicCoordinates) {
                 if (point.x > 0) {
                     adjustedLogarithmicCoordinates.push(point)
