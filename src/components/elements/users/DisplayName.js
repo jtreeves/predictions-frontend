@@ -22,7 +22,7 @@ function DisplayName(props) {
     })
 
     return (
-        <article className="profile">
+        <article>
             <h3>Name</h3>
             <p>{name}</p>
         </article>

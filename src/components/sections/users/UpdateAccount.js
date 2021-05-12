@@ -4,7 +4,7 @@ import DeleteAccount from '../../buttons/users/DeleteAccount'
 
 function UpdateAccount(props) {
     return (
-        <section className="profile">
+        <section>
             <h2>Update Account</h2>
 
             <ChangeName user={props.user} />

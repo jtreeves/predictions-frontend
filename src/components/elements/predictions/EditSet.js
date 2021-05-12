@@ -51,7 +51,6 @@ function EditSet(props) {
         text={props.submitText}
         onClick={props.handleSubmit}
         id="submit-button"
-        className="submission"
         display="block"
     />
     
@@ -59,7 +58,6 @@ function EditSet(props) {
         text="Delete Set"
         onClick={props.handleDelete}
         id="delete-button"
-        className="submission"
         display="block"
     />
     
@@ -67,7 +65,6 @@ function EditSet(props) {
         text="Delete Set"
         onClick={props.handleDelete}
         id="delete-button"
-        className="submission"
         display="none"
     />
 
@@ -75,7 +72,6 @@ function EditSet(props) {
         text="Abandon All Changes"
         onClick={props.handleUndoSubmit}
         id="undo-submit-button"
-        className="submission"
         display="none"
     />
     
@@ -83,7 +79,6 @@ function EditSet(props) {
         text="No, I Want to Keep the Data Set"
         onClick={props.handleUndoDelete}
         id="undo-delete-button"
-        className="submission"
         display="none"
     />
 

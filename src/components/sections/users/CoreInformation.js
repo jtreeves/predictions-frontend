@@ -3,7 +3,7 @@ import DisplayEmail from '../../elements/users/DisplayEmail'
 
 function CoreInformation(props) {
     return (
-        <section className="profile">
+        <section id="core-information">
             <DisplayName user={props.user} />
             <DisplayEmail user={props.user} />
         </section>

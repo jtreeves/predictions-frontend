@@ -1,5 +1,11 @@
 main.profile section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    justify-items: center;
+    row-gap: 10px;
+}
+
+#core-information article {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 10px;
 }

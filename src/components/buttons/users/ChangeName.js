@@ -36,14 +36,13 @@ function ChangeName(props) {
         return (
             <button 
                 onClick={handleUpdate}
-                className="profile"
             >
                 Change Name
             </button>
         )
     } else if (updateClicked && !saveClicked) {
         return (
-            <form className="profile">
+            <form>
                 <FormItem
                     type="text"
                     label="name"
@@ -57,7 +56,6 @@ function ChangeName(props) {
                     text="Update Name"
                     onClick={handleSubmit}
                     id="change-name-button"
-                    className="profile"
                     display="block"
                 />
             </form>

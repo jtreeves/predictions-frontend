@@ -36,14 +36,13 @@ function ChangeEmail(props) {
         return (
             <button 
                 onClick={handleUpdate}
-                className="profile"
             >
                 Change Email
             </button>
         )
     } else if (updateClicked && !saveClicked) {
         return (
-            <form className="profile">
+            <form>
                 <FormItem
                     type="email"
                     label="email"
@@ -57,7 +56,6 @@ function ChangeEmail(props) {
                     text="Update Email"
                     onClick={handleSubmit}
                     id="change-email-button"
-                    className="profile"
                     display="block"
                 />
             </form>

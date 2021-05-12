@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function AnalyzeData() {
     return (
-        <section className="profile">
+        <section>
             <h2>Analyze Data</h2>
 
             <Link 

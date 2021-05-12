@@ -28,7 +28,6 @@ function DeleteAccount(props) {
         return (
             <button 
                 onClick={handleDeleteClicked}
-                className="profile"
             >
                 Delete Account
             </button>
@@ -37,7 +36,6 @@ function DeleteAccount(props) {
         return (
             <button 
                 onClick={handleConfirmClicked}
-                className="profile"
             >
                 Yes, Delete My Account
             </button>

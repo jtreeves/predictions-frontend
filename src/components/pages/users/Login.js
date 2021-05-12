@@ -66,7 +66,6 @@ function Login(props) {
                         text="Submit"
                         onClick={handleSubmit}
                         id="login-button"
-                        className="login"
                         display="block"
                     />
                 </form>

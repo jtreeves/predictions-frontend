@@ -97,7 +97,6 @@ function Signup() {
                         text="Submit"
                         onClick={handleSubmit}
                         id="signup-button"
-                        className="signup"
                         display="block"
                     />
                 </form>
