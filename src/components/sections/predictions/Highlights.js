@@ -10,7 +10,7 @@ function Highlights(props) {
         >
             <h2>Highlights</h2>
 
-            <article>
+            <div>
                 <aside>
                     <BestFit 
                         bestFit={props.bestFit}
@@ -28,7 +28,7 @@ function Highlights(props) {
                     note={props.note}
                     source={props.source}
                 />
-            </article>
+            </div>
         </section>
     )
 }

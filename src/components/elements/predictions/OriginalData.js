@@ -199,7 +199,7 @@ function OriginalData(props) {
 
     if (!initiated) {
         return (
-            <article>
+            <section>
                 <input 
                     type="file" 
                     ref={spreadsheet}
@@ -214,7 +214,7 @@ function OriginalData(props) {
                 </button>
 
                 {rawDataForm}
-            </article>
+            </section>
         )
     } else if (!submitted && !deleted) {
         return (

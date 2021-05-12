@@ -47,12 +47,12 @@ function App() {
 
     return (
         <>
+            <Header />
+
             <Navigation 
                 isAuthenticated={isAuthenticated} 
                 handleLogout={handleLogout} 
             />
-
-            <Header />
 
             <Switch>
                 {isAuthenticated ? <PrivateRoute 

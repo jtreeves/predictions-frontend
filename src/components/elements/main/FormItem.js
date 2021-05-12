@@ -1,7 +1,7 @@
 function FormItem(props) {
     if (props.type !== 'textarea') {
         return (
-            <article>
+            <p>
                 <label htmlFor={props.label} title={props.tooltip}>{props.display}</label>
                 <input
                     type={props.type}
@@ -9,11 +9,11 @@ function FormItem(props) {
                     value={props.value}
                     onChange={props.onChange}
                 />
-            </article>
+            </p>
         )
     } else {
         return (
-            <article>
+            <p>
                 <label htmlFor={props.label} title={props.tooltip}>{props.display}</label>
                 <textarea
                     cols="30" 
@@ -22,7 +22,7 @@ function FormItem(props) {
                     value={props.value}
                     onChange={props.onChange}
                 />
-            </article>
+            </p>
         )
     }
 }

@@ -59,28 +59,32 @@ function Zoom(props) {
     }
 
     return (
-        <article 
+        <div 
             className="analysis"
             id="zoom"
         >
             <h3>Zoom</h3>
 
-            <p>
-                <button 
-                    onClick={handleZoomIn}
-                    title="Zoom in on graph"
-                >
-                    +
-                </button>
+            <ul>
+                <li>
+                    <button 
+                        onClick={handleZoomIn}
+                        title="Zoom in on graph"
+                    >
+                        +
+                    </button>
+                </li>
 
-                <button 
-                    onClick={handleZoomOut}
-                    title="Zoom out of graph"
-                >
-                    -
-                </button>
-            </p>
-        </article>
+                <li>
+                    <button 
+                        onClick={handleZoomOut}
+                        title="Zoom out of graph"
+                    >
+                        -
+                    </button>
+                </li>
+            </ul>
+        </div>
     )
 }
 

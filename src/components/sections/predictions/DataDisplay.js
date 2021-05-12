@@ -9,7 +9,7 @@ function DataDisplay(props) {
         >
             <h2>Original Data</h2>
             
-            <article>
+            <div>
                 <TableOutput 
                     points={props.points}
                     independent={props.independent}
@@ -29,7 +29,7 @@ function DataDisplay(props) {
                     stored={props.stored}
                     source={props.source}
                 />
-            </article>
+            </div>
         </section>
     )
 }

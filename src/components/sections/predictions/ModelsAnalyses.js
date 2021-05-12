@@ -183,12 +183,12 @@ function ModelsAnalyses(props) {
     }
 
     return (
-        <section 
+        <div 
             className="analysis"
             id="models-analyses"
         >
             {allAnalyses}
-        </section>
+        </div>
     )
 }
 

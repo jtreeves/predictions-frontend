@@ -6,7 +6,7 @@ import SaveSet from './SaveSet'
 function ExecutiveLevel(props) {
     if (!props.stored) {
         return (
-            <article 
+            <section 
                 className="analysis"
                 id="executive-level"
             >
@@ -20,11 +20,11 @@ function ExecutiveLevel(props) {
                 <UpdateSet />
 
                 <NewSet />
-            </article>
+            </section>
         )
     } else {
         return (
-            <article 
+            <section 
                 className="analysis"
                 id="executive-level"
             >
@@ -33,7 +33,7 @@ function ExecutiveLevel(props) {
                 <DeleteSet />
 
                 <NewSet />
-            </article>
+            </section>
         )
     }
 }
