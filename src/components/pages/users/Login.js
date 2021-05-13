@@ -4,6 +4,7 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../../buttons/main/FormSubmit'
+import VettedLogin from '../../utilities/users/VettedLogin'
 import Authentication from '../../utilities/main/Authentication'
 import '../../../style/users/login.css'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
@@ -21,20 +22,23 @@ function Login(props) {
     }
 
     const handleSubmit = async (e) => {
-        try {
-            e.preventDefault()
-            const userData = {email, password}
-            const currentUser = await axios.post(
-                REACT_APP_SERVER_URL + 'users/login', 
-                userData
-            )
-            const {token} = currentUser.data
-            localStorage.setItem('jwtToken', token)
-            Authentication(token)
-            const decoded = jwt_decode(token)
-            props.nowCurrentUser(decoded)
-        } catch(error) {
-            alert(error.response.data.msg)
+        e.preventDefault()
+        const userData = VettedLogin(email, password)
+
+        if (userData) {
+            try {
+                const currentUser = await axios.post(
+                    REACT_APP_SERVER_URL + 'users/login', 
+                    userData
+                )
+                const {token} = currentUser.data
+                localStorage.setItem('jwtToken', token)
+                Authentication(token)
+                const decodedUser = jwt_decode(token)
+                props.nowCurrentUser(decodedUser)
+            } catch(error) {
+                alert(error.response.data.msg)
+            }
         }
     }
 
