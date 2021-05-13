@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import EditSet from './EditSet'
 import SpreadsheetInput from '../../utilities/predictions/SpreadsheetInput'
-import VettedInputs from '../../utilities/predictions/VettedInputs'
+import VettedDataForm from '../../utilities/predictions/VettedDataForm'
 import AllFormElements from '../../utilities/predictions/AllFormElements'
 import ResetFormElements from '../../utilities/predictions/ResetFormElements'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
@@ -103,7 +103,7 @@ function OriginalData(props) {
             allElements.submitWarning.style.display = 'block'
             allElements.deleteButton.style.display = 'none'
         } else {
-            const submission = VettedInputs(title, independent, dependent, precision, dataSet)
+            const submission = VettedDataForm(title, independent, dependent, precision, dataSet)
             
             if (submission) {
                 if (!stored) {
