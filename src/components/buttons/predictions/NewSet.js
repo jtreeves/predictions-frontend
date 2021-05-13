@@ -6,7 +6,7 @@ function NewSet() {
             to="/submission"
             style={{ textDecoration: 'none' }} 
         >
-            <button className="analysis">
+            <button>
                 Create New Set
             </button>
         </Link>

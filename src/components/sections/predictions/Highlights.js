@@ -5,7 +5,6 @@ import Note from '../../elements/predictions/Note'
 function Highlights(props) {
     return (
         <section 
-            className="analysis"
             id="highlights"
         >
             <h2>Highlights</h2>

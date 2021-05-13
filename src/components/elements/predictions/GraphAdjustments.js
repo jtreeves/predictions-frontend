@@ -4,7 +4,6 @@ import Zoom from '../../buttons/predictions/Zoom'
 function GraphAdjustments(props) {
     return (
         <article 
-            className="analysis"
             id="graph-adjustments"
         >
             <Legend 

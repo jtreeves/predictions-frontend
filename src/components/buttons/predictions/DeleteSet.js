@@ -17,7 +17,6 @@ function DeleteSet() {
     return (
         <button 
             onClick={handleDelete}
-            className="analysis"
         >
             Delete Set
         </button>

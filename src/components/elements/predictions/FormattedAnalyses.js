@@ -25,7 +25,7 @@ function FormattedAnalyses(props) {
         <section className={allClasses}>
             <h2>{props.type} Model</h2>
 
-            <article className="analysis">
+            <article>
                 <p>
                     <h3>Equation</h3>
                     <Latex>{props.equation}</Latex>

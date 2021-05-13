@@ -25,7 +25,6 @@ function SaveSet(props) {
         return (
             <button 
                 onClick={handleSave}
-                className="analysis"
             >
                 Save Set
             </button>

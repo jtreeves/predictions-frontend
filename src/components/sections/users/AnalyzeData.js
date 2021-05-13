@@ -9,7 +9,7 @@ function AnalyzeData() {
                 to="/datasets"
                 style={{ textDecoration: 'none' }}
             >
-                <button className="profile">
+                <button>
                     View All Your Saved Data Sets
                 </button>
             </Link>
@@ -18,7 +18,7 @@ function AnalyzeData() {
                 to="/submission"
                 style={{ textDecoration: 'none' }}
             >
-                <button className="profile">
+                <button>
                     Add a New Data Set
                 </button>
             </Link>

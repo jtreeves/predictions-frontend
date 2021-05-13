@@ -10,6 +10,7 @@ function FormItem(props) {
         return (
             <p>
                 {label}
+                
                 <input
                     type={props.type}
                     name={props.label}
@@ -22,6 +23,7 @@ function FormItem(props) {
         return (
             <p>
                 {label}
+
                 <textarea
                     name={props.label}
                     value={props.value}

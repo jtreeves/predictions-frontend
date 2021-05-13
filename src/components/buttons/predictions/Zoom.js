@@ -60,7 +60,6 @@ function Zoom(props) {
 
     return (
         <div 
-            className="analysis"
             id="zoom"
         >
             <h3>Zoom</h3>
@@ -70,6 +69,7 @@ function Zoom(props) {
                     <button 
                         onClick={handleZoomIn}
                         title="Zoom in on graph"
+                        className="box"
                     >
                         +
                     </button>
@@ -79,6 +79,7 @@ function Zoom(props) {
                     <button 
                         onClick={handleZoomOut}
                         title="Zoom out of graph"
+                        className="box"
                     >
                         -
                     </button>

@@ -2,7 +2,7 @@ function BestFit(props) {
     const correlation = props.correlation.toFixed(props.precision)
 
     return (
-        <article className="analysis">
+        <article>
             <h3>Best Fit</h3>
             <p>{props.bestFit}</p>
             <p>{correlation}</p>

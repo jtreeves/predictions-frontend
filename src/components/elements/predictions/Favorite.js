@@ -68,7 +68,9 @@ function Favorite(props) {
                 <h3>Favorite</h3>
 
                 <p>
-                    <label for="favorite">Select a graph:</label>
+                    <label for="favorite">
+                        Select a graph:
+                    </label>
 
                     <select 
                         name="favorite" 

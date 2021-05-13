@@ -3,8 +3,7 @@ import GraphAdjustments from '../../elements/predictions/GraphAdjustments'
 
 function GraphDisplay(props) {
     return (
-        <section 
-            className="analysis"
+        <div 
             id="graph-display"
         >
             <GraphOutput 
@@ -69,7 +68,7 @@ function GraphDisplay(props) {
                 setDisplaySinusoidal={props.setDisplaySinusoidal}
                 setSinusoidalCoordinates={props.setSinusoidalCoordinates}
             />
-        </section>
+        </div>
     )
 }
 

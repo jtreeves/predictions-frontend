@@ -184,7 +184,6 @@ function ModelsAnalyses(props) {
 
     return (
         <div 
-            className="analysis"
             id="models-analyses"
         >
             {allAnalyses}

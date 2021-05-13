@@ -49,7 +49,7 @@ function DataSets(props) {
                             }}
                             style={{ textDecoration: 'none' }} 
                         >
-                            <button className="data">
+                            <button>
                                 {datum.models.title}
                             </button>
                         </Link>
@@ -78,7 +78,7 @@ function DataSets(props) {
             <main className="data">
                 <h1>Models</h1>
 
-                <ul className="data">
+                <ul>
                     {predictions}
                 </ul>
             </main>

@@ -28,9 +28,7 @@ function Note(props) {
 
     if (!submitting) {
         return (
-            <form 
-                className="analysis"
-            >
+            <form className="analysis">
                 <h3>Note</h3>
 
                 <FormItem 

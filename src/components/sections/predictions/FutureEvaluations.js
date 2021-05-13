@@ -98,7 +98,6 @@ function FutureEvaluations(props) {
 
     return (
         <section 
-            className="analysis"
             id="future-evaluations"
         >
             <h2>Predicted Future Values</h2>
