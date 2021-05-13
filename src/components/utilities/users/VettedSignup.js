@@ -1,20 +1,23 @@
 import EmptyInputAlert from '../main/EmptyInputAlert'
 
 function VettedSignup(name, email, password, confirmPassword) {
-    const vettedName = EmptyInputAlert(name, 'name')
-    const vettedEmail = EmptyInputAlert(email, 'email')
-    const vettedPassword = EmptyInputAlert(password, 'password')
-    const vettedConfirmPassword = EmptyInputAlert(confirmPassword, 'confirm password')
-
-    if (vettedName && vettedEmail && vettedPassword && vettedConfirmPassword) {
-        if (vettedPassword === vettedConfirmPassword) {
-            if (vettedPassword.length >= 8) {
+    if (!EmptyInputAlert(name, 'name')) {
+        return false
+    } else if (!EmptyInputAlert(email, 'email')) {
+        return false
+    } else if (!EmptyInputAlert(password, 'password')) {
+        return false
+    } else if (!EmptyInputAlert(confirmPassword, 'confirm password')) {
+        return false
+    } else {
+        if (password === confirmPassword) {
+            if (password.length >= 8) {
                 const newUser = {
-                    name: vettedName,
-                    email: vettedEmail,
-                    password: vettedPassword
+                    name,
+                    email,
+                    password
                 }
-
+    
                 return newUser
             } else {
                 alert('Password must be at least 8 characters long')
@@ -24,8 +27,6 @@ function VettedSignup(name, email, password, confirmPassword) {
             alert('Passwords must match')
             return false
         }
-    } else {
-        return false
     }
 }
 

@@ -3,7 +3,7 @@ function EmptyInputAlert(input, type) {
         alert(`You must provide a value for ${type}`)
         return false
     } else {
-        return input
+        return true
     }
 }
 
