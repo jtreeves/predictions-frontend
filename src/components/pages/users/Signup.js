@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../../buttons/main/FormSubmit'
+import VettedSignup from '../../utilities/users/VettedSignup'
 import '../../../style/users/signup.css'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
@@ -30,24 +31,19 @@ function Signup() {
     }
 
     const handleSubmit = async (e) => {
-        try {
-            e.preventDefault()
-            if (password === confirmPassword) {
-                if (password.length >= 8) { 
-                    const newUser = {name, email, password}
-                    await axios.post(
-                        REACT_APP_SERVER_URL + 'users/signup', 
-                        newUser
-                    )
-                    setRedirect(true)
-                } else {
-                    alert('Password must be at least 8 characters long')
-                }
-            } else {
-                alert('Passwords must match')
+        e.preventDefault()
+        const newUser = VettedSignup(name, email, password, confirmPassword)
+
+        if (newUser) {
+            try {
+                await axios.post(
+                    REACT_APP_SERVER_URL + 'users/signup', 
+                    newUser
+                )
+                setRedirect(true)
+            } catch(error) {
+                alert(error.response.data.msg)
             }
-        } catch(error) {
-            alert(error.response.data.msg)
         }
     }
 
