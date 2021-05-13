@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import FormSubmit from '../../buttons/main/FormSubmit'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Favorite(props) {
@@ -32,35 +33,41 @@ function Favorite(props) {
     if (!changing) {
         if (favorite === '') {
             return (
-                <article className="analysis">
+                <form className="analysis">
                     <h3>Favorite</h3>
 
                     <p>You haven't chosen a favorite yet</p>
 
-                    <button onClick={handleChanging}>
-                        Choose Favorite
-                    </button>
-                </article>
+                    <FormSubmit 
+                        text="Choose Favorite"
+                        onClick={handleChanging}
+                        id="choose-favorite-button"
+                        display="block"
+                    />
+                </form>
             )
         } else {
             return (
-                <article className="analysis">
+                <form className="analysis">
                     <h3>Favorite</h3>
 
                     <p>{favorite}</p>
 
-                    <button onClick={handleChanging}>
-                        Change Favorite
-                    </button>
-                </article>
+                    <FormSubmit 
+                        text="Change Favorite"
+                        onClick={handleChanging}
+                        id="change-favorite-button"
+                        display="block"
+                    />
+                </form>
             )
         }
     } else {
         return (
-            <article className="analysis">
+            <form className="analysis">
                 <h3>Favorite</h3>
 
-                <form>
+                <p>
                     <label for="favorite">Select a graph:</label>
 
                     <select 
@@ -78,12 +85,15 @@ function Favorite(props) {
                         <option value="logistic">Logistic</option>
                         <option value="sinusoidal">Sinusoidal</option>
                     </select>
+                </p>
 
-                    <button onClick={handleSubmitting}>
-                        Save Favorite
-                    </button>
-                </form>
-            </article>
+                <FormSubmit 
+                    text="Save Favorite"
+                    onClick={handleSubmitting}
+                    id="save-favorite-button"
+                    display="block"
+                />
+            </form>
         )
     }
 }

@@ -27,19 +27,39 @@ function FormattedAnalyses(props) {
 
             <article className="analysis">
                 <p>
-                    <h3>Equation</h3> <Latex>{props.equation}</Latex>
+                    <h3>Equation</h3>
+                    <Latex>{props.equation}</Latex>
                 </p>
 
                 <p>
-                    <h3>Correlation</h3> <Latex>{props.correlation}</Latex>
+                    <h3>Correlation</h3>
+                    <Latex>{props.correlation}</Latex>
                 </p>
 
                 <p>
                     <h3>Key Points</h3>
-                    <br />ROOTS: <Latex>{props.roots}</Latex>
-                    <br />MAXIMA: <Latex>{props.maxima}</Latex>
-                    <br />MINIMA: <Latex>{props.minima}</Latex>
-                    <br />INFLECTIONS: <Latex>{props.inflections}</Latex>
+
+                    <ul>
+                        <li>
+                            <span>ROOTS</span>
+                            <Latex>{props.roots}</Latex>
+                        </li>
+                        
+                        <li>
+                            <span>MAXIMA</span>
+                            <Latex>{props.maxima}</Latex>
+                        </li>
+
+                        <li>
+                            <span>MINIMA</span>
+                            <Latex>{props.minima}</Latex>
+                        </li>
+
+                        <li>
+                            <span>INFLECTIONS</span>
+                            <Latex>{props.inflections}</Latex>
+                        </li>
+                    </ul>
                 </p>
             </article>
         </section>

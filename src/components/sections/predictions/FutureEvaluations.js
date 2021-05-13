@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import FormSubmit from '../../buttons/main/FormSubmit'
 import EvaluationSentence from '../../elements/predictions/EvaluationSentence'
 import Evaluations from '../../utilities/predictions/Evaluations'
 
@@ -102,7 +103,7 @@ function FutureEvaluations(props) {
         >
             <h2>Predicted Future Values</h2>
 
-            <article>
+            <form>
                 <p>
                     When there are <input
                         type="text"
@@ -115,10 +116,13 @@ function FutureEvaluations(props) {
                 
                 {allEvaluations}
 
-                <button onClick={handleFutureValue}>
-                    Generate New Evaluations
-                </button>
-            </article>
+                <FormSubmit 
+                    text="Generate New Evaluations"
+                    onClick={handleFutureValue}
+                    id="future-value-button"
+                    display="block"
+                />
+            </form>
         </section>
     )
 }

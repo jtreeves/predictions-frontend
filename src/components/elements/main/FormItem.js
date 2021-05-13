@@ -23,8 +23,6 @@ function FormItem(props) {
             <p>
                 {label}
                 <textarea
-                    cols="30" 
-                    rows="10"
                     name={props.label}
                     value={props.value}
                     onChange={props.onChange}

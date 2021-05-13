@@ -63,6 +63,17 @@ button.blank {
     );
 }
 
+form.analysis p {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+}
+
+form.analysis label {
+    font-style: normal;
+    font-weight: normal;
+}
+
 #zoom {
     display: grid;
     row-gap: 10px;
@@ -120,82 +131,94 @@ button.blank {
     width: 100%;
 }
 
-section.model-card {
+.model-card {
     display: grid;
     grid-template-rows: repeat(2, auto);
     background: white;
     border-radius: 5px;
 }
 
-section.model-card h2 {
+.model-card h2 {
     padding: 10px;
 }
 
-section.model-card article {
+.model-card article {
     padding: 20px;
+    display: grid;
+    row-gap: 10px;
 }
 
-section.model-card.pink {
+.model-card p {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.model-card li {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.model-card.pink {
     border: 5px solid pink;
 }
 
-section.model-card.pink h2 {
+.model-card.pink h2 {
     background: pink;
 }
 
-section.model-card.green {
+.model-card.green {
     border: 5px solid green;
 }
 
-section.model-card.green h2 {
+.model-card.green h2 {
     background: green;
 }
 
-section.model-card.blue {
+.model-card.blue {
     border: 5px solid blue;
 }
 
-section.model-card.blue h2 {
+.model-card.blue h2 {
     background: blue;
 }
 
-section.model-card.red {
+.model-card.red {
     border: 5px solid red;
 }
 
-section.model-card.red h2 {
+.model-card.red h2 {
     background: red;
 }
 
-section.model-card.brown {
+.model-card.brown {
     border: 5px solid brown;
 }
 
-section.model-card.brown h2 {
+.model-card.brown h2 {
     background: brown;
 }
 
-section.model-card.yellow {
+.model-card.yellow {
     border: 5px solid yellow;
 }
 
-section.model-card.yellow h2 {
+.model-card.yellow h2 {
     background: yellow;
 }
 
-section.model-card.orange {
+.model-card.orange {
     border: 5px solid orange;
 }
 
-section.model-card.orange h2 {
+.model-card.orange h2 {
     background: orange;
 }
 
-section.model-card.purple {
+.model-card.purple {
     border: 5px solid purple;
 }
 
-section.model-card.purple h2 {
+.model-card.purple h2 {
     background: purple;
 }
 
@@ -236,8 +259,13 @@ section.model-card.purple h2 {
     background: silver;
 }
 
-#future-evaluations article {
+#future-evaluations form {
     padding: 20px;
+    background: white;
+}
+
+#future-evaluations form p {
+    display: inline;
 }
 
 #highlights {
@@ -257,13 +285,17 @@ section.model-card.purple h2 {
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 2fr;
+    align-items: start;
+    background: white;
 }
 
-#highlights form label {
-    font-style: normal;
-    font-weight: normal;
+#highlights aside {
+    display: grid;
+    row-gap: 20px;
+    align-items: start;
 }
 
-#note textarea {
-    height: 150px;
+#highlights article {
+    display: grid;
+    row-gap: 10px;
 }

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
+import FormItem from '../main/FormItem'
+import FormSubmit from '../../buttons/main/FormSubmit'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Note(props) {
@@ -26,23 +28,27 @@ function Note(props) {
 
     if (!submitting) {
         return (
-            <article 
+            <form 
                 className="analysis"
-                id="note"
             >
                 <h3>Note</h3>
 
-                <form>
-                    <textarea
-                        value={note}
-                        onChange={handleNote}
-                    />
+                <FormItem 
+                    type="textarea"
+                    label="note"
+                    value={note}
+                    display="Add your thoughts about this data set"
+                    tooltip="Is there anything you want to highlight for later use?"
+                    onChange={handleNote}
+                />
 
-                    <button onClick={handleSubmitting}>
-                        Save Note
-                    </button>
-                </form>
-            </article>
+                <FormSubmit 
+                    text="Save Note"
+                    onClick={handleSubmitting}
+                    id="save-note-button"
+                    display="block"
+                />
+            </form>
         )
     } else {
         alert('Your note was saved!')
