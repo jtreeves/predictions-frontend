@@ -16,22 +16,29 @@ function VettedDataForm(title, independent, dependent, precision, dataSet) {
         alert('Precision must be a positive integer')
         return false
     } else {
-        const cleanedDataSet = CleanCollection(dataSet)
-        const parsedDataSet = JSON.parse(cleanedDataSet)
-        
-        if (parsedDataSet.length < 10) {
-            alert('You must include at least 10 points in your data set')
-            return false
-        } else {
-            const submission = {
-                title,
-                independent,
-                dependent,
-                precision: parseInt(precision),
-                dataSet: parsedDataSet
+        try {
+            console.log('ORIGINAL DATA SET: ', dataSet)
+            const cleanedDataSet = CleanCollection(dataSet)
+            console.log('CLEANED DATA SET: ', cleanedDataSet)
+            const parsedDataSet = JSON.parse(cleanedDataSet)
+            console.log('PARSED DATA SET: ', parsedDataSet)
+            if (parsedDataSet.length >= 10) {
+                const submission = {
+                    title,
+                    independent,
+                    dependent,
+                    precision: parseInt(precision),
+                    dataSet: parsedDataSet
+                }
+    
+                return submission
+            } else {
+                alert('You must include at least 10 points in your data set')
+                return false
             }
-
-            return submission
+        } catch (error) {
+            alert('Data set must be a list of number pairs')
+            return false
         }
     }
 }
