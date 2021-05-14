@@ -64,6 +64,7 @@ function DataSets(props) {
                 setPredictions(results)
             } catch (error) {
                 setPredictions('')
+                console.log(error)
             }
         }
         setLoading(false)

@@ -29,7 +29,9 @@ function ChangeEmail(props) {
                 )
                 setSaveClicked(true)
             } catch (error) {
-                alert(error.response.data.msg)
+                alert('Your email was not updated')
+                setUpdateClicked(false)
+                console.log(error)
             }
         }
     }

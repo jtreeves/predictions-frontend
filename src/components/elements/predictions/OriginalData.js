@@ -120,7 +120,9 @@ function OriginalData(props) {
                         setInitiated(true)
                         setSubmitted(true)
                     } catch (error) {
-                        alert(error)
+                        alert('Your data set was not created')
+                        ResetFormElements()
+                        console.log(error)
                     }
                 } else if (source && user.id) {
                     try {
@@ -148,7 +150,9 @@ function OriginalData(props) {
                         setModels(predictions.data.regressions)
                         setSubmitted(true)
                     } catch (error) {
-                        alert(error)
+                        alert('Your data set was not updated')
+                        ResetFormElements()
+                        console.log(error)
                     }
                 }
             }
@@ -172,7 +176,9 @@ function OriginalData(props) {
                 ResetFormElements()
                 setDeleted(true)
             } catch (error) {
-                alert(error)
+                alert('Your data set was not deleted')
+                ResetFormElements()
+                console.log(error)
             }
         }
     }

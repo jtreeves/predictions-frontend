@@ -29,7 +29,9 @@ function ChangeName(props) {
                 )
                 setSaveClicked(true)
             } catch (error) {
-                alert(error.response.data.msg)
+                alert('Your name was not updated')
+                setUpdateClicked(false)
+                console.log(error)
             }
         }
     }

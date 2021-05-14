@@ -15,6 +15,7 @@ function DisplayEmail(props) {
                 setEmail(currentUser.data.user.email)
             } catch (error) {
                 setEmail('')
+                console.log(error)
             }
         }
     }

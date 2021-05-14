@@ -15,6 +15,7 @@ function DisplayName(props) {
                 setName(currentUser.data.user.name)
             } catch (error) {
                 setName('')
+                console.log(error)
             }
         }
     }

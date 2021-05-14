@@ -27,7 +27,9 @@ function Favorite(props) {
                 )
                 setChanging(false)
             } catch (error) {
-                alert(error.response.data.msg)
+                alert('Your favorite was not set')
+                setChanging(false)
+                console.log(error)
             }
         }
     }

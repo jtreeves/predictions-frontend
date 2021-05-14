@@ -21,7 +21,9 @@ function DeleteAccount(props) {
                 )
                 setConfirmClicked(true)
             } catch (error) {
-                alert(error.response.data.msg)
+                alert('Your account was not deleted')
+                setDeleteClicked(false)
+                console.log(error)
             }
         }
     }
