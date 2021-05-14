@@ -42,10 +42,7 @@ function VettedDataForm(title, independent, dependent, precision, dataSet) {
                 }
             }
             
-            if (parsedDataSet.length < 10) {
-                alert('Data set must include at least ten points')
-                return false
-            } else {
+            if (parsedDataSet.length >= 10) {
                 const submission = {
                     title,
                     independent,
@@ -55,6 +52,9 @@ function VettedDataForm(title, independent, dependent, precision, dataSet) {
                 }
 
                 return submission
+            } else {
+                alert('Data set must include at least ten points')
+                return false
             }
         } catch (error) {
             alert('A typo appears in your data set; adding or removing brackets may resolve the typo')

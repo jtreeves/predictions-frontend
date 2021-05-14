@@ -1,5 +1,6 @@
 function FormatPoints(points, precision) {
     let formattedPoints = ''
+
     if (points[0] !== null) {
         for (const point of points) {
             let x = point[0]
@@ -13,6 +14,7 @@ function FormatPoints(points, precision) {
     } else {
         formattedPoints = `$ None $`
     }
+    
     return formattedPoints
 }
 

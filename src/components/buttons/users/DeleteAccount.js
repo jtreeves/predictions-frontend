@@ -28,7 +28,7 @@ function DeleteAccount(props) {
         }
     }
 
-    if (!deleteClicked && !confirmClicked) {
+    if (!deleteClicked) {
         return (
             <button 
                 onClick={handleDeleteClicked}
@@ -36,7 +36,7 @@ function DeleteAccount(props) {
                 Delete Account
             </button>
         )
-    } else if (deleteClicked && !confirmClicked) {
+    } else if (!confirmClicked) {
         return (
             <button 
                 onClick={handleConfirmClicked}

@@ -5,6 +5,7 @@ function AllFormElements() {
     const undoDeleteButton = document.getElementById('undo-delete-button')
     const submitWarning = document.getElementById('submit-warning')
     const deleteWarning = document.getElementById('delete-warning')
+    
     const allElements = {
         submitButton: submitButton,
         deleteButton: deleteButton,
@@ -13,6 +14,7 @@ function AllFormElements() {
         submitWarning: submitWarning,
         deleteWarning: deleteWarning
     }
+
     return allElements
 }
 
