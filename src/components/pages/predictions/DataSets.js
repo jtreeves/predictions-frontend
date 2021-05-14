@@ -71,7 +71,7 @@ function DataSets(props) {
 
     useEffect(() => {
         getPredictions()
-    }, [predictions])
+    })
 
     if (loading) {
         return (
