@@ -26,7 +26,7 @@ function Favorite(props) {
                     {favorite: favorite}
                 )
                 setChanging(false)
-            } catch(error) {
+            } catch (error) {
                 alert(error.response.data.msg)
             }
         }

@@ -28,7 +28,7 @@ function ChangeEmail(props) {
                     {email}
                 )
                 setSaveClicked(true)
-            } catch(error) {
+            } catch (error) {
                 alert(error.response.data.msg)
             }
         }

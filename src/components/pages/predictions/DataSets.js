@@ -62,7 +62,7 @@ function DataSets(props) {
                     )
                 })
                 setPredictions(results)
-            } catch(error) {
+            } catch (error) {
                 setPredictions('')
             }
         }

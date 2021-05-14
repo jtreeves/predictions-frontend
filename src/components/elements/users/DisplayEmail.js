@@ -13,7 +13,7 @@ function DisplayEmail(props) {
                     REACT_APP_SERVER_URL + 'users/' + userId
                 )
                 setEmail(currentUser.data.user.email)
-            } catch(error) {
+            } catch (error) {
                 setEmail('')
             }
         }

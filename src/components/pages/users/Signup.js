@@ -41,7 +41,7 @@ function Signup() {
                     newUser
                 )
                 setRedirect(true)
-            } catch(error) {
+            } catch (error) {
                 alert(error.response.data.msg)
             }
         }

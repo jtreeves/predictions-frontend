@@ -36,7 +36,7 @@ function Login(props) {
                 Authentication(token)
                 const decodedUser = jwt_decode(token)
                 props.nowCurrentUser(decodedUser)
-            } catch(error) {
+            } catch (error) {
                 alert(error.response.data.msg)
             }
         }

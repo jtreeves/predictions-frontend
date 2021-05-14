@@ -17,7 +17,7 @@ function SaveSet(props) {
                 )
                 alert('Your data set was saved!')
                 setSaved(true)
-            } catch(error) {
+            } catch (error) {
                 alert(error)
             }
         }

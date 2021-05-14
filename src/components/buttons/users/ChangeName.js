@@ -28,7 +28,7 @@ function ChangeName(props) {
                     {name}
                 )
                 setSaveClicked(true)
-            } catch(error) {
+            } catch (error) {
                 alert(error.response.data.msg)
             }
         }

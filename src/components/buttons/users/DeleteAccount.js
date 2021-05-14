@@ -20,7 +20,7 @@ function DeleteAccount(props) {
                     REACT_APP_SERVER_URL + 'users/' + props.user.id
                 )
                 setConfirmClicked(true)
-            } catch(error) {
+            } catch (error) {
                 alert(error.response.data.msg)
             }
         }

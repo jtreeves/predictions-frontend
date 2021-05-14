@@ -147,7 +147,7 @@ function OriginalData(props) {
                         ResetFormElements()
                         setModels(predictions.data.regressions)
                         setSubmitted(true)
-                    } catch(error) {
+                    } catch (error) {
                         alert(error)
                     }
                 }
@@ -171,7 +171,7 @@ function OriginalData(props) {
                 )
                 ResetFormElements()
                 setDeleted(true)
-            } catch(error) {
+            } catch (error) {
                 alert(error)
             }
         }

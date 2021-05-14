@@ -13,7 +13,7 @@ function DisplayName(props) {
                     REACT_APP_SERVER_URL + 'users/' + userId
                 )
                 setName(currentUser.data.user.name)
-            } catch(error) {
+            } catch (error) {
                 setName('')
             }
         }
