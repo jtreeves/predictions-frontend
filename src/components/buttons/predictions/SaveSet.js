@@ -8,16 +8,18 @@ function SaveSet(props) {
     const source = props.source
 
     const handleSave = async (e) => {
-        try {
-            e.preventDefault()
-            await axios.post(
-                REACT_APP_SERVER_URL + 'predictions/' + userId, 
-                { source }
-            )
-            alert('Your data set was saved!')
-            setSaved(true)
-        } catch(error) {
-            alert(error)
+        e.preventDefault()
+        if (source && userId) {
+            try {
+                await axios.post(
+                    REACT_APP_SERVER_URL + 'predictions/' + userId, 
+                    { source }
+                )
+                alert('Your data set was saved!')
+                setSaved(true)
+            } catch(error) {
+                alert(error)
+            }
         }
     }
 

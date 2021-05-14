@@ -20,15 +20,17 @@ function ChangeName(props) {
     }
 
     const handleSubmit = async (e) => {
-        try {
-            e.preventDefault()
-            await axios.put(
-                REACT_APP_SERVER_URL + 'users/' + props.user.id + '/name', 
-                {name}
-            )
-            setSaveClicked(true)
-        } catch(error) {
-            alert(error.response.data.msg)
+        e.preventDefault()
+        if (props.user.id && name) {
+            try {
+                await axios.put(
+                    REACT_APP_SERVER_URL + 'users/' + props.user.id + '/name', 
+                    {name}
+                )
+                setSaveClicked(true)
+            } catch(error) {
+                alert(error.response.data.msg)
+            }
         }
     }
 

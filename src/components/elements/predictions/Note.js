@@ -15,14 +15,16 @@ function Note(props) {
 
     const handleSubmitting = async (e) => {
         e.preventDefault()
-        try {
-            await axios.put(
-                REACT_APP_SERVER_URL + 'predictions/' + source + '/note', 
-                {note: note}
-            )
-            setSubmitting(true)
-        } catch(error) {
-            alert(error.response.data.msg)
+        if (source) {
+            try {
+                await axios.put(
+                    REACT_APP_SERVER_URL + 'predictions/' + source + '/note', 
+                    {note: note}
+                )
+                setSubmitting(true)
+            } catch(error) {
+                alert(error.response.data.msg)
+            }
         }
     }
 

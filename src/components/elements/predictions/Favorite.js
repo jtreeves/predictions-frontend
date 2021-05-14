@@ -19,14 +19,16 @@ function Favorite(props) {
 
     const handleSubmitting = async (e) => {
         e.preventDefault()
-        try {
-            await axios.put(
-                REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', 
-                {favorite: favorite}
-            )
-            setChanging(false)
-        } catch(error) {
-            alert(error.response.data.msg)
+        if (source) {
+            try {
+                await axios.put(
+                    REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', 
+                    {favorite: favorite}
+                )
+                setChanging(false)
+            } catch(error) {
+                alert(error.response.data.msg)
+            }
         }
     }
 
