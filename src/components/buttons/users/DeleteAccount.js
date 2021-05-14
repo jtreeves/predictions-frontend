@@ -12,6 +12,11 @@ function DeleteAccount(props) {
         setDeleteClicked(true)
     }
 
+    const handleAbandonDelete = (e) => {
+        e.preventDefault()
+        setDeleteClicked(false)
+    }
+
     const handleConfirmClicked = async (e) => {
         e.preventDefault()
         if (props.user.id) {
@@ -38,11 +43,23 @@ function DeleteAccount(props) {
         )
     } else if (!confirmClicked) {
         return (
-            <button 
-                onClick={handleConfirmClicked}
-            >
-                Yes, Delete My Account
-            </button>
+            <div>
+                <p>
+                    Are you sure you want to delete your account?
+                </p>
+
+                <button 
+                    onClick={handleConfirmClicked}
+                >
+                    Yes, Delete My Account
+                </button>
+
+                <button 
+                    onClick={handleAbandonDelete}
+                >
+                    No, Keep Account
+                </button>
+            </div>
         )
     } else {
         props.handleLogout()
