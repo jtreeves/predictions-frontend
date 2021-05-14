@@ -122,7 +122,7 @@ function OriginalData(props) {
                     } catch (error) {
                         alert(error)
                     }
-                } else {
+                } else if (source && user.id) {
                     try {
                         await axios.delete(
                             REACT_APP_SERVER_URL + 'predictions/' + source
@@ -164,7 +164,7 @@ function OriginalData(props) {
             allElements.undoDeleteButton.style.display = 'block'
             allElements.deleteWarning.style.display = 'block'
             allElements.submitButton.style.display = 'none'
-        } else {
+        } else if (source) {
             try {
                 await axios.delete(
                     REACT_APP_SERVER_URL + 'predictions/' + source
