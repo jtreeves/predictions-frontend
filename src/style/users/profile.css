@@ -4,6 +4,10 @@ main.profile section {
     row-gap: 10px;
 }
 
+main.profile section form p {
+    grid-template-columns: 1fr;
+}
+
 #core-information article {
     display: grid;
     grid-template-columns: repeat(2, auto);

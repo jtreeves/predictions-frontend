@@ -46,7 +46,7 @@ function DeleteAccount(props) {
         )
     } else if (!redirecting) {
         return (
-            <div>
+            <form>
                 <p>
                     Are you sure you want to delete your account?
                 </p>
@@ -62,7 +62,7 @@ function DeleteAccount(props) {
                 >
                     No, Keep Account
                 </button>
-            </div>
+            </form>
         )
     } else {
         logout()
