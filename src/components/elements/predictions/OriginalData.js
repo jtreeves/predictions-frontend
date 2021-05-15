@@ -67,6 +67,7 @@ function OriginalData(props) {
 
     const handleSpreadsheet = (e) => {
         const file = e.target.files[0]
+        e.target.value = ''
         const reader = new FileReader()
         reader.onload = (e) => {
             const fileInput = e.target.result
