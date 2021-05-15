@@ -1,22 +1,75 @@
+import { useState } from 'react'
 import ChangeName from '../../buttons/users/ChangeName'
 import ChangeEmail from '../../buttons/users/ChangeEmail'
 import DeleteAccount from '../../buttons/users/DeleteAccount'
 
 function UpdateAccount(props) {
-    return (
-        <section>
-            <h2>Update Account</h2>
+    const [changingName, setChangingName] = useState(false)
+    const [changingEmail, setChangingEmail] = useState(false)
+    const [deletingAccount, setDeletingAccount] = useState(false)
 
-            <ChangeName user={props.user} />
+    if (!changingName && !changingEmail && !deletingAccount) {
+        return (
+            <section>
+                <h2>Update Account</h2>
+    
+                <ChangeName 
+                    user={props.user} 
+                    changingName={changingName}
+                    setChangingName={setChangingName}
+                />
+    
+                <ChangeEmail 
+                    user={props.user} 
+                    changingEmail={changingEmail}
+                    setChangingEmail={setChangingEmail}
+                />
+    
+                <DeleteAccount 
+                    user={props.user}
+                    handleLogout={props.handleLogout} 
+                    deletingAccount={deletingAccount}
+                    setDeletingAccount={setDeletingAccount}
+                />
+            </section>
+        )
+    } else if (changingName) {
+        return (
+            <section>
+                <h2>Update Name</h2>
 
-            <ChangeEmail user={props.user} />
+                <ChangeName 
+                    user={props.user} 
+                    changingName={changingName}
+                    setChangingName={setChangingName}
+                />
+            </section>
+        )
+    } else if (changingEmail) {
+        return (
+            <section>
+                <h2>Update Email</h2>
 
-            <DeleteAccount 
-                user={props.user}
-                handleLogout={props.handleLogout} 
-            />
-        </section>
-    )
+                <ChangeEmail 
+                    user={props.user} 
+                    changingEmail={changingEmail}
+                    setChangingEmail={setChangingEmail}
+                />
+            </section>
+        )
+    } else if (deletingAccount) {
+        return (
+            <section>
+                <h2>Delete Account</h2>
+
+                <ChangeEmail 
+                    user={props.user} 
+                    deletingAccount={deletingAccount}
+                    setDeletingAccount={setDeletingAccount}
+                />
+            </section>
+        )
+    }
 }
 
 export default UpdateAccount

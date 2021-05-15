@@ -1,50 +1,55 @@
 import { useState } from 'react'
-import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../main/FormSubmit'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function ChangeName(props) {
-    const [updateClicked, setUpdateClicked] = useState(false)
-    const [saveClicked, setSaveClicked] = useState(false)
     const [name, setName] = useState(props.user.name)
+    const userId = props.user.id
+    const changingName = props.changingName
+    const setChangingName = props.setChangingName
 
     const handleName = (e) => {
         setName(e.target.value)
     }
 
-    const handleUpdate = (e) => {
+    const handleInitiate = (e) => {
         e.preventDefault()
-        setUpdateClicked(true)
+        setChangingName(true)
+    }
+
+    const handleAbandon = (e) => {
+        e.preventDefault()
+        setChangingName(false)
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (props.user.id && name) {
+        if (userId && name) {
             try {
                 await axios.put(
-                    REACT_APP_SERVER_URL + 'users/' + props.user.id + '/name', 
+                    REACT_APP_SERVER_URL + 'users/' + userId + '/name', 
                     {name}
                 )
-                setSaveClicked(true)
+                setChangingName(false)
             } catch (error) {
                 alert('Your name was not updated')
-                setUpdateClicked(false)
+                setChangingName(false)
                 console.log(error)
             }
         }
     }
 
-    if (!updateClicked) {
+    if (!changingName) {
         return (
             <button 
-                onClick={handleUpdate}
+                onClick={handleInitiate}
             >
                 Change Name
             </button>
         )
-    } else if (!saveClicked) {
+    } else {
         return (
             <form>
                 <FormItem
@@ -57,16 +62,19 @@ function ChangeName(props) {
                 />
 
                 <FormSubmit 
-                    text="Update Name"
+                    text="Submit New Name"
                     onClick={handleSubmit}
-                    id="change-name-button"
+                    id="submit-new-name-button"
+                    display="block"
+                />
+                
+                <FormSubmit 
+                    text="Keep Old Name"
+                    onClick={handleAbandon}
+                    id="keep-old-name-button"
                     display="block"
                 />
             </form>
-        )
-    } else {
-        return (
-            <Redirect to="/profile" />
         )
     }
 }
