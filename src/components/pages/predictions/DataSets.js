@@ -61,7 +61,7 @@ function DataSets(props) {
                         </li>
                     )
                 })
-                setPredictions(results)
+                setPredictions(results.reverse())
             } catch (error) {
                 setPredictions('')
                 console.log(error)
