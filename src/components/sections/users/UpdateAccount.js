@@ -62,8 +62,9 @@ function UpdateAccount(props) {
             <section>
                 <h2>Delete Account</h2>
 
-                <ChangeEmail 
+                <DeleteAccount 
                     user={props.user} 
+                    handleLogout={props.handleLogout} 
                     deletingAccount={deletingAccount}
                     setDeletingAccount={setDeletingAccount}
                 />

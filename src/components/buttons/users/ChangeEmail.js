@@ -14,7 +14,7 @@ function ChangeEmail(props) {
         setEmail(e.target.value)
     }
 
-    const handleUpdate = (e) => {
+    const handleInitiate = (e) => {
         e.preventDefault()
         setChangingEmail(true)
     }
@@ -44,7 +44,7 @@ function ChangeEmail(props) {
     if (!changingEmail) {
         return (
             <button 
-                onClick={handleUpdate}
+                onClick={handleInitiate}
             >
                 Change Email
             </button>

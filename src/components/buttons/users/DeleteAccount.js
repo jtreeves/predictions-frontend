@@ -4,44 +4,47 @@ import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function DeleteAccount(props) {
-    const [deleteClicked, setDeleteClicked] = useState(false)
-    const [confirmClicked, setConfirmClicked] = useState(false)
+    const [redirecting, setRedirecting] = useState(false)
+    const userId = props.user.id
+    const logout = props.handleLogout
+    const deletingAccount = props.deletingAccount
+    const setDeletingAccount = props.setDeletingAccount
 
-    const handleDeleteClicked = (e) => {
+    const handleInitiate = (e) => {
         e.preventDefault()
-        setDeleteClicked(true)
+        setDeletingAccount(true)
     }
 
-    const handleAbandonDelete = (e) => {
+    const handleAbandon = (e) => {
         e.preventDefault()
-        setDeleteClicked(false)
+        setDeletingAccount(false)
     }
 
-    const handleConfirmClicked = async (e) => {
+    const handleDelete = async (e) => {
         e.preventDefault()
-        if (props.user.id) {
+        if (userId) {
             try {
                 await axios.delete(
-                    REACT_APP_SERVER_URL + 'users/' + props.user.id
+                    REACT_APP_SERVER_URL + 'users/' + userId
                 )
-                setConfirmClicked(true)
+                setRedirecting(true)
             } catch (error) {
                 alert('Your account was not deleted')
-                setDeleteClicked(false)
+                setDeletingAccount(false)
                 console.log(error)
             }
         }
     }
 
-    if (!deleteClicked) {
+    if (!deletingAccount) {
         return (
             <button 
-                onClick={handleDeleteClicked}
+                onClick={handleInitiate}
             >
                 Delete Account
             </button>
         )
-    } else if (!confirmClicked) {
+    } else if (!redirecting) {
         return (
             <div>
                 <p>
@@ -49,20 +52,20 @@ function DeleteAccount(props) {
                 </p>
 
                 <button 
-                    onClick={handleConfirmClicked}
+                    onClick={handleDelete}
                 >
                     Yes, Delete My Account
                 </button>
 
                 <button 
-                    onClick={handleAbandonDelete}
+                    onClick={handleAbandon}
                 >
                     No, Keep Account
                 </button>
             </div>
         )
     } else {
-        props.handleLogout()
+        logout()
         return (
             <Redirect to="/signup"/>
         )
