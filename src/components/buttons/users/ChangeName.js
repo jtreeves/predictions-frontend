@@ -5,8 +5,10 @@ import FormSubmit from '../main/FormSubmit'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function ChangeName(props) {
-    const [name, setName] = useState(props.user.name)
-    const userId = props.user.id
+    // const [name, setName] = useState(props.user.name)
+    const id = props.id
+    const name = props.name
+    const setName = props.setName
     const changingName = props.changingName
     const setChangingName = props.setChangingName
 
@@ -26,10 +28,10 @@ function ChangeName(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (userId && name) {
+        if (id && name) {
             try {
                 await axios.put(
-                    REACT_APP_SERVER_URL + 'users/' + userId + '/name', 
+                    REACT_APP_SERVER_URL + 'users/' + id + '/name', 
                     {name}
                 )
                 setChangingName(false)

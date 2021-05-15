@@ -5,8 +5,10 @@ import FormSubmit from '../main/FormSubmit'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function ChangeEmail(props) {
-    const [email, setEmail] = useState(props.user.email)
-    const userId = props.user.id
+    // const [email, setEmail] = useState(props.user.email)
+    const id = props.id
+    const email = props.email
+    const setEmail = props.setEmail
     const changingEmail = props.changingEmail
     const setChangingEmail = props.setChangingEmail
 
@@ -26,10 +28,10 @@ function ChangeEmail(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (userId && email) {
+        if (id && email) {
             try {
                 await axios.put(
-                    REACT_APP_SERVER_URL + 'users/' + userId + '/email', 
+                    REACT_APP_SERVER_URL + 'users/' + id + '/email', 
                     {email}
                 )
                 setChangingEmail(false)

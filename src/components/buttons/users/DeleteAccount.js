@@ -5,8 +5,8 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function DeleteAccount(props) {
     const [redirecting, setRedirecting] = useState(false)
-    const userId = props.user.id
-    const logout = props.handleLogout
+    const id = props.id
+    const logout = props.logout
     const deletingAccount = props.deletingAccount
     const setDeletingAccount = props.setDeletingAccount
 
@@ -22,10 +22,10 @@ function DeleteAccount(props) {
 
     const handleDelete = async (e) => {
         e.preventDefault()
-        if (userId) {
+        if (id) {
             try {
                 await axios.delete(
-                    REACT_APP_SERVER_URL + 'users/' + userId
+                    REACT_APP_SERVER_URL + 'users/' + id
                 )
                 setRedirecting(true)
             } catch (error) {

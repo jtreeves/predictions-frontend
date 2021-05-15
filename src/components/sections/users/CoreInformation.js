@@ -4,8 +4,8 @@ import DisplayEmail from '../../elements/users/DisplayEmail'
 function CoreInformation(props) {
     return (
         <section id="core-information">
-            <DisplayName user={props.user} />
-            <DisplayEmail user={props.user} />
+            <DisplayName name={props.name} />
+            <DisplayEmail email={props.email} />
         </section>
     )
 }

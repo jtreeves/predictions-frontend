@@ -14,20 +14,24 @@ function UpdateAccount(props) {
                 <h2>Update Account</h2>
     
                 <ChangeName 
-                    user={props.user} 
+                    id={props.id} 
+                    name={props.name}
+                    setName={props.setName}
                     changingName={changingName}
                     setChangingName={setChangingName}
                 />
     
                 <ChangeEmail 
-                    user={props.user} 
+                    id={props.id} 
+                    email={props.email}
+                    setEmail={props.setEmail}
                     changingEmail={changingEmail}
                     setChangingEmail={setChangingEmail}
                 />
     
                 <DeleteAccount 
-                    user={props.user}
-                    handleLogout={props.handleLogout} 
+                    id={props.id} 
+                    logout={props.logout} 
                     deletingAccount={deletingAccount}
                     setDeletingAccount={setDeletingAccount}
                 />
@@ -39,7 +43,9 @@ function UpdateAccount(props) {
                 <h2>Update Name</h2>
 
                 <ChangeName 
-                    user={props.user} 
+                    id={props.id} 
+                    name={props.name}
+                    setName={props.setName}
                     changingName={changingName}
                     setChangingName={setChangingName}
                 />
@@ -51,7 +57,9 @@ function UpdateAccount(props) {
                 <h2>Update Email</h2>
 
                 <ChangeEmail 
-                    user={props.user} 
+                    id={props.id} 
+                    email={props.email}
+                    setEmail={props.setEmail}
                     changingEmail={changingEmail}
                     setChangingEmail={setChangingEmail}
                 />
@@ -63,8 +71,8 @@ function UpdateAccount(props) {
                 <h2>Delete Account</h2>
 
                 <DeleteAccount 
-                    user={props.user} 
-                    handleLogout={props.handleLogout} 
+                    id={props.id} 
+                    logout={props.logout} 
                     deletingAccount={deletingAccount}
                     setDeletingAccount={setDeletingAccount}
                 />
