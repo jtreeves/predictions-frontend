@@ -5,15 +5,15 @@ import FormSubmit from '../main/FormSubmit'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function ChangeEmail(props) {
-    // const [email, setEmail] = useState(props.user.email)
     const id = props.id
     const email = props.email
     const setEmail = props.setEmail
     const changingEmail = props.changingEmail
     const setChangingEmail = props.setChangingEmail
+    const [intermediaryEmail, setIntermediaryEmail] = useState(email)
 
     const handleEmail = (e) => {
-        setEmail(e.target.value)
+        setIntermediaryEmail(e.target.value)
     }
 
     const handleInitiate = (e) => {
@@ -23,17 +23,19 @@ function ChangeEmail(props) {
 
     const handleAbandon = (e) => {
         e.preventDefault()
+        setIntermediaryEmail(email)
         setChangingEmail(false)
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (id && email) {
+        if (id && intermediaryEmail) {
             try {
                 await axios.put(
                     REACT_APP_SERVER_URL + 'users/' + id + '/email', 
-                    {email}
+                    {email: intermediaryEmail}
                 )
+                setEmail(intermediaryEmail)
                 setChangingEmail(false)
             } catch (error) {
                 alert('Your email was not updated')
@@ -57,7 +59,7 @@ function ChangeEmail(props) {
                 <FormItem
                     type="email"
                     label="email"
-                    value={email}
+                    value={intermediaryEmail}
                     display="Email"
                     tooltip="What email address do you want to associate with this account?"
                     onChange={handleEmail}
