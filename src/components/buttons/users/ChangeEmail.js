@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../main/FormSubmit'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function ChangeEmail(props) {
-    const [updateClicked, setUpdateClicked] = useState(false)
-    const [saveClicked, setSaveClicked] = useState(false)
     const [email, setEmail] = useState(props.user.email)
+    const userId = props.user.id
+    const changingEmail = props.changingEmail
+    const setChangingEmail = props.setChangingEmail
 
     const handleEmail = (e) => {
         setEmail(e.target.value)
@@ -16,27 +16,32 @@ function ChangeEmail(props) {
 
     const handleUpdate = (e) => {
         e.preventDefault()
-        setUpdateClicked(true)
+        setChangingEmail(true)
+    }
+
+    const handleAbandon = (e) => {
+        e.preventDefault()
+        setChangingEmail(false)
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (props.user.id && email) {
+        if (userId && email) {
             try {
                 await axios.put(
-                    REACT_APP_SERVER_URL + 'users/' + props.user.id + '/email', 
+                    REACT_APP_SERVER_URL + 'users/' + userId + '/email', 
                     {email}
                 )
-                setSaveClicked(true)
+                setChangingEmail(false)
             } catch (error) {
                 alert('Your email was not updated')
-                setUpdateClicked(false)
+                setChangingEmail(false)
                 console.log(error)
             }
         }
     }
 
-    if (!updateClicked) {
+    if (!changingEmail) {
         return (
             <button 
                 onClick={handleUpdate}
@@ -44,7 +49,7 @@ function ChangeEmail(props) {
                 Change Email
             </button>
         )
-    } else if (!saveClicked) {
+    } else {
         return (
             <form>
                 <FormItem
@@ -57,16 +62,19 @@ function ChangeEmail(props) {
                 />
 
                 <FormSubmit 
-                    text="Update Email"
+                    text="Submit New Email"
                     onClick={handleSubmit}
-                    id="change-email-button"
+                    id="submit-new-email-button"
+                    display="block"
+                />
+
+                <FormSubmit 
+                    text="Keep Old Email"
+                    onClick={handleAbandon}
+                    id="keep-old-email-button"
                     display="block"
                 />
             </form>
-        )
-    } else {
-        return (
-            <Redirect to="/profile" />
         )
     }
 }
