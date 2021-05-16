@@ -15,7 +15,6 @@ function OriginalData(props) {
     const [precision, setPrecision] = useState(props.precision)
     const [dataSet, setDataSet] = useState(props.dataSet)
     const [models, setModels] = useState({})
-    const [source, setSource] = useState(props.source)
     const [initiated, setInitiated] = useState(props.initiated)
     const [submitted, setSubmitted] = useState(false)    
     const [deleted, setDeleted] = useState(false)
@@ -28,6 +27,7 @@ function OriginalData(props) {
     }, [submitted])
 
     const user = props.user
+    const source = props.source
     const stored = props.stored
     const opinions = {
         favorite: props.favorite,
@@ -134,10 +134,9 @@ function OriginalData(props) {
                             REACT_APP_SERVER_URL + 'api', 
                             submission
                         )
-                        setSource(predictions.data.regressions.source)
                         await axios.post(
                             REACT_APP_SERVER_URL + 'predictions/' + user.id, 
-                            {source}
+                            {source: predictions.data.regressions.source}
                         )
                         await axios.put(
                             REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', 
