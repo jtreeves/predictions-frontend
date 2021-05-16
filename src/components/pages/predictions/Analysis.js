@@ -20,6 +20,8 @@ function Analysis(props) {
     const opinions = location.state.opinions
     const initiated = location.state.initiated
     const [stored, setStored] = useState(location.state.stored)
+    const [favorite, setFavorite] = useState(opinions.favorite)
+    const [note, setNote] = useState(opinions.note)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -56,8 +58,6 @@ function Analysis(props) {
     const sinusoidalCorrelation = models.sinusoidal_correlation
     const bestFit = models.best_fit
     const source = models.source
-    const favorite = opinions.favorite
-    const note = opinions.note
     const user = props.user
 
     const originalPoints = []
@@ -213,7 +213,9 @@ function Analysis(props) {
                 bestFit={bestFit}
                 correlation={highestCorrelation}
                 favorite={favorite}
+                setFavorite={setFavorite}
                 note={note}
+                setNote={setNote}
                 source={source}
                 precision={precision}
             />

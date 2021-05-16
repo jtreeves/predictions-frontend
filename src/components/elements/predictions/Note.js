@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import axios from 'axios'
 import FormItem from '../main/FormItem'
 import FormSubmit from '../../buttons/main/FormSubmit'
@@ -6,7 +5,8 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Note(props) {
     const source = props.source
-    const [note, setNote] = useState(props.note)
+    const note = props.note
+    const setNote = props.setNote
 
     const handleNote = (e) => {
         setNote(e.target.value)

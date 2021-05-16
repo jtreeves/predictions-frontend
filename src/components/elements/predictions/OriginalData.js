@@ -26,8 +26,8 @@ function OriginalData(props) {
         }
     }, [submitted])
 
+    let source = props.source
     const user = props.user
-    const source = props.source
     const stored = props.stored
     const opinions = {
         favorite: props.favorite,
@@ -134,9 +134,10 @@ function OriginalData(props) {
                             REACT_APP_SERVER_URL + 'api', 
                             submission
                         )
+                        source = predictions.data.regressions.source
                         await axios.post(
                             REACT_APP_SERVER_URL + 'predictions/' + user.id, 
-                            {source: predictions.data.regressions.source}
+                            {source}
                         )
                         await axios.put(
                             REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', 

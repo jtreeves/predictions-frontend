@@ -19,12 +19,14 @@ function Highlights(props) {
 
                     <Favorite 
                         favorite={props.favorite}
+                        setFavorite={props.setFavorite}
                         source={props.source}
                     />
                 </aside>
 
                 <Note 
                     note={props.note}
+                    setNote={props.setNote}
                     source={props.source}
                 />
             </div>

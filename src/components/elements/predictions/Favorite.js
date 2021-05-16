@@ -5,7 +5,8 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Favorite(props) {
     const source = props.source
-    const [favorite, setFavorite] = useState(props.favorite)
+    const favorite = props.favorite
+    const setFavorite = props.setFavorite
     const [changing, setChanging] = useState(false)
 
     const handleFavorite = (e) => {
