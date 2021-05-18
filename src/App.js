@@ -14,7 +14,7 @@ import Header from './components/sections/main/Header'
 import Footer from './components/sections/main/Footer'
 import Navigation from './components/sections/main/Navigation'
 import PrivateRoute from './components/elements/main/PrivateRoute'
-import Authentication from './utilities/main/Authentication'
+import Authentication from './actions/main/Authentication'
 import './style/main/Default.css'
 
 function App() {

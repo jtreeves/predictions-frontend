@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../../buttons/main/FormSubmit'
 import VettedLogin from '../../../utilities/users/VettedLogin'
-import Authentication from '../../../utilities/main/Authentication'
+import CreateSession from '../../../actions/users/CreateSession'
+import Authentication from '../../../actions/main/Authentication'
 import '../../../style/users/Login.css'
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Login(props) {
     const [email, setEmail] = useState('')
@@ -27,10 +26,7 @@ function Login(props) {
 
         if (userData) {
             try {
-                const currentUser = await axios.post(
-                    REACT_APP_SERVER_URL + 'users/login', 
-                    userData
-                )
+                const currentUser = await CreateSession(userData)
                 const {token} = currentUser.data
                 localStorage.setItem('jwtToken', token)
                 Authentication(token)
