@@ -4,9 +4,9 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../../buttons/main/FormSubmit'
-import VettedLogin from '../../utilities/users/VettedLogin'
-import Authentication from '../../utilities/main/Authentication'
-import '../../../style/users/login.css'
+import VettedLogin from '../../../utilities/users/VettedLogin'
+import Authentication from '../../../utilities/main/Authentication'
+import '../../../style/users/Login.css'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Login(props) {

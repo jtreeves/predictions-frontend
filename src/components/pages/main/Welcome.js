@@ -1,4 +1,4 @@
-import '../../../style/main/welcome.css'
+import '../../../style/main/Welcome.css'
 
 function Welcome() {
     return (

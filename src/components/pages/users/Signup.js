@@ -3,8 +3,8 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../../buttons/main/FormSubmit'
-import VettedSignup from '../../utilities/users/VettedSignup'
-import '../../../style/users/signup.css'
+import VettedSignup from '../../../utilities/users/VettedSignup'
+import '../../../style/users/Signup.css'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Signup() {

@@ -1,6 +1,6 @@
 import OriginalData from '../../elements/predictions/OriginalData'
-import CheckExpiration from '../../utilities/users/CheckExpiration'
-import '../../../style/predictions/submission.css'
+import CheckExpiration from '../../../utilities/users/CheckExpiration'
+import '../../../style/predictions/Submission.css'
 
 function Submission(props) {
     CheckExpiration(props.user.exp, props.handleLogout)

@@ -6,11 +6,11 @@ import FutureEvaluations from '../../sections/predictions/FutureEvaluations'
 import ModelsAnalyses from '../../sections/predictions/ModelsAnalyses'
 import DataDisplay from '../../sections/predictions/DataDisplay'
 import ExecutiveLevel from '../../buttons/predictions/ExecutiveLevel'
-import HorizontalAxis from '../../utilities/predictions/HorizontalAxis'
-import VerticalAxis from '../../utilities/predictions/VerticalAxis'
-import CheckFavorite from '../../utilities/predictions/CheckFavorite'
-import CheckExpiration from '../../utilities/users/CheckExpiration'
-import '../../../style/predictions/analysis.css'
+import HorizontalAxis from '../../../utilities/predictions/HorizontalAxis'
+import VerticalAxis from '../../../utilities/predictions/VerticalAxis'
+import CheckFavorite from '../../../utilities/predictions/CheckFavorite'
+import CheckExpiration from '../../../utilities/users/CheckExpiration'
+import '../../../style/predictions/Analysis.css'
 
 function Analysis(props) {
     CheckExpiration(props.user.exp, props.handleLogout)

@@ -1,5 +1,5 @@
-import HorizontalAxis from '../../utilities/predictions/HorizontalAxis'
-import ZoomSeparateGraphs from '../../utilities/predictions/ZoomSeparateGraphs'
+import HorizontalAxis from '../../../utilities/predictions/HorizontalAxis'
+import ZoomSeparateGraphs from '../../../utilities/predictions/ZoomSeparateGraphs'
 
 function Zoom(props) {
     const handleSeparateGraphs = (xMinimum, xMaximum, increment) => {

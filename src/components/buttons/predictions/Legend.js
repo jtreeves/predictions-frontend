@@ -1,4 +1,4 @@
-import GeneratePoints from '../../utilities/predictions/GeneratePoints'
+import GeneratePoints from '../../../utilities/predictions/GeneratePoints'
 
 function Legend(props) {
     const handleDisplayLinear = (e) => {

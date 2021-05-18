@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import CheckExpiration from '../../utilities/users/CheckExpiration'
-import '../../../style/predictions/data.css'
+import CheckExpiration from '../../../utilities/users/CheckExpiration'
+import '../../../style/predictions/Data.css'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function DataSets(props) {

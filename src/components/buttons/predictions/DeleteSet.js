@@ -1,4 +1,4 @@
-import AllFormElements from '../../utilities/predictions/AllFormElements'
+import AllFormElements from '../../../utilities/predictions/AllFormElements'
 
 function DeleteSet() {
     const handleDelete = (e) => {

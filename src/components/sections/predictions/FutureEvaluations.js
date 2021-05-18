@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import FormSubmit from '../../buttons/main/FormSubmit'
 import EvaluationSentence from '../../elements/predictions/EvaluationSentence'
-import Evaluations from '../../utilities/predictions/Evaluations'
+import Evaluations from '../../../utilities/predictions/Evaluations'
 
 function FutureEvaluations(props) {
     const [futureInput, setFutureInput] = useState(Math.round(props.xMaximum + (props.xMaximum - props.xMinimum) / 2))

@@ -2,10 +2,10 @@ import { useState, useEffect, useRef } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import EditSet from './EditSet'
-import SpreadsheetInput from '../../utilities/predictions/SpreadsheetInput'
-import VettedDataForm from '../../utilities/predictions/VettedDataForm'
-import AllFormElements from '../../utilities/predictions/AllFormElements'
-import ResetFormElements from '../../utilities/predictions/ResetFormElements'
+import SpreadsheetInput from '../../../utilities/predictions/SpreadsheetInput'
+import VettedDataForm from '../../../utilities/predictions/VettedDataForm'
+import AllFormElements from '../../../utilities/predictions/AllFormElements'
+import ResetFormElements from '../../../utilities/predictions/ResetFormElements'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function OriginalData(props) {
