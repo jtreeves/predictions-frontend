@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import axios from 'axios'
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../../buttons/main/FormSubmit'
+import CreateUser from '../../../actions/users/CreateUser'
 import VettedSignup from '../../../utilities/users/VettedSignup'
 import '../../../style/users/Signup.css'
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function Signup() {
     const [name, setName] = useState('')
@@ -32,14 +31,11 @@ function Signup() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const newUser = VettedSignup(name, email, password, confirmPassword)
+        const userData = VettedSignup(name, email, password, confirmPassword)
 
-        if (newUser) {
+        if (userData) {
             try {
-                await axios.post(
-                    REACT_APP_SERVER_URL + 'users/signup', 
-                    newUser
-                )
+                await CreateUser(userData)
                 setRedirect(true)
             } catch (error) {
                 alert(error.response.data.msg)
