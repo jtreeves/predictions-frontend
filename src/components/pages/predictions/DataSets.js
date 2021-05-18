@@ -22,7 +22,7 @@ function DataSets(props) {
                 for (const prediction of allPredictions) {
                     if (prediction.source) {
                         const rawRegressions = await axios.get(
-                            REACT_APP_SERVER_URL + 'api/' + prediction.source
+                            REACT_APP_SERVER_URL + 'regressions/' + prediction.source
                         )
                         allRegressions.push(
                             rawRegressions.data.regressions

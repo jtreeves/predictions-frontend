@@ -110,7 +110,7 @@ function OriginalData(props) {
                 if (!stored) {
                     try {
                         const predictions = await axios.post(
-                            REACT_APP_SERVER_URL + 'api',
+                            REACT_APP_SERVER_URL + 'regressions',
                             submission
                         )
                         allElements.submitButton.innerText = 'Update Set'
@@ -131,7 +131,7 @@ function OriginalData(props) {
                             REACT_APP_SERVER_URL + 'predictions/' + source
                         )
                         const predictions = await axios.post(
-                            REACT_APP_SERVER_URL + 'api', 
+                            REACT_APP_SERVER_URL + 'regressions', 
                             submission
                         )
                         source = predictions.data.regressions.source
