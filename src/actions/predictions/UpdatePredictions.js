@@ -5,7 +5,7 @@ async function UpdatePredictions(source, submission) {
     try {
         const predictions = await axios.put(
             REACT_APP_SERVER_URL + 'regressions/' + source, 
-            { submission: submission }
+            submission
         )
         return predictions
     } catch (error) {
