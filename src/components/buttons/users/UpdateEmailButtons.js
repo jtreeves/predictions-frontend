@@ -34,7 +34,7 @@ function UpdateEmailButtons(props) {
                 setEmail(intermediaryEmail)
                 setChangingEmail(false)
             } catch (error) {
-                alert('Your email was not updated')
+                alert(error.response.data.msg)
                 setChangingEmail(false)
                 console.log(error)
             }
