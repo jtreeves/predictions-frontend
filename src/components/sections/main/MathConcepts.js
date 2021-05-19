@@ -1,7 +1,10 @@
+import Math from '../../../text/Math'
+
 function MathConcepts() {
     return (
         <section>
-            TK
+            <h2>Math Concepts</h2>
+            {Math}
         </section>
     )
 }

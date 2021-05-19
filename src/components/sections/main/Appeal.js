@@ -1,7 +1,10 @@
+import Advantages from '../../../text/Advantages'
+
 function Appeal() {
     return (
         <section>
-            TK
+            <h2>Appeal</h2>
+            {Advantages}
         </section>
     )
 }

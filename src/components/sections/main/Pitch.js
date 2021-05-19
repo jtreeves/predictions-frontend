@@ -1,7 +1,10 @@
+import Philosophy from '../../../text/Philosophy'
+
 function Pitch() {
     return (
         <section>
-            TK
+            <h2>Pitch</h2>
+            {Philosophy}
         </section>
     )
 }
