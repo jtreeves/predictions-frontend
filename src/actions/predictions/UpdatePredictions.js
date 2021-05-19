@@ -1,12 +1,12 @@
-import UpdateFavorite from './UpdateFavorite'
-import UpdateNote from './UpdateNote'
-import UpdateDataSet from './UpdateDataSet'
+import axios from 'axios'
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-async function UpdatePredictions(source, submission, favorite, note) {
+async function UpdatePredictions(source, submission) {
     try {
-        await UpdateFavorite(source, favorite)
-        await UpdateNote(source, note)
-        const predictions = await UpdateDataSet(source, submission)
+        const predictions = await axios.put(
+            REACT_APP_SERVER_URL + 'regressions/' + source, 
+            { submission: submission }
+        )
         return predictions
     } catch (error) {
         throw error

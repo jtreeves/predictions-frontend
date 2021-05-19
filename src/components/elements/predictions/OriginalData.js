@@ -129,9 +129,7 @@ function OriginalData(props) {
                     try {
                         const predictions = await UpdatePredictions(
                             source, 
-                            submission, 
-                            opinions.favorite, 
-                            opinions.note
+                            submission
                         )
                         ResetFormElements()
                         setModels(predictions.data.regressions)
