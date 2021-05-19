@@ -40,6 +40,7 @@ main.analysis h2 {
 
 .model-card p, #data-display div {
     grid-template-columns: 1fr 3fr;
+    column-gap: 20px;
 }
 
 .model-card li, #highlights div {
