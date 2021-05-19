@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import GetUser from '../../../actions/users/GetUser'
 import UpdateName from '../../../actions/users/UpdateName'
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../main/FormSubmit'
@@ -15,9 +16,17 @@ function UpdateNameButtons(props) {
         setIntermediaryName(e.target.value)
     }
 
-    const handleInitiate = (e) => {
+    const handleInitiate = async (e) => {
         e.preventDefault()
-        setChangingName(true)
+        try {
+            const currentUser = await GetUser(id)
+            setIntermediaryName(currentUser.data.user.name)
+            setChangingName(true)
+        } catch (error) {
+            setIntermediaryName('')
+            setChangingName(true)
+            console.log(error)
+        }
     }
 
     const handleAbandon = (e) => {
