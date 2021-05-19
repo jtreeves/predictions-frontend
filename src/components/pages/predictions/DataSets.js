@@ -13,32 +13,34 @@ function DataSets(props) {
     const getPredictions = async () => {
         if (props.user.id) {
             try {
-                const collections = await GetPredictions(props.user.id)
-                const results = collections.data.map((collection, index) => {
-                    return (
-                        <li
-                            key={index}
-                        >
-                            <Link
-                                to={{
-                                    pathname: "/analysis",
-                                    state: {
-                                        models: collection.regression, 
-                                        opinions: collection.prediction,
-                                        user: props.user,
-                                        initiated: true,
-                                        stored: true
-                                    }
-                                }}
-                                style={{ textDecoration: 'none' }} 
+                const rawData = await GetPredictions(props.user.id)
+                const results = rawData.data.collections.map(
+                    (collection, index) => {
+                        return (
+                            <li
+                                key={index}
                             >
-                                <button>
-                                    {collection.regression.title}
-                                </button>
-                            </Link>
-                        </li>
-                    )
-                })
+                                <Link
+                                    to={{
+                                        pathname: "/analysis",
+                                        state: {
+                                            models: collection.regression, 
+                                            opinions: collection.prediction,
+                                            user: props.user,
+                                            initiated: true,
+                                            stored: true
+                                        }
+                                    }}
+                                    style={{ textDecoration: 'none' }} 
+                                >
+                                    <button>
+                                        {collection.regression.title}
+                                    </button>
+                                </Link>
+                            </li>
+                        )
+                    }
+                )
                 setPredictions(results.reverse())
             } catch (error) {
                 setPredictions('')
