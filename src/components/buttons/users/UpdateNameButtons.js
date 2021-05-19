@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import axios from 'axios'
+import UpdateName from '../../../actions/users/UpdateName'
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../main/FormSubmit'
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-function ChangeName(props) {
+function UpdateNameButtons(props) {
     const id = props.id
     const name = props.name
     const setName = props.setName
@@ -31,10 +30,7 @@ function ChangeName(props) {
         e.preventDefault()
         if (id && intermediaryName) {
             try {
-                await axios.put(
-                    REACT_APP_SERVER_URL + 'users/' + id + '/name', 
-                    {name: intermediaryName}
-                )
+                await UpdateName(id, intermediaryName)
                 setName(intermediaryName)
                 setChangingName(false)
             } catch (error) {
@@ -83,4 +79,4 @@ function ChangeName(props) {
     }
 }
 
-export default ChangeName
+export default UpdateNameButtons

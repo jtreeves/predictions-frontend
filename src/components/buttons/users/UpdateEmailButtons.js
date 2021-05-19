@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import axios from 'axios'
+import UpdateEmail from '../../../actions/users/UpdateEmail'
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../main/FormSubmit'
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-function ChangeEmail(props) {
+function UpdateEmailButtons(props) {
     const id = props.id
     const email = props.email
     const setEmail = props.setEmail
@@ -31,10 +30,7 @@ function ChangeEmail(props) {
         e.preventDefault()
         if (id && intermediaryEmail) {
             try {
-                await axios.put(
-                    REACT_APP_SERVER_URL + 'users/' + id + '/email', 
-                    {email: intermediaryEmail}
-                )
+                await UpdateEmail(id, intermediaryEmail)
                 setEmail(intermediaryEmail)
                 setChangingEmail(false)
             } catch (error) {
@@ -83,4 +79,4 @@ function ChangeEmail(props) {
     }
 }
 
-export default ChangeEmail
+export default UpdateEmailButtons

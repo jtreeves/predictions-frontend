@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import axios from 'axios'
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
+import DeleteUser from '../../../actions/users/DeleteUser'
 
-function DeleteAccount(props) {
+function DeleteUserButtons(props) {
     const [redirecting, setRedirecting] = useState(false)
     const id = props.id
     const logout = props.logout
@@ -24,9 +23,7 @@ function DeleteAccount(props) {
         e.preventDefault()
         if (id) {
             try {
-                await axios.delete(
-                    REACT_APP_SERVER_URL + 'users/' + id
-                )
+                await DeleteUser(id)
                 setRedirecting(true)
             } catch (error) {
                 alert('Your account was not deleted')
@@ -72,4 +69,4 @@ function DeleteAccount(props) {
     }
 }
 
-export default DeleteAccount
+export default DeleteUserButtons

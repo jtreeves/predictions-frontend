@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import ChangeName from '../../buttons/users/ChangeName'
-import ChangeEmail from '../../buttons/users/ChangeEmail'
-import DeleteAccount from '../../buttons/users/DeleteAccount'
+import UpdateNameButtons from '../../buttons/users/UpdateNameButtons'
+import UpdateEmailButtons from '../../buttons/users/UpdateEmailButtons'
+import DeleteUserButtons from '../../buttons/users/DeleteUserButtons'
 
 function UpdateAccount(props) {
     const [changingName, setChangingName] = useState(false)
@@ -13,7 +13,7 @@ function UpdateAccount(props) {
             <section>
                 <h2>Update Account</h2>
     
-                <ChangeName 
+                <UpdateNameButtons 
                     id={props.id} 
                     name={props.name}
                     setName={props.setName}
@@ -21,7 +21,7 @@ function UpdateAccount(props) {
                     setChangingName={setChangingName}
                 />
     
-                <ChangeEmail 
+                <UpdateEmailButtons 
                     id={props.id} 
                     email={props.email}
                     setEmail={props.setEmail}
@@ -29,7 +29,7 @@ function UpdateAccount(props) {
                     setChangingEmail={setChangingEmail}
                 />
     
-                <DeleteAccount 
+                <DeleteUserButtons 
                     id={props.id} 
                     logout={props.logout} 
                     deletingAccount={deletingAccount}
@@ -42,7 +42,7 @@ function UpdateAccount(props) {
             <section>
                 <h2>Update Name</h2>
 
-                <ChangeName 
+                <UpdateNameButtons 
                     id={props.id} 
                     name={props.name}
                     setName={props.setName}
@@ -56,7 +56,7 @@ function UpdateAccount(props) {
             <section>
                 <h2>Update Email</h2>
 
-                <ChangeEmail 
+                <UpdateEmailButtons 
                     id={props.id} 
                     email={props.email}
                     setEmail={props.setEmail}
@@ -70,7 +70,7 @@ function UpdateAccount(props) {
             <section>
                 <h2>Delete Account</h2>
 
-                <DeleteAccount 
+                <DeleteUserButtons 
                     id={props.id} 
                     logout={props.logout} 
                     deletingAccount={deletingAccount}
