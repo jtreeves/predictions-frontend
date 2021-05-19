@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import GetUser from '../../../actions/users/GetUser'
 import UpdateEmail from '../../../actions/users/UpdateEmail'
 import FormItem from '../../elements/main/FormItem'
 import FormSubmit from '../main/FormSubmit'
@@ -15,9 +16,17 @@ function UpdateEmailButtons(props) {
         setIntermediaryEmail(e.target.value)
     }
 
-    const handleInitiate = (e) => {
+    const handleInitiate = async (e) => {
         e.preventDefault()
-        setChangingEmail(true)
+        try {
+            const currentUser = await GetUser(id)
+            setIntermediaryEmail(currentUser.data.user.email)
+            setChangingEmail(true)
+        } catch (error) {
+            setIntermediaryEmail('')
+            setChangingEmail(true)
+            console.log(error)
+        }
     }
 
     const handleAbandon = (e) => {
