@@ -10,19 +10,21 @@ function Profile(props) {
     const id = user.id
     const expiration = user.exp
     const logout = props.handleLogout
-
-    CheckExpiration(expiration, logout)
-
     const [name, setName] = useState(user.name)
     const [email, setEmail] = useState(user.email)
+    
+    CheckExpiration(expiration, logout)
     
     return (
         <main className="profile">
             <h1>Profile</h1>
 
             <CoreInformation 
+                id={id}
                 name={name}
-                email={email} 
+                setName={setName}
+                email={email}
+                setEmail={setEmail}
             />
 
             <UpdateAccount 
