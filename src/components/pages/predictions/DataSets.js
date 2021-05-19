@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import GetPredictions from '../../../actions/predictions/GetPredictions'
 import CheckExpiration from '../../../utilities/users/CheckExpiration'
 import '../../../style/predictions/Data.css'
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 function DataSets(props) {
     CheckExpiration(props.user.exp, props.handleLogout)
@@ -14,29 +13,8 @@ function DataSets(props) {
     const getPredictions = async () => {
         if (props.user.id) {
             try {
-                const foundPredictions = await axios.get(
-                    REACT_APP_SERVER_URL + 'predictions/all/' + props.user.id
-                )
-                const allPredictions = foundPredictions.data.predictions
-                const allRegressions = []
-                for (const prediction of allPredictions) {
-                    if (prediction.source) {
-                        const rawRegressions = await axios.get(
-                            REACT_APP_SERVER_URL + 'regressions/' + prediction.source
-                        )
-                        allRegressions.push(
-                            rawRegressions.data.regressions
-                        )
-                    }
-                }
-                const collatedData = []
-                for (let i = 0; i < allPredictions.length; i++) {
-                    collatedData.push({
-                        models: allRegressions[i],
-                        opinions: allPredictions[i]
-                    })
-                }
-                const results = collatedData.map((datum, index) => {
+                const collections = await GetPredictions(props.user.id)
+                const results = collections.data.map((collection, index) => {
                     return (
                         <li
                             key={index}
@@ -45,8 +23,8 @@ function DataSets(props) {
                                 to={{
                                     pathname: "/analysis",
                                     state: {
-                                        models: datum.models, 
-                                        opinions: datum.opinions,
+                                        models: collection.regression, 
+                                        opinions: collection.prediction,
                                         user: props.user,
                                         initiated: true,
                                         stored: true
@@ -55,7 +33,7 @@ function DataSets(props) {
                                 style={{ textDecoration: 'none' }} 
                             >
                                 <button>
-                                    {datum.models.title}
+                                    {collection.regression.title}
                                 </button>
                             </Link>
                         </li>

@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import axios from 'axios'
+import UpdateFavorite from '../../../actions/predictions/UpdateFavorite'
 import FormSubmit from '../../buttons/main/FormSubmit'
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-function Favorite(props) {
+function FavoriteModel(props) {
     const source = props.source
     const favorite = props.favorite
     const setFavorite = props.setFavorite
@@ -22,10 +21,7 @@ function Favorite(props) {
         e.preventDefault()
         if (source) {
             try {
-                await axios.put(
-                    REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', 
-                    {favorite: favorite}
-                )
+                await UpdateFavorite(source, favorite)
                 setChanging(false)
             } catch (error) {
                 alert('Your favorite was not set')
@@ -105,4 +101,4 @@ function Favorite(props) {
     }
 }
 
-export default Favorite
+export default FavoriteModel

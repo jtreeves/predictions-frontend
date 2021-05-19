@@ -1,5 +1,4 @@
-import axios from 'axios'
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
+import SavePredictions from '../../../actions/predictions/SavePredictions'
 
 function SaveSet(props) {
     const saved = props.stored
@@ -11,10 +10,7 @@ function SaveSet(props) {
         e.preventDefault()
         if (source && userId) {
             try {
-                await axios.post(
-                    REACT_APP_SERVER_URL + 'predictions/' + userId, 
-                    { source }
-                )
+                await SavePredictions(userId, source)
                 alert('Your data set was saved!')
                 setSaved(true)
             } catch (error) {

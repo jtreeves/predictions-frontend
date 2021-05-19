@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import { Redirect } from 'react-router-dom'
-import axios from 'axios'
 import EditSet from './EditSet'
 import SpreadsheetInput from '../../../utilities/predictions/SpreadsheetInput'
 import VettedDataForm from '../../../utilities/predictions/VettedDataForm'
 import AllFormElements from '../../../utilities/predictions/AllFormElements'
 import ResetFormElements from '../../../utilities/predictions/ResetFormElements'
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
+import CreatePredictions from '../../../actions/predictions/CreatePredictions'
+import UpdatePredictions from '../../../actions/predictions/UpdatePredictions'
+import DeletePredictions from '../../../actions/predictions/DeletePredictions'
 
 function OriginalData(props) {
     const [title, setTitle] = useState(props.title)
@@ -26,7 +27,7 @@ function OriginalData(props) {
         }
     }, [submitted])
 
-    let source = props.source
+    const source = props.source
     const user = props.user
     const stored = props.stored
     const opinions = {
@@ -109,8 +110,7 @@ function OriginalData(props) {
             if (submission) {
                 if (!stored) {
                     try {
-                        const predictions = await axios.post(
-                            REACT_APP_SERVER_URL + 'regressions',
+                        const predictions = await CreatePredictions(
                             submission
                         )
                         allElements.submitButton.innerText = 'Update Set'
@@ -127,25 +127,11 @@ function OriginalData(props) {
                     }
                 } else if (source && user.id) {
                     try {
-                        await axios.delete(
-                            REACT_APP_SERVER_URL + 'predictions/' + source
-                        )
-                        const predictions = await axios.post(
-                            REACT_APP_SERVER_URL + 'regressions', 
-                            submission
-                        )
-                        source = predictions.data.regressions.source
-                        await axios.post(
-                            REACT_APP_SERVER_URL + 'predictions/' + user.id, 
-                            {source}
-                        )
-                        await axios.put(
-                            REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', 
-                            {favorite: opinions.favorite}
-                        )
-                        await axios.put(
-                            REACT_APP_SERVER_URL + 'predictions/' + source + '/note', 
-                            {note: opinions.note}
+                        const predictions = await UpdatePredictions(
+                            source, 
+                            submission, 
+                            opinions.favorite, 
+                            opinions.note
                         )
                         ResetFormElements()
                         setModels(predictions.data.regressions)
@@ -171,9 +157,7 @@ function OriginalData(props) {
             allElements.submitButton.style.display = 'none'
         } else if (source) {
             try {
-                await axios.delete(
-                    REACT_APP_SERVER_URL + 'predictions/' + source
-                )
+                await DeletePredictions(source)
                 ResetFormElements()
                 setDeleted(true)
             } catch (error) {

@@ -1,11 +1,11 @@
 import axios from 'axios'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
-async function UpdateFavorite(source, favorite) {
+async function UpdateDataSet(source, submission) {
     try {
         const updatedPredictions = await axios.put(
-            REACT_APP_SERVER_URL + 'predictions/' + source + '/favorite', 
-            { favorite: favorite }
+            REACT_APP_SERVER_URL + 'regressions/' + source, 
+            { submission: submission }
         )
         return updatedPredictions
     } catch (error) {
@@ -13,4 +13,4 @@ async function UpdateFavorite(source, favorite) {
     }
 }
 
-export default UpdateFavorite
+export default UpdateDataSet

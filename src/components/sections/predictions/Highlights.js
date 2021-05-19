@@ -1,6 +1,6 @@
 import BestFit from '../../elements/predictions/BestFit'
-import Favorite from '../../elements/predictions/Favorite'
-import Note from '../../elements/predictions/Note'
+import FavoriteModel from '../../elements/predictions/FavoriteModel'
+import NoteOnModels from '../../elements/predictions/NoteOnModels'
 
 function Highlights(props) {
     return (
@@ -17,14 +17,14 @@ function Highlights(props) {
                         precision={props.precision}
                     />
 
-                    <Favorite 
+                    <FavoriteModel 
                         favorite={props.favorite}
                         setFavorite={props.setFavorite}
                         source={props.source}
                     />
                 </aside>
 
-                <Note 
+                <NoteOnModels 
                     note={props.note}
                     setNote={props.setNote}
                     source={props.source}

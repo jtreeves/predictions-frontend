@@ -5,7 +5,7 @@ async function UpdateName(id, name) {
     try {
         const updatedUser = await axios.put(
             REACT_APP_SERVER_URL + 'users/' + id + '/name', 
-            {name: name}
+            { name: name }
         )
         return updatedUser
     } catch (error) {

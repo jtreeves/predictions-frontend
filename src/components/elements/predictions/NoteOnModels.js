@@ -1,9 +1,8 @@
-import axios from 'axios'
 import FormItem from '../main/FormItem'
 import FormSubmit from '../../buttons/main/FormSubmit'
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
+import UpdateNote from '../../../actions/predictions/UpdateNote'
 
-function Note(props) {
+function NoteOnModels(props) {
     const source = props.source
     const note = props.note
     const setNote = props.setNote
@@ -16,10 +15,7 @@ function Note(props) {
         e.preventDefault()
         if (source) {
             try {
-                await axios.put(
-                    REACT_APP_SERVER_URL + 'predictions/' + source + '/note', 
-                    {note: note}
-                )
+                await UpdateNote(source, note)
                 alert('Your note was saved!')
             } catch (error) {
                 alert('Your note was not saved')
@@ -51,4 +47,4 @@ function Note(props) {
     )
 }
 
-export default Note
+export default NoteOnModels
