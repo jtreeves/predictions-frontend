@@ -2,7 +2,7 @@ import { useState } from 'react'
 import GetUser from '../../../actions/users/GetUser'
 import UpdateEmail from '../../../actions/users/UpdateEmail'
 import FormItem from '../../elements/main/FormItem'
-import FormSubmit from '../main/FormSubmit'
+import FormButton from '../main/FormButton'
 
 function UpdateEmailButtons(props) {
     const id = props.id
@@ -70,14 +70,14 @@ function UpdateEmailButtons(props) {
                     onChange={handleEmail}
                 />
 
-                <FormSubmit 
+                <FormButton 
                     text="Submit New Email"
                     onClick={handleSubmit}
                     id="submit-new-email-button"
                     display="block"
                 />
 
-                <FormSubmit 
+                <FormButton 
                     text="Keep Old Email"
                     onClick={handleAbandon}
                     id="keep-old-email-button"

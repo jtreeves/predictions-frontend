@@ -1,6 +1,6 @@
 import SavePredictions from '../../../actions/predictions/SavePredictions'
 
-function SaveSet(props) {
+function SaveSetButton(props) {
     const saved = props.stored
     const setSaved = props.setStored
     const userId = props.user.id
@@ -31,4 +31,4 @@ function SaveSet(props) {
     }
 }
 
-export default SaveSet
+export default SaveSetButton

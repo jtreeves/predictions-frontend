@@ -1,6 +1,6 @@
 import AllFormElements from '../../../utilities/predictions/AllFormElements'
 
-function DeleteSet() {
+function DeleteSetButton() {
     const handleDelete = (e) => {
         e.preventDefault()
         const allElements = AllFormElements()
@@ -23,4 +23,4 @@ function DeleteSet() {
     )
 }
 
-export default DeleteSet
+export default DeleteSetButton

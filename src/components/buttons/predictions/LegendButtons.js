@@ -1,6 +1,6 @@
 import GeneratePoints from '../../../utilities/predictions/GeneratePoints'
 
-function Legend(props) {
+function LegendButtons(props) {
     const handleDisplayLinear = (e) => {
         e.preventDefault()
         if (props.displayLinear) {
@@ -164,4 +164,4 @@ function Legend(props) {
     )
 }
 
-export default Legend
+export default LegendButtons

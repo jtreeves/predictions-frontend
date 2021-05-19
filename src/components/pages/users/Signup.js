@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import FormItem from '../../elements/main/FormItem'
-import FormSubmit from '../../buttons/main/FormSubmit'
+import FormButton from '../../buttons/main/FormButton'
 import CreateUser from '../../../actions/users/CreateUser'
 import VettedSignup from '../../../utilities/users/VettedSignup'
 import '../../../style/users/Signup.css'
@@ -86,7 +86,7 @@ function Signup() {
                         onChange={handleConfirmPassword}
                     />
 
-                    <FormSubmit 
+                    <FormButton 
                         text="Submit"
                         onClick={handleSubmit}
                         id="signup-button"

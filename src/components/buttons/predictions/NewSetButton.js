@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-function NewSet() {
+function NewSetButton() {
     return (
         <Link
             to="/submission"
@@ -13,4 +13,4 @@ function NewSet() {
     )
 }
 
-export default NewSet
+export default NewSetButton

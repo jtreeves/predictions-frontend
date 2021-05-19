@@ -1,4 +1,4 @@
-function FormSubmit(props) {
+function FormButton(props) {
     return (
         <button 
             id={props.id}
@@ -10,4 +10,4 @@ function FormSubmit(props) {
     )
 }
 
-export default FormSubmit
+export default FormButton

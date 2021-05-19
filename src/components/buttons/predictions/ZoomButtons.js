@@ -1,7 +1,7 @@
 import HorizontalAxis from '../../../utilities/predictions/HorizontalAxis'
 import ZoomSeparateGraphs from '../../../utilities/predictions/ZoomSeparateGraphs'
 
-function Zoom(props) {
+function ZoomButtons(props) {
     const handleSeparateGraphs = (xMinimum, xMaximum, increment) => {
         ZoomSeparateGraphs(
             props.displayOriginal, 
@@ -89,4 +89,4 @@ function Zoom(props) {
     )
 }
 
-export default Zoom
+export default ZoomButtons

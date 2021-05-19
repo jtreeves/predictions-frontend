@@ -2,7 +2,7 @@ import { useState } from 'react'
 import GetUser from '../../../actions/users/GetUser'
 import UpdateName from '../../../actions/users/UpdateName'
 import FormItem from '../../elements/main/FormItem'
-import FormSubmit from '../main/FormSubmit'
+import FormButton from '../main/FormButton'
 
 function UpdateNameButtons(props) {
     const id = props.id
@@ -70,14 +70,14 @@ function UpdateNameButtons(props) {
                     onChange={handleName}
                 />
 
-                <FormSubmit 
+                <FormButton 
                     text="Submit New Name"
                     onClick={handleSubmit}
                     id="submit-new-name-button"
                     display="block"
                 />
                 
-                <FormSubmit 
+                <FormButton 
                     text="Keep Old Name"
                     onClick={handleAbandon}
                     id="keep-old-name-button"

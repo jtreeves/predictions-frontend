@@ -5,7 +5,7 @@ import Highlights from '../../sections/predictions/Highlights'
 import FutureEvaluations from '../../sections/predictions/FutureEvaluations'
 import ModelsAnalyses from '../../sections/predictions/ModelsAnalyses'
 import DataDisplay from '../../sections/predictions/DataDisplay'
-import ExecutiveLevel from '../../buttons/predictions/ExecutiveLevel'
+import ExecutiveButtons from '../../buttons/predictions/ExecutiveButtons'
 import HorizontalAxis from '../../../utilities/predictions/HorizontalAxis'
 import VerticalAxis from '../../../utilities/predictions/VerticalAxis'
 import CheckFavorite from '../../../utilities/predictions/CheckFavorite'
@@ -202,7 +202,7 @@ function Analysis(props) {
                 setSinusoidalCoordinates={setSinusoidalCoordinates}
             />
 
-            <ExecutiveLevel 
+            <ExecutiveButtons 
                 user={user}
                 source={source}
                 stored={stored}

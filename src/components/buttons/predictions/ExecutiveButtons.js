@@ -1,24 +1,24 @@
-import UpdateSet from './UpdateSet'
-import DeleteSet from './DeleteSet'
-import NewSet from './NewSet'
-import SaveSet from './SaveSet'
+import UpdateSetButton from './UpdateSetButton'
+import DeleteSetButton from './DeleteSetButton'
+import NewSetButton from './NewSetButton'
+import SaveSetButton from './SaveSetButton'
 
-function ExecutiveLevel(props) {
+function ExecutiveButtons(props) {
     if (!props.stored) {
         return (
             <div 
                 id="executive-level"
             >
-                <SaveSet 
+                <SaveSetButton 
                     user={props.user}
                     source={props.source}
                     stored={props.stored}
                     setStored={props.setStored}
                 />
 
-                <UpdateSet />
+                <UpdateSetButton />
 
-                <NewSet />
+                <NewSetButton />
             </div>
         )
     } else {
@@ -26,14 +26,14 @@ function ExecutiveLevel(props) {
             <div 
                 id="executive-level"
             >
-                <UpdateSet />
+                <UpdateSetButton />
 
-                <DeleteSet />
+                <DeleteSetButton />
 
-                <NewSet />
+                <NewSetButton />
             </div>
         )
     }
 }
 
-export default ExecutiveLevel
+export default ExecutiveButtons

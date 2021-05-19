@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import UpdateFavorite from '../../../actions/predictions/UpdateFavorite'
-import FormSubmit from '../../buttons/main/FormSubmit'
+import FormButton from '../../buttons/main/FormButton'
 
 function FavoriteModel(props) {
     const source = props.source
@@ -39,7 +39,7 @@ function FavoriteModel(props) {
 
                     <p>You haven't chosen a favorite yet</p>
 
-                    <FormSubmit 
+                    <FormButton 
                         text="Choose Favorite"
                         onClick={handleChanging}
                         id="choose-favorite-button"
@@ -54,7 +54,7 @@ function FavoriteModel(props) {
 
                     <p>{favorite}</p>
 
-                    <FormSubmit 
+                    <FormButton 
                         text="Change Favorite"
                         onClick={handleChanging}
                         id="change-favorite-button"
@@ -90,7 +90,7 @@ function FavoriteModel(props) {
                     </select>
                 </p>
 
-                <FormSubmit 
+                <FormButton 
                     text="Save Favorite"
                     onClick={handleSubmitting}
                     id="save-favorite-button"

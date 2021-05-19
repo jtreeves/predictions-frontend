@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import FormSubmit from '../../buttons/main/FormSubmit'
+import FormButton from '../../buttons/main/FormButton'
 import EvaluationSentence from '../../elements/predictions/EvaluationSentence'
 import Evaluations from '../../../utilities/predictions/Evaluations'
 
@@ -115,7 +115,7 @@ function FutureEvaluations(props) {
                 
                 {allEvaluations}
 
-                <FormSubmit 
+                <FormButton 
                     text="Generate New Evaluations"
                     onClick={handleFutureValue}
                     id="future-value-button"

@@ -1,5 +1,5 @@
 import FormItem from '../main/FormItem'
-import FormSubmit from '../../buttons/main/FormSubmit'
+import FormButton from '../../buttons/main/FormButton'
 import UpdateNote from '../../../actions/predictions/UpdateNote'
 
 function NoteOnModels(props) {
@@ -37,7 +37,7 @@ function NoteOnModels(props) {
                 onChange={handleNote}
             />
 
-            <FormSubmit 
+            <FormButton 
                 text="Save Note"
                 onClick={handleSubmit}
                 id="save-note-button"

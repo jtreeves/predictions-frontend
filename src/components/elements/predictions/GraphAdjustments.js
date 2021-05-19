@@ -1,12 +1,12 @@
-import Legend from '../../buttons/predictions/Legend'
-import Zoom from '../../buttons/predictions/Zoom'
+import LegendButtons from '../../buttons/predictions/LegendButtons'
+import ZoomButtons from '../../buttons/predictions/ZoomButtons'
 
 function GraphAdjustments(props) {
     return (
         <article 
             id="graph-adjustments"
         >
-            <Legend 
+            <LegendButtons 
                 precision={props.precision}
                 xMinimum={props.xMinimum}
                 xMaximum={props.xMaximum}
@@ -49,7 +49,7 @@ function GraphAdjustments(props) {
                 setSinusoidalCoordinates={props.setSinusoidalCoordinates}
             />
 
-            <Zoom 
+            <ZoomButtons 
                 precision={props.precision}
                 zoom={props.zoom}
                 setZoom={props.setZoom}

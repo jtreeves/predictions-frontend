@@ -1,5 +1,5 @@
 import FormItem from '../main/FormItem'
-import FormSubmit from '../../buttons/main/FormSubmit'
+import FormButton from '../../buttons/main/FormButton'
 
 function EditSet(props) {
     const title = <FormItem
@@ -47,35 +47,35 @@ function EditSet(props) {
         onChange={props.handleDataSet}
     />
 
-    const submitButton = <FormSubmit 
+    const submitButton = <FormButton 
         text={props.submitText}
         onClick={props.handleSubmit}
         id="submit-button"
         display="block"
     />
     
-    const deleteButton = <FormSubmit 
+    const deleteButton = <FormButton 
         text="Delete Set"
         onClick={props.handleDelete}
         id="delete-button"
         display="block"
     />
     
-    const hiddenDeleteButton = <FormSubmit 
+    const hiddenDeleteButton = <FormButton 
         text="Delete Set"
         onClick={props.handleDelete}
         id="delete-button"
         display="none"
     />
 
-    const undoSubmitButton = <FormSubmit 
+    const undoSubmitButton = <FormButton 
         text="Abandon All Changes"
         onClick={props.handleUndoSubmit}
         id="undo-submit-button"
         display="none"
     />
     
-    const undoDeleteButton = <FormSubmit 
+    const undoDeleteButton = <FormButton 
         text="No, I Want to Keep the Data Set"
         onClick={props.handleUndoDelete}
         id="undo-delete-button"

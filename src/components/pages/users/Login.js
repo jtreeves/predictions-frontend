@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 import FormItem from '../../elements/main/FormItem'
-import FormSubmit from '../../buttons/main/FormSubmit'
+import FormButton from '../../buttons/main/FormButton'
 import VettedLogin from '../../../utilities/users/VettedLogin'
 import CreateSession from '../../../actions/users/CreateSession'
 import Authentication from '../../../actions/main/Authentication'
@@ -63,7 +63,7 @@ function Login(props) {
                         onChange={handlePassword}
                     />
 
-                    <FormSubmit 
+                    <FormButton 
                         text="Submit"
                         onClick={handleSubmit}
                         id="login-button"
