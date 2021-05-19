@@ -1,5 +1,5 @@
-const OverviewDepth = <p>
+const OverviewDepth = <article>
     TK
-</p>
+</article>
 
 export default OverviewDepth

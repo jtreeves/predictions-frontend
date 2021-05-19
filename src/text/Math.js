@@ -1,5 +1,5 @@
-const Math = <p>
+const Math = <article>
     TK
-</p>
+</article>
 
 export default Math

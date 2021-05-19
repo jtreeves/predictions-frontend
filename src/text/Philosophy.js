@@ -1,5 +1,5 @@
-const Philosophy = <p>
+const Philosophy = <article>
     TK
-</p>
+</article>
 
 export default Philosophy

@@ -1,5 +1,5 @@
-const CreationDepth = <p>
+const CreationDepth = <article>
     TK
-</p>
+</article>
 
 export default CreationDepth

@@ -1,5 +1,5 @@
-const ViewingDepth = <p>
+const ViewingDepth = <article>
     TK
-</p>
+</article>
 
 export default ViewingDepth

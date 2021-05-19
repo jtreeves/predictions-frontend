@@ -1,5 +1,5 @@
-const ViewingBasics = <p>
+const ViewingBasics = <article>
     TK
-</p>
+</article>
 
 export default ViewingBasics

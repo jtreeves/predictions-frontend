@@ -1,5 +1,5 @@
-const CreationBasics = <p>
+const CreationBasics = <article>
     TK
-</p>
+</article>
 
 export default CreationBasics
