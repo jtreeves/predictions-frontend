@@ -2,10 +2,10 @@ function CreationBasics() {
     return (
         <article>
             <p>
-                You only need to provide a few basics bits of information to generate a complete analysis.
+                You only need to fill out a simple form with a few basics bits of information to generate a complete analysis.
             </p>
 
-            <h3>Elements</h3>
+            <h3>Inputs</h3>
 
             <ul>
                 <li>
