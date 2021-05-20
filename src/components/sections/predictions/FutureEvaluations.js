@@ -35,6 +35,7 @@ function FutureEvaluations(props) {
     if (props.displayLinear) {
         allEvaluations.push(<EvaluationSentence 
             type="linear"
+            key="linear"
             evaluation={linearEvaluation}
             dependent={props.dependent}
         />)
@@ -43,6 +44,7 @@ function FutureEvaluations(props) {
     if (props.displayQuadratic) {
         allEvaluations.push(<EvaluationSentence 
             type="quadratic"
+            key="quadratic"
             evaluation={quadraticEvaluation}
             dependent={props.dependent}
         />)
@@ -51,6 +53,7 @@ function FutureEvaluations(props) {
     if (props.displayCubic) {
         allEvaluations.push(<EvaluationSentence 
             type="cubic"
+            key="cubic"
             evaluation={cubicEvaluation}
             dependent={props.dependent}
         />)
@@ -59,6 +62,7 @@ function FutureEvaluations(props) {
     if (props.displayHyperbolic) {
         allEvaluations.push(<EvaluationSentence 
             type="hyperbolic"
+            key="hyperbolic"
             evaluation={hyperbolicEvaluation}
             dependent={props.dependent}
         />)
@@ -67,6 +71,7 @@ function FutureEvaluations(props) {
     if (props.displayExponential) {
         allEvaluations.push(<EvaluationSentence 
             type="exponential"
+            key="exponential"
             evaluation={exponentialEvaluation}
             dependent={props.dependent}
         />)
@@ -75,6 +80,7 @@ function FutureEvaluations(props) {
     if (props.displayLogarithmic) {
         allEvaluations.push(<EvaluationSentence 
             type="logarithmic"
+            key="logarithmic"
             evaluation={logarithmicEvaluation}
             dependent={props.dependent}
         />)
@@ -83,6 +89,7 @@ function FutureEvaluations(props) {
     if (props.displayLogistic) {
         allEvaluations.push(<EvaluationSentence 
             type="logistic"
+            key="logistic"
             evaluation={logisticEvaluation}
             dependent={props.dependent}
         />)
@@ -91,6 +98,7 @@ function FutureEvaluations(props) {
     if (props.displaySinusoidal) {
         allEvaluations.push(<EvaluationSentence 
             type="sinusoidal"
+            key="sinusoidal"
             evaluation={sinusoidalEvaluation}
             dependent={props.dependent}
         />)
@@ -112,8 +120,10 @@ function FutureEvaluations(props) {
                         onChange={handleFutureInput}
                     /> {props.independent} ...
                 </p>
-                
-                {allEvaluations}
+
+                <ul>
+                    {allEvaluations}
+                </ul>
 
                 <FormButton 
                     text="Generate New Evaluations"

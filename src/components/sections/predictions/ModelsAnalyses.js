@@ -89,6 +89,7 @@ function ModelsAnalyses(props) {
     if (props.displayLinear) {
         allAnalyses.push(<FormattedAnalyses 
             type="Linear"
+            key="Linear"
             equation={linearEquation}
             correlation={linearCorrelation}
             roots={linearRoots}
@@ -101,6 +102,7 @@ function ModelsAnalyses(props) {
     if (props.displayQuadratic) {
         allAnalyses.push(<FormattedAnalyses 
             type="Quadratic"
+            key="Quadratic"
             equation={quadraticEquation}
             correlation={quadraticCorrelation}
             roots={quadraticRoots}
@@ -113,6 +115,7 @@ function ModelsAnalyses(props) {
     if (props.displayCubic) {
         allAnalyses.push(<FormattedAnalyses 
             type="Cubic"
+            key="Cubic"
             equation={cubicEquation}
             correlation={cubicCorrelation}
             roots={cubicRoots}
@@ -125,6 +128,7 @@ function ModelsAnalyses(props) {
     if (props.displayHyperbolic) {
         allAnalyses.push(<FormattedAnalyses 
             type="Hyperbolic"
+            key="Hyperbolic"
             equation={hyperbolicEquation}
             correlation={hyperbolicCorrelation}
             roots={hyperbolicRoots}
@@ -137,6 +141,7 @@ function ModelsAnalyses(props) {
     if (props.displayExponential) {
         allAnalyses.push(<FormattedAnalyses 
             type="Exponential"
+            key="Exponential"
             equation={exponentialEquation}
             correlation={exponentialCorrelation}
             roots={exponentialRoots}
@@ -149,6 +154,7 @@ function ModelsAnalyses(props) {
     if (props.displayLogarithmic) {
         allAnalyses.push(<FormattedAnalyses 
             type="Logarithmic"
+            key="Logarithmic"
             equation={logarithmicEquation}
             correlation={logarithmicCorrelation}
             roots={logarithmicRoots}
@@ -161,6 +167,7 @@ function ModelsAnalyses(props) {
     if (props.displayLogistic) {
         allAnalyses.push(<FormattedAnalyses 
             type="Logistic"
+            key="Logistic"
             equation={logisticEquation}
             correlation={logisticCorrelation}
             roots={logisticRoots}
@@ -173,6 +180,7 @@ function ModelsAnalyses(props) {
     if (props.displaySinusoidal) {
         allAnalyses.push(<FormattedAnalyses 
             type="Sinusoidal"
+            key="Sinusoidal"
             equation={sinusoidalEquation}
             correlation={sinusoidalCorrelation}
             roots={sinusoidalRoots}
