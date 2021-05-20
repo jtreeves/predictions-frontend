@@ -1,7 +1,7 @@
 function Advantages() {
     return (
         <article>
-            Use our site to get regression models for any data set you enter.
+            Unlike other sites, our site allows you to save all the analyses that you create. Our site also provides regression models for some function types often omitted by our competitors: sinusoidal and logistic.
         </article>
     )
 }
