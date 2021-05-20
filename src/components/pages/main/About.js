@@ -13,7 +13,7 @@ function About() {
             <Appeal />
             <CreationGuide details={false} />
             <ViewingGuide details={false} />
-            <MathConcepts />
+            <MathConcepts details={false} />
         </main>
     )
 }

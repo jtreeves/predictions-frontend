@@ -6,3 +6,11 @@ main.about ul {
 main.about li mark {
     margin-right: 10px;
 }
+
+main.about ul ul {
+    list-style-type: circle;
+}
+
+main.about ul ul mark {
+    font-weight: normal;
+}

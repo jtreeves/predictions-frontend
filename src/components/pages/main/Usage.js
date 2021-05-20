@@ -9,7 +9,7 @@ function Usage() {
             <h1>Usage</h1>
             <CreationGuide details={true} />
             <ViewingGuide details={true} />
-            <MathConcepts />
+            <MathConcepts details={true} />
         </main>
     )
 }
