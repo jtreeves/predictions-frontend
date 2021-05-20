@@ -1,4 +1,4 @@
-form.analysis p, #models-analyses, .model-card, .model-card article, .model-card p, .model-card li, #graph-display, #graph-adjustments, #legend, #legend li, #zoom, #zoom ul, #data-display, #data-display div, #highlights, #highlights div, #highlights aside, #highlights article, #future-evaluations, #executive-level {
+form.analysis p, #models-analyses, .model-card, .model-card article, .model-card div, .model-card li, #graph-display, #graph-adjustments, #legend, #legend li, #zoom, #zoom ul, #data-display, #data-display div, #highlights, #highlights div, #highlights aside, #highlights article, #future-evaluations, #executive-level {
     display: grid;
 }
 
@@ -38,7 +38,7 @@ main.analysis h2 {
     padding: 10px;
 }
 
-.model-card p, #data-display div {
+.model-card div, #data-display div {
     grid-template-columns: 1fr 3fr;
     column-gap: 20px;
 }

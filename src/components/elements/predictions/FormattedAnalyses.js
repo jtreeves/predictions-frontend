@@ -26,17 +26,17 @@ function FormattedAnalyses(props) {
             <h2>{props.type} Model</h2>
 
             <article>
-                <p>
+                <div>
                     <h3>Equation</h3>
                     <Latex>{props.equation}</Latex>
-                </p>
+                </div>
 
-                <p>
+                <div>
                     <h3>Correlation</h3>
                     <Latex>{props.correlation}</Latex>
-                </p>
+                </div>
 
-                <p>
+                <div>
                     <h3>Key Points</h3>
 
                     <ul>
@@ -60,7 +60,7 @@ function FormattedAnalyses(props) {
                             <Latex>{props.inflections}</Latex>
                         </li>
                     </ul>
-                </p>
+                </div>
             </article>
         </section>
     )
