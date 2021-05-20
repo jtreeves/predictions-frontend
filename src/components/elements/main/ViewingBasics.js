@@ -40,16 +40,6 @@ function ViewingBasics() {
                 
                 <li>
                     <mark>
-                        Comments
-                    </mark>
-
-                    <span>
-                        Mark one of the models as your favorite, and add notes for future viewing
-                    </span>
-                </li>
-                
-                <li>
-                    <mark>
                         Save, Edit, and Delete
                     </mark>
 
