@@ -117,6 +117,16 @@ function CreationDepth() {
                         [[1, 53], [2, 58], [3, 66], [4, 73], [5, 80], [6, 87], [7, 89], [8, 88], [9, 83], [10, 74], [11, 64], [12, 55]]
                     </span>
                 </li>
+                
+                <li>
+                    <mark>
+                        You may upload a CSV spreadsheet instead of typing out all coordinate pairs to populate the data set
+                    </mark>
+
+                    <span>
+                        The file must only contain two columns (with independent variable in the first and dependent in the second); the columns must only contain numbers; the file must be of CSV type (not an Excel spreadsheet)
+                    </span>
+                </li>
             </ul>
         </article>
     )
