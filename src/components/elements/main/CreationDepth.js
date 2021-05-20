@@ -41,9 +41,9 @@ function CreationDepth() {
 
                     <ul>
                         <li>
-                            <span>
+                            <mark>
                                 Coordinate pairs in parentheses separated by semicolons
-                            </span>
+                            </mark>
                             
                             <span>
                                 (17, 42); (23, 35); (41, 66)
@@ -51,9 +51,9 @@ function CreationDepth() {
                         </li>
                         
                         <li>
-                            <span>
+                            <mark>
                                 Coordinate pairs in brackets separated by commas
-                            </span>
+                            </mark>
 
                             <span>
                                 [17, 42], [23, 35], [41, 66]
@@ -61,9 +61,9 @@ function CreationDepth() {
                         </li>
                         
                         <li>
-                            <span>
+                            <mark>
                                 Any permutation of those options enclosed by brackets (note: all data sets will be converted to this format)
-                            </span>
+                            </mark>
 
                             <span>
                                 [[17, 42], [23, 35], [41, 66]]
@@ -77,9 +77,9 @@ function CreationDepth() {
 
                     <ul>
                         <li>
-                            <span>
+                            <mark>
                                 Using spaces instead of commas to separate numbers in coordiante pairs
-                            </span>
+                            </mark>
 
                             <span>
                                 (17 42) (23 35) (41 66)
@@ -87,9 +87,9 @@ function CreationDepth() {
                         </li>
                         
                         <li>
-                            <span>
+                            <mark>
                                 Using braces instead of parentheses or brackets for containing coordinate pairs
-                            </span>
+                            </mark>
 
                             <span>
                                 {bracesExample}
@@ -97,9 +97,9 @@ function CreationDepth() {
                         </li>
                         
                         <li>
-                            <span>
+                            <mark>
                                 Not providing exactly two numbers for each coordinate pair
-                            </span>
+                            </mark>
 
                             <span>
                                 (17, 42, 56); (23, 35, 78); (41, 66, 21)
