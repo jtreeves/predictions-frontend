@@ -1,5 +1,5 @@
-import OverviewBasics from '../../../text/OverviewBasics'
-import OverviewDepth from '../../../text/OverviewDepth'
+import OverviewBasics from '../../elements/main/OverviewBasics'
+import OverviewDepth from '../../elements/main/OverviewDepth'
 
 function Summary(props) {
     const details = props.details
@@ -8,15 +8,15 @@ function Summary(props) {
         return (
             <section>
                 <h2>Summary</h2>
-                {OverviewBasics}
-                {OverviewDepth}
+                <OverviewBasics />
+                <OverviewDepth />
             </section>
         )
     } else {
         return (
             <section>
                 <h2>Summary</h2>
-                {OverviewBasics}
+                <OverviewBasics />
             </section>
         )
     }

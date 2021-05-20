@@ -1,5 +1,5 @@
-import ViewingBasics from '../../../text/ViewingBasics'
-import ViewingDepth from '../../../text/ViewingDepth'
+import ViewingBasics from '../../elements/main/ViewingBasics'
+import ViewingDepth from '../../elements/main/ViewingDepth'
 
 function ViewingGuide(props) {
     const details = props.details
@@ -8,15 +8,15 @@ function ViewingGuide(props) {
         return (
             <section>
                 <h2>How to Interpret Analyses of Data Sets</h2>
-                {ViewingBasics}
-                {ViewingDepth}
+                <ViewingBasics />
+                <ViewingDepth />
             </section>
         )
     } else {
         return (
             <section>
                 <h2>Viewing Analyses of Data Sets</h2>
-                {ViewingBasics}
+                <ViewingBasics />
             </section>
         )
     }

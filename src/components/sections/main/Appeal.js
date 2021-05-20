@@ -1,10 +1,10 @@
-import Advantages from '../../../text/Advantages'
+import Advantages from '../../elements/main/Advantages'
 
 function Appeal() {
     return (
         <section>
             <h2>Appeal</h2>
-            {Advantages}
+            <Advantages />
         </section>
     )
 }
