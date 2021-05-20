@@ -103,57 +103,219 @@ function LegendButtons(props) {
     const displayButtons = []
 
     if (props.displayLinear) {
-        displayButtons.push(<li><button className="box pink" onClick={handleDisplayLinear} title="Hide linear graph" /><p>linear</p></li>)
+        displayButtons.push(
+            <li key="linear">
+                <button 
+                    className="box pink" 
+                    title="Hide linear graph" 
+                    onClick={handleDisplayLinear} 
+                />
+                <p>linear</p>
+            </li>
+        )
     } else {
-        displayButtons.push(<li><button className="box blank" onClick={handleDisplayLinear} title="Show linear graph" /><p>linear</p></li>)
+        displayButtons.push(
+            <li key="linear">
+                <button 
+                    className="box blank" 
+                    title="Show linear graph" 
+                    onClick={handleDisplayLinear} 
+                />
+                <p>linear</p>
+            </li>
+        )
     }
 
     if (props.displayQuadratic) {
-        displayButtons.push(<li><button className="box green" onClick={handleDisplayQuadratic} title="Hide quadratic graph" /><p>quadratic</p></li>)
+        displayButtons.push(
+            <li key="quadratic">
+                <button 
+                    className="box green" 
+                    title="Hide quadratic graph" 
+                    onClick={handleDisplayQuadratic} 
+                />
+                <p>quadratic</p>
+            </li>
+        )
     } else {
-        displayButtons.push(<li><button className="box blank" onClick={handleDisplayQuadratic} title="Show quadratic graph" /><p>quadratic</p></li>)
+        displayButtons.push(
+            <li key="quadratic">
+                <button 
+                    className="box blank" 
+                    title="Show quadratic graph" 
+                    onClick={handleDisplayQuadratic} 
+                />
+                <p>quadratic</p>
+            </li>
+        )
     }
 
     if (props.displayCubic) {
-        displayButtons.push(<li><button className="box blue" onClick={handleDisplayCubic} title="Hide cubic graph" /><p>cubic</p></li>)
+        displayButtons.push(
+            <li key="cubic">
+                <button 
+                    className="box blue" 
+                    title="Hide cubic graph" 
+                    onClick={handleDisplayCubic} 
+                />
+                <p>cubic</p>
+            </li>
+        )
     } else {
-        displayButtons.push(<li><button className="box blank" onClick={handleDisplayCubic} title="Show cubic graph" /><p>cubic</p></li>)
+        displayButtons.push(
+            <li key="cubic">
+                <button 
+                    className="box blank" 
+                    title="Show cubic graph" 
+                    onClick={handleDisplayCubic} 
+                />
+                <p>cubic</p>
+            </li>
+        )
     }
 
     if (props.displayHyperbolic) {
-        displayButtons.push(<li><button className="box brown" onClick={handleDisplayHyperbolic} title="Hide hyperbolic graph" /><p>hyperbolic</p></li>)
+        displayButtons.push(
+            <li key="hyperbolic">
+                <button 
+                    className="box brown" 
+                    title="Hide hyperbolic graph" 
+                    onClick={handleDisplayHyperbolic} 
+                />
+                <p>hyperbolic</p>
+            </li>
+        )
     } else {
-        displayButtons.push(<li><button className="box blank" onClick={handleDisplayHyperbolic} title="Show hyperbolic graph" /><p>hyperbolic</p></li>)
+        displayButtons.push(
+            <li key="hyperbolic">
+                <button 
+                    className="box blank" 
+                    title="Show hyperbolic graph" 
+                    onClick={handleDisplayHyperbolic} 
+                />
+                <p>hyperbolic</p>
+            </li>
+        )
     }
 
     if (props.displayExponential) {
-        displayButtons.push(<li><button className="box orange" onClick={handleDisplayExponential} title="Hide exponential graph" /><p>exponential</p></li>)
+        displayButtons.push(
+            <li key="exponential">
+                <button 
+                    className="box orange" 
+                    title="Hide exponential graph" 
+                    onClick={handleDisplayExponential} 
+                />
+                <p>exponential</p>
+            </li>
+        )
     } else {
-        displayButtons.push(<li><button className="box blank" onClick={handleDisplayExponential} title="Show exponential graph" /><p>exponential</p></li>)
+        displayButtons.push(
+            <li key="exponential">
+                <button 
+                    className="box blank" 
+                    title="Show exponential graph" 
+                    onClick={handleDisplayExponential} 
+                />
+                <p>exponential</p>
+            </li>
+        )
     }
 
     if (props.displayLogarithmic) {
-        displayButtons.push(<li><button className="box yellow" onClick={handleDisplayLogarithmic} title="Hide logarithmic graph" /><p>logarithmic</p></li>)
+        displayButtons.push(
+            <li key="logarithmic">
+                <button 
+                    className="box yellow" 
+                    title="Hide logarithmic graph" 
+                    onClick={handleDisplayLogarithmic} 
+                />
+                <p>logarithmic</p>
+            </li>
+        )
     } else {
-        displayButtons.push(<li><button className="box blank" onClick={handleDisplayLogarithmic} title="Show logarithmic graph" /><p>logarithmic</p></li>)
+        displayButtons.push(
+            <li key="logarithmic">
+                <button 
+                    className="box blank" 
+                    title="Show logarithmic graph" 
+                    onClick={handleDisplayLogarithmic} 
+                />
+                <p>logarithmic</p>
+            </li>
+        )
     }
 
     if (props.displayLogistic) {
-        displayButtons.push(<li><button className="box purple" onClick={handleDisplayLogistic} title="Hide logistic graph" /><p>logisticic</p></li>)
+        displayButtons.push(
+            <li key="logistic">
+                <button 
+                    className="box purple" 
+                    title="Hide logistic graph" 
+                    onClick={handleDisplayLogistic} 
+                />
+                <p>logisticic</p>
+            </li>
+        )
     } else {
-        displayButtons.push(<li><button className="box blank" onClick={handleDisplayLogistic} title="Show logistic graph" /><p>logisticic</p></li>)
+        displayButtons.push(
+            <li key="logistic">
+                <button 
+                    className="box blank" 
+                    title="Show logistic graph" 
+                    onClick={handleDisplayLogistic} 
+                />
+                <p>logisticic</p>
+            </li>
+        )
     }
 
     if (props.displaySinusoidal) {
-        displayButtons.push(<li><button className="box red" onClick={handleDisplaySinusoidal} title="Hide sinusoidal graph" /><p>sinusoidal</p></li>)
+        displayButtons.push(
+            <li key="sinusoidal">
+                <button 
+                    className="box red" 
+                    title="Hide sinusoidal graph" 
+                    onClick={handleDisplaySinusoidal} 
+                />
+                <p>sinusoidal</p>
+            </li>
+        )
     } else {
-        displayButtons.push(<li><button className="box blank" onClick={handleDisplaySinusoidal} title="Show sinusoidal graph" /><p>sinusoidal</p></li>)
+        displayButtons.push(
+            <li key="sinusoidal">
+                <button 
+                    className="box blank" 
+                    title="Show sinusoidal graph" 
+                    onClick={handleDisplaySinusoidal} 
+                />
+                <p>sinusoidal</p>
+            </li>
+        )
     }
 
     if (props.displayOriginal) {
-        displayButtons.push(<li><button className="box black" onClick={handleDisplayOriginal} title="Hide original points" /><p>originals</p></li>)
+        displayButtons.push(
+            <li key="original">
+                <button 
+                    className="box black" 
+                    title="Hide original points" 
+                    onClick={handleDisplayOriginal} 
+                />
+                <p>originals</p>
+            </li>
+        )
     } else {
-        displayButtons.push(<li><button className="box blank" onClick={handleDisplayOriginal} title="Show original points" /><p>originals</p></li>)
+        displayButtons.push(
+            <li key="original">
+                <button 
+                    className="box blank" 
+                    title="Show original points" 
+                    onClick={handleDisplayOriginal} 
+                />
+                <p>originals</p>
+            </li>
+        )
     }
 
     return (
