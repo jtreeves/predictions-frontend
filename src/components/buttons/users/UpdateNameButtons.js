@@ -67,6 +67,7 @@ function UpdateNameButtons(props) {
                     value={intermediaryName}
                     display="Name"
                     tooltip="What do you want your new name to be?"
+                    autoComplete="name"
                     onChange={handleName}
                 />
 

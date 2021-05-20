@@ -45,6 +45,7 @@ function NewSessionForm(props) {
             value={email}
             display="Email"
             tooltip="What is the email address associated with this account?"
+            autoComplete="email"
             onChange={handleEmail}
         />
 
@@ -54,6 +55,7 @@ function NewSessionForm(props) {
             value={password}
             display="Password"
             tooltip="What is your password?"
+            autoComplete="current-password"
             onChange={handlePassword}
         />
 

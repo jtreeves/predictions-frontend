@@ -50,6 +50,7 @@ function NewUserForm() {
             value={name}
             display="Name"
             tooltip="This can be your full name or a username of your choosing"
+            autoComplete="name"
             onChange={handleName}
         />
 
@@ -59,6 +60,7 @@ function NewUserForm() {
             value={email}
             display="Email"
             tooltip="This will be the email associated with your account"
+            autoComplete="email"
             onChange={handleEmail}
         />
 
@@ -68,6 +70,7 @@ function NewUserForm() {
             value={password}
             display="Password"
             tooltip="This will be the password you will use to access your account"
+            autoComplete="new-password"
             onChange={handlePassword}
         />
 
@@ -77,6 +80,7 @@ function NewUserForm() {
             value={confirmPassword}
             display="Confirm Password"
             tooltip="Make sure this matches the password above!"
+            autoComplete="new-password"
             onChange={handleConfirmPassword}
         />
 

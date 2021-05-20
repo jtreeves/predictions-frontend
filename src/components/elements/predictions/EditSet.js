@@ -8,6 +8,7 @@ function EditSet(props) {
         value={props.title}
         display="Title"
         tooltip="What do you want to call this data set?"
+        autoComplete="on"
         onChange={props.handleTitle}
     />
 
@@ -17,6 +18,7 @@ function EditSet(props) {
         value={props.independent}
         display="Independent"
         tooltip="What is the input variable?"
+        autoComplete="on"
         onChange={props.handleIndependent}
     />
 
@@ -26,6 +28,7 @@ function EditSet(props) {
         value={props.dependent}
         display="Dependent"
         tooltip="What is the output variable"
+        autoComplete="on"
         onChange={props.handleDependent}
     />
 
@@ -35,6 +38,7 @@ function EditSet(props) {
         value={props.precision}
         display="Precision"
         tooltip="When it comes to rounding, how many decimal places do you want to use?"
+        autoComplete="on"
         onChange={props.handlePrecision}
     />
 
@@ -44,6 +48,7 @@ function EditSet(props) {
         value={props.dataSet}
         display="Data Set"
         tooltip="What is the complete data set?"
+        autoComplete="on"
         onChange={props.handleDataSet}
     />
 

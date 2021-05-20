@@ -15,6 +15,7 @@ function FormItem(props) {
                     type={props.type}
                     name={props.label}
                     value={props.value}
+                    autoComplete={props.autoComplete}
                     onChange={props.onChange}
                 />
             </p>
