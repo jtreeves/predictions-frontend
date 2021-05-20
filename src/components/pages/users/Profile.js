@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CoreInformation from '../../sections/users/CoreInformation'
 import UpdateAccount from '../../sections/users/UpdateAccount'
 import AnalyzeData from '../../sections/users/AnalyzeData'
@@ -13,7 +13,13 @@ function Profile(props) {
     const [name, setName] = useState(user.name)
     const [email, setEmail] = useState(user.email)
     
-    CheckExpiration(expiration, logout)
+    useEffect(() => {
+        let mounted = true
+        if (mounted) {
+            CheckExpiration(expiration, logout)
+        }
+        return () => mounted = false
+    })
     
     return (
         <main className="profile">

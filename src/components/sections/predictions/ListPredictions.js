@@ -49,7 +49,11 @@ function ListPredictions(props) {
     }
 
     useEffect(() => {
-        getPredictions()
+        let mounted = true
+        if (mounted) {
+            getPredictions()
+        }
+        return () => mounted = false
     })
 
     if (loading) {
