@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import Welcome from './components/pages/main/Welcome'
+import Welcome from '../components/pages/main/Welcome'
 
 test('render the Welcome header', () => {
     render(<Welcome />)
