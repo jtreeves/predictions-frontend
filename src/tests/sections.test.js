@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import Appeal from '../components/sections/main/Appeal'
 import Pitch from '../components/sections/main/Pitch'
