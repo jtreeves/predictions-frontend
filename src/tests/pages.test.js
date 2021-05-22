@@ -48,5 +48,3 @@ describe('Usage page', () => {
         expect(headings[0]).toBe(h1Element)
     })
 })
-
-// Ran 6 passing tests in 9.653s on 05/22/21
