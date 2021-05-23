@@ -1,6 +1,7 @@
 import EmptyInputAlert from '../utilities/main/EmptyInputAlert'
 import VettedLogin from '../utilities/users/VettedLogin'
 import VettedSignup from '../utilities/users/VettedSignup'
+import CleanCollection from '../utilities/predictions/CleanCollection'
 
 window.alert = jest.fn()
 
@@ -70,5 +71,27 @@ describe('VettedSignup utility', () => {
     it('fails to provide object of user data if password too short', () => {
         const userData = VettedSignup('John', 'john@email.com', '1234', '1234')
         expect(userData).toBe(false)
+    })
+})
+
+describe('CleanCollection utility', () => {
+    it('returns original string if it contains no parentheses or semicolons and is enclosed correctly', () => {
+        const dataSet = CleanCollection('[[1, 2], [3, 4], [5, 6]]')
+        expect(dataSet).toBe('[[1, 2], [3, 4], [5, 6]]')
+    })
+    
+    it('replaces parentheses with brackets if original string contains parentheses', () => {
+        const dataSet = CleanCollection('[(1, 2), (3, 4), (5, 6)]')
+        expect(dataSet).toBe('[[1, 2], [3, 4], [5, 6]]')
+    })
+    
+    it('replaces semicolons with commas if original string contains semicolons', () => {
+        const dataSet = CleanCollection('[[1, 2]; [3, 4]; [5, 6]]')
+        expect(dataSet).toBe('[[1, 2], [3, 4], [5, 6]]')
+    })
+    
+    it('wraps string in opening and closing brackets if original string omits encapsulation', () => {
+        const dataSet = CleanCollection('[1, 2], [3, 4], [5, 6]')
+        expect(dataSet).toBe('[[1, 2], [3, 4], [5, 6]]')
     })
 })
