@@ -1,3 +1,4 @@
+import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import CreateUser from '../actions/users/CreateUser'
 import CreateSession from '../actions/users/CreateSession'
@@ -16,6 +17,23 @@ const billData = {
     password: 'bill1234'
 }
 
+const martinData = {
+    name: 'Martin',
+    email: 'martin@email.com',
+    password: 'martin1234'
+}
+
+const georgeData = {
+    name: 'George',
+    email: 'george@email.com',
+    password: 'george1234'
+}
+
+beforeAll(async () => {
+    await CreateUser(martinData)
+    await CreateUser(georgeData)
+})
+
 afterAll(async () => {
     const currentUser = await CreateSession(johnData)
     const {token} = currentUser.data
@@ -23,6 +41,13 @@ afterAll(async () => {
     Authentication(token)
     const decodedUser = jwt_decode(token)
     await DeleteUser(decodedUser.id)
+
+    const otherUser = await CreateSession(georgeData)
+    const otherToken = otherUser.data.token
+    localStorage.setItem('jwtToken', otherToken)
+    Authentication(otherToken)
+    const decodedOtherUser = jwt_decode(otherToken)
+    await DeleteUser(decodedOtherUser.id)
 })
 
 describe('CreateUser action', () => {
@@ -68,6 +93,46 @@ describe('CreateSession action', () => {
         } catch (error) {
             expect(error.response.status).toBe(404)
             expect(error.response.data.msg).toBe('User not found')
+        }
+    })
+})
+
+describe('DeleteUser action', () => {
+    it('deletes a user if user logged in', async () => {
+        const currentUser = await CreateSession(martinData)
+        const {token} = currentUser.data
+        localStorage.setItem('jwtToken', token)
+        Authentication(token)
+        const decodedUser = jwt_decode(token)
+        const deletion = await DeleteUser(decodedUser.id)
+        expect(deletion.status).toBe(204)
+    })
+    
+    it('fails to delete a user if user not logged in', async () => {
+        try {
+            const currentUser = await CreateSession(georgeData)
+            const {token} = currentUser.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            const decodedUser = jwt_decode(token)
+            const currentUserId = decodedUser.id
+            localStorage.removeItem('jwtToken')
+            delete axios.defaults.headers.common['Authorization']
+            await DeleteUser(currentUserId)
+        } catch (error) {
+            expect(error.response.status).toBe(401)
+        }
+    })
+    
+    it('fails to delete a user if user does not exist', async () => {
+        try {
+            const currentUser = await CreateSession(georgeData)
+            const {token} = currentUser.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            await DeleteUser('123ABC')
+        } catch (error) {
+            expect(error.response.status).toBe(400)
         }
     })
 })
