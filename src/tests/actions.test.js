@@ -36,6 +36,38 @@ describe('CreateUser action', () => {
             await CreateUser(billData)
         } catch (error) {
             expect(error.response.status).toBe(409)
+            expect(error.response.data.msg).toBe('Email already in use')
+        }
+    })
+})
+
+describe('CreateSession action', () => {
+    it('logs in a user if email and password combination correct', async () => {
+        const currentUser = await CreateSession(billData)
+        expect(currentUser.status).toBe(201)
+    })
+    
+    it('fails to log in a user if email and password combination incorrect', async () => {
+        try {
+            await CreateSession({
+                email: billData.email, 
+                password: johnData.password
+            })
+        } catch (error) {
+            expect(error.response.status).toBe(401)
+            expect(error.response.data.msg).toBe('Password is incorrect')
+        }
+    })
+    
+    it('fails to log in a user if user does not exist', async () => {
+        try {
+            await CreateSession({
+                email: 'carbon@email.com', 
+                password: 'carbon1234'
+            })
+        } catch (error) {
+            expect(error.response.status).toBe(404)
+            expect(error.response.data.msg).toBe('User not found')
         }
     })
 })
