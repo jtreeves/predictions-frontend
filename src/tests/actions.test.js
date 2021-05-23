@@ -32,9 +32,16 @@ const georgeData = {
     password: 'george1234'
 }
 
+const susanData = {
+    name: 'Susan',
+    email: 'susan@email.com',
+    password: 'susan1234'
+}
+
 beforeAll(async () => {
     await CreateUser(martinData)
     await CreateUser(georgeData)
+    await CreateUser(susanData)
 })
 
 afterAll(async () => {
@@ -51,6 +58,16 @@ afterAll(async () => {
     Authentication(otherToken)
     const decodedOtherUser = jwt_decode(otherToken)
     await DeleteUser(decodedOtherUser.id)
+    
+    const susanUser = await CreateSession({
+        email: 'susy@susy.com', 
+        password: 'susan1234'
+    })
+    const susanToken = susanUser.data.token
+    localStorage.setItem('jwtToken', susanToken)
+    Authentication(susanToken)
+    const decodedSusanUser = jwt_decode(susanToken)
+    await DeleteUser(decodedSusanUser.id)
 })
 
 describe('CreateUser action', () => {
@@ -109,6 +126,7 @@ describe('GetUser action', () => {
         const decodedUser = jwt_decode(token)
         const currentUser = await GetUser(decodedUser.id)
         expect(currentUser.status).toBe(200)
+        expect(currentUser.data.user.email).toBe(billData.email)
     })
     
     it('fails to get info about user if user not logged in', async () => {
@@ -174,6 +192,60 @@ describe('UpdateName action', () => {
             await UpdateName('123ABC', 'GEORGE')
         } catch (error) {
             expect(error.response.status).toBe(400)
+        }
+    })
+})
+
+describe('UpdateEmail action', () => {
+    it('changes email of user if user logged in', async () => {
+        const currentSession = await CreateSession(susanData)
+        const {token} = currentSession.data
+        localStorage.setItem('jwtToken', token)
+        Authentication(token)
+        const decodedUser = jwt_decode(token)
+        const currentUser = await UpdateEmail(decodedUser.id, 'susy@susy.com')
+        expect(currentUser.status).toBe(200)
+    })
+    
+    it('fails to change email of user if email already in use', async () => {
+        try {
+            const currentSession = await CreateSession(georgeData)
+            const {token} = currentSession.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            const decodedUser = jwt_decode(token)
+            await UpdateEmail(decodedUser.id, 'bill@email.com')
+        } catch (error) {
+            expect(error.response.status).toBe(409)
+            expect(error.response.data.msg).toBe('Email already in use')
+        }
+    })
+    
+    it('fails to change email of user if user not logged in', async () => {
+        try {
+            const currentSession = await CreateSession(georgeData)
+            const {token} = currentSession.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            const decodedUser = jwt_decode(token)
+            localStorage.removeItem('jwtToken')
+            delete axios.defaults.headers.common['Authorization']
+            await UpdateEmail(decodedUser.id, 'g@george.com')
+        } catch (error) {
+            expect(error.response.status).toBe(401)
+        }
+    })
+    
+    it('fails to change email of user if user does not exist', async () => {
+        try {
+            const currentSession = await CreateSession(georgeData)
+            const {token} = currentSession.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            await UpdateEmail('123ABC', 'g@george.com')
+        } catch (error) {
+            expect(error.response.status).toBe(400)
+            expect(error.response.data.msg).toBe('Email not updated')
         }
     })
 })
