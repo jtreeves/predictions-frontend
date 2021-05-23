@@ -182,18 +182,6 @@ describe('UpdateName action', () => {
             expect(error.response.status).toBe(401)
         }
     })
-    
-    it('fails to change name of user if user does not exist', async () => {
-        try {
-            const currentSession = await CreateSession(georgeData)
-            const {token} = currentSession.data
-            localStorage.setItem('jwtToken', token)
-            Authentication(token)
-            await UpdateName('123ABC', 'GEORGE')
-        } catch (error) {
-            expect(error.response.status).toBe(400)
-        }
-    })
 })
 
 describe('UpdateEmail action', () => {
@@ -235,19 +223,6 @@ describe('UpdateEmail action', () => {
             expect(error.response.status).toBe(401)
         }
     })
-    
-    it('fails to change email of user if user does not exist', async () => {
-        try {
-            const currentSession = await CreateSession(georgeData)
-            const {token} = currentSession.data
-            localStorage.setItem('jwtToken', token)
-            Authentication(token)
-            await UpdateEmail('123ABC', 'g@george.com')
-        } catch (error) {
-            expect(error.response.status).toBe(400)
-            expect(error.response.data.msg).toBe('Email not updated')
-        }
-    })
 })
 
 describe('DeleteUser action', () => {
@@ -274,18 +249,6 @@ describe('DeleteUser action', () => {
             await DeleteUser(currentUserId)
         } catch (error) {
             expect(error.response.status).toBe(401)
-        }
-    })
-    
-    it('fails to delete a user if user does not exist', async () => {
-        try {
-            const currentUser = await CreateSession(georgeData)
-            const {token} = currentUser.data
-            localStorage.setItem('jwtToken', token)
-            Authentication(token)
-            await DeleteUser('123ABC')
-        } catch (error) {
-            expect(error.response.status).toBe(400)
         }
     })
 })
