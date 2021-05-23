@@ -13,6 +13,7 @@ import FormatPoints from '../utilities/predictions/FormatPoints'
 import FormatSlots from '../utilities/predictions/FormatSlots'
 import GeneratePoints from '../utilities/predictions/GeneratePoints'
 import VerticalAxis from '../utilities/predictions/VerticalAxis'
+import HorizontalAxis from '../utilities/predictions/HorizontalAxis'
 
 window.alert = jest.fn()
 
@@ -146,22 +147,109 @@ describe('VerticalAxis utility', () => {
         const firstPoints = [
             {x: 1, y: '1.1'},
             {x: 2, y: '2.3'},
-            {x: 3, y: '3.4'},
+            {x: 3, y: '3.4'}
         ]
         const secondPoints = [
             {x: 1, y: '23.7'},
             {x: 2, y: '57.1'},
-            {x: 3, y: '-14.5'},
+            {x: 3, y: '-14.5'}
         ]
         const thirdPoints = [
             {x: 1, y: '111.8'},
             {x: 2, y: '6.3'},
-            {x: 3, y: '2.9'},
+            {x: 3, y: '2.9'}
         ]
         const allPoints = [firstPoints, secondPoints, thirdPoints]
         const axis = VerticalAxis(allPoints)
         expect(axis.minimum).toEqual(-14.5)
         expect(axis.maximum).toEqual(111.8)
+    })
+    
+    it('determines range of y-values from across an array of arrays containing coordinate pairs', () => {
+        const firstPoints = [
+            {x: 1, y: '1.1'},
+            {x: 2, y: '2.3'},
+            {x: 3, y: '3.4'}
+        ]
+        const secondPoints = [
+            {x: 1, y: '23.7'},
+            {x: 2, y: '57.1'},
+            {x: 3, y: '-14.5'}
+        ]
+        const thirdPoints = [
+            {x: 1, y: '111.8'},
+            {x: 2, y: '6.3'},
+            {x: 3, y: '2.9'}
+        ]
+        const allPoints = [firstPoints, secondPoints, thirdPoints]
+        const axis = VerticalAxis(allPoints)
+        expect(axis.range).toEqual(126.3)
+    })
+})
+
+describe('HorizontalAxis utility', () => {
+    it('determines minimum and maximum x-values of an array of coordinate pairs', () => {
+        const points = [
+            {x: 5, y: '1.1'},
+            {x: 2, y: '2.3'},
+            {x: 13, y: '7.9'},
+            {x: 42, y: '-13.5'},
+            {x: 1, y: '463.4'}
+        ]
+        const axis = HorizontalAxis(points)
+        expect(axis.minimum).toEqual(1)
+        expect(axis.maximum).toEqual(42)
+    })
+    
+    it('determines increment necessary to get from minimum to maximum x-value over 100 steps', () => {
+        const points = [
+            {x: 5, y: '1.1'},
+            {x: 2, y: '2.3'},
+            {x: 13, y: '7.9'},
+            {x: 42, y: '-13.5'},
+            {x: 1, y: '463.4'}
+        ]
+        const axis = HorizontalAxis(points)
+        expect(axis.increment).toEqual(0.41)
+    })
+    
+    it('adjusts minimum and maximum x-values based on a scale value', () => {
+        const points = [
+            {x: 5, y: '1.1'},
+            {x: 2, y: '2.3'},
+            {x: 13, y: '7.9'},
+            {x: 42, y: '-13.5'},
+            {x: 1, y: '463.4'}
+        ]
+        const axis = HorizontalAxis(points, 0.3)
+        expect(axis.minimum).toBeCloseTo(-5.15, 4)
+        expect(axis.maximum).toBeCloseTo(48.15, 4)
+    })
+    
+    it('adjusts increment necessary to get from minimum to maximum x-value based on a scale value', () => {
+        const points = [
+            {x: 5, y: '1.1'},
+            {x: 2, y: '2.3'},
+            {x: 13, y: '7.9'},
+            {x: 42, y: '-13.5'},
+            {x: 1, y: '463.4'}
+        ]
+        const axis = HorizontalAxis(points, 0.3)
+        expect(axis.increment).toBeCloseTo(0.533, 4)
+    })
+    
+    it('ensures scale value cannot exceed -0.9', () => {
+        const points = [
+            {x: 5, y: '1.1'},
+            {x: 2, y: '2.3'},
+            {x: 13, y: '7.9'},
+            {x: 42, y: '-13.5'},
+            {x: 1, y: '463.4'}
+        ]
+        const axis = HorizontalAxis(points, -1)
+        expect(axis.minimum).toBeCloseTo(20.475, 4)
+        expect(axis.maximum).toBeCloseTo(22.525, 4)
+        expect(axis.increment).toBeCloseTo(0.0205, 4)
     })
 })
 
