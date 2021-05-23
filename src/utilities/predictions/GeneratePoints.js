@@ -9,16 +9,15 @@ function GeneratePoints(equationType, coefficients, minimum, maximum, increment,
 
     for (let x = minimum; x <= maximum; x += increment) {
         if (
-            (equationType !== ('logarithmic' || 'hyperbolic')) || 
-            (equationType === 'logarithmic' && x > 0) || 
-            (equationType === 'hyperbolic' && x !== 0)
+            (equationType === 'logarithmic' && x <= 0) || 
+            (equationType === 'hyperbolic' && x === 0)
         ) {
+            finalPoints.push({x: x, y: 0})
+        } else {
             const y = Evaluations(
                 equationType, coefficients, precision, x
             )
             finalPoints.push({x: x, y: y})
-        } else {
-            finalPoints.push({x: x, y: 0})
         }
     }
     
