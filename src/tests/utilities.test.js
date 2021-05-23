@@ -5,8 +5,27 @@ import VettedDataForm from '../utilities/predictions/VettedDataForm'
 import CleanCollection from '../utilities/predictions/CleanCollection'
 import Evaluations from '../utilities/predictions/Evaluations'
 import SpreadsheetInput from '../utilities/predictions/SpreadsheetInput'
+import CheckExpiration from '../utilities/users/CheckExpiration'
 
 window.alert = jest.fn()
+
+describe('CheckExpiration utility', () => {
+    it('fires if expired', () => {
+        const handleLogout = jest.fn()
+        const currentTime = Date.now()
+        const expirationTime = currentTime / 1000 - 1000
+        CheckExpiration(expirationTime, handleLogout)
+        expect(handleLogout).toHaveBeenCalled()
+    })
+    
+    it('does not fire if not expired', () => {
+        const handleLogout = jest.fn()
+        const currentTime = Date.now()
+        const expirationTime = currentTime / 1000 + 1000
+        CheckExpiration(expirationTime, handleLogout)
+        expect(handleLogout).not.toHaveBeenCalled()
+    })
+})
 
 describe('EmptyInputAlert utility', () => {
     it('allows user to move to next stage if input field not blank', () => {
