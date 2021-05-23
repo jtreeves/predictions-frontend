@@ -2,6 +2,9 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import CreateUser from '../actions/users/CreateUser'
 import CreateSession from '../actions/users/CreateSession'
+import GetUser from '../actions/users/GetUser'
+import UpdateName from '../actions/users/UpdateName'
+import UpdateEmail from '../actions/users/UpdateEmail'
 import DeleteUser from '../actions/users/DeleteUser'
 import Authentication from '../actions/main/Authentication'
 
@@ -93,6 +96,45 @@ describe('CreateSession action', () => {
         } catch (error) {
             expect(error.response.status).toBe(404)
             expect(error.response.data.msg).toBe('User not found')
+        }
+    })
+})
+
+describe('GetUser action', () => {
+    it('gets info about user if user logged in', async () => {
+        const currentSession = await CreateSession(billData)
+        const {token} = currentSession.data
+        localStorage.setItem('jwtToken', token)
+        Authentication(token)
+        const decodedUser = jwt_decode(token)
+        const currentUser = await GetUser(decodedUser.id)
+        expect(currentUser.status).toBe(200)
+    })
+    
+    it('fails to get info about user if user not logged in', async () => {
+        try {
+            const currentSession = await CreateSession(billData)
+            const {token} = currentSession.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            const decodedUser = jwt_decode(token)
+            localStorage.removeItem('jwtToken')
+            delete axios.defaults.headers.common['Authorization']
+            await GetUser(decodedUser.id)
+        } catch (error) {
+            expect(error.response.status).toBe(401)
+        }
+    })
+    
+    it('fails to get info about user if user does not exist', async () => {
+        try {
+            const currentSession = await CreateSession(billData)
+            const {token} = currentSession.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            await GetUser('123ABC')
+        } catch (error) {
+            expect(error.response.status).toBe(400)
         }
     })
 })
