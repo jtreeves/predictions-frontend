@@ -102,6 +102,66 @@ describe('VettedDataForm utility', () => {
         const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 4, '')
         expect(dataSet).toBe(false)
     })
+    
+    it('fails to provide object of data set if precision field not a number', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 'one', '[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if precision field zero', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 0, '[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if precision field negative', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', -4, '[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if precision field decimal', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 4.5, '[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if data set contains less than 10 elements', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 4, '[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18]]')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if data set contains typo with encapsulation', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 4, '[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if data set not a list', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 4, 'data set')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if data set list does not contain other lists', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 4, '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if data set list contains any lists with more than two elements', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 4, '[[1, 2], [3, 4], [5, 6, 56], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if data set list contains any lists with less than two elements', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 4, '[[1, 2], [3, 4], [5], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet).toBe(false)
+    })
+
+    it('fails to provide object of data set if data set list contains any lists containing a string as an element', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 4, '[[1, 2], [3, 4], ["five", 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet).toBe(false)
+    })
+
+    it('fails to provide object of data set if data set list contains any lists containing a list as an element', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 4, '[[1, 2], [3, 4], [5, [6, 56]], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet).toBe(false)
+    })
 })
 
 describe('VettedLogin utility', () => {
