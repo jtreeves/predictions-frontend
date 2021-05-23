@@ -2,6 +2,7 @@ import EmptyInputAlert from '../utilities/main/EmptyInputAlert'
 import VettedLogin from '../utilities/users/VettedLogin'
 import VettedSignup from '../utilities/users/VettedSignup'
 import CleanCollection from '../utilities/predictions/CleanCollection'
+import Evaluations from '../utilities/predictions/Evaluations'
 
 window.alert = jest.fn()
 
@@ -93,5 +94,52 @@ describe('CleanCollection utility', () => {
     it('wraps string in opening and closing brackets if original string omits encapsulation', () => {
         const dataSet = CleanCollection('[1, 2], [3, 4], [5, 6]')
         expect(dataSet).toBe('[[1, 2], [3, 4], [5, 6]]')
+    })
+})
+
+describe('Evaluations utility', () => {
+    it('returns output of linear function at a given input', () => {
+        const dependent = Evaluations('linear', [2, 3], 4, 10)
+        expect(dependent).toBe('23.0000')
+    })
+    
+    it('returns output of quadratic function at a given input', () => {
+        const dependent = Evaluations('quadratic', [2, 3, 5], 4, 10)
+        expect(dependent).toBe('235.0000')
+    })
+    
+    it('returns output of cubic function at a given input', () => {
+        const dependent = Evaluations('cubic', [2, 3, 5, 7], 4, 10)
+        expect(dependent).toBe('2357.0000')
+    })
+    
+    it('returns output of hyperbolic function at a given input', () => {
+        const dependent = Evaluations('hyperbolic', [2, 3], 4, 10)
+        expect(dependent).toBe('3.2000')
+    })
+    
+    it('returns output of hyperbolic function at a given input', () => {
+        const dependent = Evaluations('hyperbolic', [2, 3], 4, 10)
+        expect(dependent).toBe('3.2000')
+    })
+    
+    it('returns output of exponential function at a given input', () => {
+        const dependent = Evaluations('exponential', [2, 3], 4, 10)
+        expect(dependent).toBe('118098.0000')
+    })
+    
+    it('returns output of logarithmic function at a given input', () => {
+        const dependent = Evaluations('logarithmic', [2, 3], 4, 10)
+        expect(dependent).toBe('7.6052')
+    })
+    
+    it('returns output of logistic function at a given input', () => {
+        const dependent = Evaluations('logistic', [2, 3, 5], 4, 10)
+        expect(dependent).toBe('2.0000')
+    })
+    
+    it('returns output of sinusoidal function at a given input', () => {
+        const dependent = Evaluations('sinusoidal', [2, 3, 5, 7], 4, 10)
+        expect(dependent).toBe('8.3006')
     })
 })
