@@ -9,11 +9,11 @@ describe('Appeal section', () => {
         expect(headings.length).toBe(1)
     })
     
-    it('presents a heading with the page name as its only heading', () => {
+    it('presents a heading with the section name as its only heading', () => {
         render(<Appeal />)
         const headings = screen.getAllByRole('heading')
-        const h1Element = screen.getByText('Appeal')
-        expect(headings[0]).toBe(h1Element)
+        const sectionHeading = screen.getByText('Appeal')
+        expect(headings[0]).toBe(sectionHeading)
     })
 })
 
@@ -24,10 +24,10 @@ describe('Pitch section', () => {
         expect(headings.length).toBe(1)
     })
     
-    it('presents a heading with the page name as its only heading', () => {
+    it('presents a heading with the section name as its only heading', () => {
         render(<Pitch />)
         const headings = screen.getAllByRole('heading')
-        const h1Element = screen.getByText('Pitch')
-        expect(headings[0]).toBe(h1Element)
+        const sectionHeading = screen.getByText('Pitch')
+        expect(headings[0]).toBe(sectionHeading)
     })
 })

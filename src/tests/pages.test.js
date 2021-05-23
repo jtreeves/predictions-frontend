@@ -13,8 +13,8 @@ describe('Welcome page', () => {
     it('presents a heading with the page name as its first heading', () => {
         render(<Welcome />)
         const headings = screen.getAllByRole('heading')
-        const h1Element = screen.getByText('Welcome')
-        expect(headings[0]).toBe(h1Element)
+        const pageHeading = screen.getByText('Welcome')
+        expect(headings[0]).toBe(pageHeading)
     })
 })
 
@@ -28,8 +28,8 @@ describe('About page', () => {
     it('presents a heading with the page name as its first heading', () => {
         render(<About />)
         const headings = screen.getAllByRole('heading')
-        const h1Element = screen.getByText('About')
-        expect(headings[0]).toBe(h1Element)
+        const pageHeading = screen.getByText('About')
+        expect(headings[0]).toBe(pageHeading)
     })
 })
 
@@ -43,7 +43,7 @@ describe('Usage page', () => {
     it('presents a heading with the page name as its first heading', () => {
         render(<Usage />)
         const headings = screen.getAllByRole('heading')
-        const h1Element = screen.getByText('Usage')
-        expect(headings[0]).toBe(h1Element)
+        const pageHeading = screen.getByText('Usage')
+        expect(headings[0]).toBe(pageHeading)
     })
 })
