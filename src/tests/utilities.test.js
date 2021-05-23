@@ -8,6 +8,7 @@ import Evaluations from '../utilities/predictions/Evaluations'
 import SpreadsheetInput from '../utilities/predictions/SpreadsheetInput'
 import CheckExpiration from '../utilities/users/CheckExpiration'
 import AllFormElements from '../utilities/predictions/AllFormElements'
+import ResetFormElements from '../utilities/predictions/ResetFormElements'
 import FormatPoints from '../utilities/predictions/FormatPoints'
 import FormatSlots from '../utilities/predictions/FormatSlots'
 import GeneratePoints from '../utilities/predictions/GeneratePoints'
@@ -38,6 +39,34 @@ describe('AllFormElements utility', () => {
         expect(elements.undoDeleteButton).toBe(undoDeleteButtonByText)
         expect(elements.submitWarning).toBe(submitWarningByText)
         expect(elements.deleteWarning).toBe(deleteWarningByText)
+    })
+})
+
+describe('ResetFormElements utility', () => {
+    it('ensures appropriate form elements on page hidden or displayed', () => {
+        const mockPage = <div>
+            <div id="submit-button">Submit Button</div>
+            <div id="delete-button">Delete Button</div>
+            <div id="undo-submit-button">Undo Submit Button</div>
+            <div id="undo-delete-button">Undo Delete Button</div>
+            <div id="submit-warning">Submit Warning</div>
+            <div id="delete-warning">Delete Warning</div>
+        </div>
+        render(mockPage)
+        const elements = AllFormElements()
+        expect(elements.submitButton).toBeVisible()
+        expect(elements.deleteButton).toBeVisible()
+        expect(elements.undoSubmitButton).toBeVisible()
+        expect(elements.undoDeleteButton).toBeVisible()
+        expect(elements.submitWarning).toBeVisible()
+        expect(elements.deleteWarning).toBeVisible()
+        ResetFormElements()
+        expect(elements.submitButton).toBeVisible()
+        expect(elements.deleteButton).toBeVisible()
+        expect(elements.undoSubmitButton).not.toBeVisible()
+        expect(elements.undoDeleteButton).not.toBeVisible()
+        expect(elements.submitWarning).not.toBeVisible()
+        expect(elements.deleteWarning).not.toBeVisible()
     })
 })
 
