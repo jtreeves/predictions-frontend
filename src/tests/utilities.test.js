@@ -1,6 +1,7 @@
 import EmptyInputAlert from '../utilities/main/EmptyInputAlert'
 import VettedLogin from '../utilities/users/VettedLogin'
 import VettedSignup from '../utilities/users/VettedSignup'
+import VettedDataForm from '../utilities/predictions/VettedDataForm'
 import CleanCollection from '../utilities/predictions/CleanCollection'
 import Evaluations from '../utilities/predictions/Evaluations'
 import SpreadsheetInput from '../utilities/predictions/SpreadsheetInput'
@@ -16,6 +17,42 @@ describe('EmptyInputAlert utility', () => {
     it('blocks user from moving to next stage if input field blank', () => {
         const checkField = EmptyInputAlert('', 'name')
         expect(checkField).toBe(false)
+    })
+})
+
+describe('VettedDataForm utility', () => {
+    it('provides object of data set if no fields blank', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 4, '[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet.title).toBe('Maximize Profits')
+        expect(dataSet.independent).toBe('units')
+        expect(dataSet.dependent).toBe('dollars')
+        expect(dataSet.precision).toBe(4)
+        expect(dataSet.dataSet).toStrictEqual([[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]])
+    })
+    
+    it('fails to provide object of data set if title field blank', () => {
+        const dataSet = VettedDataForm('', 'units', 'dollars', 4, '[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if independent field blank', () => {
+        const dataSet = VettedDataForm('Maximize Profits', '', 'dollars', 4, '[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if dependent field blank', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', '', 4, '[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if precision field blank', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', '', '[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]]')
+        expect(dataSet).toBe(false)
+    })
+    
+    it('fails to provide object of data set if data set field blank', () => {
+        const dataSet = VettedDataForm('Maximize Profits', 'units', 'dollars', 4, '')
+        expect(dataSet).toBe(false)
     })
 })
 
