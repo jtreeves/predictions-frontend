@@ -8,6 +8,7 @@ import Evaluations from '../utilities/predictions/Evaluations'
 import SpreadsheetInput from '../utilities/predictions/SpreadsheetInput'
 import CheckExpiration from '../utilities/users/CheckExpiration'
 import AllFormElements from '../utilities/predictions/AllFormElements'
+import FormatPoints from '../utilities/predictions/FormatPoints'
 
 window.alert = jest.fn()
 
@@ -35,6 +36,26 @@ describe('AllFormElements utility', () => {
         expect(elements.undoDeleteButton).toBe(undoDeleteButtonByText)
         expect(elements.submitWarning).toBe(submitWarningByText)
         expect(elements.deleteWarning).toBe(deleteWarningByText)
+    })
+})
+
+describe('FormatPoints utility', () => {
+    it('returns LaTeX string of coordinate pairs from an array of arrays', () => {
+        const pointsArray = [[1, 2], [3, 4], [5, 6]]
+        const pointsString = FormatPoints(pointsArray)
+        expect(pointsString).toBe('$ (1, 2),\\: $$ (3, 4),\\: $$ (5, 6)$')
+    })
+    
+    it('returns LaTeX string of one coordinate pair from an array containing only one array', () => {
+        const pointsArray = [[1, 2]]
+        const pointsString = FormatPoints(pointsArray)
+        expect(pointsString).toBe('$ (1, 2)$')
+    })
+    
+    it('returns LaTeX string of none from an array of null', () => {
+        const pointsArray = [null]
+        const pointsString = FormatPoints(pointsArray)
+        expect(pointsString).toBe('$ None $')
     })
 })
 
