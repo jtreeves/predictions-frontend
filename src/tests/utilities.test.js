@@ -14,6 +14,7 @@ import FormatSlots from '../utilities/predictions/FormatSlots'
 import GeneratePoints from '../utilities/predictions/GeneratePoints'
 import VerticalAxis from '../utilities/predictions/VerticalAxis'
 import HorizontalAxis from '../utilities/predictions/HorizontalAxis'
+import ZoomSeparateGraphs from '../utilities/predictions/ZoomSeparateGraphs'
 
 window.alert = jest.fn()
 
@@ -69,6 +70,323 @@ describe('ResetFormElements utility', () => {
         expect(elements.undoDeleteButton).not.toBeVisible()
         expect(elements.submitWarning).not.toBeVisible()
         expect(elements.deleteWarning).not.toBeVisible()
+    })
+})
+
+describe('ZoomSeparateGraphs utility', () => {
+    it('sets points for all function types over an interval', () => {
+        let originalCoordinates = []
+        let linearCoordinates = []
+        let quadraticCoordinates = []
+        let cubicCoordinates = []
+        let hyperbolicCoordinates = []
+        let exponentialCoordinates = []
+        let logarithmicCoordinates = []
+        let logisticCoordinates = []
+        let sinusoidalCoordinates = []
+        const mockSetOriginalCoordinates = (element) => {
+            originalCoordinates = element
+        }
+        const mockSetLinearCoordinates = (element) => {
+            linearCoordinates = element
+        }
+        const mockSetQuadraticCoordinates = (element) => {
+            quadraticCoordinates = element
+        }
+        const mockSetCubicCoordinates = (element) => {
+            cubicCoordinates = element
+        }
+        const mockSetHyperbolicCoordinates = (element) => {
+            hyperbolicCoordinates = element
+        }
+        const mockSetExponentialCoordinates = (element) => {
+            exponentialCoordinates = element
+        }
+        const mockSetLogarithmicCoordinates = (element) => {
+            logarithmicCoordinates = element
+        }
+        const mockSetLogisticCoordinates = (element) => {
+            logisticCoordinates = element
+        }
+        const mockSetSinusoidalCoordinates = (element) => {
+            sinusoidalCoordinates = element
+        }
+        const twoConstants = [2, 3]
+        const threeConstants = [2, 3, 5]
+        const fourConstants = [2, 3, 5, 7]
+        const points = [
+            {x: 2, y: 35},
+            {x: 3, y: 19},
+            {x: 5, y: -7}
+        ]
+        ZoomSeparateGraphs(
+            true, 
+            mockSetOriginalCoordinates, 
+            points, 
+            true, 
+            mockSetLinearCoordinates, 
+            twoConstants, 
+            true, 
+            mockSetQuadraticCoordinates, 
+            threeConstants, 
+            true, 
+            mockSetCubicCoordinates, 
+            fourConstants, 
+            true, 
+            mockSetHyperbolicCoordinates, 
+            twoConstants, 
+            true, 
+            mockSetExponentialCoordinates, 
+            twoConstants, 
+            true, 
+            mockSetLogarithmicCoordinates, 
+            twoConstants, 
+            true, 
+            mockSetLogisticCoordinates, 
+            threeConstants, 
+            true, 
+            mockSetSinusoidalCoordinates, 
+            fourConstants, 
+            1, 
+            5, 
+            1, 
+            2
+        )
+        expect(originalCoordinates).toEqual(points)
+        expect(linearCoordinates).toEqual([
+            {x: 1, y: '5.00'},
+            {x: 2, y: '7.00'},
+            {x: 3, y: '9.00'},
+            {x: 4, y: '11.00'},
+            {x: 5, y: '13.00'}
+        ])
+        expect(quadraticCoordinates).toEqual([
+            {x: 1, y: '10.00'},
+            {x: 2, y: '19.00'},
+            {x: 3, y: '32.00'},
+            {x: 4, y: '49.00'},
+            {x: 5, y: '70.00'}
+        ])
+        expect(cubicCoordinates).toEqual([
+            {x: 1, y: '17.00'},
+            {x: 2, y: '45.00'},
+            {x: 3, y: '103.00'},
+            {x: 4, y: '203.00'},
+            {x: 5, y: '357.00'}
+        ])
+        expect(hyperbolicCoordinates).toEqual([
+            {x: 1, y: '5.00'},
+            {x: 2, y: '4.00'},
+            {x: 3, y: '3.67'},
+            {x: 4, y: '3.50'},
+            {x: 5, y: '3.40'}
+        ])
+        expect(exponentialCoordinates).toEqual([
+            {x: 1, y: '6.00'},
+            {x: 2, y: '18.00'},
+            {x: 3, y: '54.00'},
+            {x: 4, y: '162.00'},
+            {x: 5, y: '486.00'}
+        ])
+        expect(logarithmicCoordinates).toEqual([
+            {x: 1, y: '3.00'},
+            {x: 2, y: '4.39'},
+            {x: 3, y: '5.20'},
+            {x: 4, y: '5.77'},
+            {x: 5, y: '6.22'}
+        ])
+        expect(logisticCoordinates).toEqual([
+            {x: 1, y: '0.00'},
+            {x: 2, y: '0.00'},
+            {x: 3, y: '0.00'},
+            {x: 4, y: '0.09'},
+            {x: 5, y: '1.00'}
+        ])
+        expect(sinusoidalCoordinates).toEqual([
+            {x: 1, y: '8.07'},
+            {x: 2, y: '6.18'},
+            {x: 3, y: '7.56'},
+            {x: 4, y: '6.72'},
+            {x: 5, y: '7.00'}
+        ])
+    })
+
+    it('sets points only for original coordinates if all function types set to false', () => {
+        let originalCoordinates = []
+        let linearCoordinates = []
+        let quadraticCoordinates = []
+        let cubicCoordinates = []
+        let hyperbolicCoordinates = []
+        let exponentialCoordinates = []
+        let logarithmicCoordinates = []
+        let logisticCoordinates = []
+        let sinusoidalCoordinates = []
+        const mockSetOriginalCoordinates = (element) => {
+            originalCoordinates = element
+        }
+        const mockSetLinearCoordinates = (element) => {
+            linearCoordinates = element
+        }
+        const mockSetQuadraticCoordinates = (element) => {
+            quadraticCoordinates = element
+        }
+        const mockSetCubicCoordinates = (element) => {
+            cubicCoordinates = element
+        }
+        const mockSetHyperbolicCoordinates = (element) => {
+            hyperbolicCoordinates = element
+        }
+        const mockSetExponentialCoordinates = (element) => {
+            exponentialCoordinates = element
+        }
+        const mockSetLogarithmicCoordinates = (element) => {
+            logarithmicCoordinates = element
+        }
+        const mockSetLogisticCoordinates = (element) => {
+            logisticCoordinates = element
+        }
+        const mockSetSinusoidalCoordinates = (element) => {
+            sinusoidalCoordinates = element
+        }
+        const twoConstants = [2, 3]
+        const threeConstants = [2, 3, 5]
+        const fourConstants = [2, 3, 5, 7]
+        const points = [
+            {x: 2, y: 35},
+            {x: 3, y: 19},
+            {x: 5, y: -7}
+        ]
+        ZoomSeparateGraphs(
+            true, 
+            mockSetOriginalCoordinates, 
+            points, 
+            false, 
+            mockSetLinearCoordinates, 
+            twoConstants, 
+            false, 
+            mockSetQuadraticCoordinates, 
+            threeConstants, 
+            false, 
+            mockSetCubicCoordinates, 
+            fourConstants, 
+            false, 
+            mockSetHyperbolicCoordinates, 
+            twoConstants, 
+            false, 
+            mockSetExponentialCoordinates, 
+            twoConstants, 
+            false, 
+            mockSetLogarithmicCoordinates, 
+            twoConstants, 
+            false, 
+            mockSetLogisticCoordinates, 
+            threeConstants, 
+            false, 
+            mockSetSinusoidalCoordinates, 
+            fourConstants, 
+            1, 
+            5, 
+            1, 
+            2
+        )
+        expect(originalCoordinates).toEqual(points)
+        expect(linearCoordinates).toEqual([])
+        expect(quadraticCoordinates).toEqual([])
+        expect(cubicCoordinates).toEqual([])
+        expect(hyperbolicCoordinates).toEqual([])
+        expect(exponentialCoordinates).toEqual([])
+        expect(logarithmicCoordinates).toEqual([])
+        expect(logisticCoordinates).toEqual([])
+        expect(sinusoidalCoordinates).toEqual([])
+    })
+    
+    it('only includes original points between maximum and minimum', () => {
+        let originalCoordinates = []
+        let linearCoordinates = []
+        let quadraticCoordinates = []
+        let cubicCoordinates = []
+        let hyperbolicCoordinates = []
+        let exponentialCoordinates = []
+        let logarithmicCoordinates = []
+        let logisticCoordinates = []
+        let sinusoidalCoordinates = []
+        const mockSetOriginalCoordinates = (element) => {
+            originalCoordinates = element
+        }
+        const mockSetLinearCoordinates = (element) => {
+            linearCoordinates = element
+        }
+        const mockSetQuadraticCoordinates = (element) => {
+            quadraticCoordinates = element
+        }
+        const mockSetCubicCoordinates = (element) => {
+            cubicCoordinates = element
+        }
+        const mockSetHyperbolicCoordinates = (element) => {
+            hyperbolicCoordinates = element
+        }
+        const mockSetExponentialCoordinates = (element) => {
+            exponentialCoordinates = element
+        }
+        const mockSetLogarithmicCoordinates = (element) => {
+            logarithmicCoordinates = element
+        }
+        const mockSetLogisticCoordinates = (element) => {
+            logisticCoordinates = element
+        }
+        const mockSetSinusoidalCoordinates = (element) => {
+            sinusoidalCoordinates = element
+        }
+        const twoConstants = [2, 3]
+        const threeConstants = [2, 3, 5]
+        const fourConstants = [2, 3, 5, 7]
+        const points = [
+            {x: 2, y: 35},
+            {x: 3, y: 19},
+            {x: 5, y: -7}
+        ]
+        ZoomSeparateGraphs(
+            true, 
+            mockSetOriginalCoordinates, 
+            points, 
+            false, 
+            mockSetLinearCoordinates, 
+            twoConstants, 
+            false, 
+            mockSetQuadraticCoordinates, 
+            threeConstants, 
+            false, 
+            mockSetCubicCoordinates, 
+            fourConstants, 
+            false, 
+            mockSetHyperbolicCoordinates, 
+            twoConstants, 
+            false, 
+            mockSetExponentialCoordinates, 
+            twoConstants, 
+            false, 
+            mockSetLogarithmicCoordinates, 
+            twoConstants, 
+            false, 
+            mockSetLogisticCoordinates, 
+            threeConstants, 
+            false, 
+            mockSetSinusoidalCoordinates, 
+            fourConstants, 
+            2.5, 
+            4.5, 
+            1, 
+            2
+        )
+        expect(originalCoordinates).toEqual([{x: 3, y: 19}])
+        expect(linearCoordinates).toEqual([])
+        expect(quadraticCoordinates).toEqual([])
+        expect(cubicCoordinates).toEqual([])
+        expect(hyperbolicCoordinates).toEqual([])
+        expect(exponentialCoordinates).toEqual([])
+        expect(logarithmicCoordinates).toEqual([])
+        expect(logisticCoordinates).toEqual([])
+        expect(sinusoidalCoordinates).toEqual([])
     })
 })
 
