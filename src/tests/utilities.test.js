@@ -1,3 +1,4 @@
+import { render, screen } from '@testing-library/react'
 import EmptyInputAlert from '../utilities/main/EmptyInputAlert'
 import VettedLogin from '../utilities/users/VettedLogin'
 import VettedSignup from '../utilities/users/VettedSignup'
@@ -6,8 +7,36 @@ import CleanCollection from '../utilities/predictions/CleanCollection'
 import Evaluations from '../utilities/predictions/Evaluations'
 import SpreadsheetInput from '../utilities/predictions/SpreadsheetInput'
 import CheckExpiration from '../utilities/users/CheckExpiration'
+import AllFormElements from '../utilities/predictions/AllFormElements'
 
 window.alert = jest.fn()
+
+describe('AllFormElements utility', () => {
+    it('returns object containing keys for all form elements on page', () => {
+        const mockPage = <div>
+            <div id="submit-button">Submit Button</div>
+            <div id="delete-button">Delete Button</div>
+            <div id="undo-submit-button">Undo Submit Button</div>
+            <div id="undo-delete-button">Undo Delete Button</div>
+            <div id="submit-warning">Submit Warning</div>
+            <div id="delete-warning">Delete Warning</div>
+        </div>
+        render(mockPage)
+        const elements = AllFormElements()
+        const submitButtonByText = screen.getByText('Submit Button')
+        const deleteButtonByText = screen.getByText('Delete Button')
+        const undoSubmitButtonByText = screen.getByText('Undo Submit Button')
+        const undoDeleteButtonByText = screen.getByText('Undo Delete Button')
+        const submitWarningByText = screen.getByText('Submit Warning')
+        const deleteWarningByText = screen.getByText('Delete Warning')
+        expect(elements.submitButton).toBe(submitButtonByText)
+        expect(elements.deleteButton).toBe(deleteButtonByText)
+        expect(elements.undoSubmitButton).toBe(undoSubmitButtonByText)
+        expect(elements.undoDeleteButton).toBe(undoDeleteButtonByText)
+        expect(elements.submitWarning).toBe(submitWarningByText)
+        expect(elements.deleteWarning).toBe(deleteWarningByText)
+    })
+})
 
 describe('CheckExpiration utility', () => {
     it('fires if expired', () => {
