@@ -12,6 +12,7 @@ import ResetFormElements from '../utilities/predictions/ResetFormElements'
 import FormatPoints from '../utilities/predictions/FormatPoints'
 import FormatSlots from '../utilities/predictions/FormatSlots'
 import GeneratePoints from '../utilities/predictions/GeneratePoints'
+import VerticalAxis from '../utilities/predictions/VerticalAxis'
 
 window.alert = jest.fn()
 
@@ -137,6 +138,30 @@ describe('CheckExpiration utility', () => {
         const expirationTime = currentTime / 1000 + 1000
         CheckExpiration(expirationTime, handleLogout)
         expect(handleLogout).not.toHaveBeenCalled()
+    })
+})
+
+describe('VerticalAxis utility', () => {
+    it('determines minimum and maximum y-values from across an array of arrays containing coordinate pairs', () => {
+        const firstPoints = [
+            {x: 1, y: '1.1'},
+            {x: 2, y: '2.3'},
+            {x: 3, y: '3.4'},
+        ]
+        const secondPoints = [
+            {x: 1, y: '23.7'},
+            {x: 2, y: '57.1'},
+            {x: 3, y: '-14.5'},
+        ]
+        const thirdPoints = [
+            {x: 1, y: '111.8'},
+            {x: 2, y: '6.3'},
+            {x: 3, y: '2.9'},
+        ]
+        const allPoints = [firstPoints, secondPoints, thirdPoints]
+        const axis = VerticalAxis(allPoints)
+        expect(axis.minimum).toEqual(-14.5)
+        expect(axis.maximum).toEqual(111.8)
     })
 })
 
