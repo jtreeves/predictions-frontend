@@ -14,7 +14,7 @@ function FormatSlots(number, operation = 'addition') {
             number *= -1
             slot = `+ ${number}`
         }
-    } else {
+    } else if (operation === 'negation') {
         if (number > 0) {
             slot = `-${number}`
         } else {

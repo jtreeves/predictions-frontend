@@ -9,6 +9,7 @@ import SpreadsheetInput from '../utilities/predictions/SpreadsheetInput'
 import CheckExpiration from '../utilities/users/CheckExpiration'
 import AllFormElements from '../utilities/predictions/AllFormElements'
 import FormatPoints from '../utilities/predictions/FormatPoints'
+import FormatSlots from '../utilities/predictions/FormatSlots'
 
 window.alert = jest.fn()
 
@@ -56,6 +57,38 @@ describe('FormatPoints utility', () => {
         const pointsArray = [null]
         const pointsString = FormatPoints(pointsArray)
         expect(pointsString).toBe('$ None $')
+    })
+})
+
+describe('FormatSlots utility', () => {
+    it('returns string of adding number if number positive and operation addition', () => {
+        const slotString = FormatSlots(2, 'addition')
+        expect(slotString).toBe('+ 2')
+    })
+    
+    it('returns string of subtracting negative of number if number negative and operation addition', () => {
+        const slotString = FormatSlots(-2, 'addition')
+        expect(slotString).toBe('- 2')
+    })
+    
+    it('returns string of subtracting number if number positive and operation subtraction', () => {
+        const slotString = FormatSlots(2, 'subtraction')
+        expect(slotString).toBe('- 2')
+    })
+    
+    it('returns string of adding negative of number if number negative and operation subtraction', () => {
+        const slotString = FormatSlots(-2, 'subtraction')
+        expect(slotString).toBe('+ 2')
+    })
+    
+    it('returns string of number preceded by negation symbol if number positive and operation negation', () => {
+        const slotString = FormatSlots(2, 'negation')
+        expect(slotString).toBe('-2')
+    })
+    
+    it('returns string of negative of number if number negative and operation negation', () => {
+        const slotString = FormatSlots(-2, 'negation')
+        expect(slotString).toBe('2')
     })
 })
 
