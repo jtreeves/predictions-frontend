@@ -3,6 +3,7 @@ import VettedLogin from '../utilities/users/VettedLogin'
 import VettedSignup from '../utilities/users/VettedSignup'
 import CleanCollection from '../utilities/predictions/CleanCollection'
 import Evaluations from '../utilities/predictions/Evaluations'
+import SpreadsheetInput from '../utilities/predictions/SpreadsheetInput'
 
 window.alert = jest.fn()
 
@@ -94,6 +95,13 @@ describe('CleanCollection utility', () => {
     it('wraps string in opening and closing brackets if original string omits encapsulation', () => {
         const dataSet = CleanCollection('[1, 2], [3, 4], [5, 6]')
         expect(dataSet).toBe('[[1, 2], [3, 4], [5, 6]]')
+    })
+})
+
+describe('SpreadsheetInput utility', () => {
+    it('replaces line breaks with brackets and commas', () => {
+        const dataSet = SpreadsheetInput('1,2\r\n3,4\r\n5,6')
+        expect(dataSet).toBe('[[1,2],[3,4],[5,6]]')
     })
 })
 
