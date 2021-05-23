@@ -139,6 +139,45 @@ describe('GetUser action', () => {
     })
 })
 
+describe('UpdateName action', () => {
+    it('changes name of user if user logged in', async () => {
+        const currentSession = await CreateSession(georgeData)
+        const {token} = currentSession.data
+        localStorage.setItem('jwtToken', token)
+        Authentication(token)
+        const decodedUser = jwt_decode(token)
+        const currentUser = await UpdateName(decodedUser.id, 'GEORGE')
+        expect(currentUser.status).toBe(200)
+    })
+    
+    it('fails to change name of user if user not logged in', async () => {
+        try {
+            const currentSession = await CreateSession(georgeData)
+            const {token} = currentSession.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            const decodedUser = jwt_decode(token)
+            localStorage.removeItem('jwtToken')
+            delete axios.defaults.headers.common['Authorization']
+            await UpdateName(decodedUser.id, 'GEORGE')
+        } catch (error) {
+            expect(error.response.status).toBe(401)
+        }
+    })
+    
+    it('fails to change name of user if user does not exist', async () => {
+        try {
+            const currentSession = await CreateSession(georgeData)
+            const {token} = currentSession.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            await UpdateName('123ABC', 'GEORGE')
+        } catch (error) {
+            expect(error.response.status).toBe(400)
+        }
+    })
+})
+
 describe('DeleteUser action', () => {
     it('deletes a user if user logged in', async () => {
         const currentUser = await CreateSession(martinData)
