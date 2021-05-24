@@ -83,6 +83,52 @@ describe('DisplayName element', () => {
     })
 })
 
+describe('DisplayEmail element', () => {
+    it('displays current email stored in database', async () => {
+        let email = ''
+        const mockSetEmail = (element) => {
+            email = element
+        }
+        const initialEmailArea = <DisplayEmail 
+            id={billId}
+            email={email}
+            setEmail={mockSetEmail}
+        />
+        render(initialEmailArea)
+        await new Promise((c) => setTimeout(c, 1000))
+        const updatedEmailArea = <DisplayEmail 
+            id={billId}
+            email={email}
+            setEmail={mockSetEmail}
+        />
+        render(updatedEmailArea)
+        const currentEmail = await screen.findByText('bill@email.com')
+        expect(currentEmail).toBeTruthy()
+    })
+    
+    it('displays empty string if no ID provided', async () => {
+        let email = ''
+        const mockSetEmail = (element) => {
+            email = element
+        }
+        const initialEmailArea = <DisplayEmail 
+            id=''
+            email={email}
+            setEmail={mockSetEmail}
+        />
+        render(initialEmailArea)
+        await new Promise((c) => setTimeout(c, 1000))
+        const updatedEmailArea = <DisplayEmail 
+            id=''
+            email={email}
+            setEmail={mockSetEmail}
+        />
+        render(updatedEmailArea)
+        const articles = await screen.findAllByRole('article')
+        expect(articles[1].children[1].textContent).toBe('')
+    })
+})
+
 describe('BestFit element', () => {
     it('presents only the element name as its heading', () => {
         const bestFitElement = <BestFit 
