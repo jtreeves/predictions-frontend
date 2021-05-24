@@ -71,14 +71,14 @@ afterAll(async () => {
 })
 
 describe('Authentication action', () => {
-    it('sets headers if provided with token', () => {
+    it('sets authorization headers if provided with token', () => {
         const token = 'ABC123'
         Authentication(token)
         const header = axios.defaults.headers.common['Authorization']
         expect(header).toBe(token)
     })
     
-    it('deletes headers if not provided with token', () => {
+    it('deletes authorization headers if not provided with token', () => {
         Authentication()
         const header = axios.defaults.headers.common['Authorization']
         expect(header).toBeFalsy()
