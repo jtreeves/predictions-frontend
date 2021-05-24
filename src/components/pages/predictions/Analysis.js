@@ -96,6 +96,7 @@ function Analysis(props) {
     const [originalCoordinates, setOriginalCoordinates] = useState(originalPoints)
 
     const [zoom, setZoom] = useState(0)
+    const [checkFavorite, setCheckFavorite] = useState(true)
 
     const allCoordinates = [originalCoordinates, linearCoordinates, quadraticCoordinates, cubicCoordinates, hyperbolicCoordinates, exponentialCoordinates, logarithmicCoordinates, logisticCoordinates, sinusoidalCoordinates]
 
@@ -110,6 +111,8 @@ function Analysis(props) {
 
     CheckFavorite(
         favorite, 
+        checkFavorite,
+        setCheckFavorite,
         xMinimum, 
         xMaximum, 
         increment, 

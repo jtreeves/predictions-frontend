@@ -1,9 +1,6 @@
-import { useState } from 'react'
 import GeneratePoints from './GeneratePoints'
 
-function CheckFavorite(favorite, xMinimum, xMaximum, increment, precision, linearConstants, setDisplayLinear, setLinearCoordinates, quadraticConstants, setDisplayQuadratic, setQuadraticCoordinates, cubicConstants, setDisplayCubic, setCubicCoordinates, hyperbolicConstants, setDisplayHyperbolic, setHyperbolicCoordinates, exponentialConstants, setDisplayExponential, setExponentialCoordinates, logarithmicConstants, setDisplayLogarithmic, setLogarithmicCoordinates, logisticConstants, setDisplayLogistic, setLogisticCoordinates, sinusoidalConstants, setDisplaySinusoidal, setSinusoidalCoordinates) {
-    const [checkFavorite, setCheckFavorite] = useState(true)
-
+function CheckFavorite(favorite, checkFavorite, setCheckFavorite, xMinimum, xMaximum, increment, precision, linearConstants, setDisplayLinear, setLinearCoordinates, quadraticConstants, setDisplayQuadratic, setQuadraticCoordinates, cubicConstants, setDisplayCubic, setCubicCoordinates, hyperbolicConstants, setDisplayHyperbolic, setHyperbolicCoordinates, exponentialConstants, setDisplayExponential, setExponentialCoordinates, logarithmicConstants, setDisplayLogarithmic, setLogarithmicCoordinates, logisticConstants, setDisplayLogistic, setLogisticCoordinates, sinusoidalConstants, setDisplaySinusoidal, setSinusoidalCoordinates) {
     if (checkFavorite) {
         if (favorite) {
             if (favorite === 'linear') {
