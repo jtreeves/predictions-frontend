@@ -70,6 +70,21 @@ afterAll(async () => {
     await DeleteUser(decodedSusanUser.id)
 })
 
+describe('Authentication action', () => {
+    it('sets headers if provided with token', () => {
+        const token = 'ABC123'
+        Authentication(token)
+        const header = axios.defaults.headers.common['Authorization']
+        expect(header).toBe(token)
+    })
+    
+    it('deletes headers if not provided with token', () => {
+        Authentication()
+        const header = axios.defaults.headers.common['Authorization']
+        expect(header).toBeFalsy()
+    })
+})
+
 describe('CreateUser action', () => {
     it('creates a new user if email not in use', async () => {
         const newUser = await CreateUser(johnData)
