@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, cleanup } from '@testing-library/react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import Advantages from '../components/elements/main/Advantages'
@@ -72,14 +72,15 @@ describe('DisplayName element', () => {
         />
         render(initialNameArea)
         await new Promise((c) => setTimeout(c, 1000))
+        cleanup()
         const updatedNameArea = <DisplayName 
             id=''
             name={name}
             setName={mockSetName}
         />
         render(updatedNameArea)
-        const articles = await screen.findAllByRole('article')
-        expect(articles[1].children[1].textContent).toBe('')
+        const article = await screen.findByRole('article')
+        expect(article.children[1].textContent).toBe('')
     })
 })
 
