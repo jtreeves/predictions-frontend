@@ -18,14 +18,16 @@ function UpdateNameButtons(props) {
 
     const handleInitiate = async (e) => {
         e.preventDefault()
-        try {
-            const currentUser = await GetUser(id)
-            setIntermediaryName(currentUser.data.user.name)
-            setChangingName(true)
-        } catch (error) {
-            setIntermediaryName('')
-            setChangingName(true)
-            console.log(error)
+        if (id) {
+            try {
+                const currentUser = await GetUser(id)
+                setIntermediaryName(currentUser.data.user.name)
+                setChangingName(true)
+            } catch (error) {
+                setIntermediaryName('')
+                setChangingName(true)
+                console.log(error)
+            }
         }
     }
 

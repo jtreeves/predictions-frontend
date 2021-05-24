@@ -18,14 +18,16 @@ function UpdateEmailButtons(props) {
 
     const handleInitiate = async (e) => {
         e.preventDefault()
-        try {
-            const currentUser = await GetUser(id)
-            setIntermediaryEmail(currentUser.data.user.email)
-            setChangingEmail(true)
-        } catch (error) {
-            setIntermediaryEmail('')
-            setChangingEmail(true)
-            console.log(error)
+        if (id) {
+            try {
+                const currentUser = await GetUser(id)
+                setIntermediaryEmail(currentUser.data.user.email)
+                setChangingEmail(true)
+            } catch (error) {
+                setIntermediaryEmail('')
+                setChangingEmail(true)
+                console.log(error)
+            }
         }
     }
 

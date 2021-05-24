@@ -56,7 +56,7 @@ describe('DisplayName element', () => {
             setName={mockSetName}
         />
         render(updatedNameArea)
-        const currentName = await screen.findByText('billy boy')
+        const currentName = await screen.findByText('Bill')
         expect(currentName).toBeTruthy()
     })
     
