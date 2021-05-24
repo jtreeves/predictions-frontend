@@ -16,6 +16,12 @@ describe('Welcome page', () => {
         const pageHeading = screen.getByText('Welcome')
         expect(headings[0]).toBe(pageHeading)
     })
+    
+    it('contains introductory text', () => {
+        render(<Welcome />)
+        const introduction = screen.getByText(/Let us help you make sense of it/i)
+        expect(introduction).toBeTruthy()
+    })
 })
 
 describe('About page', () => {
@@ -31,6 +37,12 @@ describe('About page', () => {
         const pageHeading = screen.getByText('About')
         expect(headings[0]).toBe(pageHeading)
     })
+
+    it('contains explanatory text', () => {
+        render(<About />)
+        const explanation = screen.getByText(/We provide an extensive amount of information/i)
+        expect(explanation).toBeTruthy()
+    })
 })
 
 describe('Usage page', () => {
@@ -45,5 +57,11 @@ describe('Usage page', () => {
         const headings = screen.getAllByRole('heading')
         const pageHeading = screen.getByText('Usage')
         expect(headings[0]).toBe(pageHeading)
+    })
+
+    it('contains useful text', () => {
+        render(<Usage />)
+        const utility = screen.getByText(/equations behind the results/i)
+        expect(utility).toBeTruthy()
     })
 })
