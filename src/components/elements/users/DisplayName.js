@@ -7,12 +7,16 @@ function DisplayName(props) {
     const setName = props.setName
 
     const getName = async () => {
-        try {
-            const currentUser = await GetUser(id)
-            setName(currentUser.data.user.name)
-        } catch (error) {
+        if (id) {
+            try {
+                const currentUser = await GetUser(id)
+                setName(currentUser.data.user.name)
+            } catch (error) {
+                setName('')
+                console.log(error)
+            }
+        } else {
             setName('')
-            console.log(error)
         }
     }
 

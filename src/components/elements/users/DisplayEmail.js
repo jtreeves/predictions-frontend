@@ -7,12 +7,16 @@ function DisplayEmail(props) {
     const setEmail = props.setEmail
 
     const getEmail = async () => {
-        try {
-            const currentUser = await GetUser(id)
-            setEmail(currentUser.data.user.email)
-        } catch (error) {
+        if (id) {
+            try {
+                const currentUser = await GetUser(id)
+                setEmail(currentUser.data.user.email)
+            } catch (error) {
+                setEmail('')
+                console.log(error)
+            }
+        } else {
             setEmail('')
-            console.log(error)
         }
     }
 
