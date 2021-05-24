@@ -119,14 +119,15 @@ describe('DisplayEmail element', () => {
         />
         render(initialEmailArea)
         await new Promise((c) => setTimeout(c, 1000))
+        cleanup()
         const updatedEmailArea = <DisplayEmail 
             id=''
             email={email}
             setEmail={mockSetEmail}
         />
         render(updatedEmailArea)
-        const articles = await screen.findAllByRole('article')
-        expect(articles[1].children[1].textContent).toBe('')
+        const article = await screen.findByRole('article')
+        expect(article.children[1].textContent).toBe('')
     })
 })
 
