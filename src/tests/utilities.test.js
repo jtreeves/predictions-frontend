@@ -15,6 +15,7 @@ import GeneratePoints from '../utilities/predictions/GeneratePoints'
 import VerticalAxis from '../utilities/predictions/VerticalAxis'
 import HorizontalAxis from '../utilities/predictions/HorizontalAxis'
 import ZoomSeparateGraphs from '../utilities/predictions/ZoomSeparateGraphs'
+import CheckFavorite from '../utilities/predictions/CheckFavorite'
 
 window.alert = jest.fn()
 
@@ -387,6 +388,413 @@ describe('ZoomSeparateGraphs utility', () => {
         expect(logarithmicCoordinates).toEqual([])
         expect(logisticCoordinates).toEqual([])
         expect(sinusoidalCoordinates).toEqual([])
+    })
+})
+
+describe('CheckFavorite utility', () => {
+    it('displays only points for quadratic function if favorite', () => {
+        let linearCoordinates = []
+        let quadraticCoordinates = []
+        let cubicCoordinates = []
+        let hyperbolicCoordinates = []
+        let exponentialCoordinates = []
+        let logarithmicCoordinates = []
+        let logisticCoordinates = []
+        let sinusoidalCoordinates = []
+        let checkFavorite = true
+        let displayLinear = false
+        let displayQuadratic = false
+        let displayCubic = false
+        let displayHyperbolic = false
+        let displayExponential = false
+        let displayLogarithmic = false
+        let displayLogistic = false
+        let displaySinusoidal = false
+        const mockSetCheckFavorite = (element) => {
+            checkFavorite = element
+        }
+        const mockSetLinearCoordinates = (element) => {
+            linearCoordinates = element
+        }
+        const mockSetQuadraticCoordinates = (element) => {
+            quadraticCoordinates = element
+        }
+        const mockSetCubicCoordinates = (element) => {
+            cubicCoordinates = element
+        }
+        const mockSetHyperbolicCoordinates = (element) => {
+            hyperbolicCoordinates = element
+        }
+        const mockSetExponentialCoordinates = (element) => {
+            exponentialCoordinates = element
+        }
+        const mockSetLogarithmicCoordinates = (element) => {
+            logarithmicCoordinates = element
+        }
+        const mockSetLogisticCoordinates = (element) => {
+            logisticCoordinates = element
+        }
+        const mockSetSinusoidalCoordinates = (element) => {
+            sinusoidalCoordinates = element
+        }
+        const mockSetDisplayLinear = (element) => {
+            displayLinear = element
+        }
+        const mockSetDisplayQuadratic = (element) => {
+            displayQuadratic = element
+        }
+        const mockSetDisplayCubic = (element) => {
+            displayCubic = element
+        }
+        const mockSetDisplayHyperbolic = (element) => {
+            displayHyperbolic = element
+        }
+        const mockSetDisplayExponential = (element) => {
+            displayExponential = element
+        }
+        const mockSetDisplayLogarithmic = (element) => {
+            displayLogarithmic = element
+        }
+        const mockSetDisplayLogistic = (element) => {
+            displayLogistic = element
+        }
+        const mockSetDisplaySinusoidal = (element) => {
+            displaySinusoidal = element
+        }
+        const twoConstants = [2, 3]
+        const threeConstants = [2, 3, 5]
+        const fourConstants = [2, 3, 5, 7]
+        CheckFavorite(
+            'quadratic', 
+            checkFavorite,
+            mockSetCheckFavorite,
+            1, 
+            5, 
+            1, 
+            2, 
+            twoConstants, 
+            mockSetDisplayLinear, 
+            mockSetLinearCoordinates, 
+            threeConstants, 
+            mockSetDisplayQuadratic, 
+            mockSetQuadraticCoordinates, 
+            fourConstants, 
+            mockSetDisplayCubic, 
+            mockSetCubicCoordinates, 
+            twoConstants, 
+            mockSetDisplayHyperbolic, 
+            mockSetHyperbolicCoordinates, 
+            twoConstants, 
+            mockSetDisplayExponential, 
+            mockSetExponentialCoordinates, 
+            twoConstants, 
+            mockSetDisplayLogarithmic, 
+            mockSetLogarithmicCoordinates, 
+            threeConstants, 
+            mockSetDisplayLogistic, 
+            mockSetLogisticCoordinates, 
+            fourConstants, 
+            mockSetDisplaySinusoidal, 
+            mockSetSinusoidalCoordinates
+        )
+        expect(linearCoordinates).toEqual([])
+        expect(quadraticCoordinates).toEqual([
+            {x: 1, y: '10.00'},
+            {x: 2, y: '19.00'},
+            {x: 3, y: '32.00'},
+            {x: 4, y: '49.00'},
+            {x: 5, y: '70.00'}
+        ])
+        expect(cubicCoordinates).toEqual([])
+        expect(hyperbolicCoordinates).toEqual([])
+        expect(exponentialCoordinates).toEqual([])
+        expect(logarithmicCoordinates).toEqual([])
+        expect(logisticCoordinates).toEqual([])
+        expect(sinusoidalCoordinates).toEqual([])
+    })
+    
+    it('displays only points for sinusoidal function if favorite', () => {
+        let linearCoordinates = []
+        let quadraticCoordinates = []
+        let cubicCoordinates = []
+        let hyperbolicCoordinates = []
+        let exponentialCoordinates = []
+        let logarithmicCoordinates = []
+        let logisticCoordinates = []
+        let sinusoidalCoordinates = []
+        let checkFavorite = true
+        let displayLinear = false
+        let displayQuadratic = false
+        let displayCubic = false
+        let displayHyperbolic = false
+        let displayExponential = false
+        let displayLogarithmic = false
+        let displayLogistic = false
+        let displaySinusoidal = false
+        const mockSetCheckFavorite = (element) => {
+            checkFavorite = element
+        }
+        const mockSetLinearCoordinates = (element) => {
+            linearCoordinates = element
+        }
+        const mockSetQuadraticCoordinates = (element) => {
+            quadraticCoordinates = element
+        }
+        const mockSetCubicCoordinates = (element) => {
+            cubicCoordinates = element
+        }
+        const mockSetHyperbolicCoordinates = (element) => {
+            hyperbolicCoordinates = element
+        }
+        const mockSetExponentialCoordinates = (element) => {
+            exponentialCoordinates = element
+        }
+        const mockSetLogarithmicCoordinates = (element) => {
+            logarithmicCoordinates = element
+        }
+        const mockSetLogisticCoordinates = (element) => {
+            logisticCoordinates = element
+        }
+        const mockSetSinusoidalCoordinates = (element) => {
+            sinusoidalCoordinates = element
+        }
+        const mockSetDisplayLinear = (element) => {
+            displayLinear = element
+        }
+        const mockSetDisplayQuadratic = (element) => {
+            displayQuadratic = element
+        }
+        const mockSetDisplayCubic = (element) => {
+            displayCubic = element
+        }
+        const mockSetDisplayHyperbolic = (element) => {
+            displayHyperbolic = element
+        }
+        const mockSetDisplayExponential = (element) => {
+            displayExponential = element
+        }
+        const mockSetDisplayLogarithmic = (element) => {
+            displayLogarithmic = element
+        }
+        const mockSetDisplayLogistic = (element) => {
+            displayLogistic = element
+        }
+        const mockSetDisplaySinusoidal = (element) => {
+            displaySinusoidal = element
+        }
+        const twoConstants = [2, 3]
+        const threeConstants = [2, 3, 5]
+        const fourConstants = [2, 3, 5, 7]
+        CheckFavorite(
+            'sinusoidal', 
+            checkFavorite,
+            mockSetCheckFavorite,
+            1, 
+            5, 
+            1, 
+            2, 
+            twoConstants, 
+            mockSetDisplayLinear, 
+            mockSetLinearCoordinates, 
+            threeConstants, 
+            mockSetDisplayQuadratic, 
+            mockSetQuadraticCoordinates, 
+            fourConstants, 
+            mockSetDisplayCubic, 
+            mockSetCubicCoordinates, 
+            twoConstants, 
+            mockSetDisplayHyperbolic, 
+            mockSetHyperbolicCoordinates, 
+            twoConstants, 
+            mockSetDisplayExponential, 
+            mockSetExponentialCoordinates, 
+            twoConstants, 
+            mockSetDisplayLogarithmic, 
+            mockSetLogarithmicCoordinates, 
+            threeConstants, 
+            mockSetDisplayLogistic, 
+            mockSetLogisticCoordinates, 
+            fourConstants, 
+            mockSetDisplaySinusoidal, 
+            mockSetSinusoidalCoordinates
+        )
+        expect(linearCoordinates).toEqual([])
+        expect(quadraticCoordinates).toEqual([])
+        expect(cubicCoordinates).toEqual([])
+        expect(hyperbolicCoordinates).toEqual([])
+        expect(exponentialCoordinates).toEqual([])
+        expect(logarithmicCoordinates).toEqual([])
+        expect(logisticCoordinates).toEqual([])
+        expect(sinusoidalCoordinates).toEqual([
+            {x: 1, y: '8.07'},
+            {x: 2, y: '6.18'},
+            {x: 3, y: '7.56'},
+            {x: 4, y: '6.72'},
+            {x: 5, y: '7.00'}
+        ])
+    })
+    
+    it('displays all points if no favorite', () => {
+        let linearCoordinates = []
+        let quadraticCoordinates = []
+        let cubicCoordinates = []
+        let hyperbolicCoordinates = []
+        let exponentialCoordinates = []
+        let logarithmicCoordinates = []
+        let logisticCoordinates = []
+        let sinusoidalCoordinates = []
+        let checkFavorite = true
+        let displayLinear = false
+        let displayQuadratic = false
+        let displayCubic = false
+        let displayHyperbolic = false
+        let displayExponential = false
+        let displayLogarithmic = false
+        let displayLogistic = false
+        let displaySinusoidal = false
+        const mockSetCheckFavorite = (element) => {
+            checkFavorite = element
+        }
+        const mockSetLinearCoordinates = (element) => {
+            linearCoordinates = element
+        }
+        const mockSetQuadraticCoordinates = (element) => {
+            quadraticCoordinates = element
+        }
+        const mockSetCubicCoordinates = (element) => {
+            cubicCoordinates = element
+        }
+        const mockSetHyperbolicCoordinates = (element) => {
+            hyperbolicCoordinates = element
+        }
+        const mockSetExponentialCoordinates = (element) => {
+            exponentialCoordinates = element
+        }
+        const mockSetLogarithmicCoordinates = (element) => {
+            logarithmicCoordinates = element
+        }
+        const mockSetLogisticCoordinates = (element) => {
+            logisticCoordinates = element
+        }
+        const mockSetSinusoidalCoordinates = (element) => {
+            sinusoidalCoordinates = element
+        }
+        const mockSetDisplayLinear = (element) => {
+            displayLinear = element
+        }
+        const mockSetDisplayQuadratic = (element) => {
+            displayQuadratic = element
+        }
+        const mockSetDisplayCubic = (element) => {
+            displayCubic = element
+        }
+        const mockSetDisplayHyperbolic = (element) => {
+            displayHyperbolic = element
+        }
+        const mockSetDisplayExponential = (element) => {
+            displayExponential = element
+        }
+        const mockSetDisplayLogarithmic = (element) => {
+            displayLogarithmic = element
+        }
+        const mockSetDisplayLogistic = (element) => {
+            displayLogistic = element
+        }
+        const mockSetDisplaySinusoidal = (element) => {
+            displaySinusoidal = element
+        }
+        const twoConstants = [2, 3]
+        const threeConstants = [2, 3, 5]
+        const fourConstants = [2, 3, 5, 7]
+        CheckFavorite(
+            '', 
+            checkFavorite,
+            mockSetCheckFavorite,
+            1, 
+            5, 
+            1, 
+            2, 
+            twoConstants, 
+            mockSetDisplayLinear, 
+            mockSetLinearCoordinates, 
+            threeConstants, 
+            mockSetDisplayQuadratic, 
+            mockSetQuadraticCoordinates, 
+            fourConstants, 
+            mockSetDisplayCubic, 
+            mockSetCubicCoordinates, 
+            twoConstants, 
+            mockSetDisplayHyperbolic, 
+            mockSetHyperbolicCoordinates, 
+            twoConstants, 
+            mockSetDisplayExponential, 
+            mockSetExponentialCoordinates, 
+            twoConstants, 
+            mockSetDisplayLogarithmic, 
+            mockSetLogarithmicCoordinates, 
+            threeConstants, 
+            mockSetDisplayLogistic, 
+            mockSetLogisticCoordinates, 
+            fourConstants, 
+            mockSetDisplaySinusoidal, 
+            mockSetSinusoidalCoordinates
+        )
+        expect(linearCoordinates).toEqual([
+            {x: 1, y: '5.00'},
+            {x: 2, y: '7.00'},
+            {x: 3, y: '9.00'},
+            {x: 4, y: '11.00'},
+            {x: 5, y: '13.00'}
+        ])
+        expect(quadraticCoordinates).toEqual([
+            {x: 1, y: '10.00'},
+            {x: 2, y: '19.00'},
+            {x: 3, y: '32.00'},
+            {x: 4, y: '49.00'},
+            {x: 5, y: '70.00'}
+        ])
+        expect(cubicCoordinates).toEqual([
+            {x: 1, y: '17.00'},
+            {x: 2, y: '45.00'},
+            {x: 3, y: '103.00'},
+            {x: 4, y: '203.00'},
+            {x: 5, y: '357.00'}
+        ])
+        expect(hyperbolicCoordinates).toEqual([
+            {x: 1, y: '5.00'},
+            {x: 2, y: '4.00'},
+            {x: 3, y: '3.67'},
+            {x: 4, y: '3.50'},
+            {x: 5, y: '3.40'}
+        ])
+        expect(exponentialCoordinates).toEqual([
+            {x: 1, y: '6.00'},
+            {x: 2, y: '18.00'},
+            {x: 3, y: '54.00'},
+            {x: 4, y: '162.00'},
+            {x: 5, y: '486.00'}
+        ])
+        expect(logarithmicCoordinates).toEqual([
+            {x: 1, y: '3.00'},
+            {x: 2, y: '4.39'},
+            {x: 3, y: '5.20'},
+            {x: 4, y: '5.77'},
+            {x: 5, y: '6.22'}
+        ])
+        expect(logisticCoordinates).toEqual([
+            {x: 1, y: '0.00'},
+            {x: 2, y: '0.00'},
+            {x: 3, y: '0.00'},
+            {x: 4, y: '0.09'},
+            {x: 5, y: '1.00'}
+        ])
+        expect(sinusoidalCoordinates).toEqual([
+            {x: 1, y: '8.07'},
+            {x: 2, y: '6.18'},
+            {x: 3, y: '7.56'},
+            {x: 4, y: '6.72'},
+            {x: 5, y: '7.00'}
+        ])
     })
 })
 
