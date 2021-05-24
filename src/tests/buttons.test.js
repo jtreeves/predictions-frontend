@@ -7,6 +7,7 @@ import Authentication from '../actions/main/Authentication'
 import userEvent from '@testing-library/user-event'
 import FormButton from '../components/buttons/main/FormButton'
 import UpdateNameButtons from '../components/buttons/users/UpdateNameButtons'
+import UpdateEmailButtons from '../components/buttons/users/UpdateEmailButtons'
 
 const johnData = {
     name: 'John',
@@ -297,6 +298,235 @@ describe('UpdateName buttons', () => {
         render(undoneButtonsArea)
         const buttonByRole = screen.getByRole('button')
         const buttonByText = screen.getByText('Change Name')
+        expect(buttonByRole).toBe(buttonByText)
+    })
+})
+
+describe('UpdateEmail buttons', () => {
+    it('displays button with text of Change Email initially', () => {
+        let email = johnData.email
+        let changingEmail = false
+        const mockSetEmail = (element) => {
+            email = element
+        }
+        const mockSetChangingEmail = (element) => {
+            changingEmail = element
+        }
+        const buttonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(buttonsArea)
+        const buttonByRole = screen.getByRole('button')
+        const buttonByText = screen.getByText('Change Email')
+        expect(buttonByRole).toBe(buttonByText)
+    })
+    
+    it('displays two buttons with new texts and input field after click', async () => {
+        let email = johnData.email
+        let changingEmail = false
+        const mockSetEmail = (element) => {
+            email = element
+        }
+        const mockSetChangingEmail = (element) => {
+            changingEmail = element
+        }
+        const initialButtonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(initialButtonsArea)
+        const button = screen.getByRole('button')
+        userEvent.click(button)
+        await new Promise((c) => setTimeout(c, 1000))
+        cleanup()
+        const updatedButtonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(updatedButtonsArea)
+        const buttons = screen.getAllByRole('button')
+        const submitButton = screen.getByText('Submit New Email')
+        const undoButton = screen.getByText('Keep Old Email')
+        const inputAreaByRole = screen.getByRole('textbox')
+        const inputAreaByDisplay = screen.getByDisplayValue(email)
+        expect(buttons.length).toBe(2)
+        expect(buttons[0]).toBe(submitButton)
+        expect(buttons[1]).toBe(undoButton)
+        expect(inputAreaByRole).toBe(inputAreaByDisplay)
+    })
+    
+    it('lets user input new email', async () => {
+        let email = johnData.email
+        let changingEmail = false
+        const mockSetEmail = (element) => {
+            email = element
+        }
+        const mockSetChangingEmail = (element) => {
+            changingEmail = element
+        }
+        const initialButtonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(initialButtonsArea)
+        const button = screen.getByRole('button')
+        userEvent.click(button)
+        await new Promise((c) => setTimeout(c, 1000))
+        cleanup()
+        const updatedButtonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(updatedButtonsArea)
+        const inputArea = screen.getByRole('textbox')
+        fireEvent.change(inputArea, { target: { value: '' } })
+        userEvent.type(inputArea, 'JOHN')
+        expect(inputArea).toHaveValue('JOHN')
+    })
+    
+    it('sets email to user input after click submit', async () => {
+        let email = johnData.email
+        let changingEmail = false
+        const mockSetEmail = (element) => {
+            email = element
+        }
+        const mockSetChangingEmail = (element) => {
+            changingEmail = element
+        }
+        const initialButtonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(initialButtonsArea)
+        const button = screen.getByRole('button')
+        userEvent.click(button)
+        await new Promise((c) => setTimeout(c, 1000))
+        cleanup()
+        const updatedButtonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(updatedButtonsArea)
+        const inputArea = screen.getByRole('textbox')
+        const submitButton = screen.getByText('Submit New Email')
+        fireEvent.change(inputArea, { target: { value: '' } })
+        userEvent.type(inputArea, 'JOHN')
+        userEvent.click(submitButton)
+        await new Promise((c) => setTimeout(c, 1000))
+        expect(email).toBe('JOHN')
+    })
+    
+    it('displays original button after click submit button', async () => {
+        let email = johnData.email
+        let changingEmail = false
+        const mockSetEmail = (element) => {
+            email = element
+        }
+        const mockSetChangingEmail = (element) => {
+            changingEmail = element
+        }
+        const initialButtonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(initialButtonsArea)
+        const button = screen.getByRole('button')
+        userEvent.click(button)
+        await new Promise((c) => setTimeout(c, 1000))
+        cleanup()
+        const updatedButtonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(updatedButtonsArea)
+        const submitButton = screen.getByText('Submit New Email')
+        userEvent.click(submitButton)
+        await new Promise((c) => setTimeout(c, 1000))
+        cleanup()
+        const doneButtonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(doneButtonsArea)
+        const buttonByRole = screen.getByRole('button')
+        const buttonByText = screen.getByText('Change Email')
+        expect(buttonByRole).toBe(buttonByText)
+    })
+    
+    it('displays original button after click undo button', async () => {
+        let email = johnData.email
+        let changingEmail = false
+        const mockSetEmail = (element) => {
+            email = element
+        }
+        const mockSetChangingEmail = (element) => {
+            changingEmail = element
+        }
+        const initialButtonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(initialButtonsArea)
+        const button = screen.getByRole('button')
+        userEvent.click(button)
+        await new Promise((c) => setTimeout(c, 1000))
+        cleanup()
+        const updatedButtonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(updatedButtonsArea)
+        const undoButton = screen.getByText('Keep Old Email')
+        userEvent.click(undoButton)
+        await new Promise((c) => setTimeout(c, 1000))
+        cleanup()
+        const undoneButtonsArea = <UpdateEmailButtons 
+            id={johnId} 
+            email={email}
+            setEmail={mockSetEmail}
+            changingEmail={changingEmail}
+            setChangingEmail={mockSetChangingEmail}
+        />
+        render(undoneButtonsArea)
+        const buttonByRole = screen.getByRole('button')
+        const buttonByText = screen.getByText('Change Email')
         expect(buttonByRole).toBe(buttonByText)
     })
 })
