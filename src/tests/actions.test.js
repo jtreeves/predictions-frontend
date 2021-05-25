@@ -7,6 +7,48 @@ import UpdateName from '../actions/users/UpdateName'
 import UpdateEmail from '../actions/users/UpdateEmail'
 import DeleteUser from '../actions/users/DeleteUser'
 import Authentication from '../actions/main/Authentication'
+import CreatePredictions from '../actions/predictions/CreatePredictions'
+import SavePredictions from '../actions/predictions/SavePredictions'
+
+const predictoData = {
+    name: 'Predicto',
+    email: 'predicto@email.com',
+    password: 'predicto1234'
+}
+
+let predictoId = ''
+
+const firstPredictionSet = {
+    title: 'Weather for Predicto',
+    independent: 'months',
+    dependent: 'temperature',
+    precision: 4,
+    dataSet: [[1, 53], [2, 58], [3, 66], [4, 73], [5, 80], [6, 87], [7, 89], [8, 88], [9, 83], [10, 74], [11, 64], [12, 55]]
+}
+
+const badPredictionSet = {
+    title: 'Weather for Predicto',
+    independent: 'months',
+    dependent: 'temperature',
+    precision: 4,
+    dataSet: '[[1, 53], [2, 58], [3, 66], [4, 73], [5, 80], [6, 87], [7, 89], [8, 88], [9, 83], [10, 74], [11, 64], [12, 55]]'
+}
+
+const missingPredictionSet = {
+    title: 'Weather for Predicto',
+    independent: '',
+    dependent: 'temperature',
+    precision: 4,
+    dataSet: '[[1, 53], [2, 58], [3, 66], [4, 73], [5, 80], [6, 87], [7, 89], [8, 88], [9, 83], [10, 74], [11, 64], [12, 55]]'
+}
+
+const secondPredictionSet = {
+    title: 'Disease for Predicto',
+    independent: 'months',
+    dependent: 'deaths',
+    precision: 4,
+    dataSet: '[[1, 4], [2, 20], [3, 7117], [4, 72390], [5, 110593], [6, 128525], [7, 159539], [8, 189293], [9, 208337], [10, 232942], [11, 285620], [12, 382580]]'
+}
 
 const johnData = {
     name: 'John',
@@ -42,6 +84,7 @@ beforeAll(async () => {
     await CreateUser(martinData)
     await CreateUser(georgeData)
     await CreateUser(susanData)
+    await CreateUser(predictoData)
 })
 
 afterAll(async () => {
@@ -68,6 +111,13 @@ afterAll(async () => {
     Authentication(susanToken)
     const decodedSusanUser = jwt_decode(susanToken)
     await DeleteUser(decodedSusanUser.id)
+    
+    const predictoUser = await CreateSession(predictoData)
+    const predictoToken = predictoUser.data.token
+    localStorage.setItem('jwtToken', predictoToken)
+    Authentication(predictoToken)
+    const decodedPredictoUser = jwt_decode(predictoToken)
+    await DeleteUser(decodedPredictoUser.id)
 })
 
 describe('Authentication action', () => {
@@ -265,5 +315,58 @@ describe('DeleteUser action', () => {
         } catch (error) {
             expect(error.response.status).toBe(401)
         }
+    })
+})
+
+describe('CreatePredictions action', () => {
+    jest.setTimeout(10000)
+
+    beforeAll(async () => {
+        const currentUser = await CreateSession(predictoData)
+        const {token} = currentUser.data
+        localStorage.setItem('jwtToken', token)
+        Authentication(token)
+        const decodedUser = jwt_decode(token)
+        predictoId = decodedUser.id
+    })
+
+    let testSource = ''
+
+    it('creates a new collection of predictions', async () => {
+        const predictions = await CreatePredictions(firstPredictionSet)
+        const regressions = predictions.data.regressions
+        testSource = regressions.source
+        expect(predictions.status).toBe(201)
+        expect(regressions['best_fit']).toEqual('cubic')
+        expect(regressions['linear_coefficients']).toEqual([0.7273, 67.7727])
+        expect(regressions['linear_coefficients']).toEqual([0.7273, 67.7727])
+        expect(regressions['quadratic_coefficients']).toEqual([-1.1374, 15.513, 33.2727])
+        expect(regressions['cubic_coefficients']).toEqual([-0.0694, 0.2162, 8.19, 42.7475])
+        expect(regressions['hyperbolic_coefficients']).toEqual([-28.1904, 79.7901])
+        expect(regressions['exponential_coefficients']).toEqual([66.593, 1.0107])
+        expect(regressions['logarithmic_coefficients']).toEqual([7.7255, 59.6324])
+        expect(regressions['logistic_coefficients']).toEqual([77.223, 0.8019, 0.2482])
+        expect(regressions['sinusoidal_coefficients']).toEqual([16.722, -0.6093, -11, 74.6609])
+    })
+    
+    it('fails to create a new collection if submission contains blank field', async () => {
+        try {
+            await CreatePredictions(missingPredictionSet)
+        } catch (error) {
+            expect(error.response.status).toBe(403)
+            expect(error.response.data.msg).toBe('Title, independent, dependent, precision, and dataSet fields are all required')
+        }
+    })
+    
+    it('fails to create a new collection if submission contains element of wrong type', async () => {
+        try {
+            await CreatePredictions(badPredictionSet)
+        } catch (error) {
+            expect(error.response.status).toBe(400)
+        }
+    })
+
+    afterAll(async () => {
+        await SavePredictions(predictoId, testSource)
     })
 })
