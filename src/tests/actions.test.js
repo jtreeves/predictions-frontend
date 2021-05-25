@@ -56,6 +56,12 @@ const johnData = {
     password: 'john1234'
 }
 
+const badUser = {
+    name: 'Marco',
+    email: '',
+    password: 'marco1234'
+}
+
 const billData = {
     name: 'Bill',
     email: 'bill@email.com',
@@ -141,6 +147,15 @@ describe('CreateUser action', () => {
         expect(newUser.status).toBe(201)
     })
     
+    it('fails to create a new user if submission contains blank field', async () => {
+        try {
+            await CreateUser(badUser)
+        } catch (error) {
+            expect(error.response.status).toBe(403)
+            expect(error.response.data.msg).toBe('Name, email, and password fields must all be provided')
+        }
+    })
+    
     it('fails to create a new user if email in use', async () => {
         try {
             await CreateUser(billData)
@@ -180,6 +195,15 @@ describe('CreateSession action', () => {
             expect(error.response.data.msg).toBe('User not found')
         }
     })
+    
+    it('fails to log in a user if submission contains blank field', async () => {
+        try {
+            await CreateSession(badUser)
+        } catch (error) {
+            expect(error.response.status).toBe(403)
+            expect(error.response.data.msg).toBe('Email and password fields must both be provided')
+        }
+    })
 })
 
 describe('GetUser action', () => {
@@ -194,6 +218,18 @@ describe('GetUser action', () => {
         expect(currentUser.data.user.email).toBe(billData.email)
     })
     
+    it('fails to get info about user if ID not provided', async () => {
+        try {
+            const currentSession = await CreateSession(billData)
+            const {token} = currentSession.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            await GetUser('')
+        } catch (error) {
+            expect(error.response.status).toBe(404)
+        }
+    })
+
     it('fails to get info about user if user not logged in', async () => {
         try {
             const currentSession = await CreateSession(billData)
@@ -231,6 +267,32 @@ describe('UpdateName action', () => {
         const decodedUser = jwt_decode(token)
         const currentUser = await UpdateName(decodedUser.id, 'GEORGE')
         expect(currentUser.status).toBe(200)
+    })
+    
+    it('fails to change name of user if new name not provided', async () => {
+        try {
+            const currentSession = await CreateSession(georgeData)
+            const {token} = currentSession.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            const decodedUser = jwt_decode(token)
+            await UpdateName(decodedUser.id, '')
+        } catch (error) {
+            expect(error.response.status).toBe(403)
+            expect(error.response.data.msg).toBe('New name must be provided')
+        }
+    })
+    
+    it('fails to change name of user if ID not provided', async () => {
+        try {
+            const currentSession = await CreateSession(georgeData)
+            const {token} = currentSession.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            await UpdateName('', 'GEORGE')
+        } catch (error) {
+            expect(error.response.status).toBe(404)
+        }
     })
     
     it('fails to change name of user if user not logged in', async () => {
@@ -274,6 +336,32 @@ describe('UpdateEmail action', () => {
         }
     })
     
+    it('fails to change email of user if new email not provided', async () => {
+        try {
+            const currentSession = await CreateSession(georgeData)
+            const {token} = currentSession.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            const decodedUser = jwt_decode(token)
+            await UpdateEmail(decodedUser.id, '')
+        } catch (error) {
+            expect(error.response.status).toBe(403)
+            expect(error.response.data.msg).toBe('New email must be provided')
+        }
+    })
+    
+    it('fails to change email of user if ID not provided', async () => {
+        try {
+            const currentSession = await CreateSession(georgeData)
+            const {token} = currentSession.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            await UpdateEmail('', 'g@george.com')
+        } catch (error) {
+            expect(error.response.status).toBe(404)
+        }
+    })
+
     it('fails to change email of user if user not logged in', async () => {
         try {
             const currentSession = await CreateSession(georgeData)
@@ -301,6 +389,18 @@ describe('DeleteUser action', () => {
         expect(deletion.status).toBe(204)
     })
     
+    it('fails to delete a user if ID not provided', async () => {
+        try {
+            const currentUser = await CreateSession(georgeData)
+            const {token} = currentUser.data
+            localStorage.setItem('jwtToken', token)
+            Authentication(token)
+            await DeleteUser('')
+        } catch (error) {
+            expect(error.response.status).toBe(404)
+        }
+    })
+    
     it('fails to delete a user if user not logged in', async () => {
         try {
             const currentUser = await CreateSession(georgeData)
@@ -319,7 +419,7 @@ describe('DeleteUser action', () => {
 })
 
 describe('CreatePredictions action', () => {
-    jest.setTimeout(10000)
+    jest.setTimeout(15000)
 
     beforeAll(async () => {
         const currentUser = await CreateSession(predictoData)
@@ -354,7 +454,7 @@ describe('CreatePredictions action', () => {
             await CreatePredictions(missingPredictionSet)
         } catch (error) {
             expect(error.response.status).toBe(403)
-            expect(error.response.data.msg).toBe('Title, independent, dependent, precision, and dataSet fields are all required')
+            expect(error.response.data.msg).toBe('Title, independent, dependent, precision, and data set fields must all be provided')
         }
     })
     
@@ -366,6 +466,43 @@ describe('CreatePredictions action', () => {
         }
     })
 
+    afterAll(async () => {
+        await SavePredictions(predictoId, testSource)
+    })
+})
+
+describe('SavePredictions action', () => {
+    jest.setTimeout(15000)
+
+    beforeAll(async () => {
+        const currentUser = await CreateSession(predictoData)
+        const {token} = currentUser.data
+        localStorage.setItem('jwtToken', token)
+        Authentication(token)
+        const decodedUser = jwt_decode(token)
+        predictoId = decodedUser.id
+    })
+
+    let testSource = ''
+
+    it('adds an existing collection to database', async () => {
+        const predictions = await CreatePredictions(firstPredictionSet)
+        const saved = await SavePredictions(predictoId, predictions.data.regressions.source)
+        expect(saved.status).toBe(201)
+        expect(saved.data.prediction.source).toBe(predictions.data.regressions.source)
+    })
+    
+    it('fails to add an existing collection to database if source not provided', async () => {
+        try {
+            const predictions = await CreatePredictions(firstPredictionSet)
+            testSource = predictions.data.regressions.source
+            await SavePredictions(predictoId, '')
+        } catch (error) {
+            expect(error.response.status).toBe(403)
+            expect(error.response.data.msg).toBe('Source must be provided')
+        }
+    })
+    
     afterAll(async () => {
         await SavePredictions(predictoId, testSource)
     })
