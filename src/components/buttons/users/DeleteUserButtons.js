@@ -24,6 +24,7 @@ function DeleteUserButtons(props) {
         if (id) {
             try {
                 await DeleteUser(id)
+                await new Promise((c) => setTimeout(c, 1000))
                 setRedirecting(true)
             } catch (error) {
                 alert('Your account was not deleted')
