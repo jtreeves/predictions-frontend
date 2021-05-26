@@ -145,6 +145,7 @@ describe('CreateUser action', () => {
     it('creates a new user if email not in use', async () => {
         const newUser = await CreateUser(johnData)
         expect(newUser.status).toBe(201)
+        expect(newUser.data.msg).toBe('New user created')
     })
     
     it('fails to create a new user if submission contains blank field', async () => {
@@ -170,6 +171,7 @@ describe('CreateSession action', () => {
     it('logs in a user if email and password combination correct', async () => {
         const currentUser = await CreateSession(billData)
         expect(currentUser.status).toBe(201)
+        expect(currentUser.data.token.slice(0, 6)).toBe('Bearer')
     })
     
     it('fails to log in a user if email and password combination incorrect', async () => {
@@ -254,6 +256,7 @@ describe('GetUser action', () => {
             await GetUser('123ABC')
         } catch (error) {
             expect(error.response.status).toBe(400)
+            expect(error.response.data.msg).toBe('User information not retrieved')
         }
     })
 })
@@ -266,7 +269,7 @@ describe('UpdateName action', () => {
         Authentication(token)
         const decodedUser = jwt_decode(token)
         const currentUser = await UpdateName(decodedUser.id, 'GEORGE')
-        expect(currentUser.status).toBe(200)
+        expect(currentUser.status).toBe(204)
     })
     
     it('fails to change name of user if new name not provided', async () => {
@@ -319,7 +322,7 @@ describe('UpdateEmail action', () => {
         Authentication(token)
         const decodedUser = jwt_decode(token)
         const currentUser = await UpdateEmail(decodedUser.id, 'susy@susy.com')
-        expect(currentUser.status).toBe(200)
+        expect(currentUser.status).toBe(204)
     })
     
     it('fails to change email of user if email already in use', async () => {
@@ -463,6 +466,7 @@ describe('CreatePredictions action', () => {
             await CreatePredictions(badPredictionSet)
         } catch (error) {
             expect(error.response.status).toBe(400)
+            expect(error.response.data.msg).toBe('Regressions not created')
         }
     })
 
